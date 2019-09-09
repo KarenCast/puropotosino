@@ -246,4 +246,14 @@ class empresasController extends Controller
           ->make(true);
 
       }
+
+
+    function viewE($n){
+
+      $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+      ->where('ID_empresa', $n)
+      ->get();
+
+        return view('admin.verempresa')->with('empresa', $empresa);
+    }
 }

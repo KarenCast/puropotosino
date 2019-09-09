@@ -74,6 +74,17 @@ function getFisicas(){
                               name: 'nombre'
                           },
 
+                          {
+                              data: 'ID_empresa',
+
+                              sWidth: '7%',
+                              orderable: false,
+                              "render": function(data) {
+
+                                    return '<a href="/verEmpresa/'+data+'">Ver Empresa</a>';
+                              }
+                          },
+
 
                       ],
               });
@@ -120,16 +131,12 @@ function getMorales(){
                           },
                           {
                               data: 'ID_empresa',
-                              sWidth: '7%',
 
-                              
+                              sWidth: '7%',
                               orderable: false,
                               "render": function(data) {
 
-                                    return '<form><input type="text" value="'.data.'"><button></button></form>';
-
-
-
+                                    return '<a href="<a href="/verEmpresa/'+data+'">Ver Empresa</a>';
 
                               }
                           },
@@ -241,6 +248,7 @@ function IrLink(seleccion){
         $("#nombre_e").val(ffin);
         // $("#logo_e").val(sal);
         document.getElementById("logo_e").src = "Empresas/"+sal;
+
 
 
         console.log(desc);

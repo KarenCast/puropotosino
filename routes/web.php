@@ -23,7 +23,6 @@ Route::post('/altaE', 'empresasController@storeE')->name('empresa');
 
 
 
-
 //Admin
 Route::get('/Login-admin', 'adminController@viewAdmin');
 Route::post('/LogInA', 'adminController@LogInA')->name('LogInA');
@@ -58,6 +57,9 @@ Route::get('/getSub','subcatController@getSub');
 
 Route::get('/getEmpresas','empresasController@getEmpresas');
 Route::get('/getEmpresasM','empresasController@getEmpresasM');
+
+Route::get('/verEmpresa/{n}', 'empresasController@viewE'); //Vista Empresa
+
 
 
 //Usuarios
