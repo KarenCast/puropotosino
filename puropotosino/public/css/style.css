@@ -1,0 +1,250 @@
+body{
+
+}
+
+
+p{
+  font-size: 18px;
+  text-align: justify;
+}
+
+.container-fluid{
+  padding-right: 0px!important;
+  padding-left: 0px!important;
+}
+
+.row{
+  padding-right: 15px;
+    padding-left: 15px;
+    margin-right: 0px;
+  margin-left: 0px;
+}
+
+
+.row.np{
+  padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+  margin-left: 0px;
+}
+
+div.enca{
+  background-image: url("http://puropotosino.sanluis.gob.mx/ant/wp-content/uploads/2018/04/arton14447.jpg");
+  width: 100%;
+  min-height: 150px;
+   background-size: cover;
+   background-position: center!important;
+   opacity: 1;
+   -webkit-transition: opacity 2s ease;
+   -moz-transition: opacity 2s ease;
+   -ms-transition: opacity 2s ease;
+   -o-transition: opacity 2s ease;
+   transition: opacity 2s ease;
+}
+
+
+
+.row.navbar.navbar-expand-lg.navbar-light.ml-auto.tagline{
+  background-color: #000;
+  padding-left: 5%!important;
+  padding-right: 5%!important;
+
+
+}
+
+.navbar-nav{
+  margin-right: 0;
+margin-left: auto;
+}
+
+
+.navbar-light .navbar-nav .nav-link{
+  color: white;
+}
+
+
+.navbar-light .navbar-nav .nav-link:hover{
+  color: rgb(179, 179, 179);
+}
+
+
+#logopp{
+  height: 100px;
+  width: auto;
+}
+
+
+.row.seccion{
+  min-height: 300px;
+  padding: 7% 10% 7% 10%;
+}
+
+.s2{
+  background-color: #f1f1f1;
+}
+
+.s3{
+  background-color:  #cbc9ca;
+}
+
+h1{
+  text-align: center;
+}
+
+
+.logotipo{
+  margin: auto;
+
+}
+
+.line{
+  border-bottom: 1px solid #000;
+}
+
+.q1,.q2,.q3,.q4{
+  padding: 2%;
+}
+
+
+/* slide */
+
+.slide-carousel figure {
+    position: relative;
+    outline: 0;
+  }
+
+  .slide-carousel figure:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    z-index: 1;
+    transition: background-color .5s ease;
+  }
+
+  .slide-carousel figure:hover:after {
+    /* background-color: rgba(0, 0, 0, 0.2); */
+  }
+
+  .slick-dots li button:before,
+  .slick-dots li.slick-active button:before {
+    color: #000;
+  }
+
+  .slick-prev:before, .slick-next:before{
+    color: rgba(83, 87, 86, 0.52)
+  }
+
+/* end slide */
+
+
+footer>div.piec1{
+  padding: 3% 0 1% 0;
+  background-color: #313b47;
+  margin-top: 0!important;
+}
+
+footer>div.piec2{
+    padding: 2% 0 1% 0;
+  background-color: #27384c;
+    margin-top: 0!important;
+}
+
+footer>div>p{
+  font-size: 16px;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #fff;
+}
+
+
+.row.foot{
+  margin-top: -1%;
+  background-color: #002857;
+  margin-bottom: 0;
+  height: 100%;
+  min-height: 300px;
+}
+
+
+.symbol.required:before {
+	content: "*";
+	display: inline;
+	color: #E6674A;
+}
+
+
+figure{
+  text-align: center;
+}
+
+figure>img{
+  margin: auto;
+}
+
+
+#div{
+  background-size:cover;
+  width:100%;
+  height:700px;
+  display:block;
+  background-repeat:no-repeat;
+  display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+#div>h1{
+  padding: 8%;
+  width: 100%;
+  background-color: rgba(17, 18, 17, 0.6);
+  color: white;
+  text-align: center;
+  margin: auto;
+  vertical-align: middle;
+}
+
+
+.row.np>div{
+  height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    background-color: #f2f2f2;
+}
+
+.row.seccion.galvideos{
+  background-color: #f1f1f1;
+}
+
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link{
+  color: #f1f1f1;
+}
+
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+  color: #f1f1f1;
+}
+
+.navbar-light .navbar-toggler-icon{
+  background-image: url("../images/menu.png");
+}
+
+h4{
+  text-align: justify;
+}
+
+.inicios{
+  padding: 0 10% 0 10%;
+}
+
+
+@media only screen and (max-width: 691px) {
+  img.sidep{
+    width: 90%;
+  }
+}
