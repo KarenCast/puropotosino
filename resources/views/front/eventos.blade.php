@@ -67,6 +67,7 @@
                     id: 6969,
                     title: 'Prueba ID',
                     start: '2019-08-16T16:00:00',
+                    end: '2019-08-18T19:00:00',
                     backgroundColor: 'red'
                 }
             ]
