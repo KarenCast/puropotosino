@@ -48,7 +48,7 @@
 											<li class="divider"></li>
 
 											<li>
-												<a href="{{url('/LogOutbt')}}">
+												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
 													&nbsp;Cerrar Sesión
 												</a>

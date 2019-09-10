@@ -29,6 +29,10 @@ Route::post('/LogInA', 'adminController@LogInA')->name('LogInA');
 Route::post('/recuperarContrasena', 'adminController@recuperarContrasena')->name('RecuperaC');
 Route::get('/consultaEmpresas', 'adminController@consultae');
 
+
+Route::get('/link/{id}/{arch}', 'adminController@link');
+
+
 //Categorias
 Route::get('/consultaCat', 'catController@viewCat'); //Vista Consulta Cat
 Route::get('/altaCategorias', 'catController@altaC'); //Vista Altas Cat
