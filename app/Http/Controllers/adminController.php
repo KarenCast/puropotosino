@@ -108,5 +108,9 @@ class adminController extends Controller
     }
   }
 
+  function eventos(){
+    return view('front.eventos');
+  }
+
 
 }
