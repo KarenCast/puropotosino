@@ -48,7 +48,7 @@
 											<li class="divider"></li>
 
 											<li>
-												<a href="{{url('/LogOutbt')}}">
+												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
 													&nbsp;Cerrar Sesión
 												</a>
@@ -82,7 +82,7 @@
 							<!-- start: FORM WIZARD PANEL -->
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
-								
+
 									<h3>REGISTRO<br>
 	                 <small>Registrate para ser parte de SIDEP</small></h3>
 								</div>

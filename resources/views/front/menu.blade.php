@@ -22,7 +22,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/testimonios">Testimonios</a>
+        <a class="nav-link" href="/puro_potosino/public/testimonios">Testimonios</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="{{Route('eventos')}}">Eventos</a>
@@ -35,7 +35,7 @@
           Registro
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Iniciar Sesión</a>
+          <a class="dropdown-item" href="/puro_potosino/public/registro">Iniciar Sesión</a>
         </div>
       </li>
     </ul>

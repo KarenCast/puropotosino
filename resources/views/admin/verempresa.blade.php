@@ -47,7 +47,7 @@
 											<li class="divider"></li>
 
 											<li>
-												<a href="{{url('/LogOutbt')}}">
+												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
 													&nbsp;Cerrar Sesión
 												</a>
@@ -100,24 +100,19 @@
 									  </div> -->
 									  <div class="form-group col-sm-12">
 									    <label class="">
-									     Describe aquí tu idea de negocio<span class="symbol required"></span>
+									     Idea de negocio<span class="symbol required"></span>
 									    </label><br>
-									    <textarea  class="form-control"  name="descripcion" id="descripcion" rows="3" cols="100%"></textarea>
-									  </div>
-									  <div class="form-group col-sm-6">
-									    <label class="">
-									      ¿Su negocio se encuentra en operación?<span class="symbol required"></span>
-									    </label><br>
-									     <input type="radio" name="ope" value="t" onclick=""="operacion();"> No
-									     <input type="radio" name="ope" value="f"> Si<br>
-									  </div>
-									  <div class="form-group col-sm-6" id="fechaope" style="visibility: hidden">
-									    <label class="" >
-									      Seleccione la fecha en que comenzó a estar en operación<span class="symbol required"></span>
-									    </label><br>
-									    <input type="date" required class="form-control" id="operacion" name="operacion" placeholder="">
+									    <textarea  class="form-control" disabled  name="descripcion" id="descripcion" rows="3" cols="100%">{{$rol->descripcion}}</textarea>
 									  </div>
 
+                    @if($rol->tiempo_operacion!=null)
+									  <div class="form-group col-sm-12" id="fechaope">
+									    <label class="" ><p>Fecha en que comenzó a estar en operación<span class="symbol required"></span></p>
+
+									    </label><br>
+									    <input type="date" disabled required class="form-control" id="operacion" name="operacion" placeholder="" value="{{$rol->tiempo_operacion}}">
+									  </div>
+                    @endif
 
 									  <h4>Información de contacto</h4>
 									  <hr width="100%" color="black"/>
@@ -168,18 +163,12 @@
 
 									  <h4>Información SIDEP</h4>
 									  <hr width="100%" color="black"/>
-									  <div class="form-group col-sm-6">
+
+									  <div class="form-group col-sm-6" id="tipo_regimen" >
 									    <label class="">
-									      ¿Está dado de alta en SHCP?<span class="symbol required"></span>
-									    </label><br>
-									     <input type="radio" name="altahacienda" value="t" > Si
-									     <input type="radio" name="altahacienda" value="f"> No<br>
-									  </div>
-									  <div class="form-group col-sm-6" id="tipo_regimen" style="visibility: hidden">
-									    <label class="">
-									      ¿Bajo que regimen?<span class="symbol required"></span>
+									      Regimen de alta en DHCP<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="regimen" name="regimen" placeholder="">
+									    <input type="text" disabled required class="form-control" id="regimen" name="regimen" placeholder="" value="{{$rol->regimen}}">
 									  </div>
 									  <!-- <div class="form-group col-sm-4">
 									    <label class="">
@@ -187,33 +176,58 @@
 									    </label>
 									    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="">
 									  </div> -->
-									  <div class="form-group col-sm-6">
-									    <label class="">
-									      ¿Ha realizado algún programa de incubación de empresa?<span class="symbol required"></span>
-									    </label><br>
-									     <input type="radio" name="incu" value="t"> Si
-									     <input type="radio" name="incu" value="f"> No<br>
-									  </div>
+
 									  <div class="form-group col-sm-6" id="tipo_incu" style="visibility: hidden">
 									    <label class="">
 									      ¿Cuál?<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="tipoincu" name="tipoincu" placeholder="">
+									    <input type="text" disabled required class="form-control" id="tipoincu" name="tipoincu" placeholder="{{$rol->tipo_incubacion}}">
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">
 									    <h4>Carga la documentación con la que cuentas<span class="symbol required"></span></h4> <br>
 									    </label><br>
 											Comprobante de programa de incubación (Archivo .pdf)<br>
-									    <input type="file" name="incubacion" id="incubacion" class="form-control" accept="application/pdf"><br>
+											@if($rol->comprobante_incubacion!=null || $rol->comprobante_incubacion!='')
+												@if($rol->CURP!=null)
+													<a href="/link/{{$rol->CURP}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
+												@else
+												<a href="/link/{{$rol->RFC}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
+												@endif
+											@endif
+
 											Alta hacienda (Archivo .pdf)<br>
-									    <input type="file" name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
+											@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
+												@if($rol->CURP!=null)
+													<a href="/link/{{$rol->CURP}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
+												@else
+												<a href="/link/{{$rol->RFC}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
+												@endif
+											@endif
+
+
+
 											Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
-									    <input type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
+									    <img src="{{asset('assets/images/User_Circle.png')}}" alt="" width="10%" height="auto"><br>
+
+
 											Código de barras (Archivo .pdf)<br>
-									    <input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
+											@if($rol->codigo_barras!=null || $rol->codigo_barras!='')
+												@if($rol->CURP!=null)
+													<a href="/link/{{$rol->CURP}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
+												@else
+													<a href="/link/{{$rol->RFC}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
+												@endif
+											@endif
+
 											FDA (Archivo .pdf)<br>
-									    <input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
+											@if($rol->FDA!=null || $rol->FDA!='')
+												@if($rol->CURP!=null)
+													<a href="/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												@else
+												<a href="/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												@endif
+											@endif
 									  </div>
 
 									  <h4>Redes sociales</h4>
@@ -222,25 +236,26 @@
 									    <label class="">
 									      Instagram (URL)
 									    </label>
-									    <input type="text"  class="form-control" id="instagram" name="instagram" placeholder="">
-									  </div>
+									    <input type="text"  class="form-control" id="instagram" name="instagram" placeholder="" value="{{$rol->instagram}}">
+
+										</div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
 									      Facebook (URL)
 									    </label>
-									    <input type="text"  class="form-control" id="facebook" name="facebook" placeholder="">
+									    <input type="text"  class="form-control" id="facebook" name="facebook" placeholder="" value="{{$rol->facebook}}">
 									  </div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
 									      Twitter (Usuario)
 									    </label>
-									    <input type="text"  class="form-control" id="twitter" name="twitter" placeholder="">
+									    <input type="text"  class="form-control" id="twitter" name="twitter" placeholder="" value="{{$rol->twitter}}">
 									  </div>
 										<div class="form-group col-sm-6">
 										 <label class="">
 											 Sitio Web (URL)
 										 </label>
-										 <input type="text"  class="form-control" id="sitio" name="sitio" placeholder="">
+										 <input type="text"  class="form-control" id="sitio" name="sitio" placeholder="" value="{{$rol->stio_web}}">
 									 </div>
 									 <h4>Clasificación</h4>
 									 <hr width="100%" color="black"/>
@@ -250,7 +265,7 @@
 										 </label>
 
 										 <select class="form-control" id="categoria" name="categoria" onchange="versub();">
-											 <option value="" selected disabled hidden>Elige</option>
+											 <option value="{{$rol->ID_categoria}}" selected disabled hidden>{{$rol->ID_categoria}}</option>
 
 											</select>
 									 </div>
@@ -259,8 +274,8 @@
 											 Sub-categoría<span class="symbol required"></span>
 										 </label>
 										 <select class="form-control" id="subcat" name="subcat">
-											 							<option value="" selected disabled hidden>Elige</option>
-																		 
+											 <option value="{{$rol->ID_subcategoria}}" selected disabled hidden>{{$rol->ID_subcategoria}}</option>
+
 											</select>
 									 </div>
 
@@ -270,8 +285,14 @@
 									    <label class="">
 									      Comprobante de domicilio (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
-									    <input type="file" required class="form-control" id="cdomicilio" name="cdomicilio" placeholder="" accept="application/pdf">
 
+											@if($rol->FDA!=null || $rol->FDA!='')
+												@if($rol->CURP!=null)
+													<a href="/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												@else
+												<a href="/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												@endif
+											@endif
 									  </div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
