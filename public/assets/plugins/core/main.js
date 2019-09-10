@@ -3390,6 +3390,7 @@ Docs & License: https://fullcalendar.io/
         var classes = [];
         var todayStart;
         var todayEnd;
+        
         if (!rangeContainsMarker(dateProfile.activeRange, date)) {
             classes.push('fc-disabled-day');
         }
@@ -6361,6 +6362,7 @@ Docs & License: https://fullcalendar.io/
     // Attempts to compute the most appropriate format if not explicitly specified with `titleFormat`.
     function computeTitleFormat(dateProfile) {
         var currentRangeUnit = dateProfile.currentRangeUnit;
+        
         if (currentRangeUnit === 'year') {
             return { year: 'numeric' };
         }
