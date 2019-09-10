@@ -28,6 +28,7 @@ Route::get('/Login-admin', 'adminController@viewAdmin');
 Route::post('/LogInA', 'adminController@LogInA')->name('LogInA');
 Route::post('/recuperarContrasena', 'adminController@recuperarContrasena')->name('RecuperaC');
 Route::get('/consultaEmpresas', 'adminController@consultae');
+Route::get('/Eventos', 'adminController@eventos')->name('eventos');
 
 
 Route::get('/link/{id}/{arch}', 'adminController@link');
@@ -72,3 +73,5 @@ Route::get('/inicioUser', 'UserController@redireccion'); //Vista Altas Cat
 
 
 Route::get('/logOut', 'UserController@LogOut'); //Vista Altas Cat
+
+

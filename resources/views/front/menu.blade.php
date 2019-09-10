@@ -25,7 +25,7 @@
         <a class="nav-link" href="/puro_potosino/public/testimonios">Testimonios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">Eventos</a>
+        <a class="nav-link " href="{{Route('eventos')}}">Eventos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="https://xibaria.com/">Compra en Linea</a>
