@@ -13,7 +13,7 @@
     <!-- start: MAIN NAVIGATION MENU -->
     <ul class="main-navigation-menu">
       <li id="home">
-        <a href="/inicio"><i class="clip-home-3" id="home"></i>
+        <a href="/puro_potosino/public/inicio"><i class="clip-home-3" id="home"></i>
           <span class="title">INICIO</span><span class="selected"></span>
         </a>
       </li>
@@ -30,7 +30,7 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaEmpresas">
+            <a href="/puro_potosino/public/consultaEmpresas">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Empresas</span>
             </a>
           </li>
@@ -50,13 +50,13 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaCat">
+            <a href="/puro_potosino/public/consultaCat">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Categorías</span>
             </a>
           </li>
 
           <li>
-            <a href="/altaCategorias">
+            <a href="/puro_potosino/public/altaCategorias">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Alta Categorías</span>
             </a>
           </li>
@@ -71,13 +71,13 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaSub">
+            <a href="/puro_potosino/public/consultaSub">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Sub-Categorías</span>
             </a>
           </li>
 
           <li>
-            <a href="/altaSubcategorias">
+            <a href="/puro_potosino/public/altaSubcategorias">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Alta Sub-Categorías</span>
             </a>
           </li>
@@ -94,12 +94,12 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaInfografias">
+            <a href="/puro_potosino/public/consultaInfografias">
           <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Recetas</span>
             </a>
           </li>
           <li>
-            <a href="/info">
+            <a href="/puro_potosino/public/info">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Carga Recetas</span>
             </a>
           </li>
@@ -112,12 +112,12 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaInfografias">
+            <a href="/puro_potosino/public/consultaInfografias">
           <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta de testimonios</span>
             </a>
           </li>
           <li>
-            <a href="/info">
+            <a href="/puro_potosino/public/info">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Carga de testimonios</span>
             </a>
           </li>

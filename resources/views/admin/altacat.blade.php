@@ -13,12 +13,12 @@
 								<li>
 									<i class="clip-cog-2"></i>
 									<a href="#">
-										Bolsa de trabajo
+										Categorias
 									</a>
 								</li>
 
                 <li class="active">
-									Alta de vacantes
+									Alta de categorias
 								</li>
 								<!-- <li class="search-box">
 									<form class="sidebar-search">

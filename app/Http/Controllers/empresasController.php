@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Empresas;
+use App\Contacto;
 use App\UsuariosMorales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -201,6 +202,24 @@ class empresasController extends Controller
               }
             }
 
+            try {
+              $con = new Contacto;
+
+              $con-> nombre = $request->nombre_c;
+              $con-> APaterno = $request->ap_c;
+              $con-> AMaterno = $request->am_c;
+              $con-> celular = $request->celular_c;
+              $con-> correo_electronico = $request->correo_c;
+              $con-> direccion = $request->direccion_c;
+              $con-> telefono = $request->tel_c;
+              $con-> ID_empresa = $emp->ID_empresa;
+              $con -> save();
+
+            } catch (\Exception $e) {
+              return $e->getMessage();
+            }
+
+
           }
 
 
@@ -248,11 +267,32 @@ class empresasController extends Controller
       }
 
 
-    function viewE($n){
+    function viewE($n,$tipo){
 
-      $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
-      ->where('ID_empresa', $n)
-      ->get();
+      if ($tipo==1) {
+        $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+
+        ->join('admseguridad'.'.'.'TCUsuariosExternos',function($join){
+          $join->on('admseguridad'.'.'.'TCUsuariosExternos.CURP', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.CURP');
+        })
+        ->join('admpuropotosino'.'.'.'TCContacto',function($join){
+          $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+        })
+
+        ->where('TCEmpresaPP.ID_empresa', $n)
+        ->get();
+      }else{
+        $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+        ->join('admseguridad'.'.'.'TCPersonasMorales',function($join){
+          $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
+        })
+        ->join('admpuropotosino'.'.'.'TCContacto',function($join){
+          $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+        })
+        ->where('TCEmpresaPP.ID_empresa', $n)
+        ->get();
+      }
+
 
         return view('admin.verempresa')->with('empresa', $empresa);
     }

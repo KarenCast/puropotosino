@@ -40,7 +40,33 @@
 										</div>
 									</form>
 								</li> -->
+								<ul class="nav navbar-right">
 
+									<li class="dropdown current-user">
+										<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+											<img src="{{asset('assets/images/User_Circle.png')}}" class="circle-img" alt="" width="42px">
+											<button class="username">{{session('nameUser')}}<i class="clip-chevron-down"></i></button>
+
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="{{url('/VentanillaUnica/PerfilUsuario')}}">
+													<i class="clip-user-2"></i>
+													&nbsp;Perfil
+												</a>
+											</li>
+											<li class="divider"></li>
+
+											<li>
+												<a href="{{url('/LogOut')}}">
+													<i class="clip-exit"></i>
+													&nbsp;Cerrar Sesión
+												</a>
+											</li>
+										</ul>
+									</li>
+
+								</ul>
 							</ol>
 							<div class="page-header">
 								<!-- <form class="sidebar-search principal">
@@ -73,7 +99,7 @@
 								</div>
 				<div class="panel-body proceso">
 
-					
+
 					<!-- <div class="form-group row vacactivas" id="vacactivas">
 						<div class="col-sm-6">
 							<label for="vac" id="etiqueta1"></label>

@@ -44,7 +44,7 @@ function getFisicas(){
 
       $('#tableemp').dataTable().fnDestroy();
       $.ajax({
-          url: "/getEmpresas",
+          url: "/puro_potosino/public/getEmpresas",
           dataType: 'json',
           method: 'Get',
           success: function(r) {
@@ -81,7 +81,7 @@ function getFisicas(){
                               orderable: false,
                               "render": function(data) {
 
-                                    return '<a href="/verEmpresa/'+data+'">Ver Empresa</a>';
+                                    return '<a href="/puro_potosino/public/verEmpresa/'+data+'/1">Ver Empresa</a>';
                               }
                           },
 
@@ -100,7 +100,7 @@ function getMorales(){
 
       $('#tableemp').dataTable().fnDestroy();
       $.ajax({
-          url: "/getEmpresasM",
+          url: "/puro_potosino/public/getEmpresasM",
           dataType: 'json',
           method: 'Get',
           success: function(r) {
@@ -136,7 +136,7 @@ function getMorales(){
                               orderable: false,
                               "render": function(data) {
 
-                                    return '<a href="<a href="/verEmpresa/'+data+'">Ver Empresa</a>';
+                                    return '<a href="<a href="/puro_potosino/public/verEmpresa/'+data+'/0">Ver Empresa</a>';
 
                               }
                           },

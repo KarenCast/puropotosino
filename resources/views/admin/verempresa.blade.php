@@ -1,4 +1,4 @@
-@extends('User.main')
+@extends('admin.main')
 @section('content')
 <div class="main-content">
 
@@ -17,7 +17,7 @@
 								</li>
 
                 <li class="active">
-									ETAPA 0
+									Empresa
 								</li>
 								<!-- <li class="search-box">
 									<form class="sidebar-search">
@@ -78,6 +78,7 @@
 					<!-- start: PAGE CONTENT -->
 					<div class="row">
 						<div class="col-sm-12" id="panel-proceso">
+
 							<!-- start: FORM WIZARD PANEL -->
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
@@ -90,6 +91,47 @@
 
 									<form action="{{ route('empresa') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
 									  {!! csrf_field() !!}
+
+										<div class="form-group col-sm-4">
+											<label class="">
+											 TIPO DE PERSONA<span class="symbol required"></span>
+											</label><br>
+											 @if( ($rol->CURP!=null || $rol->CURP!='') &&  ($rol->RFC!=null || $rol->RFC!=''))
+											 	<h4>PERSONA FÍSICA QUE PASO A MORAL</h4>
+											</div>
+											<div class="form-group col-sm-4">
+											</div>
+											<div class="form-group col-sm-4">
+												<label class="">
+												 RAZÓN SOCIAL<span class="symbol required"></span>
+												</label><br>
+												<h4> {{$rol->razonsocial}}</h4>
+
+											@elseif( ($rol->CURP==null || $rol->CURP=='') &&  ($rol->RFC!=null || $rol->RFC!=''))
+												<h4>PERSONA MORAL</h4>
+											</div>
+											<div class="form-group col-sm-4">
+											</div>
+												<div class="form-group col-sm-4">
+												<label class="">
+												 RAZÓN SOCIAL<span class="symbol required"></span>
+												</label><br>
+												<h4> {{$rol->razonsocial}}</h4>
+
+											@else
+												<h4>PERSONA FÍSICA</h4>
+											</div>
+											<div class="form-group col-sm-4">
+											</div>
+											<div class="form-group col-sm-4">
+												<label class="">
+												 	NOMBRE<span class="symbol required"></span>
+												</label><br>
+												<h4> {{$rol->nombre}} {{$rol->apellido_paterno}} {{$rol->apellido_materno}} </h4>
+
+											@endif
+										</div>
+
 									  <h4>Información general de negocio</h4>
 									  <hr width="100%" color="black"/>
 									  <!-- <div class="form-group col-sm-12">
@@ -120,43 +162,43 @@
 									    <label class="">
 									      Nombre<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" disabled value="{{$rol->nombre}}" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Apellido paterno<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" disabled value="{{$rol->APaterno}}" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Apellido materno<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" disabled value="{{$rol->AMaterno}}" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Correo Electrónico<span class="symbol required"></span>
 									    </label>
-									    <input type="email" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="email" disabled value="{{$rol->correo_electronico}}" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Teléfono<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" disabled value="{{$rol->telefono}}" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									        Celular<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" disabled value="{{$rol->celular}}" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">
 									        Dirección<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" disabled value="{{$rol->direccion}}" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
 									  </div>
 
 
@@ -185,47 +227,51 @@
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">
-									    <h4>Carga la documentación con la que cuentas<span class="symbol required"></span></h4> <br>
+									    <h4>Documentación con la que cuenta <span class="symbol required"></span></h4> <br>
 									    </label><br>
-											Comprobante de programa de incubación (Archivo .pdf)<br>
+
 											@if($rol->comprobante_incubacion!=null || $rol->comprobante_incubacion!='')
+											Comprobante de programa de incubación (Archivo .pdf)<br>
 												@if($rol->CURP!=null)
-													<a href="/link/{{$rol->CURP}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
+													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
 												@else
-												<a href="/link/{{$rol->RFC}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
 												@endif
 											@endif
 
-											Alta hacienda (Archivo .pdf)<br>
+
 											@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
+												Alta hacienda (Archivo .pdf)<br>
 												@if($rol->CURP!=null)
-													<a href="/link/{{$rol->CURP}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
+													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
 												@else
-												<a href="/link/{{$rol->RFC}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
 												@endif
 											@endif
 
 
+											@if($rol->disenio_imagen!=null || $rol->disenio_imagen!='')
+												Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
+										    <img src="{{asset('Logos')}}/{{$rol->disenio_imagen}}" alt="" width="30%" height="auto"><br>
+											@endif
 
-											Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
-									    <img src="{{asset('assets/images/User_Circle.png')}}" alt="" width="10%" height="auto"><br>
 
-
-											Código de barras (Archivo .pdf)<br>
 											@if($rol->codigo_barras!=null || $rol->codigo_barras!='')
+												Código de barras (Archivo .pdf)<br>
 												@if($rol->CURP!=null)
-													<a href="/link/{{$rol->CURP}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
+													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
 												@else
-													<a href="/link/{{$rol->RFC}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
+													<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
 												@endif
 											@endif
 
-											FDA (Archivo .pdf)<br>
+
 											@if($rol->FDA!=null || $rol->FDA!='')
+											FDA (Archivo .pdf)<br>
 												@if($rol->CURP!=null)
-													<a href="/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
 												@else
-												<a href="/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
 												@endif
 											@endif
 									  </div>
@@ -236,26 +282,26 @@
 									    <label class="">
 									      Instagram (URL)
 									    </label>
-									    <input type="text"  class="form-control" id="instagram" name="instagram" placeholder="" value="{{$rol->instagram}}">
+									    <input type="text"  class="form-control" id="instagram" name="instagram" placeholder="" value="{{$rol->instagram}}" disabled>
 
 										</div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
 									      Facebook (URL)
 									    </label>
-									    <input type="text"  class="form-control" id="facebook" name="facebook" placeholder="" value="{{$rol->facebook}}">
+									    <input type="text"  class="form-control" id="facebook" name="facebook" placeholder="" value="{{$rol->facebook}}" disabled>
 									  </div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
 									      Twitter (Usuario)
 									    </label>
-									    <input type="text"  class="form-control" id="twitter" name="twitter" placeholder="" value="{{$rol->twitter}}">
+									    <input type="text"  class="form-control" id="twitter" name="twitter" placeholder="" value="{{$rol->twitter}}" disabled>
 									  </div>
 										<div class="form-group col-sm-6">
 										 <label class="">
 											 Sitio Web (URL)
 										 </label>
-										 <input type="text"  class="form-control" id="sitio" name="sitio" placeholder="" value="{{$rol->stio_web}}">
+										 <input type="text"  class="form-control" id="sitio" name="sitio" placeholder="" value="{{$rol->stio_web}}" disabled>
 									 </div>
 									 <h4>Clasificación</h4>
 									 <hr width="100%" color="black"/>
@@ -264,7 +310,7 @@
 											 Catagoría a la que pertenece tú empresa<span class="symbol required"></span>
 										 </label>
 
-										 <select class="form-control" id="categoria" name="categoria" onchange="versub();">
+										 <select class="form-control" id="categoria" name="categoria" onchange="versub();" disabled>
 											 <option value="{{$rol->ID_categoria}}" selected disabled hidden>{{$rol->ID_categoria}}</option>
 
 											</select>
@@ -273,8 +319,8 @@
 										 <label class="">
 											 Sub-categoría<span class="symbol required"></span>
 										 </label>
-										 <select class="form-control" id="subcat" name="subcat">
-											 <option value="{{$rol->ID_subcategoria}}" selected disabled hidden>{{$rol->ID_subcategoria}}</option>
+										 <select class="form-control" id="subcat" name="subcat" disabled>
+											 <option value="{{$rol->ID_subcategoria}}" selected  hidden>{{$rol->ID_subcategoria}}</option>
 
 											</select>
 									 </div>
@@ -282,28 +328,75 @@
 									  <h4>Documentación Inicial Obligatoria</h4>
 									  <hr width="100%" color="black"/>
 									  <div class="form-group col-sm-6">
-									    <label class="">
+
+
+											@if($rol->comprobante_domicilio!=null || $rol->comprobante_domicilio!='')
+											<label class="">
 									      Comprobante de domicilio (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
-
-											@if($rol->FDA!=null || $rol->FDA!='')
 												@if($rol->CURP!=null)
-													<a href="/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
 												@else
-												<a href="/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
 												@endif
 											@endif
 									  </div>
 									  <div class="form-group col-sm-6">
-									    <label class="">
+
+											@if($rol->comprobante_domicilio!=null || $rol->comprobante_domicilio!='')
+											<label class="">
 									      INE (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
-									    <input type="file" required class="form-control" id="ine" name="ine" placeholder="" accept="application/pdf">
+												@if($rol->CURP!=null)
+													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+												@else
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+												@endif
+											@endif
 
 									  </div>
-									  <div class="form-group col-sm-6">
-									    <input type="submit" name="enviar" value="Registrar">
-									  </div>
+
+									<div class="form-group col-sm-12" style="text-align: center; padding-top: 3em;">
+										<button class="btn btn-info" type="button" name="button">VER REGISTROS DE MARCA Y PRODUCTOS</button>
+									</div>
+
+									</form>
+
+									<h4>Asignación de Fase y comentarios de SIDEP</h4>
+									<hr width="100%" color="black"/>
+									<form action="{{ route('enviarcorreo') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
+									  {!! csrf_field() !!}
+										<input type="text" name="id" id="id" value="{{$rol->ID_empresa}}" style="display: none">
+										<div class="form-group col-sm-12">
+											<label class="">
+												Escribe tus comentarios/observaciones que serán enviados por correo al usuario<span class="symbol required"></span>
+											</label>
+											<textarea name="mensaje" id="mensaje" rows="8" cols="80" class="form-control">
+
+
+											</textarea>
+										</div>
+										<div class="form-group col-sm-6">
+											<label class="">
+												Asigna una Fase <span class="symbol required"></span>
+											</label>
+											<select class="form-control" name="fase" id="fase">
+
+												@for ($i = $rol->fase; $i < 7; $i++)
+													@if($rol->fase== $i )
+														<option value="{{ $i }}" selected>{{ $i }}</option>
+													@else
+														<option value="{{ $i }}">{{ $i }}</option>
+													@endif
+												@endfor
+
+
+											</select>
+										</div>
+										<div class="form-group col-sm-6">
+											<br>
+											<input type="submit" name="enviar" class="btn" value="Guardar Fase y enviar comentarios">
+										</div>
 									</form>
                     @endforeach
 								</div>

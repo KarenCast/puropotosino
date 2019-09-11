@@ -21,6 +21,7 @@ Route::post('/LogIn', 'UserController@LogIn')->name('LogIn');
 
 Route::post('/altaE', 'empresasController@storeE')->name('empresa');
 
+Route::post('/enviarcorreo', 'userController@enviarC')->name('enviarcorreo');
 
 
 //Admin
@@ -46,24 +47,24 @@ Route::post('/altaSub', 'subcatController@storeS')->name('subcategorias'); //Gua
 Route::post('/deleteS', 'subcatController@deleteS')->name('subcatdelete'); //Eliminar SubCat
 
 
-Route::get('/consultaRec', 'subcatController@viewSub'); //Vista Consulta recetas
-Route::get('/altaRecetas', 'subcatController@altaS'); //Vista Altas recetas
-Route::post('/altaRecetas', 'subcatController@storeS')->name('subcategorias'); //Guardar recetas
-Route::post('/deleteS', 'subcatController@deleteS')->name('subcatdelete'); //Eliminar recetas
-Route::get('/getCat','catController@getCat');
+Route::get('/consultaRecetas', 'recController@viewRec'); //Vista Consulta recetas
+Route::get('/altaRecetas', 'recController@altaR'); //Vista Altas recetas
+Route::post('/altaRecetas', 'recController@storeR')->name('recetas'); //Guardar recetas
+Route::post('/deleteRecetas', 'recController@deleteR')->name('recdelete'); //Eliminar recetas
+Route::get('/getRecetas','recController@getRec');
 
-Route::get('/consultaSub', 'subcatController@viewSub'); //Vista Consulta testimonio
-Route::get('/altaSubcategorias', 'subcatController@altaS'); //Vista Altas testimonio
-Route::post('/altaSub', 'subcatController@storeS')->name('subcategorias'); //Guardar testimonio
-Route::post('/deleteS', 'subcatController@deleteS')->name('subcatdelete'); //Eliminar testimonio
-Route::get('/getSub','subcatController@getSub');
+Route::get('/consultaTestimonios', 'testimoniosController@viewTest'); //Vista Consulta testimonio
+Route::get('/altaTestimonios', 'testimoniosController@altaTest'); //Vista Altas testimonio
+Route::post('/altaTestimonios', 'testimoniosController@storeTest')->name('testimonios'); //Guardar testimonio
+Route::post('/deleteTestimonios', 'testimoniosController@deleteTest')->name('testdelete'); //Eliminar testimonio
+Route::get('/getTestimonios','testimoniosController@getTest');
 
 
 
 Route::get('/getEmpresas','empresasController@getEmpresas');
 Route::get('/getEmpresasM','empresasController@getEmpresasM');
 
-Route::get('/verEmpresa/{n}', 'empresasController@viewE'); //Vista Empresa
+Route::get('/verEmpresa/{n}/{tipo}', 'empresasController@viewE'); //Vista Empresa
 
 
 
@@ -72,6 +73,4 @@ Route::get('/inicioUser', 'UserController@redireccion'); //Vista Altas Cat
 
 
 
-Route::get('/logOut', 'UserController@LogOut'); //Vista Altas Cat
-
-
+Route::get('/LogOut', 'UserController@LogOut'); //Vista Altas Cat

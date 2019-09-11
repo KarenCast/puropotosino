@@ -30,32 +30,39 @@
                 <li class="active">
 									Mis Empresas
 								</li>
-								<!-- <li class="search-box">
-									<form class="sidebar-search">
-										<div class="form-group">
-											<input type="text" placeholder="Buscar...">
-											<button class="submit">
-												<i class="clip-search-3"></i>
-											</button>
-										</div>
-									</form>
-								</li> -->
+								<ul class="nav navbar-right">
+
+									<li class="dropdown current-user">
+										<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+											<img src="{{asset('assets/images/User_Circle.png')}}" class="circle-img" alt="" width="42px">
+											<button class="username">{{session('nameUser')}}<i class="clip-chevron-down"></i></button>
+
+										</a>
+										<ul class="dropdown-menu">
+											<li>
+												<a href="{{url('/VentanillaUnica/PerfilUsuario')}}">
+													<i class="clip-user-2"></i>
+													&nbsp;Perfil
+												</a>
+											</li>
+											<li class="divider"></li>
+
+											<li>
+												<a href="{{url('/LogOut')}}">
+													<i class="clip-exit"></i>
+													&nbsp;Cerrar Sesión
+												</a>
+											</li>
+										</ul>
+									</li>
+
+								</ul>
 
 							</ol>
 							<div class="page-header">
-								<!-- <form class="sidebar-search principal">
-									<div class="form-group">
-										<input type="text" placeholder="Buscar...">
-										<button class="submit" id="round">
-											<i class="clip-search-3"></i>
-										</button>
-									</div>
-								</form> -->
+
 							</div>
-							<!-- <div class="page-header">
-                 <h2>Licencia de Funcionamiento y Uso de Suelo Comercial <br>
-                 <small>GIROS SARE QUE NO TIENEN IMPACTO AMBIENTAL</small></h2>
-							</div> -->
+
 							<!-- end: PAGE TITLE & BREADCRUMB -->
 						</div>
 					</div>
@@ -259,85 +266,7 @@
 				          </div>
 
 
-					<div class="modal fade" id="modalverempresa" tabindex="-1" role="dialog" aria-labelledby="modal-lici" aria-hidden="true">
-           <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
 
-
-
-                     <div class="modal-header" style="background-color: #1c3150; color: #fff;">
-                          <h3 class="modal-title text-white" style="margin-top:0px;">Información Empresa</h3>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true" class="text-white">&times;</span>
-                          </button>
-                     </div>
-                     <div class="modal-body">
-                          <div class="container">
-
-																	<form action="" method="post" id="candvac">
-																		@csrf
-																		{{ csrf_field() }}
-
-                                    <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-                                         <div class="form-group col-md-3">
-                                              <p><strong>ID Empresa:</strong></p>
-                                              <input readonly name="id_e" id="id_e"  class="inoborder"/>
-
-                                         </div>
-																				 <div class="form-group col-md-3">
-																							 <p><strong>RFC Empresa:</strong></p>
-																							<input readonly type="text" name="rfc_e" id="rfc_e"  class="inoborder"/>
-
-																				 </div>
-                                         <div class="form-group col-md-6">
-                                               <p><strong>Link bolsa de trabajo:</strong></p>
-                                              <input readonly name="url_e" id="url_e" class="inoborder" />
-
-                                         </div>
-																			 </div>
-																			 <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-
-                                         <div class="form-group col-md-4">
-                                              <p><strong>Correo Contacto:</strong></p>
-                                              <input  readonly required class="alumno inoborder" type="text" name="correo_e" id="correo_e" data-rule="required"  placeholder=""  data-msg="Verifica que este campo no esté vacio y contenga informción correcta" min="0" max="1000"/>
-
-                                         </div>
-																				 <div class="form-group col-md-3">
-                                              <p><strong>Nombre Empresa:</strong></p>
-                                              <input readonly required  class="alumno inoborder" type="text" name="nombre_e" id="nombre_e" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/>
-
-                                         </div>
-																				 <div class="form-group col-md-3">
-                                              <!-- <p><strong>Logotipo:</strong></p>
-                                              <input required readonly class="alumno inoborder" type="text" name="logo_e" id="logo_e" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/> -->
-																							<img src="" alt="" name="logo_e" id="logo_e" width="100%" height="auto">
-                                         </div>
-                                    </div>
-
-
-			                          </div>
-																<div class="row justify-content-center">
-																	<div class="col-md-4">
-
-																	</div>
-																	<!-- <div class="col-md-4">
-																		<button type="submit" class="btn btn-primary btn-lg btn-block login-btn aplicar">Visualizar Candidatos</button>
-																	</div> -->
-																</div>
-															</form>
-			                     </div>
-													 <div class="modal-footer">
-							 			        <div class="row justify-content-center">
-
-
-
-							 			        </div>
-
-							 			      </div>
-
-			                </div>
-			           </div>
-			      </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
 <script src="{{asset('js/FunctionEmpresas.js')}}" type="text/javascript"></script>
 @endsection

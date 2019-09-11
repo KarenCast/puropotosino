@@ -86,11 +86,8 @@
 	                 <small>Registrate para ser parte de SIDEP</small></h3>
 								</div>
 								<div class="panel-body proceso">
-
-
-
-									<div class="smart-wizard form-horizontal" id="form">
-
+									<form action="" method="POST" enctype="multipart/form-data" role="form" class="smart-wizard form-horizontal" id="form">
+										{!! csrf_field() !!}
 										<div id="wizard" class="swMain">
                       <ul>
 												<li>
@@ -104,7 +101,7 @@
 													</a>
 												</li>
 												<li>
-													<a href="#step-1">
+													<a href="#step-1" class="selected">
 														<div class="stepNumber">
 															<p><strong>1</strong></p>
 														</div>
@@ -170,12 +167,7 @@
 													<span class="sr-only"> 0% Complete (success)</span>
 												</div>
 											</div> -->
-
-											<div class="row justify-content-center" id="step-0" style="display: block;">
-
-											<div class="row justify-content-center" id="step-0"  style="display: none;">
-
-
+											<div class="row justify-content-center" id="step-0">
 												<div class="col-md-1">
 
 												</div>
@@ -186,14 +178,8 @@
 														<h4><strong>Importante: <br>Revisa tú correo para cualquier observación y poder continuar en el proceso.</strong></h4>
 													</div>
 											</div>
+											<div class="row justify-align-center" id="step-1">
 
-
-											<div class="row justify-content-center" id="step-1" style="display: block;">
-
-											<div class="row justify-content-center" id="step-1"  style="display: none;">
-
-
-												<h1>hola</h1>
 
 											</div>
 											<div id="step-2">
@@ -213,10 +199,9 @@
 													<button type="button" class="btn" name="button">Ver mi información</button>
 												</div>
 										</div>
-									</div>
+									</form>
 								</div>
 							</div>
-
 							<!-- end: FORM WIZARD PANEL -->
 						</div>
 					</div>

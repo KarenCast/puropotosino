@@ -124,43 +124,43 @@
 									    <label class="">
 									      Nombre<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" required class="form-control" id="nombre_c" name="nombre_c" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Apellido paterno<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" required class="form-control" id="ap_c" name="ap_c" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Apellido materno<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" required class="form-control" id="am_c" name="am_c" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Correo Electrónico<span class="symbol required"></span>
 									    </label>
-									    <input type="email" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="email" required class="form-control" id="correo_c" name="correo_c" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									      Teléfono<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" required class="form-control" id="tel_c" name="tel_c" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-4">
 									    <label class="">
 									        Celular<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" required class="form-control" id="celular_c" name="celular_c" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">
 									        Dirección<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+									    <input type="text" required class="form-control" id="direccion_c" name="direccion_c" placeholder="">
 									  </div>
 
 

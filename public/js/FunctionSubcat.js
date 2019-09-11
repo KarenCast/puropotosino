@@ -34,7 +34,7 @@ function getSubcat() {
 
     $('#tablesub').dataTable().fnDestroy();
     $.ajax({
-        url: "/getSub",
+        url: "/puro_potosino/public/getSub",
         dataType: 'json',
         method: 'Get',
         success: function(r) {

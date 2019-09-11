@@ -61,7 +61,7 @@
 												</div>
 											</div>
 											<div class="row login">
-												<form action="{{route('LogInA')}}" method="post" id="login">
+												<form action="{{route('LogInA')}}" method="post" id="login" style="width: 100%; margin-bottom: 2em;">
 													{!! csrf_field() !!}
 													<div class="form-group" style="display: none;">
 													 <input type="text" class="form-control" name="tipoinicio" placeholder="Tipo" value="admin" readonly required="required">

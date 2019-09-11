@@ -7,6 +7,7 @@ use App\UsuariosExternos;
 use App\UsuariosInternos;
 use App\UsuariosMorales;
 use App\Empresas;
+use App\Contacto;
 use App\Roles;
 
 use Illuminate\Support\Facades\Mail;
@@ -65,7 +66,8 @@ class UserController extends Controller
      ->get();
        return view('User.etapacero')->with('categorias', $categorias)->with('sub', $sub);
      }else{
-      return view('User.inicio')->with('uf',$uf);
+       
+      return view('User.inicio')->with('emp', $uf);
      }
 
  }
@@ -79,5 +81,68 @@ class UserController extends Controller
     // $request->session()->flush();
     return redirect('/');
   }
+
+
+  function enviarC(Request $request){
+
+  set_time_limit(0);
+
+
+
+
+  // $emp = Empresas::where('ID_empresa', $request->id)->first();
+  $contacto = Contacto::where('ID_empresa', $request->id)->first();
+
+    try {
+
+      try {
+        $vac = Empresas::where('ID_empresa', $request->id)
+        ->update([
+          'fase' => $request->fase]);
+      } catch (\Exception $e) {
+        return $e->getMessage();
+      }
+
+
+        $data_vac = array(
+           // 'name' => $request->nombre_sol,
+           'fase' => $request->fase,
+
+           'mensaje' => $request->mensaje,
+
+
+        );
+
+
+
+
+          try {
+
+          //  return $emp->correo_contacto;
+            Mail::send('emails.notificacion', $data_vac, function ($message) use($contacto) {
+
+              $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Observaciones para avance de fase.');
+              $message->to($contacto->correo_electronico)->subject('Observaciones Proceso SIDEP');
+
+
+            });
+          } catch (\Exception $e) {
+        // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
+            return $e->getMessage();
+          }
+
+
+
+
+        return "exito";
+    } catch (\Exception $e) {
+    return $e->getMessage();
+
+
+    }
+
+}
+
+
 
 }
