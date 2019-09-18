@@ -12,11 +12,19 @@ class mainController extends Controller
     }
 
     function testimonios(){
-        return view('front/testimonios');
+      $contenido = DB::table('admpuropotosino'.'.'.'TMContenido')
+      ->where('tipo','1')
+      ->get();
+
+      $contenido2 = DB::table('admpuropotosino'.'.'.'TMContenido')
+      ->where('tipo','2')
+      ->get();
+
+        return view('front/testimonios')->with('contenido',$contenido)->with('contenido2',$contenido2);
     }
 
     function registro(){
-        return view('front/registro');
+        return view('front/registro')->with('Error', null);
     }
 
     function register(){

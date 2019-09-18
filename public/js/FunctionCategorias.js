@@ -65,11 +65,20 @@ function getCat() {
                         },
                         {
                             data: 'imagen',
-                            name: 'imagen'
+                          "render": function(data) {
+                            var n=data.slice(0,-4);
+                            return '<img src="categorias/'+n+"/" + data + '" width="100%;">';
+                          }
                         },
                         {
                             data: 'titulo',
-                            name: 'titulo'
+
+                            "render": function(data) {
+                                  var n=data.slice(0,-9);
+                                  return '<img src="categorias/'+n+"/" + data + '" width="100%; style="margin: 2%;">';
+
+
+                            }
                         },
 
                         {

@@ -398,7 +398,7 @@
 											<input type="submit" name="enviar" class="btn" value="Guardar Fase y enviar comentarios">
 										</div>
 									</form>
-                    @endforeach
+              		@endforeach
 								</div>
 							</div>
 							<!-- end: FORM WIZARD PANEL -->

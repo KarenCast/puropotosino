@@ -88,13 +88,16 @@
 								<div class="panel-body proceso">
 
 
-
 									<div class="smart-wizard form-horizontal" id="form">
 
 										<div id="wizard" class="swMain">
                       <ul>
 												<li>
-													<a href="#step-0">
+												@if($emp->fase=='0')
+													<a href="#step-0" class="e0activa">
+												@else
+													<a href="#step-0" class="">
+												@endif
 														<div class="stepNumber">
 															<p><strong>0</strong></p>
 														</div>
@@ -104,7 +107,7 @@
 													</a>
 												</li>
 												<li>
-													<a href="#step-1">
+													<a href="#step-1" style="">
 														<div class="stepNumber">
 															<p><strong>1</strong></p>
 														</div>
@@ -170,11 +173,11 @@
 													<span class="sr-only"> 0% Complete (success)</span>
 												</div>
 											</div> -->
-
+											@if($emp->fase=='0')
 											<div class="row justify-content-center" id="step-0" style="display: block;">
-
+											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
-
+											@endif
 
 												<div class="col-md-1">
 
@@ -187,17 +190,22 @@
 													</div>
 											</div>
 
-
+											@if($emp->fase==1)
 											<div class="row justify-content-center" id="step-1" style="display: block;">
-
+											@else
 											<div class="row justify-content-center" id="step-1"  style="display: none;">
-
+											@endif
 
 												<h1>hola</h1>
 
 											</div>
-											<div id="step-2">
+											@if($emp->fase=='2')
+											<div class="row justify-content-center" id="step-2" style="display: block;">
+											@else
+											<div class="row justify-content-center" id="step-2"  style="display: none;">
+											@endif
 
+												<h1>Etapa 2</h1>
 											</div>
 											<div id="step-3">
 
