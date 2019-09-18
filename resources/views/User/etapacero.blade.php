@@ -114,7 +114,7 @@
 									    <label class="" >
 									      Seleccione la fecha en que comenzó a estar en operación<span class="symbol required"></span>
 									    </label><br>
-									    <input type="date" required class="form-control" id="operacion" name="operacion" placeholder="">
+									    <input type="date" class="form-control" id="operacion" name="operacion" placeholder="">
 									  </div>
 
 
@@ -178,7 +178,7 @@
 									    <label class="">
 									      ¿Bajo que regimen?<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="regimen" name="regimen" placeholder="">
+									    <input type="text"  class="form-control" id="regimen" name="regimen" placeholder="">
 									  </div>
 									  <!-- <div class="form-group col-sm-4">
 									    <label class="">
@@ -197,22 +197,25 @@
 									    <label class="">
 									      ¿Cuál?<span class="symbol required"></span>
 									    </label>
-									    <input type="text" required class="form-control" id="tipoincu" name="tipoincu" placeholder="">
+									    <input type="text"  class="form-control" id="tipoincu" name="tipoincu" placeholder="">
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">
-									    <h4>Carga la documentación con la que cuentas<span class="symbol required"></span></h4> <br>
+									    <h4>Carga la documentación con la que cuentas (No obligatorios)</h4> <br>
 									    </label><br>
 											Comprobante de programa de incubación (Archivo .pdf)<br>
 									    <input type="file" name="incubacion" id="incubacion" class="form-control" accept="application/pdf"><br>
-											Alta hacienda (Archivo .pdf)<br>
-									    <input type="file" name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
-											Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
-									    <input type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
-											Código de barras (Archivo .pdf)<br>
-									    <input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
-											FDA (Archivo .pdf)<br>
-									    <input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
+
+											@if(session('tipo')=='moral')
+												Alta hacienda (Archivo .pdf)<br>
+										    <input type="file" name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
+												Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
+										    <input type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
+												Código de barras (Archivo .pdf)<br>
+										    <input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
+												FDA (Archivo .pdf)<br>
+										    <input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
+											@endif
 									  </div>
 
 									  <h4>Redes sociales</h4>

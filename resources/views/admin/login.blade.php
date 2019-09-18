@@ -41,7 +41,7 @@
 
 
 
-          <div class="row admin" style="margin-top: 150px;">
+          <div class="row admin" style="margin-top: 50px;">
 
   						<div class="row justify-content-left">
               	<img src="{{asset('images/ADMINBT.png')}}" alt="" id="img_admin">
@@ -94,18 +94,12 @@
 											</div>
 
 											<div class="row justify-content-center">
-												<!-- <div class="col-12 reg">
-													<p>Registrate para dar de alta las vacantes</p>
-													<a href="{{url('/Registro')}}">
-														Registrarse.
 
-													</a>
-												</div> -->
-												<div class="col-12 reg">
-													<!-- href="{{url('/nuevaContrasena')}}"  -->
+												<div class="col-12 reg" style="margin-bottom: 50px;">
+
 													<a  onclick="olvidepass();">
 														Olvide mi contraseña.
-														<!-- <img  src="{{asset('images/ICONOCONTRA.png')}}" alt=""> -->
+														
 													</a>
 												</div>
 											</div>

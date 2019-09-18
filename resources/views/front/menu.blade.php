@@ -30,14 +30,17 @@
       <li class="nav-item">
         <a class="nav-link " href="https://xibaria.com/">Compra en Linea</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item">
+          <a class="nav-link" href="/puro_potosino/public/registro">Iniciar Sesión</a>
+        </li>
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/registro" id="navbardrop" data-toggle="dropdown">
-          Registro
+          <a class="dropdown-item" href="/puro_potosino/public/registro">Iniciar Sesión</a>
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/puro_potosino/public/registro">Iniciar Sesión</a>
+          <a class="dropdown-item" href="http://sitio.sanluis.gob.mx:8060/Registro">Registrate</a>
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </nav>

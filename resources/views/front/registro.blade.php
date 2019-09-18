@@ -11,14 +11,17 @@
 </div>
 
 <div class="row" style="margin-top: 50px;">
-  <div class="col-md-12">
+  <div class="col-md-12" style="text-align:center;">
     <h4 style="text-align:center;">
       Para tener acceso a SIDEP debes registrarte previamente
     </h4>
-    <a href="http://sitio.sanluis.gob.mx:8060/Registro" target="_blank">
-      <h5 style="text-align:center;">
-        Registro
-      </h5>
+    <a href="http://sitio.sanluis.gob.mx:8060/Registro" target="_blank" >
+      <button type="button" class="btn btn-primary regis" name="button" id="">
+        <h5 style="text-align:center;">
+          Registro <i class="far fa-hand-point-left"></i>
+
+      </button>
+
     </a>
   </div>
 </div>
@@ -27,7 +30,14 @@
 
   <div class="col-md-6 inicios">
 
-
+    @if(session('Error')!== null)
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <strong>Error!</strong> {{{session('Error')}}}
+        </div>
+        @endif
 
     <h3 style="text-align:center;">Iniciar Sesión</h3>
     <form action="{{route('LogIn')}}" method="post" id="login">

@@ -74,10 +74,12 @@
 			<!-- end: TOP NAVIGATION CONTAINER -->
 		</div>
     <div class="main-container">
-			
+
 			@include('User.sidebar')
 
 			@yield('content')
+
+
 
 		</div>
 		<div class="footer justify-content-center" style="text-align: center">
@@ -121,8 +123,8 @@
 <!-- end: MAIN JAVASCRIPTS -->
 <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script src="{{asset('assets/plugins/jquery-validation/dist/jquery.validate.min.js')}}"></script>
-<script src="{{asset('assets/plugins/jQuery-Smart-Wizard/js/jquery.smartWizard.js')}}"></script>
-<script src="{{asset('assets/js/form-wizard.js')}}"></script>
+<!-- <script src="{{asset('assets/plugins/jQuery-Smart-Wizard/js/jquery.smartWizard.js')}}"></script>
+<script src="{{asset('assets/js/form-wizard.js')}}"></script> -->
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 
 <!-- <script src="{{asset('js/validar.js')}}"></script> -->

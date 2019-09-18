@@ -66,7 +66,7 @@ class UserController extends Controller
      ->get();
        return view('User.etapacero')->with('categorias', $categorias)->with('sub', $sub);
      }else{
-       
+
       return view('User.inicio')->with('emp', $uf);
      }
 

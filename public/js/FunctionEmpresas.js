@@ -136,7 +136,7 @@ function getMorales(){
                               orderable: false,
                               "render": function(data) {
 
-                                    return '<a href="<a href="/puro_potosino/public/verEmpresa/'+data+'/0">Ver Empresa</a>';
+                                    return '<a href="/puro_potosino/public/verEmpresa/'+data+'/0">Ver Empresa</a>';
 
                               }
                           },

@@ -94,12 +94,12 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/puro_potosino/public/consultaInfografias">
+            <a href="/puro_potosino/public/consultaRecetas">
           <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Recetas</span>
             </a>
           </li>
           <li>
-            <a href="/puro_potosino/public/info">
+            <a href="/puro_potosino/public/altaRecetas">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Carga Recetas</span>
             </a>
           </li>
@@ -112,12 +112,12 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/puro_potosino/public/consultaInfografias">
+            <a href="/puro_potosino/public/consultaTestimonios">
           <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta de testimonios</span>
             </a>
           </li>
           <li>
-            <a href="/puro_potosino/public/info">
+            <a href="/puro_potosino/public/altaTestimonios">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Carga de testimonios</span>
             </a>
           </li>

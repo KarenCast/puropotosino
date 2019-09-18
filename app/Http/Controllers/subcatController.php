@@ -113,11 +113,10 @@ class subcatController extends Controller
       public function deleteS(Request $request)
       {
           try {
-            $eli = cat::find($request->id_cat);
+            $eli = subcat::find($request->id_cat);
             $eli->delete();
             return redirect('/consultaSub')->with('Error', null);
           } catch (\Exception $e) {
-
             return redirect('/consultaSub')->with('Error', 'Error al eliminar la vacante');
           }
 

@@ -5718,3 +5718,10 @@ a>h4>i{
 hr{
 	    border-top: 1px solid #7e7d7d!important;
 }
+
+
+.e0activa:before {
+    left: 50%;
+    max-width: 51%;
+    border-top: 14px solid #000;
+}
