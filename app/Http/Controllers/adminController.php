@@ -59,6 +59,7 @@ class adminController extends Controller
         $message->to($user->correo_electronico)->subject('Recuperar Contraseña');
       });
       return redirect('/');
+      //Nuevo comentario
     }
     else {
       $user = UsuariosMorales::where('correo_electronico', $request->email)->first();
@@ -81,7 +82,7 @@ class adminController extends Controller
         return redirect('/');
       }
       else {
-        return back()->with('Error', 'Correo incorrecto, no existe usuario con el correo '.$request->email );
+        return back()->with('Error', 'No existe usuario con el correo '.$request->email );
       }
     }
   }
