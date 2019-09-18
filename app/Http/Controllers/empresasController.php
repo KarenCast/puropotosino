@@ -224,7 +224,7 @@ class empresasController extends Controller
 
 
         return redirect('/inicioUser')->with('Exito', 'Tú registro será revisado y se te asignara una etapa de acuerdo a tú documentación.
-                                          Revisa tú correo de contacto continuamente, se te harán llegar las observaciones correspondientes.');
+                                          IMPORTANTE: Revisa tú correo de contacto continuamente, se te harán llegar las observaciones correspondientes.');
 
 
       } catch (\Exception $e) {
