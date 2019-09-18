@@ -64,7 +64,7 @@ class empresasController extends Controller
 
         $file = $request->file('ine');
         if ($file!=null) {
-          $filename = $name.'_INE'.'.'.$file->getClientOriginalExtension();
+          $filename = $name.'_INE'.'.'.$file->getClientOriginalExtension(); //No guardar
         }
         $filec = $request->file('cdomicilio');
         if ($filec!=null) {

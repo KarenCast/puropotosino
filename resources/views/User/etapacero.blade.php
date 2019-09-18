@@ -276,20 +276,20 @@
 
 									  <h4>Documentación Inicial Obligatoria</h4>
 									  <hr width="100%" color="black"/>
-									  <div class="form-group col-sm-6">
+									  <!-- <div class="form-group col-sm-6">
 									    <label class="">
 									      Comprobante de domicilio (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
 									    <input type="file" required class="form-control" id="cdomicilio" name="cdomicilio" placeholder="" accept="application/pdf">
 
-									  </div>
-									  <div class="form-group col-sm-6">
+									  </div> -->
+									  <!-- <div class="form-group col-sm-6">
 									    <label class="">
 									      INE (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
 									    <input type="file" required class="form-control" id="ine" name="ine" placeholder="" accept="application/pdf">
 
-									  </div>
+									  </div> -->
 									  <div class="form-group col-sm-6">
 									    <input type="submit" name="enviar" value="Registrar">
 									  </div>
