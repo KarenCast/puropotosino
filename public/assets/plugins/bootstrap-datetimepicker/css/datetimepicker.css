@@ -347,7 +347,7 @@
 .datetimepicker table tr td span.old {
   color: #999999;
 }
-.datetimepicker th.switch {
+.datetimepicker th.switchDP {
   width: 145px;
 }
 .datetimepicker thead tr:first-child th,

@@ -56,7 +56,7 @@ Route::post('/altaRec', 'contenidoController@update')->name('actcontenido'); //G
 Route::post('/deleteRecetas', 'contenidoController@deleteR')->name('recdelete'); //Eliminar recetas
 Route::get('/getCont/{n}','contenidoController@getCont');
 
-Route::get('/consultaTestimonios', 'contenidoController@viewCont'); //Vista Consulta testimonio
+Route::get('/consultaTestimonios', 'contenidoController@viewCont')->name('consultaTestimonios'); //Vista Consulta testimonio
 Route::get('/altaTestimonios', 'contenidoController@viewContenido'); //Vista Altas testimonio
 Route::post('/altaTest', 'contenidoController@store')->name('contenido'); //Guardar testimonio
 Route::post('/altaRec', 'contenidoController@update')->name('actcontenido'); //Guardar recetas
@@ -65,6 +65,8 @@ Route::get('/getCont/{n}/{T}','contenidoController@getCont'); //Get Contenido en
 Route::get('/ActualizarContenido/{n}','contenidoController@viewActualizaCont');
 
 
+/*Eventos*/
+Route::get('consultaEventos', 'EventosController@consultaEventos')->name('consultaEventos');
 
 
 Route::get('/getEmpresas','empresasController@getEmpresas');

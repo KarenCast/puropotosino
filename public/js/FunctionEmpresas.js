@@ -14,7 +14,7 @@ $(document).ready(function() {
 function getEmpresas() {
     // var acti = $("#activas").val();
 
-    var url="/getEmpresas";
+    var url="./getEmpresas";
     if (document.getElementById("activas").checked == false) {
       document.querySelector('#etiqueta1').innerText = 'FISICAS';
       document.getElementById("vacactivas").style.backgroundColor = "#c1f0c8";
@@ -44,7 +44,7 @@ function getFisicas(){
 
       $('#tableemp').dataTable().fnDestroy();
       $.ajax({
-          url: "/puro_potosino/public/getEmpresas",
+          url: "./getEmpresas",
           dataType: 'json',
           method: 'Get',
           success: function(r) {
@@ -100,7 +100,7 @@ function getMorales(){
 
       $('#tableemp').dataTable().fnDestroy();
       $.ajax({
-          url: "/puro_potosino/public/getEmpresasM",
+          url: "./getEmpresasM",
           dataType: 'json',
           method: 'Get',
           success: function(r) {

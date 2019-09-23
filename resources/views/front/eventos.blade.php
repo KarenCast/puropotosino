@@ -18,7 +18,6 @@
 
             <!-- Modal body -->
             <div class="modal-body">
-                Modal body..
             </div>
 
             <!-- Modal footer -->
@@ -44,7 +43,7 @@
                 center: 'title',
                 right: 'dayGridMonth,dayGridWeek,dayGridDay'
             },
-            
+
             businessHours: {
                 start: '10:00', // hora final
                 end: '18:00', // hora inicial
@@ -54,7 +53,7 @@
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             events: 'load',
-            
+
             selectable: true,
             eventClick: function(info) {
                 console.log('Event: ' + info.event.title);
@@ -68,19 +67,37 @@
                 // change the border color just for fun
                 //info.el.style.borderColor = 'red';
             },
-            events: [{
-                allDay: true,
-                id: 6969,
-                title: 'Prueba ID',
-                start: '2019-08-16T16:00:00',
-                end: '2019-08-18T19:00:00',
-                backgroundColor: 'red'
-            }],
+            events: loadEvents(),
             timezone: "local",
         });
 
         calendar.render();
     });
+
+    function loadEvents() {
+        var arrData = [];
+        $.ajax({
+            url: "./api/getEventos",
+            async: false,
+            dataType: 'json',
+            method: 'get',
+            success: function(data) {
+                for (var i = 0; i < data.length; i++)
+                    arrData[i] = {
+                        id: data[i]['ID_evento'],
+                        title: data[i]['nombre_evento'],
+                        start:  data[i]['fecha_evento'],
+                        //end: '2019-08-18T19:00:00',
+                        backgroundColor: '#84b2db'
+                    }
+               // console.log(data);
+            },
+            error: function() {
+                console.error('error');
+            }
+        });
+        return arrData;
+    }
     </script>
 </head>
 <link href="{{asset('assets/plugins/core/main.css')}}" rel='stylesheet' />
