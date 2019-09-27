@@ -9,7 +9,7 @@
     <img src="{{asset('images/logo2.png')}}" alt="" class="img-fluid" width="300px" height="auto" id="logopp">
     <ul class="navbar-nav justify-content-right">
       <li class="nav-item "  id="inicio">
-        <a class="nav-link" href="/">Inicio</a>
+        <a class="nav-link" href="./">Inicio</a>
       </li>
       <li class="nav-item dropdown" id="acercad">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -21,16 +21,16 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/puro_potosino/public/testimonios">Testimonios</a>
+        <a class="nav-link" href="{{route('testimonios')}}">Testimonios</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="{{Route('eventos')}}">Eventos</a>
+        <a class="nav-link " href="{{route('eventos')}}">Eventos</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="https://xibaria.com/">Compra en Linea</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="/puro_potosino/public/registro">Iniciar Sesión</a>
+          <a class="nav-link" href="{{route('registro')}}">Iniciar Sesión</a>
         </li>
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/registro" id="navbardrop" data-toggle="dropdown">

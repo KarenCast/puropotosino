@@ -38,14 +38,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											<li>
-												<a href="{{url('/VentanillaUnica/PerfilUsuario')}}">
-													<i class="clip-user-2"></i>
-													&nbsp;Perfil
-												</a>
-											</li>
-											<li class="divider"></li>
-
+											
 											<li>
 												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
@@ -233,45 +226,49 @@
 											@if($rol->comprobante_incubacion!=null || $rol->comprobante_incubacion!='')
 											Comprobante de programa de incubación (Archivo .pdf)<br>
 												@if($rol->CURP!=null)
-													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
-												@else
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
+
 												@endif
 											@endif
 
 
 											@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
 												Alta hacienda (Archivo .pdf)<br>
-												@if($rol->CURP!=null)
-													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
+												@if($rol->RFC!=null)
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
 												@else
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
+
 												@endif
 											@endif
 
 
 											@if($rol->disenio_imagen!=null || $rol->disenio_imagen!='')
 												Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
-										    <img src="{{asset('Logos')}}/{{$rol->disenio_imagen}}" alt="" width="30%" height="auto"><br>
+										    <img src="{{asset('Logos')}}/{{$rol->RFC}}/{{$rol->disenio_imagen}}" alt="" width="30%" height="auto"><br>
 											@endif
 
 
 											@if($rol->codigo_barras!=null || $rol->codigo_barras!='')
 												Código de barras (Archivo .pdf)<br>
-												@if($rol->CURP!=null)
-													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
+												@if($rol->RFC!=null)
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->codigo_barras}}"> <h4>Código de barras</h4> </a>
+
 												@else
-													<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->codigo_barras}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->codigo_barras}}"> <h4>Código de barras</h4> </a>
+
 												@endif
 											@endif
 
 
 											@if($rol->FDA!=null || $rol->FDA!='')
 											FDA (Archivo .pdf)<br>
-												@if($rol->CURP!=null)
-													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												@if($rol->RFC!=null)
+												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
+
 												@else
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
+
 												@endif
 											@endif
 									  </div>
@@ -334,10 +331,12 @@
 											<label class="">
 									      Comprobante de domicilio (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
-												@if($rol->CURP!=null)
-													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
-												@else
+												@if($rol->RFC!=null)
 												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+
+												@else
+												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+
 												@endif
 											@endif
 									  </div>
@@ -347,10 +346,12 @@
 											<label class="">
 									      INE (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
-												@if($rol->CURP!=null)
-													<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
-												@else
+												@if($rol->RFC!=null)
 												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+
+												@else
+												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+
 												@endif
 											@endif
 
@@ -381,15 +382,25 @@
 												Asigna una Fase <span class="symbol required"></span>
 											</label>
 											<select class="form-control" name="fase" id="fase">
+												@if($rol->fase>=10)
+													@for ($i = $rol->fase; $i < 17; $i++)
+														{{$j = $i-10}}
+														@if($rol->fase== $i )
 
-												@for ($i = $rol->fase; $i < 7; $i++)
-													@if($rol->fase== $i )
-														<option value="{{ $i }}" selected>{{ $i }}</option>
-													@else
-														<option value="{{ $i }}">{{ $i }}</option>
-													@endif
-												@endfor
-
+															<option value="{{ $j }}" selected>{{ $j }}</option>
+														@else
+															<option value="{{ $j }}">{{ $j }}</option>
+														@endif
+													@endfor
+												@elseif($rol->fase<=10)
+													@for ($i = $rol->fase; $i < 7; $i++)
+														@if($rol->fase== $i )
+															<option value="{{ $i }}" selected>{{ $i }}</option>
+														@else
+															<option value="{{ $i }}">{{ $i }}</option>
+														@endif
+													@endfor
+												@endif
 
 											</select>
 										</div>

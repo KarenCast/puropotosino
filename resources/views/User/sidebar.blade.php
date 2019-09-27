@@ -4,16 +4,13 @@
   <div class="main-navigation navbar-collapse collapse">
     <!-- start: MAIN MENU TOGGLER BUTTON -->
     <div class="navigation-toggler">
-      <a class="" href="/inicio">
         <img src="{{asset('images/logo.png')}}" alt="" id="icono" >
-      </a>
-      <i class="clip-chevron-right"></i>
     </div>
     <!-- end: MAIN MENU TOGGLER BUTTON -->
     <!-- start: MAIN NAVIGATION MENU -->
     <ul class="main-navigation-menu">
       <li id="home">
-        <a href="/inicio"><i class="clip-home-3" id="home"></i>
+        <a href="{{route('inicioUser')}}"><i class="clip-home-3" id="home"></i>
           <span class="title">INICIO</span><span class="selected"></span>
         </a>
       </li>
@@ -30,7 +27,7 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaEmpresas">
+            <a href="{{route('inicioUser')}}">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i>Mi seguimiento</span>
             </a>
           </li>
@@ -50,13 +47,13 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaCat">
+            <a href="{{route('consultaMarcas')}}">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta tus Marcas</span>
             </a>
           </li>
 
           <li>
-            <a href="/altaCategorias">
+            <a href="{{route('altaMarca')}}">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Alta de Marcas</span>
             </a>
           </li>
@@ -71,13 +68,13 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaSub">
+            <a href="{{route('consultaProducto')}}">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta tus productos</span>
             </a>
           </li>
 
           <li>
-            <a href="/altaSubcategorias">
+            <a href="{{route('altaProducto')}}">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Alta Productos</span>
             </a>
           </li>
@@ -94,7 +91,7 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/consultaInfografias">
+            <a href="{{route('consultaEtapas')}}">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Etapas</span>
             </a>
           </li>

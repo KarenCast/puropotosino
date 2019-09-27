@@ -5720,8 +5720,11 @@ hr{
 }
 
 
-.e0activa:before {
-    left: 50%;
-    max-width: 51%;
-    border-top: 14px solid #000;
+.swMain > ul li > a.selected .stepNumber {
+    border-color: #33365a;
+}
+
+.swMain > ul li > a.selected:before, .swMain li > a.done:before {
+    border: 7px solid #33365a;
+    /* -webkit-border-image: -webkit-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 10%; */
 }

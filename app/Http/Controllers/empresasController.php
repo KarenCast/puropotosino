@@ -62,14 +62,7 @@ class empresasController extends Controller
         $path =  public_path()."\Logos\\";
 
 
-        $file = $request->file('ine');
-        if ($file!=null) {
-          $filename = $name.'_INE'.'.'.$file->getClientOriginalExtension(); //No guardar
-        }
-        $filec = $request->file('cdomicilio');
-        if ($filec!=null) {
-          $filenamec = $name.'_Comprobante'.'.'.$filec->getClientOriginalExtension();
-        }
+
 
         $filei = $request->file('incubacion');
         if ($filei!=null) {
@@ -129,11 +122,10 @@ class empresasController extends Controller
           $emp-> ID_categoria = $request->categoria;
           $emp-> ID_subcategoria = $request->subcat;
 
-          $emp-> comprobante_domicilio = $filenamec;
-          $emp-> ine = $filename;
+
 
           $emp-> fecha_inscripcion = $fecha;
-          $emp-> fase = '0';
+          $emp-> fase = '10';
 
           $emp-> RFC = session('RFC');
           $emp-> CURP = session('CURP');
@@ -141,19 +133,7 @@ class empresasController extends Controller
           if ($emp -> save()) {
 
 
-              try {
-                $rutaIne = $ruta.$filename;
-                \Storage::disk('local')->put($rutaIne,  \File::get($file));
-              } catch (\Exception $e) {
-                return $e->getMessage();
-              }
 
-              try {
-                $rutac = $ruta.$filenamec;
-                \Storage::disk('local')->put($rutac,  \File::get($filec));
-              } catch (\Exception $e) {
-                return $e->getMessage();
-              }
 
 
             if ($filei!=null) {
@@ -246,6 +226,7 @@ class empresasController extends Controller
         ->join('admseguridad'.'.'.'TCUsuariosExternos',function($join){
           $join->on('admseguridad'.'.'.'TCUsuariosExternos.CURP', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.CURP');
         })
+        ->where('RFC',null)
         ->get();
         return Datatables::of($empresa)
         ->make(true);
@@ -267,9 +248,12 @@ class empresasController extends Controller
       }
 
 
-    function viewE($n,$tipo){
+    function viewE($n){
 
-      if ($tipo==1) {
+      if ($n==1) {
+
+        $user = Empresas::where('ID_empresa', $n)->first();
+
         $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
 
         ->join('admseguridad'.'.'.'TCUsuariosExternos',function($join){

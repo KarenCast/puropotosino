@@ -10,7 +10,7 @@ function getCont() {
   var pathname = window.location.pathname;
   var cont;
   var test;
-  if (pathname=='/puro_potosino/public/consultaRecetas') {
+  if (pathname=='./consultaRecetas') {
     cont = 0;
     test = 0;
     document.getElementById("vacactivas").style.display = "none";
@@ -33,7 +33,7 @@ console.log(pathname);
 
     $('#tableconte').dataTable().fnDestroy();
     $.ajax({
-        url: "/puro_potosino/public/getCont/"+cont+"/"+test,
+        url: "./getCont/"+cont+"/"+test,
         dataType: 'json',
         method: 'Get',
         success: function(r) {
@@ -105,7 +105,7 @@ console.log(pathname);
 
           id = data['ID_contenido'];
 
-          window.location = '/puro_potosino/public/ActualizarContenido/' + id;
+          window.location = './ActualizarContenido/' + id;
 // qbR16j1SPA#RUESnTrJfqTvB
       });
 

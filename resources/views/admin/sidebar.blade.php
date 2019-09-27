@@ -4,7 +4,7 @@
   <div class="main-navigation navbar-collapse collapse">
     <!-- start: MAIN MENU TOGGLER BUTTON -->
     <div class="navigation-toggler">
-      <a class="" href="/inicio">
+      <a class="" href="#">
         <img src="{{asset('images/logo.png')}}" alt="" id="icono" >
       </a>
       <i class="clip-chevron-right"></i>
@@ -13,7 +13,7 @@
     <!-- start: MAIN NAVIGATION MENU -->
     <ul class="main-navigation-menu">
       <li id="home">
-        <a href="/puro_potosino/public/inicio"><i class="clip-home-3" id="home"></i>
+        <a href="#"><i class="clip-home-3" id="home"></i>
           <span class="title">INICIO</span><span class="selected"></span>
         </a>
       </li>
@@ -30,7 +30,7 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/puro_potosino/public/consultaEmpresas">
+            <a href="{{route('consultaEmpresas')}}">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Empresas</span>
             </a>
           </li>
@@ -50,13 +50,13 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/puro_potosino/public/consultaCat">
+            <a href="{{route('consultaCat')}}">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Categorías</span>
             </a>
           </li>
 
           <li>
-            <a href="/puro_potosino/public/altaCategorias">
+            <a href="{{route('altaCategorias')}}">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Alta Categorías</span>
             </a>
           </li>
@@ -71,13 +71,13 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/puro_potosino/public/consultaSub">
+            <a href="{{route('consultaSub')}}">
               <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Sub-Categorías</span>
             </a>
           </li>
 
           <li>
-            <a href="/puro_potosino/public/altaSubcategorias">
+            <a href="{{route('altaSubcategorias')}}">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Alta Sub-Categorías</span>
             </a>
           </li>
@@ -94,12 +94,12 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/puro_potosino/public/consultaRecetas">
+            <a href="{{route('consultaRecetas')}}">
           <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta Recetas</span>
             </a>
           </li>
           <li>
-            <a href="/puro_potosino/public/altaRecetas">
+            <a href="{{route('altaRecetas')}}">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Carga Recetas</span>
             </a>
           </li>
@@ -112,12 +112,12 @@
         </a>
         <ul class="sub-menu">
           <li>
-            <a href="/puro_potosino/public/consultaTestimonios">
+            <a href="{{route('consultaTestimonios')}}">
           <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta de testimonios</span>
             </a>
           </li>
           <li>
-            <a href="/puro_potosino/public/altaTestimonios">
+            <a href="{{route('altaTestimonios')}}">
               <span class="title"><i class="fa fa-arrow-up" aria-hidden="true"></i> Carga de testimonios</span>
             </a>
           </li>

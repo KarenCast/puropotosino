@@ -34,7 +34,7 @@ function getCat() {
 
     $('#tablecat').dataTable().fnDestroy();
     $.ajax({
-        url: "/puro_potosino/public/getCat",
+        url: "./getCat",
         dataType: 'json',
         method: 'Get',
         success: function(r) {

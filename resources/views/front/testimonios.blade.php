@@ -92,7 +92,7 @@ bottom: 40%;
 text-align: center;
 margin: auto;
 width: 0%;
-height: 2px;
+height: 0px;
 background: #2c3e50;
 }
 
@@ -226,7 +226,8 @@ src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent
           <figcaption>
               <a href="#" class="thumbnail" data-toggle="modal" onclick="Mostrar(mimodal);" id="spe">
             <div>
-              <h1><i class="fas fa-play"></i></h1>
+              <h2><i class="fas fa-play"></i></h2>
+              <p style="text-align: center">{{$rol2->titulo}}</p>
             </div>
             </a>
           </figcation>

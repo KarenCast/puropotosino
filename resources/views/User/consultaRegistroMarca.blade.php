@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('User.main')
 @section('content')
 
 
@@ -30,16 +30,7 @@
                 <li class="active">
 									Mis Categorias
 								</li>
-								<!-- <li class="search-box">
-									<form class="sidebar-search">
-										<div class="form-group">
-											<input type="text" placeholder="Buscar...">
-											<button class="submit">
-												<i class="clip-search-3"></i>
-											</button>
-										</div>
-									</form>
-								</li> -->
+
 								<ul class="nav navbar-right">
 
 									<li class="dropdown current-user">
@@ -50,7 +41,6 @@
 										</a>
 										<ul class="dropdown-menu">
 											
-
 											<li>
 												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
@@ -87,45 +77,24 @@
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
 
-										<h3>MIS CATEGORIAS<br>
-	                 <small>AQUI PUEDES ENCONTRAR EL HISTORIAL DE CATEGORIAS</small></h3>
+										<h3>REGISTROS DE MARCA<br>
+	                 <small>AQUI PUEDES ENCONTRAR EL HISTORIAL DE TUS REGISTROS DE MARCA</small></h3>
 
 								</div>
 				<div class="panel-body proceso">
 
 
-					<!-- <div class="form-group row vacactivas" id="vacactivas">
-						<div class="col-sm-6">
-							<label for="vac" id="etiqueta1"></label>
-						</div>
-						<div class="col-sm-6">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">
 
-									 <label class="switch ">
-										 <input type="checkbox" class="primary" value="0" id="activas" name="activas" onchange="getVacantes();">
-										 <span class="slider a round"></span>
-									 </label>
-
-								</li>
-							</ul>
-						</div>
-					</div> -->
 
 					<div class="row">
 						<div class="table-responsive">
-						   <input type="text" name="tipoini" id="tipoini" style="display:none;" value="{{{session('tipoinicio')}}}">
-							 <table id="tablecat" name= "tablecat" class="table-striped dt-responsive nowrap" style="width: 100%; ">
+
+							 <table id="tablemarca" name= "tablemarca" class="table-striped dt-responsive nowrap" style="width: 100%; ">
                   <thead class="thead-light">
                    	<tr>
                       <th>ID</th>
                       <th>Nombre</th>
-                      <th>Descripción</th>
-											<th>Imagen</th>
-											<th>Titulo</th>
-											<th>Editar</th>
-                      <th>Eliminar</th>
-                      <th>Ver</th>
+                      <th>archivo</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -181,53 +150,7 @@
 		                    </div>
 		               </div>
 		          </div>
-							<div class="modal fade" id="modalreactivavac" tabindex="-1" role="dialog" aria-labelledby="modal-lici" aria-hidden="true">
-				               <div class="modal-dialog modal-md" role="document" >
-				                    <div class="modal-content" >
-				                         <div class="modal-header">
-				                              <h4 class="modal-title text-white" style="margin-top:0px;">Reactivar Vacante</h4>
-				                              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="bnClose">
-				                                   <span aria-hidden="true" class="text-white">&times;</span>
-				                              </button>
-				                         </div>
-				                         <div class="modal-body">
-				                              <div class="container">
-				                                   <form action="" method="post" enctype="multipart/form-data">
-				                                        {!! csrf_field() !!}
-				                                        <!-- <div id="sendmessage"> Dado de alta exitosamente </div> -->
-				                                        <h4><strong>Vacante</strong></h4>
-				                                        <div class="row" style="border-top: 1px solid #ddd;">
-				                                             <div class="form-group col-md-6">
 
-				                                                  <input style="width: 100%; text-align:center;"readonly style="text-align: center" required class="inoborder" type="text" name="id_vacr" id="id_vacr" data-rule="required"  placeholder=""  data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/>
-				                                                  <div class="validation"></div>
-				                                             </div>
-
-				                                             <div class="form-group col-md-6">
-				                                                  <input style="width: 100%; text-align: center" readonly style="text-align: center" required  class="inoborder" type="text" name="desc_vr" id="desc_vr" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/>
-				                                                  <div class="validation"></div>
-				                                             </div>
-
-																										 <div class="form-group col-md-6">
-																											 <p style="text-align: center"><strong>Nueva fecha de inicio:</strong></p>
-				                                                  <input style="width: 100%; text-align: center"  style="text-align: center" required  class="" type="date" name="fechair" id="fechair" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta" onchange="validarFechaA();"/>
-				                                                  <div class="validation"></div>
-				                                             </div>
-
-																										 <div class="form-group col-md-6">
-																											  <p style="text-align: center"><strong>Nueva fecha de expiración:</strong></p>
-				                                                  <input style="width: 100%; text-align: center" style="text-align: center" required  class="" type="date" name="fechafr" id="fechafr" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta" onchange="validarMayorA();"/>
-				                                                  <div class="validation"></div>
-				                                             </div>
-				                                        </div>
-				                                        <button style="text-align: center; width: 100%;" type="submit" class="btn btn-primary btn-lg btn-block login-btn">Aceptar</button>
-
-				                                   </form>
-				                              </div>
-				                         </div>
-				                    </div>
-				               </div>
-				          </div>
 
 
 					<div class="modal fade" id="modalvercategoria" tabindex="-1" role="dialog" aria-labelledby="modal-lici" aria-hidden="true">
@@ -302,5 +225,5 @@
 			           </div>
 			      </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
-<script src="{{asset('js/FunctionCategorias.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/FunctionMarca.js')}}" type="text/javascript"></script>
 @endsection

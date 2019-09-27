@@ -39,13 +39,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											<li>
-												<a href="{{url('/VentanillaUnica/PerfilUsuario')}}">
-													<i class="clip-user-2"></i>
-													&nbsp;Perfil
-												</a>
-											</li>
-											<li class="divider"></li>
+											
 
 											<li>
 												<a href="{{url('/LogOut')}}">
@@ -128,11 +122,9 @@
 	    									Categoría Padre<span class="symbol required"></span>
 	    								</label>
 											<select class="form-control" id="id_p" name="id_p">
-																	@foreach($categorias as $rol)
-
-                                    <option value="{{$rol->ID_categoria}}" >{{$rol->nombre}}</option>
-
-																	@endforeach
+												@foreach($categorias as $rol)
+                          <option value="{{$rol->ID_categoria}}" >{{$rol->nombre}}</option>
+												@endforeach
 											</select>
 
       							</div>

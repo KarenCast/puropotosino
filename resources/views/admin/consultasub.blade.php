@@ -49,13 +49,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											<li>
-												<a href="{{url('/VentanillaUnica/PerfilUsuario')}}">
-													<i class="clip-user-2"></i>
-													&nbsp;Perfil
-												</a>
-											</li>
-											<li class="divider"></li>
+											
 
 											<li>
 												<a href="{{url('/LogOut')}}">

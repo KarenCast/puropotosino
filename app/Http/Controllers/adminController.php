@@ -126,5 +126,18 @@ class adminController extends Controller
       return $link;
   }
 
+  function linkprod($arch,$id){
+
+      $ruta = '/Files';
+      $path = storage_path().'/app'.$ruta.'/'.$arch.'/Producto//'.$id;
+      $docs = \File::get($path);
+      // echo $path;
+      $link = response()->file($path, [
+        'Content-Disposition' => 'inline; filename="Comprobante.pdf"'
+      ]);
+
+      return $link;
+  }
+
 
 }
