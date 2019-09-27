@@ -123,6 +123,20 @@
           </li>
         </ul>
       </li>
+      <li>
+        <a href="javascript:void(0)"><i class="fas fa-calendar-day" aria-hidden="true"></i>
+          <span class="title"> Eventos </span><i class="icon-arrow"></i>
+          <span class="selected"></span>
+        </a>
+        <ul class="sub-menu">
+          <li>
+            <a href="{{route('consultaEventos')}}">
+          <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta de Eventos</span>
+            </a>
+          </li>
+         
+        </ul>
+      </li>
 
 
 

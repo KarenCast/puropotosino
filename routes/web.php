@@ -76,6 +76,8 @@ Route::get('/getCont/{n}/{T}','contenidoController@getCont'); //Get Contenido en
 Route::get('/ActualizarContenido/{n}','contenidoController@viewActualizaCont');
 
 
+/*Eventos*/
+Route::get('consultaEventos', 'EventosController@consultaEventos')->name('consultaEventos');
 
 
 Route::get('/getEmpresas','empresasController@getEmpresas');
