@@ -5,26 +5,37 @@
 
 <div id="calendar" style="padding: 11em;"></div>
 
-<!-- The Modal -->
-<div class="modal" id="myModal">
-    <div class="modal-dialog">
+
+<div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="false" data-backdrop="false">
+    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
         <div class="modal-content">
-
-            <!-- Modal Header -->
+            <!--Header-->
             <div class="modal-header">
-                <h4 class="modal-title" id="modal-title"></h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <p class="heading lead">Evento</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">×</span>
+                </button>
             </div>
 
-            <!-- Modal body -->
+            <!--Body-->
             <div class="modal-body">
+                <div class="text-center">
+                    <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"> <strong
+                            id="nombre_evento"></strong></i>
+                </div>
+                <hr>
+                <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
+                <p class="text-center">Observaciones: <strong id="observaciones"></strong></p>
+                <p class="text-center">Requisitos: <strong id="requisitos"></strong></p>
+                <p class="text-center">Tema: <strong id="tema"></strong></p>
+                <p class="text-center">Costo: <strong id="costo"></strong></p>
             </div>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
             </div>
-
         </div>
     </div>
 </div>
@@ -53,14 +64,16 @@
             editable: true,
             eventLimit: true, // allow "more" link when too many events
             events: 'load',
-
+            themeSystem: 'bootstrap',
             selectable: true,
             eventClick: function(info) {
-                console.log('Event: ' + info.event.title);
-                console.log('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                console.log('View: ' + info.view.type);
-                console.log(info.event);
-                $('#modal-title').text(info.event.title);
+                $('#nombre_evento').html(info.event.title);
+
+                $('#fecha_evento').html(info.event.start);
+                $('#observaciones').html(info.event.extendedProps.observaciones);
+                $('#requisitos').html(info.event.extendedProps.requisitos);
+                $('#tema').html(info.event.extendedProps.tema);
+                $('#costo').html("$" + info.event.extendedProps.costo);
 
                 $('#myModal').modal('toggle');
 
@@ -82,15 +95,21 @@
             dataType: 'json',
             method: 'get',
             success: function(data) {
+               
                 for (var i = 0; i < data.length; i++)
+                
                     arrData[i] = {
                         id: data[i]['ID_evento'],
+                        observaciones: data[i]['observaciones'],
+                        costo: data[i]['costo'],
+                        requisitos: data[i]['requisitos'],
+                        tema: data[i]['tema'],
                         title: data[i]['nombre_evento'],
-                        start:  data[i]['fecha_evento'],
+                        start: data[i]['fecha_evento'],
                         //end: '2019-08-18T19:00:00',
                         backgroundColor: '#84b2db'
                     }
-               // console.log(data);
+                // console.log(data);
             },
             error: function() {
                 console.error('error');
@@ -100,6 +119,8 @@
     }
     </script>
 </head>
+
+
 <link href="{{asset('assets/plugins/core/main.css')}}" rel='stylesheet' />
 <link href="{{asset('assets/plugins/daygrid/main.css')}}" rel='stylesheet' />
 <script src="{{asset('assets/plugins/core/main.js')}}"></script>
