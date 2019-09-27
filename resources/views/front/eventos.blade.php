@@ -35,11 +35,41 @@
             <!--Footer-->
             <div class="modal-footer justify-content-center">
                 <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
+                <a type="button" class="btn btn-outline-primary waves-effect" onClick="meInteresa();">Me interesa</a>
             </div>
         </div>
     </div>
 </div>
 
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Login</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                    <div class="form-group">
+                        <label for="uname1">Correo</label>
+                        <input type="email" class="form-control form-control-lg" name="uname1" id="uname1" required="">
+                        <div class="invalid-feedback">Campo necesario.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control form-control-lg" id="pwd1" required="" autocomplete="new-password">
+                        <div class="invalid-feedback">Campo necesario</div>
+                    </div>
+                   
+                    <div class="form-group py-4">
+                        <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                        <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <head>
     <script type="text/javascript">
@@ -86,6 +116,11 @@
 
         calendar.render();
     });
+
+    function meInteresa(){
+        $('#myModal').modal('hide');
+        $('#loginModal').modal('toggle');
+    }
 
     function loadEvents() {
         var arrData = [];
