@@ -57,13 +57,16 @@
                     </div>
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <input type="password" class="form-control form-control-lg" id="pwd1" required="" autocomplete="new-password">
+                        <input type="password" class="form-control form-control-lg" id="pwd1" required=""
+                            autocomplete="new-password">
                         <div class="invalid-feedback">Campo necesario</div>
                     </div>
-                   
+
                     <div class="form-group py-4">
-                        <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-                        <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Registrarse</button>
+                        <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
+                            aria-hidden="true">Cancelar</button>
+                        <button type="submit" class="btn btn-success btn-lg float-right"
+                            id="btnLogin">Registrarse</button>
                     </div>
                 </form>
             </div>
@@ -98,8 +101,17 @@
             selectable: true,
             eventClick: function(info) {
                 $('#nombre_evento').html(info.event.title);
-
-                $('#fecha_evento').html(info.event.start);
+                var time = new Date(info.event.start);
+                var options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric'
+                };
+                var fechaEvento =  time.toLocaleString("es-ES", options);
+                
+                $('#fecha_evento').html(fechaEvento);
                 $('#observaciones').html(info.event.extendedProps.observaciones);
                 $('#requisitos').html(info.event.extendedProps.requisitos);
                 $('#tema').html(info.event.extendedProps.tema);
@@ -117,7 +129,7 @@
         calendar.render();
     });
 
-    function meInteresa(){
+    function meInteresa() {
         $('#myModal').modal('hide');
         $('#loginModal').modal('toggle');
     }
@@ -130,9 +142,9 @@
             dataType: 'json',
             method: 'get',
             success: function(data) {
-               
+
                 for (var i = 0; i < data.length; i++)
-                
+
                     arrData[i] = {
                         id: data[i]['ID_evento'],
                         observaciones: data[i]['observaciones'],
