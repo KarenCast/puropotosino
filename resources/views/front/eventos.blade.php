@@ -21,8 +21,8 @@
             <!--Body-->
             <div class="modal-body">
                 <div class="text-center">
-                    <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"> <strong
-                            id="nombre_evento"></strong></i>
+                    <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"></i>
+                        <p class="text-center"><strong id="nombre_evento"></strong></p>
                 </div>
                 <hr>
                 <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
@@ -49,7 +49,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form class="form" action="{{route('registroEvento')}}" role="form" autocomplete="off" id="formLogin" method="POST">
+                <form class="form" action="{{route('registroEvento')}}" role="form" autocomplete="off" id="formLogin"
+                    method="POST">
                     @csrf
                     {{ csrf_field() }}
                     <div class="form-group">
@@ -59,7 +60,7 @@
                     </div>
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <input type="password" class="form-control form-control-lg" name="contrasena"  required="true"
+                        <input type="password" class="form-control form-control-lg" name="contrasena" required="true"
                             autocomplete="new-password">
                         <div class="invalid-feedback">Campo necesario</div>
                     </div>
@@ -102,11 +103,11 @@
             themeSystem: 'bootstrap',
             selectable: true,
             eventClick: function(info) {
-               
+
                 var time = new Date(info.event.start);
                 var timeNow = new Date();
                 var dif = (timeNow - time);
-                
+
                 if (dif > 0) {
                     notificationWarring('Evento ya no esta disponible');
                     return;
