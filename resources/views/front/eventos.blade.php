@@ -45,11 +45,13 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Login</h3>
+                <h3>Registro a evento</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                <form class="form" action="{{route('registroEvento')}}" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                    @csrf
+                    {{ csrf_field() }}
                     <div class="form-group">
                         <label for="uname1">Correo</label>
                         <input type="email" class="form-control form-control-lg" name="uname1" id="uname1" required="">
@@ -100,23 +102,32 @@
             themeSystem: 'bootstrap',
             selectable: true,
             eventClick: function(info) {
-                $('#nombre_evento').html(info.event.title);
+               
                 var time = new Date(info.event.start);
+                var timeNow = new Date();
+                var dif = (timeNow - time);
+                console.log(dif);
+                //valida 5 min antes del evento ya no se registra
+                if (dif > 0) {
+                    notificationWarring('Evento ya no esta disponible');
+                    return;
+                }
+                //console.log(dif);
                 var options = {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                     hour: 'numeric',
-                    minute: 'numeric'
+                    minute: 'numeric',
+                    hour12: 'true'
                 };
-                var fechaEvento =  time.toLocaleString("es-ES", options);
-                
+                var fechaEvento = time.toLocaleString("es-ES", options);
+                $('#nombre_evento').html(info.event.title);
                 $('#fecha_evento').html(fechaEvento);
                 $('#observaciones').html(info.event.extendedProps.observaciones);
                 $('#requisitos').html(info.event.extendedProps.requisitos);
                 $('#tema').html(info.event.extendedProps.tema);
                 $('#costo').html("$" + info.event.extendedProps.costo);
-
                 $('#myModal').modal('toggle');
 
                 // change the border color just for fun
@@ -130,6 +141,7 @@
     });
 
     function meInteresa() {
+
         $('#myModal').modal('hide');
         $('#loginModal').modal('toggle');
     }
@@ -168,6 +180,10 @@
 </head>
 
 
+<link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/AmaranJS/css/amaran.min.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/AmaranJS/css/animate.min.css')}}" />
+<script src="{{asset('assets/plugins/AmaranJS/js/jquery.amaran.js')}}"></script>
+<script src="{{asset('js/notifications.js')}}"></script>
 <link href="{{asset('assets/plugins/core/main.css')}}" rel='stylesheet' />
 <link href="{{asset('assets/plugins/daygrid/main.css')}}" rel='stylesheet' />
 <script src="{{asset('assets/plugins/core/main.js')}}"></script>

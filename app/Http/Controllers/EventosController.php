@@ -41,4 +41,8 @@ class EventosController extends Controller
         $delete = Evento::findOrFail($request->ID_evento);
         $delete->delete();
     }
+
+    public function registro(Request $request){
+        dd($request-all());
+    }
 }
