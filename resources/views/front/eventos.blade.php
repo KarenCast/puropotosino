@@ -49,17 +49,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form class="form" action="{{route('registroEvento')}}" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                <form class="form" action="{{route('registroEvento')}}" role="form" autocomplete="off" id="formLogin" method="POST">
                     @csrf
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="uname1">Correo</label>
-                        <input type="email" class="form-control form-control-lg" name="uname1" id="uname1" required="">
+                        <input type="email" class="form-control form-control-lg" name="correo" required="true">
                         <div class="invalid-feedback">Campo necesario.</div>
                     </div>
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <input type="password" class="form-control form-control-lg" id="pwd1" required=""
+                        <input type="password" class="form-control form-control-lg" name="contrasena"  required="true"
                             autocomplete="new-password">
                         <div class="invalid-feedback">Campo necesario</div>
                     </div>
@@ -106,8 +106,7 @@
                 var time = new Date(info.event.start);
                 var timeNow = new Date();
                 var dif = (timeNow - time);
-                console.log(dif);
-                //valida 5 min antes del evento ya no se registra
+                
                 if (dif > 0) {
                     notificationWarring('Evento ya no esta disponible');
                     return;
