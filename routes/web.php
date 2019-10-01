@@ -66,7 +66,7 @@ Route::get('/consultaRecetas', 'contenidoController@viewRecetas')->name('consult
 Route::get('/altaRecetas', 'contenidoController@viewContenido')->name('altaRecetas'); //Vista Altas recetas
 Route::post('/altaRec', 'contenidoController@store')->name('contenido'); //Guardar recetas
 Route::post('/altaRec', 'contenidoController@update')->name('actcontenido'); //Guardar recetas
-Route::post('/deleteRecetas', 'contenidoController@deleteR')->name('recdelete'); //Eliminar recetas
+//Route::post('/deleteReceta', 'contenidoController@deleteR')->name('recdelete'); //Eliminar recetas
 Route::get('/getCont/{n}','contenidoController@getCont');
 
 Route::get('/consultaTestimonios', 'contenidoController@viewCont')->name('consultaTestimonios'); //Vista Consulta testimonio

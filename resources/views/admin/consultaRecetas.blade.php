@@ -128,232 +128,42 @@
     </div>
 </div>
 
-
-<div class="modal fade" id="modaleliminarvac" tabindex="-1" role="dialog" aria-labelledby="modal-lici"
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title text-white" style="margin-top:0px;">Eliminar Vacante</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="bnClose">
-                    <span aria-hidden="true" class="text-white">&times;</span>
-                </button>
+                <h2 class="modal-title" id="myModalLabel">Confirmar</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <div class="container">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        {!! csrf_field() !!}
-                        <!-- <div id="sendmessage"> Dado de alta exitosamente </div> -->
-                        <h4><strong>¿Seguro que desea eliminar el siguiente registro?</strong></h4>
-                        <div class="row" style="border-top: 1px solid #ddd;">
-                            <div class="form-group col-md-12">
-                                <p style="text-align: center"><strong>Vacante:</strong></p>
-                                <input style="width: 100%; text-align:center;" readonly style="text-align: center"
-                                    required class="inoborder" type="text" name="id_emp" id="id_emp"
-                                    data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta" />
-                                <div class="validation"></div>
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <input style="width: 100%; text-align: center" readonly style="text-align: center"
-                                    required class="inoborder" type="text" name="desc_e" id="desc_e"
-                                    data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta" />
-                                <div class="validation"></div>
-                            </div>
-                        </div>
-                        <button style="text-align: center; width: 100%;" type="submit"
-                            class="btn btn-primary btn-lg btn-block login-btn">Aceptar</button>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modaleliminarsub" tabindex="-1" role="dialog" aria-labelledby="modal-lici"
-    aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-white" style="margin-top:0px;">Eliminar Vacante</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="bnClose">
-                    <span aria-hidden="true" class="text-white">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <form action="{{ route('subcatdelete') }}" method="post" enctype="multipart/form-data">
-                        {!! csrf_field() !!}
-                        <!-- <div id="sendmessage"> Dado de alta exitosamente </div> -->
-                        <h4><strong>¿Seguro que desea eliminar el siguiente registro?</strong></h4>
-                        <div class="row" style="border-top: 1px solid #ddd;">
-                            <div class="form-group col-md-12">
-                                <p style="text-align: center"><strong>Vacante:</strong></p>
-                                <input style="width: 100%; text-align:center;" readonly style="text-align: center"
-                                    required class="inoborder" type="text" name="id_cat" id="id_cat"
-                                    data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta" />
-                                <div class="validation"></div>
-                            </div>
-
-                            <div class="form-group col-md-12">
-                                <input style="width: 100%; text-align: center" readonly style="text-align: center"
-                                    required class="inoborder" type="text" name="desc_cat" id="desc_cat"
-                                    data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta" />
-                                <div class="validation"></div>
-                            </div>
-                        </div>
-                        <button style="text-align: center; width: 100%;" type="submit"
-                            class="btn btn-primary btn-lg btn-block login-btn">Aceptar</button>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalreactivavac" tabindex="-1" role="dialog" aria-labelledby="modal-lici"
-    aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title text-white" style="margin-top:0px;">Reactivar Vacante</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="bnClose">
-                    <span aria-hidden="true" class="text-white">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        {!! csrf_field() !!}
-                        <!-- <div id="sendmessage"> Dado de alta exitosamente </div> -->
-                        <h4><strong>Vacante</strong></h4>
-                        <div class="row" style="border-top: 1px solid #ddd;">
-                            <div class="form-group col-md-6">
-
-                                <input style="width: 100%; text-align:center;" readonly style="text-align: center"
-                                    required class="inoborder" type="text" name="id_vacr" id="id_vacr"
-                                    data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta" />
-                                <div class="validation"></div>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <input style="width: 100%; text-align: center" readonly style="text-align: center"
-                                    required class="inoborder" type="text" name="desc_vr" id="desc_vr"
-                                    data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta" />
-                                <div class="validation"></div>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <p style="text-align: center"><strong>Nueva fecha de inicio:</strong></p>
-                                <input style="width: 100%; text-align: center" style="text-align: center" required
-                                    class="" type="date" name="fechair" id="fechair" data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta"
-                                    onchange="validarFechaA();" />
-                                <div class="validation"></div>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <p style="text-align: center"><strong>Nueva fecha de expiración:</strong></p>
-                                <input style="width: 100%; text-align: center" style="text-align: center" required
-                                    class="" type="date" name="fechafr" id="fechafr" data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta"
-                                    onchange="validarMayorA();" />
-                                <div class="validation"></div>
-                            </div>
-                        </div>
-                        <button style="text-align: center; width: 100%;" type="submit"
-                            class="btn btn-primary btn-lg btn-block login-btn">Aceptar</button>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade" id="modalversub" tabindex="-1" role="dialog" aria-labelledby="modal-lici" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-
-
-
-            <div class="modal-header" style="background-color: #1c3150; color: #fff;">
-                <h3 class="modal-title text-white" style="margin-top:0px;">Información Empresa</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="text-white">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-
-                    <form action="" method="post" id="candvac">
-                        @csrf
-                        {{ csrf_field() }}
-
-                        <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-                            <div class="form-group col-md-2">
-                                <p><strong>ID Sub:</strong></p>
-                                <input readonly name="id_e" id="id_e" class="inoborder" />
-
-                            </div>
-                            <div class="form-group col-md-5">
-                                <p><strong>Nombre:</strong></p>
-                                <input readonly type="text" name="nombre_e" id="nombre_e" class="inoborder" />
-
-                            </div>
-                            <div class="form-group col-md-5">
-                                <p><strong>Categoria padre:</strong></p>
-                                <input readonly name="padre_e" id="padre_e" class="inoborder" />
-
-                            </div>
-                        </div>
-                        <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-
-
-                            <div class="form-group col-md-6">
-                                <p><strong>Imagen:</strong></p>
-                                <input readonly required class="alumno inoborder" type="text" name="imagen_e"
-                                    id="imagen_e" data-rule="required" placeholder=""
-                                    data-msg="Verifica que este campo no esté vacio y contenga informción correcta" />
-
-                            </div>
-                            <div class="form-group col-md-3">
-                                <!-- <p><strong>Logotipo:</strong></p>
-                                              <input required readonly class="alumno inoborder" type="text" name="logo_e" id="logo_e" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/> -->
-                                <img src="" alt="" name="logo_e" id="logo_e" width="100%" height="auto">
-                            </div>
-                        </div>
-
-
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-
-                    </div>
-                    <!-- <div class="col-md-4">
-																		<button type="submit" class="btn btn-primary btn-lg btn-block login-btn aplicar">Visualizar Candidatos</button>
-																	</div> -->
-                </div>
-                </form>
+                <i class="title"></i>
+                <a>¿Desea continuar?</a>
             </div>
             <div class="modal-footer">
-                <div class="row justify-content-center">
-
-
-
-                </div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger btn-ok">Eliminar</button>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .modal.loading .modal-content:before {
+    content: 'Cargando...';
+    text-align: center;
+    line-height: 155px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, .8);
+    position: absolute;
+    top: 55px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #EEE;
+    z-index: 1000;
+    }
+</style>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
 <script src="{{asset('js/FunctionRecetas.js')}}" type="text/javascript"></script>
 @endsection

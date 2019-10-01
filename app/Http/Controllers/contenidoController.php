@@ -33,6 +33,20 @@ class contenidoController extends Controller
         return view('admin.consultaRecetas');
     }
 
+    public function deleteR(Request $request){
+        $recetas = Contenido::where('ID_contenido', $request->Id_delete)->first();
+        $path = public_path()."\\contenido\\".$recetas->imagen;
+     
+       try {
+        unlink($path);
+        $recetas->delete();
+        return $path;
+       } catch (\Throwable $th) {
+        return 'no se ya me quiero ir';
+       }
+        //return $recetas;
+    }
+
     public function viewRecetasFront(){
         $recetas = DB::table('admpuropotosino'.'.'.'TMContenido')
                             ->where('tipo', '0')
