@@ -12,14 +12,15 @@ $(document).ready(function() {
 
 
 function getMarca() {
-  var empresa;
-    $('#tablemarca').dataTable().fnDestroy();
+    var id= $("#id_empresa").val();
+    console.log(id);
+    $('#tablemarcape').dataTable().fnDestroy();
     $.ajax({
-        url: "./getMarca",
+        url: "../getMarcape/"+id,
         dataType: 'json',
         method: 'Get',
         success: function(r) {
-            oTable = $('#tablemarca').DataTable({
+            oTable = $('#tablemarcape').DataTable({
             "language": {
    				   "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             },
@@ -41,29 +42,8 @@ function getMarca() {
                             name: 'nombre_marca'
                         },
                         {
-                            data: 'ID_empresa',
-                            "render": function(data) {
-                              empresa=data;
-                              return '';
-                            }
-                        },
-                        {
                             data: 'archivo',
-                            sWidth: '0%',
-                            orderable: false,
-                            "render": function(data) {
-
-                                  return '<a href="./linkmarca/'+empresa+'/'+ data+'">Archivo  <i class="fas fa-link"></i></a>';
-                            }
-                        },
-                        {
-                            data: 'ID_marca',
-
-                            sWidth: '7%',
-                            orderable: false,
-                            "render": function(data) {
-                                  return '<a href="./actualizarMarca/'+data+'">Editar</a>';
-                            }
+                            name: 'archivo'
                         },
 
 

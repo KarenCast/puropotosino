@@ -139,7 +139,7 @@ class empresasController extends Controller
               ]);
 
             } catch (\Exception $e) {
-              return $e->getMessage();
+                return back()->with('Error', 'No se pudieron cargar archivos');
             }
 
 
@@ -150,7 +150,7 @@ class empresasController extends Controller
                 $rutai = $ruta.$filenamei;
                 \Storage::disk('local')->put($rutai,  \File::get($filei));
               } catch (\Exception $e) {
-                return $e->getMessage();
+                  return back()->with('Error', 'No se pudo guardar comprobante_incubacion');
               }
             }
 
@@ -159,7 +159,7 @@ class empresasController extends Controller
                 $rutah = $ruta.$filenameh;
                 \Storage::disk('local')->put($rutah,  \File::get($fileh));
               } catch (\Exception $e) {
-
+                  return back()->with('Error', 'No se pudo guardar comprobante_shcp');
               }
             }
 
@@ -168,7 +168,7 @@ class empresasController extends Controller
                 $rutacb = $ruta.$filenamecb;
                 \Storage::disk('local')->put($rutacb,  \File::get($filecb));
               } catch (\Exception $e) {
-                return $e->getMessage();
+                  return back()->with('Error', 'No se pudo guardar codigo de barras');
               }
             }
 
@@ -177,7 +177,7 @@ class empresasController extends Controller
                 $rutaf = $ruta.$filenamef;
                 \Storage::disk('local')->put($rutaf,  \File::get($filef));
               } catch (\Exception $e) {
-                return $e->getMessage();
+                  return back()->with('Error', 'No se pudo guardar FDA');
               }
             }
 
@@ -187,7 +187,7 @@ class empresasController extends Controller
                 $img = Image::make($fileimg->getRealPath());
                 $img->save($rutaimg, 30);
               } catch (\Exception $e) {
-                return $e->getMessage();
+                  return back()->with('Error', 'No se pudo guardar LOGO');
               }
             }
 
@@ -205,7 +205,7 @@ class empresasController extends Controller
               $con -> save();
 
             } catch (\Exception $e) {
-              return $e->getMessage();
+                return back()->with('Error', 'No se pudo Guardar tu información en SIDEP');
             }
 
 

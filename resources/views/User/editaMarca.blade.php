@@ -85,7 +85,7 @@
 									  {!! csrf_field() !!}
 									  <h4>Información general de marca</h4>
 									  <hr width="100%" color="black"/>
-										<input type="text" name="id" id="id" value="{{$marcas->ID_marca}}" readonly style="display:block">
+										<input type="text" name="id" id="id" value="{{$marcas->ID_marca}}" readonly style="display:none">
 									  <div class="form-group col-sm-6">
 									    <label class="">
 									      Nombre de Marca<span class="symbol required"></span>

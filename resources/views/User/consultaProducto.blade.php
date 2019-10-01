@@ -95,6 +95,8 @@
                       <th>ID</th>
                       <th>Nombre</th>
                       <th>Marca</th>
+											<th></th>
+											<th>Imagen</th>
 											<th>Editar</th>
                      </tr>
                   </thead>

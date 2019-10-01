@@ -15,6 +15,8 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   <link href="https://fonts.googleapis.com/css?family=Heebo:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600&display=swap" rel="stylesheet">
+
+
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('Plugins/DataTable/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('Plugins/DataTable/css/responsive.bootstrap4.min.css')}}">
@@ -27,7 +29,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/scrollreveal@4"></script>
   <script src="{{asset('Plugins/DataTable/js/jquery.dataTables.min.js')}}"></script>
-  
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <script src="{{asset('js/efectos.js')}}" type="text/javascript"></script>
 
   <title>Puro Potosino</title>

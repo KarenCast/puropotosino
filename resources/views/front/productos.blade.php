@@ -4,7 +4,186 @@
 @include('front.menu')
 @include('front.encabezado')
 
+<style media="screen">
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
 
+.contenedor-redes-sociales {
+  margin: 20px 0;
+  padding: 5px;
+  text-align: center;
+}
+
+.contenedor-redes-sociales a {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 130px;
+  line-height: 35px;
+  padding: 0;
+  color: #fff;
+  border-radius: 50px;
+  background: #fff;
+  margin: 5px;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.contenedor-redes-sociales a:hover span.circulo {
+  left: 100%;
+  margin-left: -35px;
+  background: #fff;
+}
+
+.contenedor-redes-sociales a:hover span.titulo {
+  opacity: 0;
+}
+
+.contenedor-redes-sociales a:hover span.titulo-hover {
+  opacity: 1;
+  color: #fff;
+}
+
+.contenedor-redes-sociales a span.titulo-hover {
+  opacity: 0;
+}
+
+.contenedor-redes-sociales a span.circulo {
+  display: block;
+  color: #fff;
+  position: absolute;
+  float: left;
+  margin: 3px;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+  border-radius: 50%;
+}
+
+.contenedor-redes-sociales a span.circulo i {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.contenedor-redes-sociales a span.titulo, .contenedor-redes-sociales a span.titulo-hover {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 400;
+  transition: .5s;
+}
+
+.contenedor-redes-sociales a span.titulo {
+  right: 15px
+}
+
+.contenedor-redes-sociales a span.titulo-hover {
+  left: 15px
+}
+
+
+/*----------Colores de los botones----------*/
+
+.contenedor-redes-sociales .facebook {
+  border: 2px solid #9a9ea6;
+}
+.contenedor-redes-sociales .facebook span.circulo{
+  background: #b5b5b5;
+}
+
+.contenedor-redes-sociales .facebook:hover, .contenedor-redes-sociales .facebook:hover span.circulo {
+  background: #3b5998;
+  border: 2px solid #3b5998;
+  color: #fff;
+}
+
+.contenedor-redes-sociales .facebook:hover span.circulo, .contenedor-redes-sociales .facebook span.titulo {
+  color:  #959191;
+}
+
+
+
+.contenedor-redes-sociales .twitter {
+  border: 2px solid #9a9ea6;
+}
+
+.contenedor-redes-sociales .twitter span.circulo{
+  background: #b5b5b5;
+}
+
+.contenedor-redes-sociales .twitter:hover, .contenedor-redes-sociales .twitter:hover span.circulo {
+  background: #1da1f2;
+  border: 2px solid #1da1f2;
+  color: #fff;
+}
+
+.contenedor-redes-sociales .twitter:hover span.circulo, .contenedor-redes-sociales .twitter span.titulo {
+  color: #959191;
+}
+
+.contenedor-redes-sociales .gplus {
+  border: 2px solid #9a9ea6;
+}
+
+.contenedor-redes-sociales .gplus span.circulo{
+  background: #b5b5b5;
+}
+
+.contenedor-redes-sociales .gplus:hover, .contenedor-redes-sociales .gplus:hover span.circulo {
+  background: #541df2;
+  border: 2px solid #541df2;
+  color: #fff;
+}
+
+.contenedor-redes-sociales .gplus:hover span.circulo, .contenedor-redes-sociales .gplus span.titulo {
+  color: #959191;
+}
+
+
+
+
+.contenedor-redes-sociales .gplus2 {
+  border: 2px solid #9a9ea6;
+}
+
+.contenedor-redes-sociales .gplus2 span.circulo{
+  background: #b5b5b5;
+}
+
+.contenedor-redes-sociales .gplus2:hover, .contenedor-redes-sociales .gplus2:hover span.circulo {
+  background: #f21d37;
+  border: 2px solid #f21d37;
+  color: #fff;
+}
+
+.contenedor-redes-sociales .gplus2:hover span.circulo, .contenedor-redes-sociales .gplus2 span.titulo {
+  color: #959191;
+}
+
+input#nombre_e{
+  font-size: 26px;
+border: none;
+color: #fff;
+background-color: rgba(255, 255, 255, 0);
+}
+/*--------------Mediaqueries--------------*/
+
+@media screen and (max-width: 480px) {
+  .contenedor-redes-sociales a {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 10px;
+  }
+}
+</style>
 
 <div class="row np">
   <div class="col-md-6">
@@ -71,7 +250,8 @@
 
 
                  <div class="modal-header" style="background-color: #1c3150; color: #fff;">
-                      <h3 class="modal-title text-white" style="margin-top:0px;">Información Empresa</h3>
+                   <input readonly type="text" name="nombre_e" id="nombre_e"  class="inoborder form-control"/>
+
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="text-white">&times;</span>
                       </button>
@@ -84,37 +264,59 @@
                                 {{ csrf_field() }}
 
                                 <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-
-                                     <div class="form-group col-md-6">
-                                           <p><strong>Nombre de producto:</strong></p>
-                                           <input readonly type="text" name="nombre_e" id="nombre_e"  class="inoborder form-control"/>
-
-                                     </div>
-                                     <div class="form-group col-md-6">
+                                      <div class="form-group col-md-12" style="text-align:center">
+                                        <img src="" name="img_e" id="img_e" alt="" width="60%">
+                                      </div>
+                                      <div class="form-group col-md-12">
+                                            <p><strong>Descripción:</strong></p>
+                                            <textarea name="desc_e" id="desc_e" rows="3" cols="80" class="form-control" readonly style="border:none"></textarea>
+                                      </div>
+                                     <div class="form-group col-md-5">
                                            <p><strong>Nombre de marca:</strong></p>
                                            <input readonly type="text" name="marca_e" id="marca_e"  class="inoborder form-control"/>
 
                                      </div>
+                                     <div class="form-group col-md-5">
+                                           <p><strong>Empresa:</strong></p>
+                                           <input readonly type="text" name="empresa_e" id="empresa_e"  class="inoborder form-control"/>
+
+                                     </div>
+                                     <div class="form-group col-md-2">
+                                           <!-- <p><strong>Logo:</strong></p> -->
+                                           <img id="logo_e" name="logo_e" src="" alt="" width="100%">
+
+                                     </div>
+
+
 
                                   </div>
-                                   <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
 
-                                     <textarea name="desc_e" id="desc_e" rows="3" cols="80" class="form-control"></textarea>
+                                   <div class="row " style="border-top: 1px solid #ddd; padding:1em 2em;">
+                                     <div class="contenedor-redes-sociales" style="width: 100%;">
+                                         	<a class="facebook" id="facebook" href="" target="_blank">
+                                         		<span class="circulo"><i class="fab fa-facebook-f"></i></span>
+                                         		<span class="titulo">Facebook</span>
+                                         		<span class="titulo-hover">Visitar</span>
+                                         	</a>
 
-                                   </div>
-                                   <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
+                                    		<a class="twitter" id="twitter" href="" target="_blank">
+                                    			<span class="circulo"><i class="fab fa-twitter"></i></span>
+                                    			<span class="titulo">Twitter</span>
+                                    			<span class="titulo-hover">Visitar</span>
+                                    		</a>
 
-                                        <div class="form-group col-md-6">
-                                              <p><strong>Empresa:</strong></p>
-                                              <input readonly type="text" name="nombre_e" id="nombre_e"  class="inoborder form-control"/>
+                                    		<a class="gplus" id="instagram" href="" target="_blank">
+                                    			<span class="circulo"><i class="fab fa-instagram"></i></span>
+                                    			<span class="titulo">Instagram</span>
+                                    			<span class="titulo-hover">Visitar</span>
+                                    		</a>
 
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                              <p><strong>Logo:</strong></p>
-                                              <img id="logo_e" name="logo_e" src="" alt="">
-
-                                        </div>
-
+                                        <a class="gplus2" id="sitio" href="" target="_blank" >
+                                    			<span class="circulo"><i class="fas fa-link"></i></span>
+                                    			<span class="titulo">Sitio Web</span>
+                                    			<span class="titulo-hover">Visitar</span>
+                                    		</a>
+                                      </div>
                                      </div>
 
 

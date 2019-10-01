@@ -212,9 +212,9 @@
 									    <input type="text" class="form-control" id="rfc" name="rfc" placeholder="">
 									  </div> -->
 
-									  <div class="form-group col-sm-6" id="tipo_incu" style="visibility: hidden">
+									  <div class="form-group col-sm-6" id="tipo_incu" style="">
 									    <label class="">
-									      ¿Cuál?<span class="symbol required"></span>
+									      Tipo de incubación<span class="symbol required"></span>
 									    </label>
 									    <input type="text" disabled required class="form-control" id="tipoincu" name="tipoincu" placeholder="{{$rol->tipo_incubacion}}">
 									  </div>
@@ -228,46 +228,24 @@
 												<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
 												@endif
 
-
-
-											@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
-												Alta hacienda (Archivo .pdf)<br>
-												@if($rol->RFC!=null)
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
-												@else
-												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
-
+												@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
+													<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
 												@endif
-											@endif
 
 
 											@if($rol->disenio_imagen!=null || $rol->disenio_imagen!='')
 												Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
-										    <img src="{{asset('Logos')}}/{{$rol->RFC}}/{{$rol->disenio_imagen}}" alt="" width="30%" height="auto"><br>
+										    <img src="{{asset('Logos')}}/{{$rol->ID_empresa}}/{{$rol->disenio_imagen}}" alt="" width="30%" height="auto"><br>
 											@endif
 
 
 											@if($rol->codigo_barras!=null || $rol->codigo_barras!='')
-												Código de barras (Archivo .pdf)<br>
-												@if($rol->RFC!=null)
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->codigo_barras}}"> <h4>Código de barras</h4> </a>
-
-												@else
-												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->codigo_barras}}"> <h4>Código de barras</h4> </a>
-
-												@endif
+												<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->codigo_barras}}"> <h4>Código de barras</h4> </a>
 											@endif
 
 
 											@if($rol->FDA!=null || $rol->FDA!='')
-											FDA (Archivo .pdf)<br>
-												@if($rol->RFC!=null)
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
-
-												@else
-												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
-
-												@endif
+												<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
 											@endif
 									  </div>
 
@@ -355,8 +333,15 @@
 
 									  </div>
 
-									<div class="form-group col-sm-12" style="text-align: center; padding-top: 3em;">
-										<button class="btn btn-info" type="button" name="button">VER REGISTROS DE MARCA Y PRODUCTOS</button>
+									<div class="form-group col-sm-6" style="text-align: center; padding-top: 3em;">
+										<a href="../../consultaMarcaspe/{{$rol->ID_empresa}}">
+											<button class="btn btn-info" type="button" name="button">VER REGISTROS DE MARCA</button>
+										</a>
+									</div>
+									<div class="form-group col-sm-6" style="text-align: center; padding-top: 3em;">
+										<a href="../../consultaProductospe/{{$rol->ID_empresa}}">
+											<button class="btn btn-info" type="button" name="button">VER REGISTROS DE PRODUCTO</button>
+										</a>
 									</div>
 
 									</form>
@@ -370,10 +355,7 @@
 											<label class="">
 												Escribe tus comentarios/observaciones que serán enviados por correo al usuario<span class="symbol required"></span>
 											</label>
-											<textarea name="mensaje" id="mensaje" rows="8" cols="80" class="form-control">
-
-
-											</textarea>
+											<textarea name="mensaje" id="mensaje" rows="8" cols="80" class="form-control"></textarea>
 										</div>
 										<div class="form-group col-sm-6">
 											<label class="">

@@ -43,9 +43,16 @@ Route::post('/recuperarContrasena', 'adminController@recuperarContrasena')->name
 Route::get('/consultaEmpresas', 'adminController@consultae')->name('consultaEmpresas');
 Route::get('/Eventos', 'adminController@eventos')->name('eventos');
 
+Route::get('/consultaMarcaspe/{id}', 'marcaController@viewConsultaMarcape'); //Vista Consulta marcas por empresa
+Route::get('/getMarcape/{id}','marcaController@getMarcape');
+
+Route::get('/consultaProductospe/{id}', 'productoController@viewConsultaProductope'); //Vista Consulta marcas por empresa
+Route::get('/getProductospe/{id}','productoController@getProductope');
+
 
 Route::get('/link/{id}/{arch}', 'adminController@link');
 Route::get('/linkprod/{id}/{arch}', 'adminController@linkprod');
+Route::get('/linkmarca/{id}/{arch}', 'adminController@linkmarca');
 
 
 //Categorias

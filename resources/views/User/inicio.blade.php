@@ -220,7 +220,7 @@
 												<form action="{{ route('etapauno') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 													 {!! csrf_field() !!}
 													<label for="">Describe tu idea de negocio</label><span class="symbol required"></span>
-													<textarea class="form-control" required  name="ideanegocio" rows="10" cols="80" id="ideanegocio"></textarea>
+													<textarea class="form-control" required  name="ideanegocio" rows="10" cols="80" id="ideanegocio">{{$emp->descripcion}}</textarea>
 													<div class="form-group col-sm-6">
 												    <input type="submit" name="enviar" value="Guardar">
 												  </div>
@@ -239,6 +239,10 @@
 											    <label class="">
 											    Comprobante de programa de incubación (Archivo .pdf)
 											    </label><br>
+													@if($emp->comprobante_incubacion!=null)
+													<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual</h4> </a>
+													@endif
+
 
 											    <input type="file" name="incubacion" required id="incubacion" class="form-control" accept="application/pdf"><br>
 												</div>
@@ -268,11 +272,25 @@
 
 											<form action="{{ route('etapatres') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 												 {!! csrf_field() !!}
-												<div class="form-group col-sm-12">
+												<div class="form-group col-sm-6">
+
 													<label class="">
 														Alta hacienda (Archivo .pdf)<span class="symbol required"></span>
 													</label>
-												    <input type="file" required name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
+												    <input type="file"  name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
+														@if($emp->comprobante_incubacion!=null)
+														<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->comprobante_shcp}}"> <h4>Comprobante de hacienda actual</h4> </a>
+														@endif
+												</div>
+												<div class="form-group col-sm-6">
+													<label class="">
+														Regimen hacienda<span class="symbol required"></span><br>
+													</label>
+													@if($emp->regimen!=null)
+													<input type="text"  required class="form-control" id="regimen" name="regimen" placeholder="" value="{{$emp->regimen}}">
+													@else
+													<input type="text"  required class="form-control" id="regimen" name="regimen" placeholder="">
+													@endif
 												</div>
 												@if(session('tipo')=='fisica')
 												<div class="form-group col-sm-12">
@@ -280,8 +298,11 @@
 														RFC<span class="symbol required"></span><br>
 														<i>El RFC que des de alta, debe estar registrado previamente <a href="http://sitio.sanluis.gob.mx:8060/Registro" target="_blank"><strong style="font-size: 20px"> aquí</strong></a> como persona Moral</i>
 													</label>
-
+													@if($emp->RFC!=null)
+													<input type="text"  required class="form-control" id="rfc" name="rfc" placeholder="" value="{{$emp->RFC}}">
+													@else
 													<input type="text"  required class="form-control" id="rfc" name="rfc" placeholder="">
+													@endif
 												</div>
 												<div class="form-group col-sm-6">
 													<label class="">
@@ -325,6 +346,7 @@
 														Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
 													</label>
 												    <input type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
+														<img  id='fileimg' style="height: auto; width: 200px;"/>
 												</div>
 
 											  <div class="form-group col-sm-6" id="tipo_incu">
@@ -356,11 +378,11 @@
 											<div class="row justify-content-center" id="step-5"  style="display: none;">
 											@endif
 											<h1>Etapa 5</h1>
-											<form class="" action="index.html" method="post">
+											<form action="{{ route('etapacinco') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 												 {!! csrf_field() !!}
 												<div class="form-group col-sm-12">
 													<label class="">
-														Carga archivo FDA (Solo para empresas de categoría Gastronomía)<br>
+														Carga archivo FDA (Solo para empresas de categoría Gastronomía o alimentos)<br>
 													</label>
 													<input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 												</div>
@@ -554,5 +576,44 @@
 				</div>
 			</div>
 
+			<script type="text/javascript">
+			$(document).ready( function() {
 
+
+			     $(document).on('change', '.btn-file :file', function() {
+			          var input = $(this),
+			          label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+			          input.trigger('fileselect', [label]);
+			     });
+
+			     $('.btn-file :file').on('fileselect', function(event, label) {
+			          var input = $(this).parents('.input-group').find(':text'),
+			          log = label;
+			          if( input.length ) {
+			               input.val(log);
+			          }
+								//  else {
+			          //      if( log ) alert(log);
+			          // }
+			     });
+
+			     function readURL(input) {
+			          if (input.files && input.files[0]) {
+			               var reader = new FileReader();
+			               reader.onload = function (e) {
+			                    $('#fileimg').attr('src', e.target.result);
+			               }
+			               reader.readAsDataURL(input.files[0]);
+			          }
+			     }
+
+
+
+			     $("#logo").change(function(){
+			          readURL(this);
+			     });
+
+
+			});
+			</script>
 @endsection
