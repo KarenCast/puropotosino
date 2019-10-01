@@ -74,7 +74,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading	" style="padding-bottom: 10%;">
                         <h3>MIS Eventos<br>
-                            <small>AQUI PUEDES ENCONTRAR EL HISTORIAL EMPRESAS</small></h3>
+                            <small>AQUI PUEDES ENCONTRAR TODOS LOS EVENTOS</small></h3>
                     </div>
                     <div class="panel-body proceso">
                         <div class="form-group row vacactivas" id="vacactivas">
@@ -141,7 +141,7 @@
                     <form class="form-horizontal" method="post" id="eventoSave" action="{{route('saveEvento')}}"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <input type="text" name="ID_eventoE" id="ID_evento" value="0">
+                        <input type="hidden" name="ID_eventoE" id="ID_evento" value="0">
                         <div class="row">
                             <div class="col-6 form-group">
                                 <label for="hora_inicio" class="col-sm-12 control-label">Fecha/Hora</label>

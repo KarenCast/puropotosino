@@ -21,8 +21,8 @@
             <!--Body-->
             <div class="modal-body">
                 <div class="text-center">
-                    <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"> <strong
-                            id="nombre_evento"></strong></i>
+                    <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"></i>
+                    <p class="text-center"><strong id="nombre_evento"></strong></p>
                 </div>
                 <hr>
                 <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
@@ -35,11 +35,47 @@
             <!--Footer-->
             <div class="modal-footer justify-content-center">
                 <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
+                <a type="button" class="btn btn-outline-primary waves-effect" onClick="meInteresa();">Me interesa</a>
             </div>
         </div>
     </div>
 </div>
 
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Registro a evento</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form class="form" action="{{route('registroEvento')}}" role="form" autocomplete="off" id="formLogin"
+                    method="POST">
+                    @csrf
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="uname1">Correo</label>
+                        <input type="email" class="form-control form-control-lg" name="correo" required="true">
+                        <div class="invalid-feedback">Campo necesario.</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control form-control-lg" name="contrasena" required="true"
+                            autocomplete="new-password">
+                        <div class="invalid-feedback">Campo necesario</div>
+                    </div>
+
+                    <div class="form-group py-4">
+                        <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal"
+                            aria-hidden="true">Cancelar</button>
+                        <button type="submit" class="btn btn-success btn-lg float-right"
+                            id="btnLogin">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <head>
     <script type="text/javascript">
@@ -67,14 +103,31 @@
             themeSystem: 'bootstrap',
             selectable: true,
             eventClick: function(info) {
-                $('#nombre_evento').html(info.event.title);
 
-                $('#fecha_evento').html(info.event.start);
+                var time = new Date(info.event.start);
+                var timeNow = new Date();
+                var dif = (timeNow - time);
+
+                if (dif > 0) {
+                    notificationWarring('Evento ya no esta disponible');
+                    return;
+                }
+                //console.log(dif);
+                var options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: 'true'
+                };
+                var fechaEvento = time.toLocaleString("es-ES", options);
+                $('#nombre_evento').html(info.event.title);
+                $('#fecha_evento').html(fechaEvento);
                 $('#observaciones').html(info.event.extendedProps.observaciones);
                 $('#requisitos').html(info.event.extendedProps.requisitos);
                 $('#tema').html(info.event.extendedProps.tema);
                 $('#costo').html("$" + info.event.extendedProps.costo);
-
                 $('#myModal').modal('toggle');
 
                 // change the border color just for fun
@@ -87,6 +140,12 @@
         calendar.render();
     });
 
+    function meInteresa() {
+
+        $('#myModal').modal('hide');
+        $('#loginModal').modal('toggle');
+    }
+
     function loadEvents() {
         var arrData = [];
         $.ajax({
@@ -95,9 +154,9 @@
             dataType: 'json',
             method: 'get',
             success: function(data) {
-               
+
                 for (var i = 0; i < data.length; i++)
-                
+
                     arrData[i] = {
                         id: data[i]['ID_evento'],
                         observaciones: data[i]['observaciones'],
@@ -121,6 +180,10 @@
 </head>
 
 
+<link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/AmaranJS/css/amaran.min.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/AmaranJS/css/animate.min.css')}}" />
+<script src="{{asset('assets/plugins/AmaranJS/js/jquery.amaran.js')}}"></script>
+<script src="{{asset('js/notifications.js')}}"></script>
 <link href="{{asset('assets/plugins/core/main.css')}}" rel='stylesheet' />
 <link href="{{asset('assets/plugins/daygrid/main.css')}}" rel='stylesheet' />
 <script src="{{asset('assets/plugins/core/main.js')}}"></script>

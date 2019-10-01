@@ -3,23 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Evento;
+use App\UsuariosExternos;
 
 class EventosController extends Controller
 {
-    public function consultaEventos(){
-       return view('admin.catEventos'); 
+    public function consultaEventos()
+    {
+        return view('admin.catEventos');
     }
 
-    public function getEventos(){
+    public function getEventos()
+    {
         $reporte = Evento::all();
+
         return response()->json($reporte, 200);
     }
 
     public function store(Request $request)
-    {   
-        if($request->ID_eventoE == 0){
+    {
+        if ($request->ID_eventoE == 0) {
             $event = Evento::create($request->all());
 
             /*
@@ -29,16 +32,31 @@ class EventosController extends Controller
             ]);
             */
             return redirect('/consultaEventos');
-        }
-        else { 
+        } else {
             $edit = Evento::findOrFail($request->ID_eventoE);
             $edit->update($request->all());
+
             return redirect('/consultaEventos');
         }
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $delete = Evento::findOrFail($request->ID_evento);
         $delete->delete();
+    }
+
+    public function registro(Request $request)
+    {
+        $user = UsuariosExternos::where('correo_electronico', $request->correo)->where('contrasena', sha1($request->contrasena))->first();
+
+        if ($user != null) {
+            //envia correo
+            dd($user);
+        }
+        else{
+            //no envia nada? 
+            dd($request->all());
+        }
     }
 }
