@@ -28,6 +28,11 @@ class contenidoController extends Controller
         return view('admin.consultacontenido');
     }
 
+    public function viewRecetas()
+    {
+        return view('admin.consultaRecetas');
+    }
+
     public function getCont($n, $t)
     {
         if ($n == 1) {
@@ -43,6 +48,17 @@ class contenidoController extends Controller
         return Datatables::of($contenido)
     ->make(true);
     }
+
+    public function getRec()
+    {
+        $contenido = DB::table('admpuropotosino'.'.'.'TMContenido')
+        ->where('tipo', '0')
+        ->get();
+
+        return Datatables::of($contenido)
+        ->make(true);
+    }
+
 
     public function store(Request $request)
     {

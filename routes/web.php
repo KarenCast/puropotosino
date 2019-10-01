@@ -14,6 +14,8 @@
 Route::get('/', 'mainController@inicio');
 Route::get('/testimonios', 'mainController@testimonios')->name('testimonios');
 Route::get('/registro', 'mainController@registro')->name('registro');
+Route::get('/productos', 'mainController@productos')->name('productos');
+Route::get('/getProductosu','mainController@getProducto');
 
 
 // Empresa Alta Fase 0
@@ -42,7 +44,7 @@ Route::get('/consultaEmpresas', 'adminController@consultae')->name('consultaEmpr
 Route::get('/Eventos', 'adminController@eventos')->name('eventos');
 
 
-Route::get('./link/{id}/{arch}', 'adminController@link');
+Route::get('/link/{id}/{arch}', 'adminController@link');
 Route::get('/linkprod/{id}/{arch}', 'adminController@linkprod');
 
 
@@ -60,7 +62,7 @@ Route::post('/deleteS', 'subcatController@deleteS')->name('subcatdelete'); //Eli
 Route::get('/getSub','subcatController@getSub');
 
 
-Route::get('/consultaRecetas', 'contenidoController@viewCont')->name('consultaRecetas'); //Vista Consulta recetas
+Route::get('/consultaRecetas', 'contenidoController@viewRecetas')->name('consultaRecetas'); //Vista Consulta recetas
 Route::get('/altaRecetas', 'contenidoController@viewContenido')->name('altaRecetas'); //Vista Altas recetas
 Route::post('/altaRec', 'contenidoController@store')->name('contenido'); //Guardar recetas
 Route::post('/altaRec', 'contenidoController@update')->name('actcontenido'); //Guardar recetas
@@ -73,6 +75,7 @@ Route::post('/altaTest', 'contenidoController@store')->name('contenido'); //Guar
 Route::post('/altaRec', 'contenidoController@update')->name('actcontenido'); //Guardar recetas
 Route::post('/deleteTestimonios', 'contenidoController@deleteTest')->name('testdelete'); //Eliminar testimonio
 Route::get('/getCont/{n}/{T}','contenidoController@getCont'); //Get Contenido en DB
+Route::get('/getRec//','contenidoController@getRec'); //Get Contenido en DB
 Route::get('/ActualizarContenido/{n}','contenidoController@viewActualizaCont');
 
 
@@ -96,6 +99,8 @@ Route::get('/altaMarca','marcaController@viewAltaMarca')->name('altaMarca');
 Route::post('/altaM', 'marcaController@storeM')->name('marca');
 Route::get('/consultaMarcas', 'marcaController@viewConsultaMarca')->name('consultaMarcas'); //Vista Consulta recetas
 Route::get('/getMarca','marcaController@getMarca');
+Route::get('/actualizarMarca/{n}','marcaController@viewActualizaMarca');
+Route::post('/umarca', 'marcaController@umarca')->name('umarca');
 
 
 //Productos
@@ -104,3 +109,4 @@ Route::post('/altaP', 'productoController@storeP')->name('producto');
 Route::get('/consultaProductos', 'productoController@viewConsultaProducto')->name('consultaProducto'); //Vista Consulta recetas
 Route::get('/getProductos','productoController@getProducto');
 Route::get('/actualizarProducto/{n}','productoController@viewActualizaProducto');
+Route::post('/uproducto', 'productoController@uproducto')->name('uproducto');

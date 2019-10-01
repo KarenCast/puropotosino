@@ -59,8 +59,10 @@ class UserController extends Controller
 
    }else {
      $uf = Empresas::where('CURP', session('CURP'))->first();
-     if ($uf->RFC!=null) {
-       session(['RFC' => $uf->RFC]);
+     if ($uf != null) {
+       if ($uf->RFC != null || $uf->RFC != '') {
+         session(['RFC' => $uf->RFC]);
+       }
      }
 
    }
@@ -268,12 +270,12 @@ set_time_limit(0);
 function etapados(Request $request){
 
   set_time_limit(0);
-
-  if (session('RFC')!=null || session('RFC')!='') {
-    $name=session('RFC');
-  }else {
-    $name=session('CURP');
-  }
+  $name= session('ID_e');
+  // if (session('RFC')!=null || session('RFC')!='') {
+  //   $name=session('RFC');
+  // }else {
+  //   $name=session('CURP');
+  // }
 
   $carpeta = storage_path();
 

@@ -17,7 +17,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#">Recetas con Productos de Puro Potosino</a>
-          <a class="dropdown-item" href="#">Categorias de Productos</a>
+          <a class="dropdown-item" href="{{route('productos')}}">Productos</a>
         </div>
       </li>
       <li class="nav-item">

@@ -38,7 +38,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											
+
 
 											<li>
 												<a href="{{url('/LogOut')}}">
@@ -176,7 +176,7 @@
 														<a href="#step-6" class="">
 													@endif
 														<div class="stepNumber">
-																<p><strong>5</strong></p>
+																<p><strong>6</strong></p>
 														</div>
 														<span class="stepDesc">
 
@@ -313,6 +313,11 @@
 											@endif
 
 											<h1>Etapa 4</h1>
+
+											<br>
+											<a href="#" style="float: right"><i><h4>Descarga tu constancia del programa</i><i class="fas fa-download"></h4></i></a>
+
+											<br><br><br>
 											<form action="{{ route('etapacuatro') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 												 {!! csrf_field() !!}
 												<div class="form-group col-sm-6">
@@ -329,10 +334,12 @@
 											    	<input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 											  </div>
 
-												<strong>
-													Para pasar a la siguiente etapa, debes tener por lo menos un registro de marca y un producto dados de alta.<br>x
-													Dalos de alta desde tú menú lateral, (Apartados de Registro de marca y productos).
-												</strong>
+												<div class="class-sm-12">
+													<strong>
+														Para pasar a la siguiente etapa, debes tener por lo menos un registro de marca y un producto dados de alta.<br>
+														Dalos de alta desde tú menú lateral, (Apartados de Registro de marca y productos).
+													</strong>
+												</div>
 												<div class="form-group col-sm-6">
 													<label for=""></label>
 													<br>
@@ -519,7 +526,7 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 5</h1>
+												<h1>Etapa 6</h1>
 												<div class="col-md-1">
 
 												</div>

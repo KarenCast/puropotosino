@@ -95,40 +95,22 @@
                     <div class="panel-body proceso">
 
 
-                        <div class="form-group row vacactivas" id="vacactivas">
-                            <div class="col-sm-6">
-                                <label for="vac" id="etiqueta1"></label>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
 
-                                        <label class="switch ">
-                                            <input type="checkbox" class="primary" value="0" id="activas" name="activas"
-                                                onchange="getCont();">
-                                            <span class="slider a round"></span>
-                                        </label>
-
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
 
                         <div class="row">
                             <div class="table-responsive">
                                 <input type="text" name="tipoini" id="tipoini" style="display:none;"
                                     value="{{{session('tipoinicio')}}}">
-                                <table id="tableconte" name="tableconte" class="table-striped dt-responsive nowrap"
+                                <table id="tablerec" name="tablerec" class="table-striped dt-responsive nowrap"
                                     style="width: 100%; ">
                                     <thead class="thead-light">
                                         <tr>
                                             <th>ID</th>
                                             <th>Titulo</th>
-                                            <th>Descripción</th>
 
                                             <th>Editar</th>
                                             <th>Eliminar</th>
-                              
+                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -373,5 +355,5 @@
     </div>
 </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
-<script src="{{asset('js/FunctionContenido.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/FunctionRecetas.js')}}" type="text/javascript"></script>
 @endsection

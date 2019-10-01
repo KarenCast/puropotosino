@@ -7,37 +7,14 @@ $(document).ready(function() {
 
 function getCont() {
 
-  var pathname = window.location.pathname;
-  var cont;
-  var test;
-  if (pathname=='./consultaRecetas') {
-    cont = 0;
-    test = 0;
-    document.getElementById("vacactivas").style.display = "none";
-  }else {
-    cont = 1;
 
-    if (document.getElementById("activas").checked == false) {
-      test = '1';
-        document.querySelector('#etiqueta1').innerText = 'IMAGENES';
-    }else {
-      test = '2';
-        document.querySelector('#etiqueta1').innerText = 'VIDEOS';
-    }
-  }
-
-console.log(pathname);
-
-    var n = $("#tipoini").val();
-    var rfc;
-
-    $('#tableconte').dataTable().fnDestroy();
+    $('#tablerec').dataTable().fnDestroy();
     $.ajax({
-        url: "./getCont/"+cont+"/"+test,
+        url: "./getRec/",
         dataType: 'json',
         method: 'Get',
         success: function(r) {
-            oTable = $('#tableconte').DataTable({
+            oTable = $('#tablerec').DataTable({
             "language": {
    				   "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             },
@@ -51,10 +28,7 @@ console.log(pathname);
                             data: 'titulo',
                             name: 'titulo'
                         },
-                        {
-                            data: 'descripcion',
-                            name: 'descripcion'
-                        },
+
                         {
                             sWidth: '7%',
                             orderable: false,

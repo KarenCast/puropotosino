@@ -44,6 +44,15 @@ function getMarca() {
                             data: 'archivo',
                             name: 'archivo'
                         },
+                        {
+                            data: 'ID_marca',
+
+                            sWidth: '7%',
+                            orderable: false,
+                            "render": function(data) {
+                                  return '<a href="./actualizarMarca/'+data+'">Editar</a>';
+                            }
+                        },
 
 
                     ],

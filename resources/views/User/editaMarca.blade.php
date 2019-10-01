@@ -20,7 +20,16 @@
                 <li class="active">
 									ETAPA 0
 								</li>
-								
+								<!-- <li class="search-box">
+									<form class="sidebar-search">
+										<div class="form-group">
+											<input type="text" placeholder="Buscar...">
+											<button class="submit">
+												<i class="clip-search-3"></i>
+											</button>
+										</div>
+									</form>
+								</li> -->
 								<ul class="nav navbar-right">
 
 									<li class="dropdown current-user">
@@ -68,31 +77,32 @@
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
 
-									<h3>REGISTRO DE MARCAS<br>
+									<h3>ACTUALIZA REGISTRO DE MARCAS<br>
 	                 <small>Da de alta las marcas registradas con las que cuentas</small></h3>
 								</div>
 								<div class="panel-body proceso">
-									<form action="{{ route('marca') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
+									<form action="{{ route('umarca') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
 									  {!! csrf_field() !!}
 									  <h4>Información general de marca</h4>
 									  <hr width="100%" color="black"/>
-
+										<input type="text" name="id" id="id" value="{{$marcas->ID_marca}}" readonly style="display:block">
 									  <div class="form-group col-sm-6">
 									    <label class="">
 									      Nombre de Marca<span class="symbol required"></span>
 									    </label>
-									    <input required type="text" required class="form-control" id="nombre_marca" name="nombre_marca" placeholder="">
+									    <input required type="text" required class="form-control" id="nombre_marca" name="nombre_marca" placeholder="" value="{{$marcas->nombre_marca}}">
 									  </div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
 									      Comprobante de registro de marca<span class="symbol required"></span>
+												<a href="#">Comprobante actual</a>
 									    </label>
-									    <input required type="file" class="form-control" accept="application/pdf" id="registro_marca" name="registro_marca" placeholder="">
+									    <input type="file" class="form-control" accept="application/pdf" id="registro_marca" name="registro_marca" placeholder="">
 									  </div>
 
 
 									  <div class="form-group col-sm-6">
-									    <input type="submit" name="enviar" value="Registrar">
+									    <input type="submit" name="enviar" value="Actualizar">
 									  </div>
 									</form>
 

@@ -34,14 +34,11 @@ class marcaController extends Controller
   function storeM(Request $request){
 
       set_time_limit(0);
-      if (session('RFC')!=null) {
 
-      $name= session('RFC');
-
+      $name= session('ID_e');
+      $name_arch= strtotime("now");
       $carpeta = storage_path();
-
       $carpeta = $carpeta.'/app/Files/'.$name.'/Marca';
-
       $ruta = '/Files//'.$name.'/Marca//';
       if (!file_exists($carpeta)){
         try {
@@ -54,7 +51,7 @@ class marcaController extends Controller
 
       $fileh = $request->file('registro_marca');
       if ($fileh!=null) {
-        $filenameh = $name.'_Marca'.'.'.$fileh->getClientOriginalExtension();
+        $filenameh = $name_arch.'_Marca'.'.'.$fileh->getClientOriginalExtension();
       }else{
         $filenameh="";
       }
@@ -67,12 +64,9 @@ class marcaController extends Controller
           $marca-> archivo = $filenameh;
           $marca-> ID_empresa = session('ID_e');
           $marca->save();
-
         } catch (\Exception $e) {
           return $e->getMessage();
         }
-
-
 
         if ($fileh!=null) {
           try {
@@ -87,15 +81,7 @@ class marcaController extends Controller
       } catch (\Exception $e) {
         return $e->getMessage();
       }
-
-    }else{
-    //  return back()->with('Error', 'No se pudo guardar' );
-
-    }
-
-
   }
-
 
     function getMarca( )
     {
@@ -108,6 +94,67 @@ class marcaController extends Controller
 
 
 
+    function viewActualizamarca($n){
+      $marcas = DB::table('admpuropotosino'.'.'.'TMRegistroMarca')
+      ->where('ID_marca', $n)
+      ->first();
 
+
+      return view('User.editaMarca')->with('marcas', $marcas);
+    }
+
+
+    function umarca(Request $request){
+
+      $name= session('ID_e');
+      $name_arch= strtotime("now");
+      $carpeta = storage_path();
+      $carpeta = $carpeta.'/app/Files/'.$name.'/Marca';
+      $ruta = '/Files//'.$name.'/Marca//';
+      if (!file_exists($carpeta)){
+        try {
+          mkdir($carpeta, 0777, true);
+          $res = "";
+        }catch (\Exception $e) {
+          return "no se creó";
+        }
+      }
+
+      $fileh = $request->file('registro_marca');
+      if ($fileh!=null) {
+        $filenameh = $name_arch.'_Marca'.'.'.$fileh->getClientOriginalExtension();
+      }
+
+      if ($fileh!=null) {
+          try {
+            $rutah = $ruta.$filenameh;
+            \Storage::disk('local')->put($rutah,  \File::get($fileh));
+          } catch (\Exception $e) {
+            return $e->getMessage();
+          }
+          try {
+              $cont = Marca::where('ID_marca', $request->id)
+                ->update([
+                  'nombre_marca' => $request->nombre_marca,
+                  'archivo' => $filenameh,
+                ]);
+          } catch (\Exception $e) {
+              return $e->getMessage();
+          }
+        }else{
+
+      try {
+          $cont = Marca::where('ID_marca', $request->id)
+            ->update([
+              'nombre_marca' => $request->nombre_marca,
+
+            ]);
+      } catch (\Exception $e) {
+          return $e->getMessage();
+      }
+}
+      return view('User.consultaRegistroMarca');
+
+    }
 
 }

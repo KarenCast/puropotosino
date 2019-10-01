@@ -40,7 +40,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											
+
 											<li>
 												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
@@ -94,7 +94,8 @@
                    	<tr>
                       <th>ID</th>
                       <th>Nombre</th>
-                      <th>archivo</th>
+                      <th>Archivo</th>
+											<th>Editar</th>
                      </tr>
                   </thead>
                   <tbody>

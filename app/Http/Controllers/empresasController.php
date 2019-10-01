@@ -35,57 +35,12 @@ class empresasController extends Controller
 
 
 
-        if (session('RFC')!=null || session('RFC')!='') {
-          $name=session('RFC');
-        }else {
-          $name=session('CURP');
-        }
+        // if (session('RFC')!=null || session('RFC')!='') {
+        //   $name=session('RFC');
+        // }else {
+        //   $name=session('CURP');
+        // }
 
-        $carpeta = storage_path();
-
-        $carpeta = $carpeta.'/app/Files/'.$name;
-
-        $ruta = '/Files//'.$name.'/';
-
-
-
-
-         if (!file_exists($carpeta)){
-           try {
-             mkdir($carpeta, 0777, true);
-             $res = "";
-           }catch (\Exception $e) {
-             return "no se creo";
-           }
-         }
-
-        $path =  public_path()."\Logos\\";
-
-
-
-
-        $filei = $request->file('incubacion');
-        if ($filei!=null) {
-          $filenamei = $name.'_Incubacion'.'.'.$filei->getClientOriginalExtension();
-        }
-        $fileh = $request->file('hacienda');
-        if ($fileh!=null) {
-          $filenameh = $name.'_Hacienda'.'.'.$fileh->getClientOriginalExtension();
-        }
-        $filecb = $request->file('codigobarras');
-        if ($filecb!=null) {
-          $filenamecb = $name.'_CodigoBarras'.'.'.$filecb->getClientOriginalExtension();
-        }
-        $filef = $request->file('fda');
-        if ($filef!=null) {
-          $filenamef = $name.'_FDA'.'.'.$filef->getClientOriginalExtension();
-        }
-
-
-        $fileimg= $request->file('logo');
-        if ($fileimg!=null) {
-          $filenameimg = $name.'_Logo'.'.'.$fileimg->getClientOriginalExtension();
-        }
 
 
         // $name = $request->nombre_empresa;
@@ -106,13 +61,7 @@ class empresasController extends Controller
 
           $emp-> tipo_incubacion = $request->tipoincu;
 
-          $emp-> comprobante_incubacion = $filenamei;
-          $emp-> comprobante_shcp = $filenameh;
-          $emp-> disenio_imagen = $filenameimg;
-          $emp-> codigo_barras = $filenamecb;
-          $emp-> FDA= $filenamef;
 
-          // $emp-> tabla_nutricional = $request->tabla;
 
           $emp-> facebook = $request->facebook;
           $emp-> instagram = $request->instagram;
@@ -123,7 +72,6 @@ class empresasController extends Controller
           $emp-> ID_subcategoria = $request->subcat;
 
 
-
           $emp-> fecha_inscripcion = $fecha;
           $emp-> fase = '10';
 
@@ -131,7 +79,68 @@ class empresasController extends Controller
           $emp-> CURP = session('CURP');
 
           if ($emp -> save()) {
+            $name= $emp->ID_empresa;
 
+            $carpeta = storage_path();
+
+            $carpeta = $carpeta.'/app/Files/'.$name;
+
+            $ruta = '/Files//'.$name.'/';
+
+
+
+
+             if (!file_exists($carpeta)){
+               try {
+                 mkdir($carpeta, 0777, true);
+                 $res = "";
+               }catch (\Exception $e) {
+                 return "no se creo";
+               }
+             }
+
+            $path =  public_path()."\Logos\\";
+
+
+
+
+            $filei = $request->file('incubacion');
+            if ($filei!=null) {
+              $filenamei = $name.'_Incubacion'.'.'.$filei->getClientOriginalExtension();
+            }
+            $fileh = $request->file('hacienda');
+            if ($fileh!=null) {
+              $filenameh = $name.'_Hacienda'.'.'.$fileh->getClientOriginalExtension();
+            }
+            $filecb = $request->file('codigobarras');
+            if ($filecb!=null) {
+              $filenamecb = $name.'_CodigoBarras'.'.'.$filecb->getClientOriginalExtension();
+            }
+            $filef = $request->file('fda');
+            if ($filef!=null) {
+              $filenamef = $name.'_FDA'.'.'.$filef->getClientOriginalExtension();
+            }
+
+
+            $fileimg= $request->file('logo');
+            if ($fileimg!=null) {
+              $filenameimg = $name.'_Logo'.'.'.$fileimg->getClientOriginalExtension();
+            }
+
+            try {
+
+              $vac = Empresas::where('ID_empresa', $emp->ID_empresa)
+              ->update([
+                'comprobante_incubacion' => $filenamei,
+                'comprobante_shcp' => $filenameh,
+                'disenio_imagen' => $filenameimg,
+                'codigo_barras' => $filenamecb,
+                'FDA' => $filenamef,
+              ]);
+
+            } catch (\Exception $e) {
+              return $e->getMessage();
+            }
 
 
 
@@ -248,9 +257,9 @@ class empresasController extends Controller
       }
 
 
-    function viewE($n){
+    function viewE($n, $tipo){
 
-      if ($n==1) {
+      if ($tipo==1) {
 
         $user = Empresas::where('ID_empresa', $n)->first();
 

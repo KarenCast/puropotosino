@@ -38,7 +38,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											
+
 											<li>
 												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
@@ -223,13 +223,11 @@
 									    <h4>Documentación con la que cuenta <span class="symbol required"></span></h4> <br>
 									    </label><br>
 
-											@if($rol->comprobante_incubacion!=null || $rol->comprobante_incubacion!='')
-											Comprobante de programa de incubación (Archivo .pdf)<br>
-												@if($rol->CURP!=null)
-												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
 
+												@if($rol->comprobante_incubacion!=null)
+												<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
 												@endif
-											@endif
+
 
 
 											@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')

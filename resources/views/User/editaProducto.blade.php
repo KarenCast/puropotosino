@@ -58,12 +58,15 @@
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
 
-									<h3>ALTA DE PRODUCTOS<br>
+									<h3>ACTUALIZA DE PRODUCTOS<br>
 	                 <small>Registra los productos que ofreces</small></h3>
 								</div>
 								<div class="panel-body proceso">
-									<form action="{{ route('producto') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
+									<form action="{{ route('uproducto') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
 									  {!! csrf_field() !!}
+
+                    <input style="display: none;" required type="text" required class="form-control" id="id" name="id" placeholder="" value="{{$producto->ID_producto}}">
+
 									  <h4>Información general de marca</h4>
 									  <hr width="100%" color="black"/>
 
@@ -79,7 +82,7 @@
 									    </label><br>
                       @if($producto->tabla_nutricional!=null || $producto->tabla_nutricional!='')
 											Tabla actual<br>
-                      <a href="/puro_potosino/public/linkprod/{{$producto->ID_empresa}}/{{$producto->tabla_nutricional}}"> <h4>Comprobante de incubación</h4> </a>
+                      <a href="/puro_potosino/public/linkprod/{{$producto->ID_empresa}}/{{$producto->tabla_nutricional}}"> <h4>Tabla Nutricional</h4> </a>
 
 
 
@@ -111,7 +114,7 @@
 									    <label class="">
 									      Imagen de producto<span class="symbol required"></span>
 									    </label>
-                      <input type="file" required class="form-control" id="imagen" name="imagen">
+                      <input type="file" class="form-control" id="imagen" name="imagen">
 											<img src="{{asset('Files')}}/{{$producto->ID_empresa}}/Productos/{{$producto->imagen}}" id='fileimg' style="height: auto; width: 200px;"/>
 									  </div>
 
