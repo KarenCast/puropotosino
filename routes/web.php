@@ -89,6 +89,8 @@ Route::get('/ActualizarContenido/{n}','contenidoController@viewActualizaCont');
 /*Eventos*/
 Route::get('consultaEventos', 'EventosController@consultaEventos')->name('consultaEventos');
 
+/*Recetas*/
+Route::get('Recetas', 'contenidoController@viewRecetasFront')->name('recetas');
 
 Route::get('/getEmpresas','empresasController@getEmpresas');
 Route::get('/getEmpresasM','empresasController@getEmpresasM');
