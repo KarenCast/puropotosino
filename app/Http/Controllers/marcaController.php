@@ -94,6 +94,8 @@ class marcaController extends Controller
 
 
 
+
+
     function viewActualizamarca($n){
       $marcas = DB::table('admpuropotosino'.'.'.'TMRegistroMarca')
       ->where('ID_marca', $n)
@@ -156,5 +158,22 @@ class marcaController extends Controller
       return view('User.consultaRegistroMarca');
 
     }
+
+
+    // MARCAS POR EMPRESA
+
+    function viewConsultaMarcape($id){
+
+         return view('admin.consultaMarcas')->with('id',$id);
+    }
+
+
+    function getMarcape($id){
+        $cat = DB::table('admpuropotosino'.'.'.'TMRegistroMarca')
+        ->where('ID_empresa', $id)
+        ->get();
+        return Datatables::of($cat)
+        ->make(true);
+     }
 
 }

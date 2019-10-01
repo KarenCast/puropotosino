@@ -88,7 +88,7 @@ class productoController extends Controller
             $producto->save();
 
           } catch (\Exception $e) {
-            return $e->getMessage();
+            return back()->with('Error', 'No se pudo guardar producto');
           }
 
 
@@ -98,7 +98,7 @@ class productoController extends Controller
               $rutah = $ruta.$filenameh;
               \Storage::disk('local')->put($rutah,  \File::get($fileh));
             } catch (\Exception $e) {
-              return $e->getMessage();
+              return back()->with('Error', 'No se cargar tabla');
             }
           }
 
@@ -136,20 +136,20 @@ class productoController extends Controller
                   } catch (\Exception $e) {
                     // session(['Error' => 'No se pudo guardar CV, intenta con otro archivo.']);
                     // return redirect('/TodasVacantes')->with('Error', 'No se pudo guardar CV, intenta con otro archivo.');
-                    return $e->getMessage();
+                  return back()->with('Error', 'No se pudo guardar imagen');
                   }
 
                 } catch (\Exception $e) {
-                  return $e->getMessage();
+                  return back()->with('Error', 'No se guardar');
                 }
 
-            return redirect('inicioUser');
+            return redirect('./consultaProductos');
         } catch (\Exception $e) {
-          return $e->getMessage();
+          return back()->with('Error', 'No se pudo crear producto');
         }
 
       }else{
-      //  return back()->with('Error', 'No se pudo guardar' );
+      return back()->with('Error', 'No puedes ser reconocido como empresa, intenta iniciar sesión nuevamente');
 
       }
 
@@ -234,10 +234,10 @@ class productoController extends Controller
                       'tabla_nutricional' => $filenameh,
                     ]);
               } catch (\Exception $e) {
-                  return $e->getMessage();
+                  return back()->with('Error', 'No se pudo actualizar tabla');
               }
             } catch (\Exception $e) {
-              return $e->getMessage();
+              return back()->with('Error', 'No se pudo guardar tabla');
             }
           }
 
@@ -269,7 +269,7 @@ class productoController extends Controller
 
                               ]);
                         } catch (\Exception $e) {
-                            return $e->getMessage();
+                            return back()->with('Error', 'No se pudo guardar imagen');
                         }
                       }else {
                        $res = "Fallo al cargar uno o mas archivos";
@@ -279,11 +279,11 @@ class productoController extends Controller
                   } catch (\Exception $e) {
                     // session(['Error' => 'No se pudo guardar CV, intenta con otro archivo.']);
                     // return redirect('/TodasVacantes')->with('Error', 'No se pudo guardar CV, intenta con otro archivo.');
-                    return $e->getMessage();
+                    return back()->with('Error', 'No se pudo guardar');
                   }
 
         } catch (\Exception $e) {
-          return $e->getMessage();
+          return back()->with('Error', 'No se completo la solicitud');
         }
         try {
             $cont = Producto::where('ID_producto', $request->id)
@@ -293,14 +293,32 @@ class productoController extends Controller
                 'ID_marca' => $request->marca,
               ]);
         } catch (\Exception $e) {
-            return $e->getMessage();
+            return back()->with('Error', 'No se pudo actualizar');
         }
 
         return view('User.consultaProducto');
 
       }
 
+// PRODUCTO por empresas
 
+function viewConsultaProductope($n){
 
+     return view('admin.consultaProductos')->with('n',$n);
+
+}
+
+function getProductope($n)
+{
+    $cat = DB::table('admpuropotosino'.'.'.'TCProducto')
+    ->join('admpuropotosino'.'.'.'TMRegistroMarca',function($join){
+      $join->on('admpuropotosino'.'.'.'TMRegistroMarca.ID_marca', '=', 'admpuropotosino'.'.'.'TCProducto.ID_marca');
+    })
+    ->where('admpuropotosino'.'.'.'TCProducto.ID_empresa', $n)
+
+    ->get();
+    return Datatables::of($cat)
+    ->make(true);
+}
 
   }

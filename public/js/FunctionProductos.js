@@ -51,14 +51,14 @@ function getProd() {
                             data: 'ID_empresa',
                             "render": function(data) {
                               empresa=data;
-                              return empresa;
+                              return '';
                             }
                         },
                         {
                             data: 'imagen',
                           "render": function(data) {
                             var n=data.slice(0,-4);
-                            return '<img src="Files/'+empresa+'/Productos/' + data + '" width="50%;">';
+                            return '<img src="Files/'+empresa+'/Productos/' + data + '" width="100%;">';
                           }
                         },
                         {
@@ -90,9 +90,16 @@ function getProd() {
 
       var mar;
       var desc;
+      var id_emp;
       var nom;
       var titulo;
       var imagen;
+      var rs;
+      var image_p;
+      var fa;
+      var tw;
+      var ins;
+      var si;
 
 
       $("#tableproductos").on('click', '#bedv', function(e) {
@@ -107,17 +114,49 @@ function getProd() {
           desc = data['descripcion'];
           imagen = data['disenio_imagen'];
           id_emp = data['ID_empresa'];
+          rs= data['razonsocial'];
+          imagen_p=data['imagen'];
+          fa=data['facebook'];
+          tw=data['twitter'];
+          ins=data['instagram'];
+          si=data['stio_web'];
+          console.log(rs);
           // producto = data['imagen'];
           // titulo = data['titulo'];
 
           $("#nombre_e").val(nom);
           $("#marca_e").val(mar);
           $("#desc_e").val(desc);
+          $("#empresa_e").val(rs);
+
+          if (fa) {
+              $("#facebook").attr("href", fa);
+          }else{
+              $('#facebook').css("display", "none");
+          }
+
+          if (tw) {
+            $("#twitter").attr("href", tw);
+          }else{
+            $('#twitter').css("display", "none");
+          }
+
+          if (ins) {
+            $("#instagram").attr("href", ins);
+          }else{
+            $('#instagram').css("display", "none");
+          }
+
+          if (si) {
+              $("#sitio").attr("href", si);
+          }else{
+              $('#sitio').css("display", "none");
+          }
 
 
 
-
-           document.getElementById("logo_e").src = "Files/"+id_emp+"/Productos/"+imagen;
+           document.getElementById("logo_e").src = "Logos/"+id_emp+"/"+imagen;
+           document.getElementById("img_e").src = "Files/"+id_emp+"/Productos/"+imagen_p;
           // document.getElementById("titulo_e").src = "categorias/"+res+"/"+titulo;
 
 

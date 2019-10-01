@@ -18,7 +18,7 @@
 								</li>
 
                 <li class="active">
-									ETAPA 0
+									ALTA PRODUCTO
 								</li>
 								<!-- <li class="search-box">
 									<form class="sidebar-search">
@@ -39,7 +39,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											
+
 
 											<li>
 												<a href="{{url('/LogOut')}}">
@@ -112,13 +112,12 @@
 									    <label class="">
 									      Descripción<span class="symbol required"></span>
 									    </label>
-									    <textarea class="form-control" name="descripcion" id="descripcion" rows="3" cols="80">
-
-                      </textarea>
+									    <textarea class="form-control" name="descripcion" id="descripcion" rows="6" cols="80"></textarea>
 									  </div>
                     <div class="form-group col-sm-3">
 									    <label class="">
-									      Imagen de producto<span class="symbol required"></span>
+									      Imagen de producto<span class="symbol required"></span>	<br>
+												<i>IMPORTANTE: Imagen clara del producto, tomada en fondo blanco.</i>
 									    </label>
                       <input type="file" required class="form-control" id="imagen" name="imagen">
 											<img  id='fileimg' style="height: auto; width: 200px;"/>

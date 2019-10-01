@@ -1,7 +1,5 @@
-@extends('User.main')
+@extends('admin.main')
 @section('content')
-
-
 <div class="main-content">
 
 				<!-- end: SPANEL CONFIGURATION MODAL FORM -->
@@ -28,7 +26,7 @@
 								</li>
 
                 <li class="active">
-									Mis Categorias
+									Marcas
 								</li>
 
 								<ul class="nav navbar-right">
@@ -77,26 +75,24 @@
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
 
-										<h3>REGISTROS DE MARCA<br>
-	                 <small>AQUI PUEDES ENCONTRAR EL HISTORIAL DE TUS REGISTROS DE MARCA</small></h3>
+										<h3>MARCAS POR EMPRESA<br>
+	                 <small>AQUI PUEDES ENCONTRAR EL HISTORIAL DE TUS PRODUCTOS</small></h3>
 
 								</div>
 				<div class="panel-body proceso">
 
 
 
-
+          <input type="text" name="id_empresa" id="id_empresa" value="{{$id}}" style="display: none">
 					<div class="row">
 						<div class="table-responsive">
 
-							 <table id="tablemarca" name= "tablemarca" class="table-striped dt-responsive nowrap" style="width: 100%; ">
+							 <table id="tablemarcape" name= "tablemarcape" class="table-striped dt-responsive nowrap" style="width: 100%; ">
                   <thead class="thead-light">
                    	<tr>
                       <th>ID</th>
-                      <th>Nombre</th>
-											<th></th>
+                      <th>Marca</th>
                       <th>Archivo</th>
-											<th>Editar</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -227,5 +223,5 @@
 			           </div>
 			      </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
-<script src="{{asset('js/FunctionMarca.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/Functionmarcape.js')}}" type="text/javascript"></script>
 @endsection

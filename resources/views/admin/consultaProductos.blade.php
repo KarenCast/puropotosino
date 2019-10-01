@@ -1,4 +1,4 @@
-@extends('User.main')
+@extends('admin.main')
 @section('content')
 
 
@@ -77,8 +77,8 @@
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
 
-										<h3>REGISTROS DE MARCA<br>
-	                 <small>AQUI PUEDES ENCONTRAR EL HISTORIAL DE TUS REGISTROS DE MARCA</small></h3>
+										<h3>TUS PRODUCTOS<br>
+	                 <small>AQUI PUEDES ENCONTRAR EL HISTORIAL DE TUS PRODUCTOS</small></h3>
 
 								</div>
 				<div class="panel-body proceso">
@@ -88,14 +88,15 @@
 
 					<div class="row">
 						<div class="table-responsive">
-
-							 <table id="tablemarca" name= "tablemarca" class="table-striped dt-responsive nowrap" style="width: 100%; ">
+              <!-- <input type="text" id="id_empresa" name="id_empresa" value="{{$n}}"> -->
+							 <table id="tableproductope" name= "tableproductope" class="table-striped dt-responsive nowrap" style="width: 100%; ">
                   <thead class="thead-light">
                    	<tr>
                       <th>ID</th>
                       <th>Nombre</th>
+                      <th>Marca</th>
 											<th></th>
-                      <th>Archivo</th>
+											<th>Imagen</th>
 											<th>Editar</th>
                      </tr>
                   </thead>
@@ -114,44 +115,6 @@
         </div>
       </div>
 
-
-
-
-					<div class="modal fade" id="modaleliminarcat" tabindex="-1" role="dialog" aria-labelledby="modal-lici" aria-hidden="true">
-		               <div class="modal-dialog modal-md" role="document" >
-		                    <div class="modal-content" >
-		                         <div class="modal-header">
-		                              <h4 class="modal-title text-white" style="margin-top:0px;">Eliminar Vacante</h4>
-		                              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="bnClose">
-		                                   <span aria-hidden="true" class="text-white">&times;</span>
-		                              </button>
-		                         </div>
-		                         <div class="modal-body">
-		                              <div class="container">
-		                                   <form action="{{ route('catdelete') }}" method="post" enctype="multipart/form-data">
-		                                        {!! csrf_field() !!}
-		                                        <!-- <div id="sendmessage"> Dado de alta exitosamente </div> -->
-		                                        <h4><strong>¿Seguro que desea eliminar el siguiente registro?</strong></h4>
-		                                        <div class="row" style="border-top: 1px solid #ddd;">
-		                                             <div class="form-group col-md-12">
-		                                                  <p style="text-align: center"><strong>Vacante:</strong></p>
-		                                                  <input style="width: 100%; text-align:center;"readonly style="text-align: center" required class="inoborder" type="text" name="id_cat" id="id_cat" data-rule="required"  placeholder=""  data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/>
-		                                                  <div class="validation"></div>
-		                                             </div>
-
-		                                             <div class="form-group col-md-12">
-		                                                  <input style="width: 100%; text-align: center" readonly style="text-align: center" required  class="inoborder" type="text" name="desc_cat" id="desc_cat" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/>
-		                                                  <div class="validation"></div>
-		                                             </div>
-		                                        </div>
-		                                        <button style="text-align: center; width: 100%;" type="submit" class="btn btn-primary btn-lg btn-block login-btn">Aceptar</button>
-
-		                                   </form>
-		                              </div>
-		                         </div>
-		                    </div>
-		               </div>
-		          </div>
 
 
 
@@ -227,5 +190,5 @@
 			           </div>
 			      </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
-<script src="{{asset('js/FunctionMarca.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/Functionproductope.js')}}" type="text/javascript"></script>
 @endsection

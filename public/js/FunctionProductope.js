@@ -13,13 +13,15 @@ $(document).ready(function() {
 
 function getProd() {
 var empresa;
-    $('#tableproducto').dataTable().fnDestroy();
+var id= $("#id_empresa").val();
+console.log(id);
+    $('#tableproductope').dataTable().fnDestroy();
     $.ajax({
-        url: "./getProductos",
+        url: "../getProductospe/"+id,
         dataType: 'json',
         method: 'Get',
         success: function(r) {
-            oTable = $('#tableproducto').DataTable({
+            oTable = $('#tableproductope').DataTable({
             "language": {
    				   "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             },
@@ -55,7 +57,7 @@ var empresa;
                             data: 'imagen',
                             "render": function(data) {
                               var n=data.slice(0,-4);
-                              return '<img src="Files/'+empresa+'/Productos/' + data + '" width="50%;">';
+                              return '<img src="../Files/'+empresa+'/Productos/' + data + '" width="50%;">';
                             }
                         },
                         {
@@ -64,7 +66,7 @@ var empresa;
                             sWidth: '7%',
                             orderable: false,
                             "render": function(data) {
-                                  return '<a href="./actualizarProducto/'+data+'">Editar</a>';
+                                  return '<a href="'+data+'">Ver</a>';
                             }
                         },
 

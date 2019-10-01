@@ -7,6 +7,8 @@ use App\UsuariosExternos;
 use App\UsuariosInternos;
 use App\UsuariosMorales;
 use App\Empresas;
+use App\Marca;
+use App\Producto;
 use App\Contacto;
 use App\Roles;
 use Image;
@@ -118,7 +120,7 @@ class UserController extends Controller
         ->update([
           'fase' => $request->fase]);
       } catch (\Exception $e) {
-        return $e->getMessage();
+        return back()->with('Error', 'No se pudo actualizar fase');
       }
 
 
@@ -146,7 +148,7 @@ class UserController extends Controller
             });
           } catch (\Exception $e) {
         // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
-            return $e->getMessage();
+              return back()->with('Error', 'No se pudo enviar correo');
           }
 
 
@@ -154,7 +156,7 @@ class UserController extends Controller
 
         return redirect('./consultaEmpresas');
     } catch (\Exception $e) {
-    return $e->getMessage();
+      return back()->with('Error', 'No se pudo hacer consulta');
 
 
     }
@@ -174,7 +176,7 @@ $contacto = Contacto::where('ID_empresa', $request->id)->first();
       ->update([
         'fase' => 10]);
     } catch (\Exception $e) {
-      return $e->getMessage();
+        return back()->with('Error', 'No se pudo actualizar fase');
     }
 
     try {
@@ -207,11 +209,11 @@ $contacto = Contacto::where('ID_empresa', $request->id)->first();
           });
         } catch (\Exception $e) {
       // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
-          return $e->getMessage();
+            return back()->with('Error', 'No se pudo enviar correo');
         }
       return redirect('inicioUser');
   } catch (\Exception $e) {
-  return $e->getMessage();
+    return back()->with('Error', 'No se pudo actualizar');
   }
 }
 
@@ -228,7 +230,8 @@ set_time_limit(0);
         'fase' => 11,
         'descripcion' => $request->ideanegocio]);
     } catch (\Exception $e) {
-      return $e->getMessage();
+    //  return $e->getMessage();
+      return back()->with('Error', 'No se pudo actualizar registro');
     }
 
 
@@ -254,13 +257,14 @@ set_time_limit(0);
 
           });
         } catch (\Exception $e) {
-      // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
-          return $e->getMessage();
+          //return $e->getMessage();
+          return back()->with('Error', 'No se pudo enviar correo');
         }
 
       return redirect('inicioUser');
   } catch (\Exception $e) {
-  return $e->getMessage();
+  // return $e->getMessage();
+    return back()->with('Error', 'No se pudo actualizar');
   }
 
 }
@@ -306,7 +310,8 @@ function etapados(Request $request){
         'comprobante_incubacion' => $filenamei,
         'tipo_incubacion' => $request->tipoincu]);
     } catch (\Exception $e) {
-      return $e->getMessage();
+      //return $e->getMessage();
+        return back()->with('Error', 'No se pudo enviar actualizar fase');
     }
 
     if ($filei!=null) {
@@ -314,7 +319,7 @@ function etapados(Request $request){
         $rutai = $ruta.$filenamei;
         \Storage::disk('local')->put($rutai,  \File::get($filei));
       } catch (\Exception $e) {
-        return $e->getMessage();
+          return back()->with('Error', 'No se pudo guardar archivo de incubación');
       }
     }
 
@@ -341,13 +346,14 @@ function etapados(Request $request){
 
           });
         } catch (\Exception $e) {
-      // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
-          return $e->getMessage();
+    //  return $e->getMessage();
+            return back()->with('Error', 'No se pudo enviar correo');
         }
 
       return redirect('inicioUser');
   } catch (\Exception $e) {
-    return $e->getMessage();
+    //return $e->getMessage();
+      return back()->with('Error', 'No se pudo actualizar');
   }
 
 }
@@ -362,11 +368,7 @@ function etapatres(Request $request){
   if ($user!=null) {
   session(['RFC' => $request->rfc]);
 
-  if (session('RFC')!=null || session('RFC')!='') {
-    $name=session('RFC');
-  }else {
-    $name=session('CURP');
-  }
+  $name= session('ID_e');
 
   $carpeta = storage_path();
 
@@ -392,19 +394,31 @@ function etapatres(Request $request){
   try {
 
 
+    $uf = Empresas::where('ID_empresa', session('ID_e'))->first();
 
-
-
+    if ($uf->comprobante_shcp!=null || $uf->comprobante_shcp!='') {
+      try {
+        $vac = Empresas::where('ID_empresa', session('ID_e'))
+        ->update([
+          'fase' => 13,
+          'RFC' => $request->rfc,
+          'regimen' => $request->regimen]);
+      } catch (\Exception $e) {
+          return back()->with('Error', 'No se pudo actualizar fase');
+      }
+    }else{
     try {
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
         'fase' => 13,
         'comprobante_shcp' => $filenameh,
-        'RFC' => $request->rfc]);
+        'RFC' => $request->rfc,
+        'regimen' => $request->regimen]);
     } catch (\Exception $e) {
-      return $e->getMessage();
+      //return $e->getMessage();
+        return back()->with('Error', 'No se pudo actualizar fase');
     }
-
+  }
     $mensaje="moral";
     $t=0;
 
@@ -415,7 +429,8 @@ function etapatres(Request $request){
         $rutah = $ruta.$filenameh;
         \Storage::disk('local')->put($rutah,  \File::get($fileh));
       } catch (\Exception $e) {
-        return $e->getMessage();
+      //  return $e->getMessage();
+          return back()->with('Error', 'No se pudo guardar comprobante de DHCP');
       }
     }
 
@@ -430,6 +445,7 @@ function etapatres(Request $request){
       );
         try {
         //  return $emp->correo_contacto;
+
           Mail::send('emails.actualizacion', $data_vac, function ($message) {
 
             $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
@@ -437,15 +453,16 @@ function etapatres(Request $request){
 
           });
         } catch (\Exception $e) {
-      // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
-          return $e->getMessage();
+      //  return $e->getMessage();
+          return back()->with('Error', 'No se pudo enviar correo');
         }
 
 
 
       return redirect('inicioUser');
   } catch (\Exception $e) {
-    return $e->getMessage();
+    //return $e->getMessage();
+      return back()->with('Error', 'No se pudo Actualizar');
   }
 
 }else{
@@ -457,20 +474,11 @@ function etapatres(Request $request){
 
 function etapacuatro(Request $request){
 
+  if ((Marca::where('ID_empresa', session('ID_e'))->count())>0) {
+    if ((Producto::where('ID_empresa', session('ID_e'))->count())>0) {
   set_time_limit(0);
 
-  if (session('RFC')!=null || session('RFC')!='') {
-    $name=session('RFC');
-  }else {
-    $uf = Empresas::where('CURP', session('CURP'))->first();
-    if ($uf->RFC!=null) {
-        $name=$uf->RFC;
-        session(['RFC' => $uf->RFC]);
-    }else {
-        $name=session('CURP');
-    }
-
-  }
+  $name= session('ID_e');
 
   $carpeta = storage_path();
 
@@ -528,13 +536,13 @@ try {
                   }
 
               } catch (\Exception $e) {
-                // session(['Error' => 'No se pudo guardar CV, intenta con otro archivo.']);
-                // return redirect('/TodasVacantes')->with('Error', 'No se pudo guardar CV, intenta con otro archivo.');
-                return $e->getMessage();
+                  //return $e->getMessage();
+                  return back()->with('Error', 'No se pudo cargar imagen');
               }
 
 } catch (\Exception $e) {
-  return $e->getMessage();
+  //return $e->getMessage();
+    return back()->with('Error', 'No se pudo actualizar');
 }
 
 
@@ -550,7 +558,7 @@ try {
         'disenio_imagen' => $filenameimg
         ]);
     } catch (\Exception $e) {
-      return $e->getMessage();
+        return back()->with('Error', 'No se pudo actualizar fase');
     }
 
 
@@ -561,7 +569,7 @@ try {
         $rutacb = $ruta.$filenamecb;
         \Storage::disk('local')->put($rutacb,  \File::get($filecb));
       } catch (\Exception $e) {
-        return $e->getMessage();
+          return back()->with('Error', 'No se pudo cargar codigo de barras');
       }
     }
 
@@ -571,7 +579,7 @@ try {
 
       $data_vac = array(
          'id' => session('ID_e'),
-         'fase' => '3',
+         'fase' => '4',
          'tip' => $t,
          'mensaje' => $mensaje,
       );
@@ -585,18 +593,109 @@ try {
           });
         } catch (\Exception $e) {
       // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
-          return $e->getMessage();
+            return back()->with('Error', 'No se pudo enviar correo');
         }
 
 
 
       return redirect('inicioUser');
   } catch (\Exception $e) {
-    return $e->getMessage();
+    return back()->with('Error', 'No se pudo guardar');
+  }
+  }else{
+    return back()->with('Error', 'No tienes registro de productos' );
+
+    //return "No tienes registro de productos";
+  }
+}else{
+  return back()->with('Error', 'No tienes registro de marcas');
+}
+}
+
+function etapacinco(Request $request){
+
+  set_time_limit(0);
+
+  $name= session('ID_e');
+
+  $carpeta = storage_path();
+
+  $carpeta = $carpeta.'/app/Files/'.$name;
+
+  $ruta = '/Files//'.$name.'/';
+  if (!file_exists($carpeta)){
+    try {
+      mkdir($carpeta, 0777, true);
+      $res = "";
+    }catch (\Exception $e) {
+      return "no se creo";
+    }
+  }
+
+  $filecb = $request->file('fda');
+  if ($filecb!=null) {
+    $filenamecb = $name.'_FDA'.'.'.$filecb->getClientOriginalExtension();
+  }else{
+    $filenamecb="";
+  }
+
+  try {
+
+    try {
+      $vac = Empresas::where('ID_empresa', session('ID_e'))
+      ->update([
+        'fase' => 15,
+        'FDA' => $filenamecb,
+
+        ]);
+    } catch (\Exception $e) {
+        return back()->with('Error', 'No se pudo actualizar fase');
+    }
+
+
+
+
+    if ($filecb!=null) {
+      try {
+        $rutacb = $ruta.$filenamecb;
+        \Storage::disk('local')->put($rutacb,  \File::get($filecb));
+      } catch (\Exception $e) {
+        //return $e->getMessage();
+          return back()->with('Error', 'No se pudo cargar archivo FDA');
+      }
+    }
+
+      $t=0;
+      $mensaje = "moral";
+
+
+      $data_vac = array(
+         'id' => session('ID_e'),
+         'fase' => '5',
+         'tip' => $t,
+         'mensaje' => $mensaje,
+      );
+        try {
+        //  return $emp->correo_contacto;
+          Mail::send('emails.actualizacion', $data_vac, function ($message) {
+
+            $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
+            $message->to('karen.castillo@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+
+          });
+        } catch (\Exception $e) {
+      // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
+          return back()->with('Error', 'No se pudo enviar correo');
+        }
+
+
+
+      return redirect('inicioUser');
+  } catch (\Exception $e) {
+      return back()->with('Error', 'No se pudo Actualizar');
   }
 
 }
-
 
 
 

@@ -154,7 +154,7 @@ class contenidoController extends Controller
                     'descripcion' => $request->desc,
                   ]);
             } catch (\Exception $e) {
-                return $e->getMessage();
+                  return back()->with('Error', 'No se pudo actualizar');
             }
 
             $img = Image::make($fileimg->getRealPath());
@@ -167,7 +167,7 @@ class contenidoController extends Controller
           'descripcion' => $request->desc,
         ]);
             } catch (\Exception $e) {
-                return $e->getMessage();
+              return back()->with('Error', 'No se pudo actualizar');
             }
         }
 

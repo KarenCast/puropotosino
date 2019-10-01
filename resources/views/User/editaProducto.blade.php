@@ -81,8 +81,8 @@
 									      Tabla nutricional (Si es alimento)
 									    </label><br>
                       @if($producto->tabla_nutricional!=null || $producto->tabla_nutricional!='')
-											Tabla actual<br>
-                      <a href="/puro_potosino/public/linkprod/{{$producto->ID_empresa}}/{{$producto->tabla_nutricional}}"> <h4>Tabla Nutricional</h4> </a>
+
+                      <a href="/puro_potosino/public/linkprod/{{$producto->ID_empresa}}/{{$producto->tabla_nutricional}}"> <h5>Tabla Nutricional Actual</h5> </a>
 
 
 
