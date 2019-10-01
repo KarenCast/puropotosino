@@ -22,7 +22,7 @@
             <div class="modal-body">
                 <div class="text-center">
                     <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"></i>
-                        <p class="text-center"><strong id="nombre_evento"></strong></p>
+                    <p class="text-center"><strong id="nombre_evento"></strong></p>
                 </div>
                 <hr>
                 <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
