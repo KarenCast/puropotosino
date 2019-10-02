@@ -40,9 +40,9 @@ class contenidoController extends Controller
        try {
         unlink($path);
         $recetas->delete();
-        return $path;
+        return 'eliminado';
        } catch (\Throwable $th) {
-        return 'no se ya me quiero ir';
+          
        }
         //return $recetas;
     }
