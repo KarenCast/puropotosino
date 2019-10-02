@@ -125,7 +125,7 @@
       </li>
       <li>
         <a href="javascript:void(0)"><i class="fas fa-calendar-day" aria-hidden="true"></i>
-          <span class="title"> Eventos </span><i class="icon-arrow"></i>
+          <span class="title"> EVENTOS </span><i class="icon-arrow"></i>
           <span class="selected"></span>
         </a>
         <ul class="sub-menu">
@@ -134,7 +134,7 @@
           <span class="title"><i class="fa fa-search" aria-hidden="true"></i> Consulta de Eventos</span>
             </a>
           </li>
-         
+
         </ul>
       </li>
 

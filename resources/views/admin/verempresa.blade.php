@@ -355,7 +355,7 @@
 											<label class="">
 												Escribe tus comentarios/observaciones que serán enviados por correo al usuario<span class="symbol required"></span>
 											</label>
-											<textarea name="mensaje" id="mensaje" rows="8" cols="80" class="form-control"></textarea>
+											<textarea required name="mensaje" id="mensaje" rows="8" cols="80" class="form-control"></textarea>
 										</div>
 										<div class="form-group col-sm-6">
 											<label class="">

@@ -28,7 +28,7 @@ function getEmpresas() {
       getFisicas();
     }else {
       document.querySelector('#etiqueta1').innerText = 'MORALES';
-      document.getElementById("vacactivas").style.backgroundColor = "#f0bdbd";
+      document.getElementById("vacactivas").style.backgroundColor = "#bdd5f0";
       document.querySelector('#curp_rfc').innerText = 'RFC';
       document.querySelector('#nombre_rs').innerText = 'Razon Social';
       n=0;

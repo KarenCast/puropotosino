@@ -5285,7 +5285,7 @@ input.primary:checked + .slider {
 }
 
 input.primary:checked + .slider.a{
-  background-color: #9a1c1c;
+  background-color: #1c659a;
 }
 
 input.primary:checked + .slider.b{
@@ -5727,4 +5727,11 @@ hr{
 .swMain > ul li > a.selected:before, .swMain li > a.done:before {
     border: 7px solid #33365a;
     /* -webkit-border-image: -webkit-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 10%; */
+}
+
+
+div#guardaretapa{
+	float: right;
+    text-align: right;
+    margin-top: 2em!important;
 }

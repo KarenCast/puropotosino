@@ -61,12 +61,10 @@ console.log(id);
                             }
                         },
                         {
-                            data: 'ID_producto',
-
                             sWidth: '7%',
                             orderable: false,
                             "render": function(data) {
-                                  return '<a href="'+data+'">Ver</a>';
+                                return '<button type="button" id="bedv" onclick="VerProducto(' + data + ');" class="btn btn-info" style="width: 100%;"><i class="fas fa-eye" style="color:white;"></i></button>';
                             }
                         },
 
@@ -78,3 +76,53 @@ console.log(id);
         }
     });
   }
+
+
+
+
+
+
+      function VerProducto(seleccion) {
+
+        var mar;
+        var desc;
+        var id_emp;
+        var nom;
+        var image_p;
+        var tabla;
+        var url;
+
+
+        $("#tableproductope").on('click', '#bedv', function(e) {
+            e.preventDefault();
+            var currentRow = $(this).closest("tr");
+            var data = $('#tableproductope').DataTable().row(currentRow).data();
+
+            nom  = data['nombre'];
+            mar  = data['nombre_marca'];
+            desc = data['descripcion'];
+            id_emp = data['ID_empresa'];
+            imagen_p=data['imagen'];
+            tabla=data['tabla_nutricional'];
+
+            url="../linkprod/"+id_emp+"/"+tabla;
+            console.log(url);
+            // producto = data['imagen'];
+            // titulo = data['titulo'];
+
+            $("#nombre_e").val(nom);
+            $("#marca_e").val(mar);
+            $("#desc_e").val(desc);
+
+            $("#tabla").attr("href", url);
+
+             document.getElementById("img_e").src = "../Files/"+id_emp+"/Productos/"+imagen_p;
+            // document.getElementById("titulo_e").src = "categorias/"+res+"/"+titulo;
+
+            $("#modalverproducto").modal('show');
+
+        });
+
+
+
+    }

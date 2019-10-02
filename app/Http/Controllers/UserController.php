@@ -519,26 +519,27 @@ try {
       $fileimg = $request->file('logo');
       if ($fileimg!=null) {
         $filenameimg = $name.'_Logo'.'.'.$fileimg->getClientOriginalExtension();
+        try {
+
+            if(strlen($fileimg->getClientOriginalName()) > 0){
+
+                $rutaInfo = $carpeta2."/".$filenameimg;
+                $img = Image::make($fileimg->getRealPath());
+                $img->save($rutaInfo, 30);
+              }else {
+               $res = "Fallo al cargar uno o mas archivos";
+               return back()->with('Error', $res);
+              }
+
+          } catch (\Exception $e) {
+              //return $e->getMessage();
+              return back()->with('Error', 'No se pudo cargar imagen');
+          }
       }else{
         $filenameimg="";
       }
 
-            try {
 
-                if(strlen($fileimg->getClientOriginalName()) > 0){
-
-                    $rutaInfo = $carpeta2."/".$filenameimg;
-                    $img = Image::make($fileimg->getRealPath());
-                    $img->save($rutaInfo, 30);
-                  }else {
-                   $res = "Fallo al cargar uno o mas archivos";
-                   return back()->with('Error', $res);
-                  }
-
-              } catch (\Exception $e) {
-                  //return $e->getMessage();
-                  return back()->with('Error', 'No se pudo cargar imagen');
-              }
 
 } catch (\Exception $e) {
   //return $e->getMessage();
@@ -549,18 +550,37 @@ try {
 
 
   try {
-
     try {
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
         'fase' => 14,
-        'codigo_barras' => $filenamecb,
-        'disenio_imagen' => $filenameimg
         ]);
     } catch (\Exception $e) {
         return back()->with('Error', 'No se pudo actualizar fase');
     }
+    $uf = Empresas::where('ID_empresa', session('ID_e'))->first();
 
+    if ($uf->codigo_barras==null || $uf->codigo_barras=='') {
+      try {
+        $vac = Empresas::where('ID_empresa', session('ID_e'))
+        ->update([
+          'codigo_barras' => $filecb
+          ]);
+      } catch (\Exception $e) {
+          return back()->with('Error', 'No se pudo actualizar fase');
+      }
+    }
+
+    if($uf->disenio_imagen==null || $uf->disenio_imagen==''){
+      try {
+        $vac = Empresas::where('ID_empresa', session('ID_e'))
+        ->update([
+          'disenio_imagen' => $filenameimg
+          ]);
+      } catch (\Exception $e) {
+          return back()->with('Error', 'No se pudo actualizar fase');
+      }
+    }
 
 
 

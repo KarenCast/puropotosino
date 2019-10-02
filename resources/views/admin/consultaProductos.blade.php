@@ -88,7 +88,7 @@
 
 					<div class="row">
 						<div class="table-responsive">
-              <!-- <input type="text" id="id_empresa" name="id_empresa" value="{{$n}}"> -->
+              <input type="text" id="id_empresa" name="id_empresa" value="{{$n}}" style="display: none">
 							 <table id="tableproductope" name= "tableproductope" class="table-striped dt-responsive nowrap" style="width: 100%; ">
                   <thead class="thead-light">
                    	<tr>
@@ -118,77 +118,78 @@
 
 
 
-					<div class="modal fade" id="modalvercategoria" tabindex="-1" role="dialog" aria-labelledby="modal-lici" aria-hidden="true">
-           <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
+      <div class="modal fade" id="modalverproducto" tabindex="-1" role="dialog" aria-labelledby="modal-lici" aria-hidden="true">
+       <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
 
 
 
-                     <div class="modal-header" style="background-color: #1c3150; color: #fff;">
-                          <h3 class="modal-title text-white" style="margin-top:0px;">Información Empresa</h3>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="text-white">&times;</span>
-                          </button>
-                     </div>
-                     <div class="modal-body">
-                          <div class="container">
+                 <div class="modal-header" style="background-color: #1c3150; color: #fff;">
+                   <input readonly type="text" name="nombre_e" id="nombre_e"  class="inoborder form-control" style="background-color: rgba(254, 254, 254, 0); color: #fff; font-size:22px;"/>
 
-																	<form action="" method="post" id="candvac">
-																		@csrf
-																		{{ csrf_field() }}
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="text-white">&times;</span>
+                      </button>
+                 </div>
+                 <div class="modal-body">
+                      <div class="container">
 
-                                    <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-                                         <div class="form-group col-md-3">
-                                              <p><strong>ID:</strong></p>
-                                              <input readonly name="id_e" id="id_e"  class="inoborder"/>
+                              <form action="" method="post" id="candvac">
+                                @csrf
+                                {{ csrf_field() }}
 
-                                         </div>
-																				 <div class="form-group col-md-9">
-																							 <p><strong>Nombre:</strong></p>
-																							<input readonly type="text" name="nombre_e" id="nombre_e"  class="inoborder"/>
+                                <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
+                                      <div class="form-group col-md-12" style="text-align:center">
+                                        <img src="" name="img_e" id="img_e" alt="" width="60%">
+                                      </div>
+                                      <div class="form-group col-md-12">
+                                            <p><strong>Descripción:</strong></p>
+                                            <textarea name="desc_e" id="desc_e" rows="3" cols="80" class="form-control" readonly style="border:none"></textarea>
+                                      </div>
+                                     <div class="form-group col-md-6">
+                                           <p><strong>Nombre de marca:</strong></p>
+                                           <input readonly type="text" name="marca_e" id="marca_e"  class="inoborder form-control"/>
 
-																				 </div>
-
-																			</div>
-																			 <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-
-
-																				 <div class="form-group col-md-8">
-                                              <!-- <p><strong>Logotipo:</strong></p>
-                                              <input required readonly class="alumno inoborder" type="text" name="logo_e" id="logo_e" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/> -->
-																							<img src="" alt="" name="imagen_e" id="imagen_e" width="100%" height="auto">
-                                         </div>
-                                         <div class="form-group col-md-4">
-                                              <!-- <p><strong>Logotipo:</strong></p>
-                                              <input required readonly class="alumno inoborder" type="text" name="logo_e" id="logo_e" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/> -->
-																							<img src="" alt="" name="titulo_e" id="titulo_e" width="100%" height="auto">
-                                         </div>
-                                       </div>
-
-
-			                          </div>
-																<div class="row justify-content-center">
-																	<div class="col-md-4">
-
-																	</div>
-																	<!-- <div class="col-md-4">
-																		<button type="submit" class="btn btn-primary btn-lg btn-block login-btn aplicar">Visualizar Candidatos</button>
-																	</div> -->
-																</div>
-															</form>
-			                     </div>
-													 <div class="modal-footer">
-							 			        <div class="row justify-content-center">
+                                     </div>
+																		 <div class="form-group col-md-6">
+                                         <p><strong>Tabla Nutricional:</strong></p>
+	                                       <a id="tabla" name="tabla" href="" class="form-control inoborder" readonly>
+	                                        	Consulta la tabla nutricional <i class="fas fa-link"></i>
+	                                        </a>
+                                     </div>
 
 
 
-							 			        </div>
 
-							 			      </div>
 
-			                </div>
-			           </div>
-			      </div>
+                                  </div>
+
+
+
+
+                            </div>
+                            <div class="row justify-content-center">
+                              <div class="col-md-4">
+
+                              </div>
+                              <!-- <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block login-btn aplicar">Visualizar Candidatos</button>
+                              </div> -->
+                            </div>
+                          </form>
+                       </div>
+                       <div class="modal-footer">
+                        <div class="row justify-content-center">
+
+
+
+                        </div>
+
+                      </div>
+
+                  </div>
+             </div>
+        </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
 <script src="{{asset('js/Functionproductope.js')}}" type="text/javascript"></script>
 @endsection

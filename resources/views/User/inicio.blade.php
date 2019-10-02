@@ -196,15 +196,15 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 0</h1>
+												<h1 style="margin-bottom: 2em;">Etapa 0: <span style="font-weight: 200;">Pre-registro</span></h1>
 												<p>Si continuas en etapa 0 es porque tú documentación inicial es incorrecta, (revisa información de perfil)
 													o no respondiste el correo de registro.</p>
 												<div class="col-md-12">
 													<form action="{{ route('etapacero') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 														 {!! csrf_field() !!}
-														<div class="form-group col-sm-6">
+														<div class="form-group col-sm-12" id="guardaretapa">
 															<input type="mail" name="correo" id="correo" value="">
-															<input type="submit" name="enviar" value="Guardar">
+															<input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
 														</div>
 													</form>
 												</div>
@@ -216,15 +216,18 @@
 											@else
 											<div class="row justify-content-center" id="step-1"  style="display: none;">
 											@endif
-												<h1>Etapa 1</h1>
-												<form action="{{ route('etapauno') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
-													 {!! csrf_field() !!}
-													<label for="">Describe tu idea de negocio</label><span class="symbol required"></span>
-													<textarea class="form-control" required  name="ideanegocio" rows="10" cols="80" id="ideanegocio">{{$emp->descripcion}}</textarea>
-													<div class="form-group col-sm-6">
-												    <input type="submit" name="enviar" value="Guardar">
-												  </div>
-												</form>
+												<div class="col-md-12">
+													<h1 style="margin-bottom: 2em;">Etapa 1: <span style="font-weight: 200;">Idea de negocio</span></h1>
+
+													<form action="{{ route('etapauno') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
+														 {!! csrf_field() !!}
+														<label for="">Describe tu idea de negocio</label><span class="symbol required"></span>
+														<textarea class="form-control" required  name="ideanegocio" rows="10" cols="80" id="ideanegocio">{{$emp->descripcion}}</textarea>
+														<div class="form-group col-sm-12" id="guardaretapa">
+													    <input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
+													  </div>
+													</form>
+												</div>
 
 											</div>
 											@if($emp->fase=='2')
@@ -232,34 +235,40 @@
 											@else
 											<div class="row justify-content-center" id="step-2"  style="display: none;">
 											@endif
-											<h1>Etapa 2</h1>
-											<form action="{{ route('etapados') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
-												 {!! csrf_field() !!}
-												<div class="form-group col-sm-12">
-											    <label class="">
-											    Comprobante de programa de incubación (Archivo .pdf)
-											    </label><br>
-													@if($emp->comprobante_incubacion!=null)
-													<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual</h4> </a>
-													@endif
+
+												<div class="col-md-12">
+
+													<h1 style="margin-bottom: 2em;">Etapa 2: <span style="font-weight: 200;">Proceso de incubacion</span></h1>
+													<form action="{{ route('etapados') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
+														 {!! csrf_field() !!}
+														<div class="form-group col-sm-12">
+															<label class="">
+															Comprobante de programa de incubación (Archivo .pdf)
+															</label><br>
+															@if($emp->comprobante_incubacion!=null)
+															<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual</h4> </a>
+															@endif
 
 
-											    <input type="file" name="incubacion" required id="incubacion" class="form-control" accept="application/pdf"><br>
+															<input type="file" name="incubacion" required id="incubacion" class="form-control" accept="application/pdf"><br>
+														</div>
+
+														<div class="form-group col-sm-6" id="tipo_incu">
+															<label class="">
+																¿Tipo de incubación?<span class="symbol required"></span>
+															</label>
+															<input type="text" required class="form-control" id="tipoincu" name="tipoincu" placeholder="">
+														</div>
+
+														<div class="form-group col-sm-12" id="guardaretapa">
+															<label for=""></label>
+															<br>
+															<input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
+														</div>
+													</form>
 												</div>
 
-											  <div class="form-group col-sm-6" id="tipo_incu">
-											    <label class="">
-											      ¿Tipo de incubación?<span class="symbol required"></span>
-											    </label>
-											    <input type="text" required class="form-control" id="tipoincu" name="tipoincu" placeholder="">
-											  </div>
 
-												<div class="form-group col-sm-6">
-													<label for=""></label>
-													<br>
-													<input type="submit" name="enviar" value="Guardar">
-												</div>
-											</form>
 
 
 											</div>
@@ -268,7 +277,8 @@
 											@else
 											<div class="row justify-content-center" id="step-3"  style="display: none;">
 											@endif
-											<h1>Etapa 3</h1>
+
+											<h1 style="margin-bottom: 2em;">Etapa 3: <span style="font-weight: 200;">Dar de alta en SHCP</span></h1>
 
 											<form action="{{ route('etapatres') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 												 {!! csrf_field() !!}
@@ -319,10 +329,10 @@
 
 												</div>
 												@endif
-												<div class="form-group col-sm-6">
+												<div class="form-group col-sm-12" id="guardaretapa">
 													<label for=""></label>
 													<br>
-													<input type="submit" name="enviar" value="Guardar">
+													<input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
 												</div>
 											</form>
 
@@ -333,7 +343,8 @@
 											<div class="row justify-content-center" id="step-4"  style="display: none;">
 											@endif
 
-											<h1>Etapa 4</h1>
+
+											<h1 style="margin-bottom: 2em;">Etapa 4: <span style="font-weight: 200;">Comercializa</span></h1>
 
 											<br>
 											<a href="#" style="float: right"><i><h4>Descarga tu constancia del programa</i><i class="fas fa-download"></h4></i></a>
@@ -346,15 +357,24 @@
 														Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
 													</label>
 												    <input type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
-														<img  id='fileimg' style="height: auto; width: 200px;"/>
+
+														@if($emp->disenio_imagen!=null)
+															<img src="{{asset('Logos')}}/{{$emp->ID_empresa}}/{{$emp->disenio_imagen}}" id='fileimg' style="height: auto; width: 200px;"/>
+														@else
+															<img  id='fileimg' style="height: auto; width: 200px;"/>
+														@endif
 												</div>
 
 											  <div class="form-group col-sm-6" id="tipo_incu">
+
 											    <label class="">
 											      Código de barras (Archivo .pdf)<span class="symbol required"></span>
 											    </label>
 											    	<input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
-											  </div>
+														@if($emp->codigo_barras!=null)
+														<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}"> <h4>Código de barras actual</h4> </a>
+														@endif
+												</div>
 
 												<div class="class-sm-12">
 													<strong>
@@ -362,10 +382,10 @@
 														Dalos de alta desde tú menú lateral, (Apartados de Registro de marca y productos).
 													</strong>
 												</div>
-												<div class="form-group col-sm-6">
+												<div class="form-group col-sm-12" id="guardaretapa">
 													<label for=""></label>
 													<br>
-													<input type="submit" name="enviar" value="Guardar">
+													<input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
 												</div>
 											</form>
 
@@ -377,7 +397,8 @@
 											@else
 											<div class="row justify-content-center" id="step-5"  style="display: none;">
 											@endif
-											<h1>Etapa 5</h1>
+											<h1 style="margin-bottom: 2em;">Etapa 5: <span style="font-weight: 200;">Exporta y promocionate</span></h1>
+
 											<form action="{{ route('etapacinco') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 												 {!! csrf_field() !!}
 												<div class="form-group col-sm-12">
@@ -387,10 +408,10 @@
 													<input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 												</div>
 
-												<div class="form-group col-sm-6">
+												<div class="form-group col-sm-12" id="guardaretapa">
 													<label for=""></label>
 													<br>
-													<input type="submit" name="enviar" value="Guardar">
+													<input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
 												</div>
 											</form>
 
@@ -402,7 +423,8 @@
 											@else
 											<div class="row justify-content-center" id="step-6"  style="display: none;">
 											@endif
-												<h1>Etapa 6</h1>
+											<h1 style="margin-bottom: 2em;">Etapa 6: <span style="font-weight: 200;">Evoluciona tú negocio</span></h1>
+
 												<div class="col-md-1">
 
 												</div>
@@ -448,16 +470,14 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 1</h1>
-												<div class="col-md-1">
+											<div class="col-md-12">
+											<h1 style="margin-bottom: 2em;">Etapa 1: <span style="font-weight: 200;">Idea de negocio</span></h1>
 
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Requisitos para avanzar a fase 2:<br><br>
-																-Contar con una idea de negocio clara y explicada<br>
+											<h3>Tu información esta siendo revisada</h3>
+											<h4>Requisitos para avanzar a fase 2:<br><br>
+													-Contar con una idea de negocio clara y explicada<br>
 
-															</h4>
+											</h4>
 														<br>
 														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
 													</div>
