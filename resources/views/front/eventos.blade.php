@@ -8,11 +8,11 @@
 
 <div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="false" data-backdrop="false">
-    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-dialog modal-lg modal-full-height modal-dialog-centered modal-right modal-notify modal-info" role="document">
         <div class="modal-content">
             <!--Header-->
             <div class="modal-header">
-                <p class="heading lead">Evento</p>
+                <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"></i>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true" class="white-text">×</span>
                 </button>
@@ -20,16 +20,20 @@
 
             <!--Body-->
             <div class="modal-body">
-                <div class="text-center">
-                    <i class="fas fa-calendar-day fa-2x mb-3 animated rotateIn"></i>
-                    <p class="text-center"><strong id="nombre_evento"></strong></p>
+                <div class="row">
+                    <img class="card-img-bottom col-8" src="" id="foto" alt="Card image cap">
+                    <div class="text-center col-4">
+                        
+                        <h2 class="text-center"><strong id="nombre_evento"></strong></h2>
+                        <hr>
+                        <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
+                        <p class="text-center">Observaciones: <strong id="observaciones"></strong></p>
+                        <p class="text-center">Requisitos: <strong id="requisitos"></strong></p>
+                        <p class="text-center">Tema: <strong id="tema"></strong></p>
+                        <p class="text-center">Costo: <strong id="costo"></strong></p>
+                    </div>
                 </div>
-                <hr>
-                <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
-                <p class="text-center">Observaciones: <strong id="observaciones"></strong></p>
-                <p class="text-center">Requisitos: <strong id="requisitos"></strong></p>
-                <p class="text-center">Tema: <strong id="tema"></strong></p>
-                <p class="text-center">Costo: <strong id="costo"></strong></p>
+               
             </div>
 
             <!--Footer-->
@@ -129,7 +133,7 @@
                 $('#tema').html(info.event.extendedProps.tema);
                 $('#costo').html("$" + info.event.extendedProps.costo);
                 $('#myModal').modal('toggle');
-
+                $('#foto').attr('src', info.event.extendedProps.foto);
                 // change the border color just for fun
                 //info.el.style.borderColor = 'red';
             },
@@ -161,12 +165,15 @@
                         id: data[i]['ID_evento'],
                         observaciones: data[i]['observaciones'],
                         costo: data[i]['costo'],
+                        foto: data[i]['foto'],
                         requisitos: data[i]['requisitos'],
                         tema: data[i]['tema'],
                         title: data[i]['nombre_evento'],
                         start: data[i]['fecha_evento'],
+
                         //end: '2019-08-18T19:00:00',
                         backgroundColor: '#84b2db'
+
                     }
                 // console.log(data);
             },

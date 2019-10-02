@@ -139,7 +139,7 @@
                 <div id="BodyModalContent">
 
                     <form class="form-horizontal" method="post" id="eventoSave" action="{{route('saveEvento')}}"
-                        enctype="multipart/form-data">
+                            enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <input type="hidden" name="ID_eventoE" id="ID_evento" value="0">
                         <div class="row">
@@ -192,8 +192,17 @@
                                 <input type="text" class="form-control" id="requisitos" name="requisitos">
                             </div>
                         </div>
+                        
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-12">
+                            <label class="control-label col-sm-12" for="foto">Fotografia</label>
+                            <div class="col-sm-12">
+                                <img id="blah" src="" alt="foto de evento"  style="max-width: -moz-available;" />
+                                <input type='file' class="form-control" accept="image/*" id="foto" name="fotoE" />                               
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <div class="col-12 col-sm-12">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>

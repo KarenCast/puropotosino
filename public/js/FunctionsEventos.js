@@ -7,23 +7,24 @@ $(document).ready(function () {
         //e.stopPropagation();
         //e.stopImmediatePropagation();
         setData(dataTr);
-        
+
     });
 
-    $('#btnNuevo').on('click', function (e){
+    $('#btnNuevo').on('click', function (e) {
         $('#AgregarNuevo').html('Nuevo Evento');
+        $('#blah').attr('src', "");
     });
 
     $('#confirm-delete').on('click', '.btn-ok', function (e) {
         var $modalDiv = $(e.delegateTarget);
         var id = $(this).data('id');
         var urlDelete = "./api/deleteEvento";
-        
+
         $modalDiv.addClass('loading');
         setTimeout(function () {
             $modalDiv.modal('hide').removeClass('loading');
         }, 1000);
-        
+
         $.ajax({
             url: urlDelete,
             dataType: 'text',
@@ -44,7 +45,7 @@ $(document).ready(function () {
                 $modalDiv.modal('hide');
             }
         });
-        
+
     });
 
     $('#confirm-delete').on('show.bs.modal', function (e) {
@@ -60,9 +61,26 @@ $(document).ready(function () {
     });
 
     $('#ModalAddNew').on('show.bs.modal', function (e) {
-        document.getElementById("eventoSave").reset(); 
+        document.getElementById("eventoSave").reset();
     });
+
+    $("#foto").change(function () {
+        readURL(this);
+    });
+
 });
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 function setDTData() {
     $('#DTEventos').dataTable().fnDestroy();
@@ -85,7 +103,7 @@ function setDTData() {
                     {
                         data: 'fecha_evento',
                         name: 'Fecha/hora'
-                    }, 
+                    },
                     {
                         data: 'nombre_evento',
                         name: 'Nombre'
@@ -97,7 +115,7 @@ function setDTData() {
                     {
                         data: 'tema',
                         name: 'Tema'
-                    },                   
+                    },
                     {
                         data: 'observaciones',
                         name: 'Observaciones'
@@ -135,16 +153,16 @@ function setDTData() {
 
 function soloNumeros(e) {
     var keynum = window.event ? window.event.keyCode : e.which;
-    
+
     if ((keynum == 8 || keynum == 46))
         return true;
     return /\d/.test(String.fromCharCode(keynum));
 }
 
-function setData(dataDT){
+function setData(dataDT) {
     $('#AgregarNuevo').html('Editar Evento');
     $('#ModalAddNew').modal('show');
-    
+    console.warn(dataDT);
     $('#ID_evento').val(dataDT['ID_evento']);
     $('#fecha_evento').val(dataDT['fecha_evento']);
     $('#nombre_evento').val(dataDT['nombre_evento']);
@@ -152,4 +170,6 @@ function setData(dataDT){
     $('#tema').val(dataDT['tema']);
     $('#observaciones').val(dataDT['observaciones']);
     $('#requisitos').val(dataDT['requisitos']);
-}  
+  
+    $('#blah').attr('src', dataDT['foto']);
+}

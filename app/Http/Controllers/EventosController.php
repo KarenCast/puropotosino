@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Evento;
+use Image;
 use App\UsuariosExternos;
 
 class EventosController extends Controller
@@ -22,22 +23,47 @@ class EventosController extends Controller
 
     public function store(Request $request)
     {
+        //dd($request->all());
+        
         if ($request->ID_eventoE == 0) {
-            $event = Evento::create($request->all());
+            $path = public_path()."\contenido\\eventos\\";
+            $file = $request->file('fotoE');
+            $filename = time().'.'.$file->getClientOriginalExtension();
+            $ruta = $path.$filename;
+            $img = Image::make($file->getRealPath());
+            $img->save($ruta, 30);
 
-            /*
-            return response()->json([
-                'message' => 'Evento Creado',
-                'Evento' => $event
-            ]);
-            */
+            $event = Evento::create($request->all());
+            $event->foto = "\contenido\\eventos\\".$filename;
+            $evento->save();
+
             return redirect('/consultaEventos');
         } else {
-            $edit = Evento::findOrFail($request->ID_eventoE);
-            $edit->update($request->all());
 
+            $edit = Evento::findOrFail($request->ID_eventoE);
+            //$path = public_path()."\contenido\Eventos\\";
+            if($edit->foto !== null)
+                unlink($edit->foto);
+            $path = public_path()."\contenido\\eventos\\";
+            $file = $request->file('fotoE');
+            $filename = time().'.'.$file->getClientOriginalExtension();
+            $ruta = $path.$filename;
+            $img = Image::make($file->getRealPath());
+            $img->save($ruta, 30);
+
+            $edit->update($request->all());
+            $edit->foto = "\contenido\\eventos\\".$filename;
+            $edit->save();
             return redirect('/consultaEventos');
         }
+
+        /*
+        return response()->json([
+            'message' => 'Evento Creado',
+            'Evento' => $event
+        ]);
+        */
+        //dd($request->all());
     }
 
     public function delete(Request $request)
@@ -53,9 +79,8 @@ class EventosController extends Controller
         if ($user != null) {
             //envia correo
             dd($user);
-        }
-        else{
-            //no envia nada? 
+        } else {
+            //no envia nada?
             dd($request->all());
         }
     }
