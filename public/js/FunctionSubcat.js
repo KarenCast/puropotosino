@@ -86,7 +86,7 @@ function getSubcat() {
                             orderable: false,
                             "render": function(data) {
 
-                                  return '<button type="button" id="bed2" onclick="EliminaSub(' + data + ');" class="btn btn-secondary" style="width: 100%;" ><i class="fa fa-edit" style="color:white;"></i></button>';
+                                  return '<button type="button" id="bed2" onclick="EliminaSub(' + data + ');" class="btn btn-secondary" style="width: 100%;" ><i class="fas fa-trash-alt"></i></i></button>';
 
 
                             }

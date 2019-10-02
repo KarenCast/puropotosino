@@ -20,8 +20,8 @@ class adminController extends Controller
 
   function LogInA(Request $request){
     $request->session()->flush();
-    $sistema = 53;
-    $rol_usuario = 95;
+    $sistema = 54;
+    $rol_usuario = 98;
 
     $user = UsuariosInternos::where('RUE', $request->username)->where('contrasena', sha1($request->password))->first();
 

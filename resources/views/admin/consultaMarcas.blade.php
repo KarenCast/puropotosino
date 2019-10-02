@@ -92,6 +92,7 @@
                    	<tr>
                       <th>ID</th>
                       <th>Marca</th>
+											<th></th>
                       <th>Archivo</th>
                      </tr>
                   </thead>

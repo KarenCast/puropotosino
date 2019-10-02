@@ -23,8 +23,8 @@
                       <table align="center" border="0" cellpadding="0" cellspacing="0">
                         <tbody>
                           <tr>
-                            <td height="70" bgcolor="#c4ddfc" style="padding:0 20px 20px 0;">
-                              <a href="https://www.municipiodeslp.gob.mx/ventanilla">
+                            <td height="70" bgcolor="#cbc9ca" style="padding:0 20px 20px 0;">
+                              <img src="https://sanluis.gob.mx/wp-content/uploads/2019/10/sidep.jpg" alt="" width="100%" height="auto">
 
                             </td>
                           </tr>
@@ -59,7 +59,7 @@
                             </td>
                           </tr>
 
-                          
+
                         <tr>
                           <td>
                             No responder, éste correo es mandado automáticamente.

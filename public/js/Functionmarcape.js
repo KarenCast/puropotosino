@@ -42,8 +42,21 @@ function getMarca() {
                             name: 'nombre_marca'
                         },
                         {
+                            data: 'ID_empresa',
+
+                            "render": function(data) {
+                              empresa=data;
+                              return '';
+                            }
+                        },
+                        {
                             data: 'archivo',
-                            name: 'archivo'
+                            sWidth: '40%',
+                            orderable: false,
+                            "render": function(data) {
+
+                                  return '<a href="../linkmarca/'+empresa+'/'+ data+'">Archivo  <i class="fas fa-link"></i></a>';
+                            }
                         },
 
 

@@ -24,6 +24,7 @@ class catController extends Controller
   function getCat( )
   {
       $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
+      ->where('activo', true)
       ->get();
       return Datatables::of($cat)
       ->make(true);
@@ -82,6 +83,7 @@ class catController extends Controller
               $cat-> descripcion = $request->desc;
               $cat-> imagen = $filenamei;
               $cat-> titulo = $filenamei2;
+              $cat-> activo = 1;
 
               if($cat -> save()){
               $img = Image::make($fileimg->getRealPath());
@@ -113,8 +115,13 @@ class catController extends Controller
       public function deleteC(Request $request)
       {
           try {
-            $eli = cat::find($request->id_cat);
-            $eli->delete();
+            // $eli = cat::find($request->id_cat);
+            // $eli->delete();
+
+            $vac = cat::where('ID_categoria', $request->id_cat)
+            ->update([
+              'activo' => 0
+              ]);
             return redirect('/consultaCat')->with('Error', null);
           } catch (\Exception $e) {
 

@@ -18,7 +18,7 @@
 								</li>
 
                 <li class="active">
-									ETAPA 0
+								 	REGISTRO
 								</li>
 								<!-- <li class="search-box">
 									<form class="sidebar-search">
@@ -39,7 +39,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											
+
 
 											<li>
 												<a href="{{url('/LogOut')}}">
@@ -113,6 +113,7 @@
 
 
 									  <h4>Información de contacto</h4>
+										<i>Deben ser los datos de la persona con quien se mantenda contacto durante el proceso.</i>
 									  <hr width="100%" color="black"/>
 									  <div class="form-group col-sm-4">
 									    <label class="">

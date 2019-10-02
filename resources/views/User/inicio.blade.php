@@ -76,8 +76,8 @@
 							<div class="panel panel-default">
 								<div class="panel-heading	" style="padding-bottom: 10%;">
 
-									<h3>REGISTRO<br>
-	                 <small>Registrate para ser parte de SIDEP</small></h3>
+									<h3>SEGUIMIENTO<br>
+	                 <small>Carga la documentación necesaria para avanzar en el proceso de SIDEP</small></h3>
 								</div>
 								<div class="panel-body proceso">
 
@@ -196,15 +196,68 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1 style="margin-bottom: 2em;">Etapa 0: <span style="font-weight: 200;">Pre-registro</span></h1>
-												<p>Si continuas en etapa 0 es porque tú documentación inicial es incorrecta, (revisa información de perfil)
-													o no respondiste el correo de registro.</p>
+
 												<div class="col-md-12">
+													<h1 style="margin-bottom: 2em;">Etapa 0: <span style="font-weight: 200;">Pre-registro</span></h1>
+													<p>Si continuas en etapa 0 es porque no pudimos contactarte.</p><br><br>
 													<form action="{{ route('etapacero') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form">
 														 {!! csrf_field() !!}
+														 <h3>Información de contacto</h3>
+														 <div class="form-group col-md-4">
+ 															<label for="">Nombre</label><span class="symbol required"></span>
+ 															<input class="form-control" type="text" name="nombrec" id="nombrec" value="{{$emp->nombre}}">
+
+ 														</div>
+														<div class="form-group col-md-4">
+														 <label for="">Apellido Paterno</label><span class="symbol required"></span>
+														 <input class="form-control" type="text" name="apellidopc" id="apellidopc" value="{{$emp->APaterno}}">
+
+													 </div>
+													 <div class="form-group col-md-4">
+														<label for="">Apellido Materno</label><span class="symbol required"></span>
+														<input class="form-control" type="text" name="apellidomc" id="apellidomc" value="{{$emp->AMaterno}}">
+													</div>
+														<div class="form-group col-md-4">
+															<label for="">Correo Electrónico</label><span class="symbol required"></span>
+															<input class="form-control" type="mail" name="correoc" id="correoc" value="{{$emp->correo_electronico}}">
+
+														</div>
+														<div class="form-group col-md-4">
+															<label for="">Teléfono</label><span class="symbol required"></span>
+															<input class="form-control" type="number" name="telefonoc" id="telefonoc" value="{{$emp->telefono}}">
+
+														</div>
+														<div class="form-group col-md-4">
+															<label for="">Celular</label><span class="symbol required"></span>
+															<input class="form-control" type="number" name="celularc" id="celularc" value="{{$emp->celular}}">
+
+														</div>
+														<div class="form-group col-md-12">
+															<label for="">Dirección</label><span class="symbol required"></span>
+															<input class="form-control" type="text" name="direccionc" id="direccionc" value="{{$emp->direccion}}">
+
+														</div>
+														<h3>Redes sociales</h3>
+														<div class="form-group col-md-6">
+														 <label for="">Facebook</label><span class="symbol required"></span>
+														 <input class="form-control" type="text" name="facebook" id="facebook" value="{{$emp->facebook}}">
+
+													 </div>
+													 <div class="form-group col-md-6">
+														<label for="">Instagram</label><span class="symbol required"></span>
+														<input class="form-control" type="text" name="instagram" id="instagram" value="{{$emp->instagram}}">
+
+													</div>
+													<div class="form-group col-md-6">
+													 <label for="">Twitter</label><span class="symbol required"></span>
+													 <input class="form-control" type="text" name="twitter" id="twitter" value="{{$emp->twitter}}">
+												 </div>
+													 <div class="form-group col-md-6">
+														 <label for="">Sitio Web</label><span class="symbol required"></span>
+														 <input class="form-control" type="mail" name="sitio" id="sitio" value="{{$emp->stio_web}}">
+													 </div>
 														<div class="form-group col-sm-12" id="guardaretapa">
-															<input type="mail" name="correo" id="correo" value="">
-															<input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
+														 <input class="btn btn-primary" type="submit" name="enviar" value="Guardar">
 														</div>
 													</form>
 												</div>
@@ -247,17 +300,29 @@
 															</label><br>
 															@if($emp->comprobante_incubacion!=null)
 															<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual</h4> </a>
+															<input type="file" name="incubacion"  id="incubacion" class="form-control" accept="application/pdf"><br>
+															@else
+															<input type="file" name="incubacion" required id="incubacion" class="form-control" accept="application/pdf"><br>
+
 															@endif
 
 
-															<input type="file" name="incubacion" required id="incubacion" class="form-control" accept="application/pdf"><br>
 														</div>
 
 														<div class="form-group col-sm-6" id="tipo_incu">
 															<label class="">
 																¿Tipo de incubación?<span class="symbol required"></span>
 															</label>
-															<input type="text" required class="form-control" id="tipoincu" name="tipoincu" placeholder="">
+															<select class="form-control" name="tipoincu" id="tipoincu" onchange="myValidate2();">
+																<option value="Curso de innovación y emprendimiento">Curso de innovación y emprendimiento</option>
+																<option value="Academia SIFIDE">Academia SIFIDE</option>
+																<option value="Otro">Otro</option>
+															</select>
+															<label class="">
+																En caso de seleccionar otro, especifique<span class="symbol required"></span>
+															</label>
+															<input type="text" required class="form-control" id="tipoincu_o" name="tipoincu_o" placeholder="" style="display: none">
+
 														</div>
 
 														<div class="form-group col-sm-12" id="guardaretapa">
@@ -287,26 +352,36 @@
 													<label class="">
 														Alta hacienda (Archivo .pdf)<span class="symbol required"></span>
 													</label>
-												    <input type="file"  name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
-														@if($emp->comprobante_incubacion!=null)
-														<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->comprobante_shcp}}"> <h4>Comprobante de hacienda actual</h4> </a>
+
+														@if($emp->comprobante_shcp!=null || $emp->comprobante_shcp!='')
+														<input type="file"  name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
+														<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_shcp}}"> <h4>Comprobante de hacienda actual</h4> </a>
+														@else
+														<input type="file" required name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
 														@endif
 												</div>
 												<div class="form-group col-sm-6">
 													<label class="">
 														Regimen hacienda<span class="symbol required"></span><br>
 													</label>
-													@if($emp->regimen!=null)
-													<input type="text"  required class="form-control" id="regimen" name="regimen" placeholder="" value="{{$emp->regimen}}">
-													@else
-													<input type="text"  required class="form-control" id="regimen" name="regimen" placeholder="">
-													@endif
+													<select class="form-control" name="regimen" id="regimen" onchange="myValidate();">
+														<option value="RIF (Regimen de incorporación fiscal)">RIF (Regimen de incorporación fiscal)</option>
+														<option value="SAS (Sociedad de acciones simplificadas)">SAS (Sociedad de acciones simplificadas)</option>
+														<option value="Persona física con actividad empresarial">Persona física con actividad empresarial</option>
+														<option value="S.A. de C.V.">S.A. de C.V.</option>
+														<option value="Otro">Otro</option>
+													</select>
+													<label class="">
+														En caso de seleccionar otro:<span class="symbol required"></span><br>
+													</label>
+													<input type="text" required class="form-control" id="regimen_o" name="regimen_o" placeholder="" value="{{$emp->regimen}}" style="display: none">
+
 												</div>
 												@if(session('tipo')=='fisica')
 												<div class="form-group col-sm-12">
 													<label class="">
 														RFC<span class="symbol required"></span><br>
-														<i>El RFC que des de alta, debe estar registrado previamente <a href="http://sitio.sanluis.gob.mx:8060/Registro" target="_blank"><strong style="font-size: 20px"> aquí</strong></a> como persona Moral</i>
+														<i>El RFC que des de alta, debe estar registrado previamente <a href="http://sitio.sanluis.gob.mx/VentanillaSLP/public/Registro" target="_blank"><strong style="font-size: 20px"> aquí</strong></a> como persona Moral</i>
 													</label>
 													@if($emp->RFC!=null)
 													<input type="text"  required class="form-control" id="rfc" name="rfc" placeholder="" value="{{$emp->RFC}}">
@@ -356,11 +431,14 @@
 											    <label class="">
 														Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
 													</label>
-												    <input type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
 
 														@if($emp->disenio_imagen!=null)
+															<input type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
+
 															<img src="{{asset('Logos')}}/{{$emp->ID_empresa}}/{{$emp->disenio_imagen}}" id='fileimg' style="height: auto; width: 200px;"/>
 														@else
+															<input required type="file" name="logo" id="logo" class="form-control" accept="image/jpeg, image/x-png"><br>
+
 															<img  id='fileimg' style="height: auto; width: 200px;"/>
 														@endif
 												</div>
@@ -370,9 +448,13 @@
 											    <label class="">
 											      Código de barras (Archivo .pdf)<span class="symbol required"></span>
 											    </label>
-											    	<input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 														@if($emp->codigo_barras!=null)
+														<input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
+
 														<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}"> <h4>Código de barras actual</h4> </a>
+														@else
+														<input type="file" required name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
+
 														@endif
 												</div>
 
@@ -405,7 +487,14 @@
 													<label class="">
 														Carga archivo FDA (Solo para empresas de categoría Gastronomía o alimentos)<br>
 													</label>
+													@if($emp->FDA!=null)
 													<input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
+
+													<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->FDA}}"> <h4>FDA actual</h4> </a>
+													@else
+													<input type="file" required name="fda" id="fda" class="form-control" accept="application/pdf"><br>
+
+													@endif
 												</div>
 
 												<div class="form-group col-sm-12" id="guardaretapa">
@@ -423,19 +512,18 @@
 											@else
 											<div class="row justify-content-center" id="step-6"  style="display: none;">
 											@endif
-											<h1 style="margin-bottom: 2em;">Etapa 6: <span style="font-weight: 200;">Evoluciona tú negocio</span></h1>
 
-												<div class="col-md-1">
 
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Esta es la ultima etapa del proceso<br><br>
-																¡Felicidades, tu negocio esta en proceso de evolución!.<br>
+													<div class="col-md-12">
+														<h1 style="margin-bottom: 2em;">Etapa 6: <span style="font-weight: 200;">Evoluciona tú negocio</span></h1>
 
-															</h4>
+
+														<h3>Esta es la ultima etapa del proceso. ¡Felicidades, tu negocio esta en proceso de evolución!.<br>
+
+															</h3>
 														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
+														<h4 style="text-align: justify"><strong>Importante:</strong> Continua revisando tú <strong>bandeja de entrada o SPAM</strong> para cualquier información.</h4>
+
 													</div>
 
 											</div>
@@ -449,18 +537,11 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 0</h1>
-												<div class="col-md-1">
 
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Requisitos para avanzar a fase 1:<br><br>
-																-Contar con un INE y comprobante de domicilio validos. (Registro RUC)<br>
-																-Correo electronico valido, el cuál deber revisar constantemente para continuar en el proceso.<br>
-															</h4>
-														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
+													<div class="col-md-12">
+														<h1 style="margin-bottom: 2em;">Etapa 0: <span style="font-weight: 200;">Pre-registro</span></h1>
+
+														@include('User.informacion')
 													</div>
 											</div>
 
@@ -471,16 +552,10 @@
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
 											<div class="col-md-12">
-											<h1 style="margin-bottom: 2em;">Etapa 1: <span style="font-weight: 200;">Idea de negocio</span></h1>
+												<h1 style="margin-bottom: 2em;">Etapa 1: <span style="font-weight: 200;">Idea de negocio</span></h1>
 
-											<h3>Tu información esta siendo revisada</h3>
-											<h4>Requisitos para avanzar a fase 2:<br><br>
-													-Contar con una idea de negocio clara y explicada<br>
-
-											</h4>
-														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
-													</div>
+												@include('User.informacion')
+											</div>
 											</div>
 
 											@if($emp->fase=='12')
@@ -488,18 +563,10 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 2</h1>
-												<div class="col-md-1">
 
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Requisitos para avanzar a fase 3:<br><br>
-																-Contar con un comprobante de incubación valido<br>
-
-															</h4>
-														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
+													<div class="col-md-12">
+														<h1 style="margin-bottom: 2em;">Etapa 2: <span style="font-weight: 200;">Proceso de incubación</span></h1>
+														@include('User.informacion')
 													</div>
 											</div>
 
@@ -508,19 +575,10 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 3</h1>
-												<div class="col-md-1">
-
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Requisitos para avanzar a fase 4:<br><br>
-																-Estar dado de alta en hacienda y cargar el comprobante correspondiente<br>
-
-															</h4>
-														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
-													</div>
+											<div class="col-md-12">
+												<h1 style="margin-bottom: 2em;">Etapa 3: <span style="font-weight: 200;">Alta SHCP</span></h1>
+												@include('User.informacion')
+											</div>
 											</div>
 
 											@if($emp->fase=='14')
@@ -528,20 +586,10 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 4</h1>
-												<div class="col-md-1">
-
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Requisitos para avanzar a fase 5:<br><br>
-																-Cargar codigo de barras correcto<br>
-																-Cargar logotipo de empresa<br>
-																-Contar con al menos un registro de marca y un producto<br>
-															</h4>
-														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
-													</div>
+											<div class="col-md-12">
+												<h1 style="margin-bottom: 2em;">Etapa 4: <span style="font-weight: 200;">Comercializa</span></h1>
+												@include('User.informacion')
+											</div>
 											</div>
 
 											@if($emp->fase=='15')
@@ -549,38 +597,20 @@
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 5</h1>
-												<div class="col-md-1">
-
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Requisitos para avanzar a fase 6:<br><br>
-																-Cargar archivo FDA (En caso de que seas una empresa de giro alimenticio).<br>
-
-															</h4>
-														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
-													</div>
+											<div class="col-md-12">
+												<h1 style="margin-bottom: 2em;">Etapa 5: <span style="font-weight: 200;">Exporta y promocionate</span></h1>
+												@include('User.informacion')
+											</div>
 											</div>
 											@if($emp->fase=='16')
 											<div class="row justify-content-center" id="step-0" style="display: block;">
 											@else
 											<div class="row justify-content-center" id="step-0"  style="display: none;">
 											@endif
-												<h1>Etapa 6</h1>
-												<div class="col-md-1">
-
-												</div>
-													<div class="col-md-10">
-														<h3>Tu información esta siendo revisada</h3>
-														<h4>Esta es la ultima etapa del proceso<br><br>
-																¡Felicidades, tu negocio esta en proceso de evolución!.<br>
-
-															</h4>
-														<br>
-														<h4><strong>Importante: <br>Revisa tú bandeja de entrada o SPAM.</strong></h4>
-													</div>
+											<div class="col-md-12">
+												<h1 style="margin-bottom: 2em;">Etapa 6: <span style="font-weight: 200;">Evoluciona tú negocio</span></h1>
+												@include('User.informacion')
+											</div>
 											</div>
 
 
@@ -635,5 +665,24 @@
 
 
 			});
+			</script>
+			<script type="text/javascript">
+					function myValidate(){
+						var x = document.getElementById("regimen").value;
+						if (x=='Otro') {
+							document.getElementById("regimen_o").style.display = "block";
+						}else {
+							document.getElementById("regimen_o").style.display = "none";
+						}
+					}
+
+					function myValidate2(){
+						var y = document.getElementById("tipoincu").value;
+						if (y=='Otro') {
+							document.getElementById("tipoincu_o").style.display = "block";
+						}else {
+							document.getElementById("tipoincu_o").style.display = "none";
+						}
+					}
 			</script>
 @endsection

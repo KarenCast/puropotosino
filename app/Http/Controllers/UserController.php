@@ -57,10 +57,19 @@ class UserController extends Controller
  function redireccion(){
 
    if (session('RFC')!=null) {
-     $uf = Empresas::where('RFC', session('RFC'))->first();
+     $uf = Empresas::where('RFC', session('RFC'))
+     ->join('admpuropotosino'.'.'.'TCContacto',function($join){
+       $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+     })
+     ->first();
 
    }else {
-     $uf = Empresas::where('CURP', session('CURP'))->first();
+     $uf = Empresas::where('CURP', session('CURP'))
+     ->join('admpuropotosino'.'.'.'TCContacto',function($join){
+       $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+     })
+     ->first();
+
      if ($uf != null) {
        if ($uf->RFC != null || $uf->RFC != '') {
          session(['RFC' => $uf->RFC]);
@@ -182,9 +191,27 @@ $contacto = Contacto::where('ID_empresa', $request->id)->first();
     try {
       $vac = Contacto::where('ID_empresa', session('ID_e'))
       ->update([
-        'correo_electronico' => $request->correo]);
+        'nombre' => $request->nombrec,
+        'APaterno' => $request->apellidopc,
+        'AMaterno' => $request->apellidomc,
+        'celular' => $request->celularc,
+        'telefono' => $request->telefonoc,
+        'direccion' => $request->direccionc,
+        'correo_electronico' => $request->correoc]);
     } catch (\Exception $e) {
+        return back()->with('Error', 'No se pudo actualizar info de contacto');
+    }
 
+    try {
+      $vac = Empresas::where('ID_empresa', session('ID_e'))
+      ->update([
+        'facebook' => $request->facebook,
+        'instagram' => $request->instagram,
+        'twitter' => $request->twitter,
+        'stio_web' => $request->sitio,
+        ]);
+    } catch (\Exception $e) {
+        return back()->with('Error', 'No se pudo actualizar info de redes sociales');
     }
 
       $mensaje = session('tipo');
@@ -303,19 +330,32 @@ function etapados(Request $request){
   }
 
   try {
+
+    if ($request->tipoincu != 'Otro') {
+      $co= $request->tipoincu;
+    }else{
+      $co= $request->tipoincu_o;
+    }
+
     try {
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
         'fase' => 12,
-        'comprobante_incubacion' => $filenamei,
-        'tipo_incubacion' => $request->tipoincu]);
+
+        'tipo_incubacion' => $co]);
     } catch (\Exception $e) {
       //return $e->getMessage();
         return back()->with('Error', 'No se pudo enviar actualizar fase');
     }
 
+
+
     if ($filei!=null) {
       try {
+        $vac = Empresas::where('ID_empresa', session('ID_e'))
+        ->update([
+          'comprobante_incubacion' => $filenamei
+        ]);
         $rutai = $ruta.$filenamei;
         \Storage::disk('local')->put($rutai,  \File::get($filei));
       } catch (\Exception $e) {
@@ -397,12 +437,17 @@ function etapatres(Request $request){
     $uf = Empresas::where('ID_empresa', session('ID_e'))->first();
 
     if ($uf->comprobante_shcp!=null || $uf->comprobante_shcp!='') {
+      if ($request->regimen!='Otro') {
+        $reg = $request->regimen;
+      }else{
+        $reg = $request->regimen_o;
+      }
       try {
         $vac = Empresas::where('ID_empresa', session('ID_e'))
         ->update([
           'fase' => 13,
           'RFC' => $request->rfc,
-          'regimen' => $request->regimen]);
+          'regimen' => $reg]);
       } catch (\Exception $e) {
           return back()->with('Error', 'No se pudo actualizar fase');
       }
@@ -413,7 +458,7 @@ function etapatres(Request $request){
         'fase' => 13,
         'comprobante_shcp' => $filenameh,
         'RFC' => $request->rfc,
-        'regimen' => $request->regimen]);
+        'regimen' => $reg]);
     } catch (\Exception $e) {
       //return $e->getMessage();
         return back()->with('Error', 'No se pudo actualizar fase');
@@ -564,7 +609,7 @@ try {
       try {
         $vac = Empresas::where('ID_empresa', session('ID_e'))
         ->update([
-          'codigo_barras' => $filecb
+          'codigo_barras' => $filenamecb
           ]);
       } catch (\Exception $e) {
           return back()->with('Error', 'No se pudo actualizar fase');

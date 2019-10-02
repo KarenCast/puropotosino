@@ -24,7 +24,7 @@ class EventosController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
-        
+
         if ($request->ID_eventoE == 0) {
             $path = public_path()."\contenido\\eventos\\";
             $file = $request->file('fotoE');
@@ -83,5 +83,27 @@ class EventosController extends Controller
             //no envia nada?
             dd($request->all());
         }
+    }
+
+    function LogInA(Request $request){
+      $request->session()->flush();
+      $sistema = 54;
+      $rol_usuario = 98;
+
+      $user = UsuariosInternos::where('RUE', $request->username)->where('contrasena', sha1($request->password))->first();
+
+      $rol = Roles::where('RUE', $request->username)->where('ID_rol', $rol_usuario)->where('Id_sistemas', $sistema)->first();
+
+      if($user != null && $rol != null)
+      {
+        session(['log' => true]);
+        session(['RUE' => $request->username]);
+        session(['tipoinicio' => 'admin']);
+
+        return redirect('/consultaEmpresas');
+      }else {
+        echo "error";
+      }
+
     }
 }

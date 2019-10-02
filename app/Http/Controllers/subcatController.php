@@ -25,6 +25,7 @@ class subcatController extends Controller
   {
 
       $cat = DB::table('admpuropotosino'.'.'.'TCSubCategoria')
+      ->where('activo',true)
       ->get();
       return Datatables::of($cat)
       ->make(true);
@@ -82,6 +83,7 @@ class subcatController extends Controller
             $cat-> imagen = $filenamei;
             $cat-> ID_categoria = $request->id_p;
             $cat-> ID_subcategoria = $total;
+            $cat-> activo = 1;
 
               if($cat -> save()){
               $img = Image::make($fileimg->getRealPath());
@@ -113,8 +115,12 @@ class subcatController extends Controller
       public function deleteS(Request $request)
       {
           try {
-            $eli = subcat::find($request->id_cat);
-            $eli->delete();
+            // $eli = subcat::find($request->id_cat);
+            // $eli->delete();
+            $vac = subcat::where('ID_subcategoria', $request->id_cat)
+            ->update([
+              'activo' => 0
+              ]);
             return redirect('/consultaSub')->with('Error', null);
           } catch (\Exception $e) {
             return redirect('/consultaSub')->with('Error', 'Error al eliminar la vacante');
