@@ -26,7 +26,7 @@ class EventosController extends Controller
         //dd($request->all());
 
         if ($request->ID_eventoE == 0) {
-            $path = public_path()."\contenido\\eventos\\";
+            $path = public_path()."/contenido/eventos/";
             $file = $request->file('fotoE');
             $filename = time().'.'.$file->getClientOriginalExtension();
             $ruta = $path.$filename;
@@ -34,7 +34,7 @@ class EventosController extends Controller
             $img->save($ruta, 30);
 
             $event = Evento::create($request->all());
-            $event->foto = "\contenido\\eventos\\".$filename;
+            $event->foto = "/contenido/eventos/".$filename;
             $evento->save();
 
             return redirect('/consultaEventos');
@@ -44,7 +44,7 @@ class EventosController extends Controller
             //$path = public_path()."\contenido\Eventos\\";
             if($edit->foto !== null)
                 unlink($edit->foto);
-            $path = public_path()."\contenido\\eventos\\";
+            $path = public_path()."/contenido/eventos/";
             $file = $request->file('fotoE');
             $filename = time().'.'.$file->getClientOriginalExtension();
             $ruta = $path.$filename;
@@ -52,7 +52,7 @@ class EventosController extends Controller
             $img->save($ruta, 30);
 
             $edit->update($request->all());
-            $edit->foto = "\contenido\\eventos\\".$filename;
+            $edit->foto = "/contenido/eventos/".$filename;
             $edit->save();
             return redirect('/consultaEventos');
         }
