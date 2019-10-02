@@ -22,3 +22,4 @@ Route::post('saveEvento', 'EventosController@store')->name('saveEvento');
 Route::delete('deleteEvento', 'EventosController@delete')->name('deleteEvento');
 
 Route::post('registroEvento', 'EventosController@registro')->name('registroEvento');
+Route::delete('deleteReceta', 'contenidoController@deleteR')->name('recdelete');
