@@ -119,3 +119,4 @@ Route::get('/consultaProductos', 'productoController@viewConsultaProducto')->nam
 Route::get('/getProductos','productoController@getProducto');
 Route::get('/actualizarProducto/{n}','productoController@viewActualizaProducto');
 Route::post('/uproducto', 'productoController@uproducto')->name('uproducto');
+
