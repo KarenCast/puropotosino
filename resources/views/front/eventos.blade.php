@@ -57,7 +57,7 @@
                     method="POST">
                     @csrf
                     {{ csrf_field() }}
-                    <input type="text" id="idEvento">
+                    <input type="hidden" id="idEvento" name="idEvento">
                     <div class="form-group">
                         <label for="uname1">Correo</label>
                         <input type="email" class="form-control form-control-lg" name="correo" required="true">
