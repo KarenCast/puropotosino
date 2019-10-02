@@ -57,6 +57,7 @@
                     method="POST">
                     @csrf
                     {{ csrf_field() }}
+                    <input type="text" id="idEvento">
                     <div class="form-group">
                         <label for="uname1">Correo</label>
                         <input type="email" class="form-control form-control-lg" name="correo" required="true">
@@ -134,6 +135,7 @@
                 $('#costo').html("$" + info.event.extendedProps.costo);
                 $('#myModal').modal('toggle');
                 $('#foto').attr('src', info.event.extendedProps.foto);
+                $('#idEvento').val(info.event.id);
                 // change the border color just for fun
                 //info.el.style.borderColor = 'red';
             },
@@ -146,6 +148,7 @@
 
     function meInteresa() {
 
+       
         $('#myModal').modal('hide');
         $('#loginModal').modal('toggle');
     }
