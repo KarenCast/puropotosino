@@ -2,7 +2,22 @@
 @section('content')
 
 @include('front.menu')
-
+@if(session('Error')!== null)
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Error!</strong> {{{session('Error')}}}
+</div>
+@endif
+@if(session('Exito')!== null)
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Exito!</strong> {{{session('Exito')}}}
+</div>
+@endif
 <div id="calendar" style="padding: 11em;"></div>
 
 
@@ -23,7 +38,7 @@
                 <div class="row">
                     <img class="card-img-bottom col-8" src="" id="foto" alt="Card image cap">
                     <div class="text-center col-4">
-                        
+
                         <h2 class="text-center"><strong id="nombre_evento"></strong></h2>
                         <hr>
                         <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
@@ -33,7 +48,7 @@
                         <p class="text-center">Costo: <strong id="costo"></strong></p>
                     </div>
                 </div>
-               
+
             </div>
 
             <!--Footer-->
@@ -53,7 +68,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form class="form" action="{{route('registroEvento')}}" role="form" autocomplete="off" id="formLogin"
+                <form class="form" action="{{route('RegistroEvento')}}" role="form" autocomplete="off" id="formLogin"
                     method="POST">
                     @csrf
                     {{ csrf_field() }}
@@ -148,7 +163,7 @@
 
     function meInteresa() {
 
-       
+
         $('#myModal').modal('hide');
         $('#loginModal').modal('toggle');
     }

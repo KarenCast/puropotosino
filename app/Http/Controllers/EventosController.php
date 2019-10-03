@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Evento;
 use Image;
 use App\UsuariosExternos;
+use App\UsuariosMorales;
+use App\Empresas;
+
+
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 class EventosController extends Controller
 {
@@ -85,25 +91,73 @@ class EventosController extends Controller
         }
     }
 
-    function LogInA(Request $request){
-      $request->session()->flush();
-      $sistema = 54;
-      $rol_usuario = 98;
+    function LogIn(Request $request){
+      $bandera=0;
+      $evento = Evento::where("ID_evento", $request->idEvento)->first();
 
-      $user = UsuariosInternos::where('RUE', $request->username)->where('contrasena', sha1($request->password))->first();
+      $user = UsuariosExternos::where('admseguridad'.'.'.'TCUsuariosExternos.correo_electronico', $request->correo)->where('contrasena', sha1($request->contrasena))
+      ->join('admpuropotosino'.'.'.'TCEmpresaPP',function($join){
+        $join->on('admpuropotosino'.'.'.'TCEmpresaPP.CURP', '=', 'admseguridad'.'.'.'TCUsuariosExternos.CURP');
+        $join->join('admpuropotosino'.'.'.'TCContacto',function($join){
+          $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+        });
+      })
+      ->select(["TCUsuariosExternos.*", "TCEmpresaPP.*", "TCContacto.*", "TCUsuariosExternos.correo_electronico AS correoruc",  "TCContacto.correo_electronico AS correocontacto"])
+      ->where('fase', '>=', '0')
+      ->first();
 
-      $rol = Roles::where('RUE', $request->username)->where('ID_rol', $rol_usuario)->where('Id_sistemas', $sistema)->first();
-
-      if($user != null && $rol != null)
+      if($user != null)
       {
-        session(['log' => true]);
-        session(['RUE' => $request->username]);
-        session(['tipoinicio' => 'admin']);
-
-        return redirect('/consultaEmpresas');
+          $bandera=1;
+          $mensaje="fisica";
       }else {
-        echo "error";
+
+        $user = UsuariosMorales::where('admseguridad'.'.'.'TCPersonasMorales.correo_electronico', $request->correo)->where('contrasena', sha1($request->contraseña))
+        ->join('admpuropotosino'.'.'.'TCEmpresaPP',function($join){
+          $join->on('admpuropotosino'.'.'.'TCEmpresaPP.RFC', '=', 'admseguridad'.'.'.'TCPersonasMorales.RFC');
+          $join->join('admpuropotosino'.'.'.'TCContacto',function($join){
+            $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+          });
+        })
+        ->select(["TCPersonasMorales.*", "TCEmpresaPP.*", "TCContacto.*", "TCPersonasMorales.correo_electronico AS correoruc",  "TCContacto.correo_electronico AS correocontacto"])
+        ->where('fase', '>=', '0')
+        ->first();
+
+
+        if($user != null)
+        {
+            $bandera=2;
+            $mensaje="moral";
+        }
       }
 
+      if ($bandera != 0) {
+        $data_vac = array(
+           'id' => $user->ID_empresa,
+           'correo' => $user->correo_electronico,
+           'fase' => $user->fase,
+           'mensaje' => $mensaje,
+           'evento' => $evento->nombre_evento,
+           'fecha' => $evento->fecha_evento
+        );
+          try {
+          //  return $emp->correo_contacto;
+            Mail::send('emails.registroevento', $data_vac, function ($message) {
+
+              $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. EVENTOS.');
+              $message->to('karencastilloaguilar@gmail.com')->subject('Usuario se registro para evento SIDEP');
+
+            });
+          } catch (\Exception $e) {
+            //return $e->getMessage();
+            return back()->with('Error', 'No se pudo enviar correo');
+          }
+      }else{
+        return back()->with('Error', 'Correo o contraseña incorrectos');
+      }
+
+      return back()->with('Exito', 'Te has registrado, espera tu correo de confirmación (Llegará a tu correo de contacto) si existe disponibilidad. Debes presentar el comprobante el día del evento');
     }
+
+
 }
