@@ -137,7 +137,7 @@
 <script>
   jQuery(document).ready(function() {
     Main.init();
-    FormWizard.init();
+    
 		document.querySelector('#bienvenida').innerText = 'BIENVENIDO A SIDEP';
 
   });
