@@ -225,11 +225,11 @@
 
 
 												@if($rol->comprobante_incubacion!=null)
-												<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
+												<a href="../../link/{{$rol->ID_empresa}}/{{$rol->comprobante_incubacion}}"> <h4>Comprobante de incubación</h4> </a>
 												@endif
 
 												@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
-													<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
+													<a href="../../link/{{$rol->ID_empresa}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
 												@endif
 
 
@@ -240,12 +240,12 @@
 
 
 											@if($rol->codigo_barras!=null || $rol->codigo_barras!='')
-												<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->codigo_barras}}"> <h4>Código de barras</h4> </a>
+												<a href="../../link/{{$rol->ID_empresa}}/{{$rol->codigo_barras}}"> <h4>Código de barras</h4> </a>
 											@endif
 
 
 											@if($rol->FDA!=null || $rol->FDA!='')
-												<a href="/puro_potosino/public/link/{{$rol->ID_empresa}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
+												<a href="../../link/{{$rol->ID_empresa}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
 											@endif
 									  </div>
 
@@ -308,10 +308,10 @@
 									      Comprobante de domicilio (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
 												@if($rol->RFC!=null)
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+												<a href="../../link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
 
 												@else
-												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+												<a href="../../link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
 
 												@endif
 											@endif
@@ -323,10 +323,10 @@
 									      INE (Archivo .pdf)<span class="symbol required"></span>
 									    </label>
 												@if($rol->RFC!=null)
-												<a href="/puro_potosino/public/link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+												<a href="../../link/{{$rol->RFC}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
 
 												@else
-												<a href="/puro_potosino/public/link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
+												<a href="../../link/{{$rol->CURP}}/{{$rol->comprobante_domicilio}}"> <h4>Comprobante de domicilio</h4> </a>
 
 												@endif
 											@endif
