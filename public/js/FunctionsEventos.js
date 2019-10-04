@@ -20,11 +20,6 @@ $(document).ready(function () {
         var id = $(this).data('id');
         var urlDelete = "./api/deleteEvento";
 
-        $modalDiv.addClass('loading');
-        setTimeout(function () {
-            $modalDiv.modal('hide').removeClass('loading');
-        }, 1000);
-
         $.ajax({
             url: urlDelete,
             dataType: 'text',
