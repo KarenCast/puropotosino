@@ -182,16 +182,7 @@
                 <li class="active">
 									Mis Categorias
 								</li>
-								<!-- <li class="search-box">
-									<form class="sidebar-search">
-										<div class="form-group">
-											<input type="text" placeholder="Buscar...">
-											<button class="submit">
-												<i class="clip-search-3"></i>
-											</button>
-										</div>
-									</form>
-								</li> -->
+							
 								<ul class="nav navbar-right">
 
 									<li class="dropdown current-user">

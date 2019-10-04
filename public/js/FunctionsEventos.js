@@ -155,6 +155,7 @@ function soloNumeros(e) {
 }
 
 function setData(dataDT) {
+   var im = "."+dataDT['foto'];
     $('#AgregarNuevo').html('Editar Evento');
     $('#ModalAddNew').modal('show');
     console.warn(dataDT);
@@ -165,6 +166,6 @@ function setData(dataDT) {
     $('#tema').val(dataDT['tema']);
     $('#observaciones').val(dataDT['observaciones']);
     $('#requisitos').val(dataDT['requisitos']);
-  
-    $('#blah').attr('src', dataDT['foto']);
+
+    $('#blah').attr('src', im);
 }

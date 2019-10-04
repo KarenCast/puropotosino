@@ -17,6 +17,7 @@ Route::get('/registro', 'mainController@registro')->name('registro');
 Route::get('/productos', 'mainController@productos')->name('productos');
 Route::get('/mostrarcategoria', 'mainController@categorias')->name('mostrarcategoria');
 Route::get('/getProductosu','mainController@getProducto');
+Route::get('/programa', 'mainController@programas')->name('programas');
 
 
 // Empresa Alta Fase 0
@@ -48,7 +49,8 @@ Route::get('/consultaMarcaspe/{id}', 'marcaController@viewConsultaMarcape'); //V
 Route::get('/getMarcape/{id}','marcaController@getMarcape');
 
 Route::get('/consultaProductospe/{id}', 'productoController@viewConsultaProductope'); //Vista Consulta marcas por empresa
-Route::get('/getProductospe/{id}','productoController@getProductope');
+Route::get('/getProductospe/{id}','productoCo
+ntroller@getProductope');
 
 
 Route::get('/link/{id}/{arch}', 'adminController@link');

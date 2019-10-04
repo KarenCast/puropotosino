@@ -64,7 +64,7 @@ function getCat() {
                             name: 'descripcion'
                         },
                         {
-                            data: 'ID_empresa',
+                            data: 'nombre',
                             "render": function(data) {
                               cat=data;
                               return '';
@@ -73,7 +73,7 @@ function getCat() {
                         {
                             data: 'imagen',
                           "render": function(data) {
-                            var n=cat.slice(0,-4);
+                            var n=cat.replace(/ /g, "");;
                             return '<img src="categorias/'+n+"/" + data + '" width="100%;">';
                           }
                         },
@@ -81,7 +81,7 @@ function getCat() {
                             data: 'titulo',
 
                             "render": function(data) {
-                                  var n=cat.slice(0,-9);
+                                  var n=cat.replace(/ /g, "");;
                                   return '<img src="categorias/'+n+"/" + data + '" width="100%; style="margin: 2%;">';
 
 

@@ -225,6 +225,16 @@ figure>img{
     background-color: #f2f2f2;
 }
 
+.row.np>div#alianzas{
+  height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #f2f2f2;
+}
+
 .row.seccion.galvideos{
   background-color: #f1f1f1;
 }
@@ -290,6 +300,8 @@ border-color: #f1f1f1!important;
 
 
 button#button-fixed{
+  background-color: #213153;
+  color: white;
   position: fixed!important;
   z-index: 99999!important;
   bottom: 10%!important;
@@ -301,5 +313,12 @@ button#button-fixed{
 button#button-fixed:hover{
   transform: scale(1.05)!important;
   /* border: 1px solid #fff!important; */
-  background-color: #50719f!important;
+  background-color: #456187!important;
+}
+
+
+#alianza{
+  display: flex;
+   justify-content: center;
+   align-items: center;
 }

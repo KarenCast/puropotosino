@@ -16,10 +16,14 @@
       max-width: 2140px!important;
   }}
 
+    .nav-tabs>li.active, .nav-tabs>li.inactive{
+      background-color: #fff!important;
+    }
+
   .nav-tabs>li.active, .nav-tabs>li.active, .nav-tabs>li.active:hover {
       color: #555;
       cursor: default;
-      background-color: #b9b7b7!important;
+      background-color: #ebebeb!important;
       border-top: 1px solid #d1caca!important;
       /* border-left: 1px solid #d1caca!important; */
       /* border-right: 1px solid #d1caca!important; */
@@ -238,63 +242,6 @@ input[type="submit"]#todos:hover{
 
   </div>
 
-<!--
-					$args3 = array(
-						'type' => 'producto',
-						'taxonomy' => 'tproducto',
-						'orderby'      => 'ID',
-						'order'     => 'DESC',
-						'child_of' => $cat->term_id,
-					);
-					$categories3 = get_categories( $args3 );
-
-					if (!empty($categories3)) {
-						echo "<div class='col-md-12' id='title'>
-										<h3>SUB-CATEGORIAS</h3>
-									</div>";
-					}
-					foreach ($categories3 as $cat3) {
-						$args98 = array(
-						  "post_type" => "producto",
-						  "tax_query" => array(
-						      'relation' => 'AND',
-						      array(
-						          "taxonomy" => "tproducto",
-						          "field" => "id",
-						          "terms" => $cat3->term_id),
-						      ),
-						);
-					$query98 = new WP_Query( $args98 );
-						if( $query98->have_posts() ){
-						//	while( $query98->have_posts() ){
-								$query98->the_post();
-								echo '
-
-										<figure class="col-md-4 p-2">
-											<a href="">
-												<img class="img-fluid img-effect sub" src="'.ucwords(mb_strtoupper(get_post_meta(get_the_ID(), 'wpcf-imagen-producto', true), 'UTF-8')).'" alt="">
-											</a>
-											<figcaption><h1 style="color: white;">'.get_the_title().'</h1><br>
-											 ';
-											 echo "<form action='http://puropotosino.sanluis.gob.mx/ant/?page_id=1723' method='post'>
-											 <input type='hidden' name='variable_prod' value='".$cat3->term_id."' />
-
-											 <input type='submit' id='todos' value='Ver más' />
-											</form>";
-
-								echo '</figcaption>
-										</figure>
-								';
-
-
-
-									}
-								}
-								$row++;
-								echo "</div>";
-							}
-						}
-  ?> -->
 
 
 
@@ -303,9 +250,10 @@ input[type="submit"]#todos:hover{
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		function agregar(n){
-
+      element2.classList.add("inactive");
 			var element2 = document.getElementById(n);
 	  	element2.classList.add("active");
+
 
 		}
 	</script>

@@ -461,7 +461,7 @@ function etapatres(Request $request){
         'regimen' => $reg]);
     } catch (\Exception $e) {
       //return $e->getMessage();
-        return back()->with('Error', 'No se pudo actualizar fase');
+        return back()->with('Error', 'No se pudo actualizar fase ');
     }
   }
     $mensaje="moral";
