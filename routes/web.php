@@ -68,6 +68,7 @@ Route::post('/actualizaCategoria', 'catController@update')->name('actualizaCateg
 
 Route::get('/consultaSub', 'subcatController@viewSub')->name('consultaSub'); //Vista Consulta SubCat
 Route::get('/altaSubcategorias', 'subcatController@altaS')->name('altaSubcategorias'); //Vista Altas SubCat
+Route::get('/actualizaSubcategoria/{id}', 'subcatController@actualizaView')->name('actualizaView');
 Route::post('/altaSub', 'subcatController@storeS')->name('subcategorias'); //Guardar SubCat
 Route::post('/deleteS', 'subcatController@deleteS')->name('subcatdelete'); //Eliminar SubCat
 Route::get('/getSub','subcatController@getSub');

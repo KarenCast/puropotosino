@@ -149,7 +149,7 @@
                 $('#tema').html(info.event.extendedProps.tema);
                 $('#costo').html("$" + info.event.extendedProps.costo);
                 $('#myModal').modal('toggle');
-                $('#foto').attr('src', info.event.extendedProps.foto);
+                $('#foto').attr('src','.'+ info.event.extendedProps.foto);
                 $('#idEvento').val(info.event.id);
                 // change the border color just for fun
                 //info.el.style.borderColor = 'red';

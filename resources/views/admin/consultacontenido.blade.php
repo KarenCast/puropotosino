@@ -351,7 +351,7 @@
                         </div>
 
 
-                </div>
+                </div> 
                 <div class="row justify-content-center">
                     <div class="col-md-4">
 
@@ -368,6 +368,27 @@
 
 
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="myModalLabel">Confirmar</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <i class="title"></i>
+                <a>¿Desea continuar?</a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger btn-ok">Eliminar</button>
             </div>
         </div>
     </div>

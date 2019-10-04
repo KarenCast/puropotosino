@@ -33,24 +33,27 @@ class contenidoController extends Controller
         return view('admin.consultaRecetas');
     }
 
-    public function deleteR(Request $request){
+    public function deleteR(Request $request)
+    {
         $recetas = Contenido::where('ID_contenido', $request->Id_delete)->first();
-        $path = public_path()."\\contenido\\".$recetas->imagen;
-     
-       try {
-        unlink($path);
-        $recetas->delete();
-        return 'eliminado';
-       } catch (\Throwable $th) {
-          
-       }
+        $path = public_path().'\\contenido\\'.$recetas->imagen;
+
+        try {
+            unlink($path);
+            $recetas->delete();
+
+            return 'eliminado';
+        } catch (\Throwable $th) {
+        }
         //return $recetas;
     }
 
-    public function viewRecetasFront(){
+    public function viewRecetasFront()
+    {
         $recetas = DB::table('admpuropotosino'.'.'.'TMContenido')
                             ->where('tipo', '0')
                             ->get();
+
         return view('front.recetas')->with('recetas', $recetas);
     }
 
@@ -133,6 +136,24 @@ class contenidoController extends Controller
         return view('admin.actualizacontenido')->with('test', $test);
     }
 
+    public function delete(Request $request)
+    {
+        $cont = Contenido::where('ID_contenido', $request->Id_delete)->first();
+       
+        $path = public_path().'\\contenido\\'.$cont->imagen;
+
+        try {
+            unlink($path);
+            $cont->delete();
+
+            return 'eliminado';
+        } catch (\Throwable $th) {
+        }
+        //$cont->delete();
+        return $cont;
+        
+    }
+
     public function update(Request $request)
     {
         if ($request->imagen != null || $request->imagen != '') {
@@ -148,13 +169,13 @@ class contenidoController extends Controller
 
             try {
                 $cont = Contenido::where('ID_contenido', $request->id)
-                  ->update([
-                    'titulo' => $request->nombre,
-                    'imagen' => $filenamei,
-                    'descripcion' => $request->desc,
-                  ]);
+                        ->update([
+                            'titulo' => $request->nombre,
+                            'imagen' => $filenamei,
+                            'descripcion' => $request->desc,
+                        ]);
             } catch (\Exception $e) {
-                  return back()->with('Error', 'No se pudo actualizar');
+                return back()->with('Error', 'No se pudo actualizar');
             }
 
             $img = Image::make($fileimg->getRealPath());
@@ -162,12 +183,12 @@ class contenidoController extends Controller
         } else {
             try {
                 $cont = Contenido::where('ID_contenido', $request->id)
-        ->update([
-          'titulo' => $request->nombre,
-          'descripcion' => $request->desc,
-        ]);
+                        ->update([
+                        'titulo' => $request->nombre,
+                        'descripcion' => $request->desc,
+                        ]);
             } catch (\Exception $e) {
-              return back()->with('Error', 'No se pudo actualizar');
+                return back()->with('Error', 'No se pudo actualizar');
             }
         }
 

@@ -235,22 +235,6 @@
 
 <script src="{{asset('js/FunctionsEventos.js')}}" type="text/javascript"></script>
 
-<style>
-.modal.loading .modal-content:before {
-    content: 'Cargando...';
-    text-align: center;
-    line-height: 155px;
-    font-size: 20px;
-    background: rgba(0, 0, 0, .8);
-    position: absolute;
-    top: 55px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: #EEE;
-    z-index: 1000;
-}
-</style>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> 
 <script src="{{asset('js/FunctionEmpresas.js')}}" type="text/javascript"></script> -->
 @endsection
