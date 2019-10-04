@@ -132,6 +132,7 @@
                                             <th>ID</th>
                                             <th>Nombre</th>
                                             <th>Descripción</th>
+                                            <th></th>
                                             <th>Imagen</th>
                                             <th>Titulo</th>
                                             <th>Editar</th>

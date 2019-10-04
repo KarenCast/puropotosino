@@ -168,11 +168,15 @@ class catController extends Controller
                 ]);
           }
               try {
-                  $cont = cat::where('ID_categoria', $request->id)
-                    ->update([
+                  
+                  $cont = cat::where('ID_categoria', $request->id)->first();
+                  $anterior = str_replace(' ','',$cont->nombre);
+                  $cont->update([
                       'nombre' => $request->nombre,
                       'descripcion' => $request->desc,
                     ]);
+                  rename($path.$anterior, $path.str_replace(' ','',$cont->nombre));
+                    
               } catch (\Exception $e) {
                     return back()->with('Error', 'No se pudo actualizar');
               }

@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 
 function getCat() {
-    // var acti = $("#activas").val();
+     var cat;
     var n = $("#tipoini").val();
     var rfc;
     // if (document.getElementById("activas").checked == false) {
@@ -64,9 +64,16 @@ function getCat() {
                             name: 'descripcion'
                         },
                         {
+                            data: 'ID_empresa',
+                            "render": function(data) {
+                              cat=data;
+                              return '';
+                            }
+                        },
+                        {
                             data: 'imagen',
                           "render": function(data) {
-                            var n=data.slice(0,-4);
+                            var n=cat.slice(0,-4);
                             return '<img src="categorias/'+n+"/" + data + '" width="100%;">';
                           }
                         },
@@ -74,7 +81,7 @@ function getCat() {
                             data: 'titulo',
 
                             "render": function(data) {
-                                  var n=data.slice(0,-9);
+                                  var n=cat.slice(0,-9);
                                   return '<img src="categorias/'+n+"/" + data + '" width="100%; style="margin: 2%;">';
 
 
