@@ -20,6 +20,12 @@ class catController extends Controller
       return view('admin.consultacat');
   }
 
+  function viewEditCat($id){
+    $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
+    ->where('ID_categoria', $id)->first();
+    $carpeta = str_replace(" ","",$cat->nombre);
+      return view('admin.editarcat')->with('cat',$cat)->with('carp',$carpeta);
+  }
 
   function getCat( )
   {
@@ -115,19 +121,73 @@ class catController extends Controller
       public function deleteC(Request $request)
       {
           try {
-            // $eli = cat::find($request->id_cat);
-            // $eli->delete();
+            $emp = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+            ->where('ID_categoria', '=', $request->id_cat)
+            ->count();
 
+            if ($emp==0){
             $vac = cat::where('ID_categoria', $request->id_cat)
             ->update([
               'activo' => 0
               ]);
+            }else {
+              return redirect('/consultaCat')->with('Error', 'No se puede eliminar porque tiene empresas asociadas');
+            }
             return redirect('/consultaCat')->with('Error', null);
           } catch (\Exception $e) {
 
             return redirect('/consultaCat')->with('Error', 'Error al eliminar la vacante');
           }
 
+      }
+
+      public function update(Request $request)
+      {
+        $name = $request->nombre;
+        $n= str_replace(" ","",$name);
+        $path = public_path()."\categorias\\";
+        $carpeta = $path.'/'.$n;
+
+          if ($request->imagen != null || $request->imagen != '') {
+              $fileimg = $request->file('imagen');
+              $filenamei = $n.'.'.$fileimg->getClientOriginalExtension();
+              $ruta = $carpeta.'/'.$filenamei;
+              $cont = cat::where('ID_categoria', $request->id)
+                ->update([
+                  'imagen' => $filenamei,
+                ]);
+          }
+
+          if ($request->titulo != null || $request->titulo != '') {
+              $fileimg2= $request->file('titulo');
+              $filenamei2 = $n.'title.'.$fileimg->getClientOriginalExtension();
+              $ruta2 = $carpeta.'/'.$filenamei2;
+              $cont = cat::where('ID_categoria', $request->id)
+                ->update([
+                  'titulo' => $filenamei2,
+                ]);
+          }
+              try {
+                  $cont = cat::where('ID_categoria', $request->id)
+                    ->update([
+                      'nombre' => $request->nombre,
+                      'descripcion' => $request->desc,
+                    ]);
+              } catch (\Exception $e) {
+                    return back()->with('Error', 'No se pudo actualizar');
+              }
+
+          if ($request->imagen != null || $request->imagen != '') {
+              $img = Image::make($fileimg->getRealPath());
+              $img->save($ruta, 30);
+          }
+          if ($request->titulo != null || $request->titulo != '') {
+              $img2 = Image::make($fileimg2->getRealPath());
+              $img->save($ruta2, 30);
+          }
+
+
+          return redirect('/consultaCat');
       }
 
 }

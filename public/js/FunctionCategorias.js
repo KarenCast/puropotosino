@@ -152,6 +152,7 @@ function IrLink(seleccion){
   });
 }
 
+
   function EditEmpresa(seleccion) {
 
       var id;
@@ -162,10 +163,10 @@ function IrLink(seleccion){
           var currentRow = $(this).closest("tr");
           var data = $('#tablecat').DataTable().row(currentRow).data();
 
-          id = data['ID_empresa'];
+          id = data['ID_categoria'];
 
-          window.location = '/ActualizarEmpresas/' + id;
-
+          window.location = './EditarCategorias/' + id;
+// qbR16j1SPA#RUESnTrJfqTvB
       });
 
   }

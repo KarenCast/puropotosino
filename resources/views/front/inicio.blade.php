@@ -4,20 +4,23 @@
 @include('front.menu')
 @include('front.encabezadoprincipal')
 
-<div class="row seccion s1 justify-content-center">
-  <div class="col-md-5 line">
+<div class="row seccion s2 justify-content-center">
+  <div class="col-md-7 line">
     <h1>¿QUE ES PURO POTOSINO?</h1>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-10">
     <br><h4>
       Puro Potosino es un programa de la Dirección de Desarrollo Económico creado para impulsar en su crecimiento y desarrollo a las Mypymes tanto a nivel local, nacional como internacional.
     </h4>
   </div>
 </div>
 
-<div class="row seccion s2">
-  <div class="col-md-6">
-    <h1>Objetivos</h1>
+<div class="row seccion s1 justify-content-center">
+  <div class="col-md-1">
+
+  </div>
+  <div class="col-md-5">
+    <h1>OBJETIVOS</h1>
     <ul>
       <li>
         <h4>Posicionamiento de marca</h4>
@@ -43,16 +46,20 @@
       </li>
     </ul>
   </div>
-  <div class="col-md-6 logotipo" style="text-align: center;">
+  <div class="col-md-5 logotipo" style="text-align: center;">
       <img src="{{asset('images/logo.png')}}" alt="">
   </div>
 </div>
-<div class="row seccion s1 justify-content-center">
-  <div class="col-md-5 line">
+<div class="row seccion s3 justify-content-center">
+  <div class="col-md-8 line">
       <h1>INTRODUCCIÓN A SIDEP</h1>
   </div>
-  <div class="col-md-12">
-  <br>
+
+  <div class="col-md-5" style="text-align: center; padding: 5% 5%;">
+    <img src="{{asset('images/sidep.jpg')}}" alt="" width="100%">
+  </div>
+  <div class="col-md-5">
+  <br><br><br>
     <h4>
       Los programas del H . Ayuntamiento de SLP a través de la Dirección de
       Desarrollo Económico nacieron con el objetivo de impulsar el crecimiento
@@ -62,18 +69,24 @@
   </div>
 </div>
 
-<div class="row seccion s3">
-  <div class="col-md-6 logotipo" style="text-align: center;">
-    <img src="{{asset('images/sidep.jpg')}}" alt="" class="sidep">
+<div class="row seccion s1">
+  <div class="col-md-12">
+    <h1>BENEFICIOS</h1><br><br>
   </div>
-  <div class="col-md-6">
-    <h1>Beneficios</h1><br><br>
+  <div class="col-md-2">
+
+  </div>
+  <div class="col-md-4">
+
     <ul>
       <li>
         <h5>Profesionalización</h5>
       </li>
       <li>
-        <h5>Eventos de exhibición y venta de productos</h5>
+        <h5>Eventos de exhibición</h5>
+      </li>
+      <li>
+        <h5>Venta de productos</h5>
       </li>
       <li>
         <h5>Capacitaciones</h5>
@@ -81,6 +94,12 @@
       <li>
         <h5>Vinculación a créditos</h5>
       </li>
+
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <ul>
+
       <li>
         <h5>Asesoría empresarial</h5>
       </li>
@@ -95,6 +114,13 @@
       </li>
     </ul>
   </div>
+</div>
+<div class="" id="">
+  <a href="registro">
+  <button type="" class="btn-floating btn-lg waves-effect" name="button" id="button-fixed">
+     Registrate <i class="fas fa-sign-in-alt"></i>
+  </button>
+  </a>
 </div>
 
 @endsection

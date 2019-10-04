@@ -16,22 +16,30 @@
           Productos
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="{{route('recetas')}}">Recetas con Productos de Puro Potosino</a>
+          <a class="dropdown-item" href="{{route('mostrarcategoria')}}">Categorias</a>
           <a class="dropdown-item" href="{{route('productos')}}">Productos</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('testimonios')}}">Testimonios</a>
+          <a class="nav-link" href="{{route('recetas')}}">Cocina con Puro Potosino</a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link " href="{{route('eventos')}}">Eventos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">Programas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="https://xibaria.com/">Compra en Linea</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="{{route('registro')}}">Iniciar Sesión</a>
-        </li>
+        <a class="nav-link" href="{{route('testimonios')}}">Testimonios</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" id="iniciarsesion" href="{{route('registro')}}">Iniciar Sesión</a>
+      </li>
+
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/registro" id="navbardrop" data-toggle="dropdown">
           <a class="dropdown-item" href="/puro_potosino/public/registro">Iniciar Sesión</a>

@@ -32,6 +32,30 @@ class mainController extends Controller
         return view('front.productos');
     }
 
+
+    function categorias(){
+
+      $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
+      ->where('activo',true)
+      ->get();
+
+      $sub = DB::table('admpuropotosino'.'.'.'TCSubCategoria')
+      ->where('activo',true)
+      ->get();
+
+      $i=0; $n;
+      foreach ($cat as $key) {
+        $n[$i]= str_replace(" ","",$key->nombre);
+        $i++;
+      }
+      $j=0; $m;
+      foreach ($sub as $k) {
+        $m[$j]= str_replace(" ","",$k->nombre);
+        $j++;
+      }
+        return view('front.mostrarcategorias')->with('categoria',$cat)->with('nombre', $n)->with('subcat',$sub)->with('nombres', $m);
+    }
+
     function registro(){
         return view('front.registro')->with('Error', null);
     }

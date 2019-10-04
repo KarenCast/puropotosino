@@ -115,12 +115,18 @@ class subcatController extends Controller
       public function deleteS(Request $request)
       {
           try {
-            // $eli = subcat::find($request->id_cat);
-            // $eli->delete();
+            $emp = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+            ->where('ID_categoria', '=', $request->id_cat)
+            ->count();
+
+            if ($emp==0){
             $vac = subcat::where('ID_subcategoria', $request->id_cat)
             ->update([
               'activo' => 0
               ]);
+            }else {
+              return redirect('/consultaSub')->with('Error', 'No se puede eliminar porque tiene empresas asociadas');
+            }
             return redirect('/consultaSub')->with('Error', null);
           } catch (\Exception $e) {
             return redirect('/consultaSub')->with('Error', 'Error al eliminar la vacante');

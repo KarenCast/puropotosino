@@ -15,6 +15,7 @@ Route::get('/', 'mainController@inicio');
 Route::get('/testimonios', 'mainController@testimonios')->name('testimonios');
 Route::get('/registro', 'mainController@registro')->name('registro');
 Route::get('/productos', 'mainController@productos')->name('productos');
+Route::get('/mostrarcategoria', 'mainController@categorias')->name('mostrarcategoria');
 Route::get('/getProductosu','mainController@getProducto');
 
 
@@ -60,7 +61,10 @@ Route::get('/consultaCat', 'catController@viewCat')->name('consultaCat'); //Vist
 Route::get('/altaCategorias', 'catController@altaC')->name('altaCategorias'); //Vista Altas Cat
 Route::post('/altaCat', 'catController@storeC')->name('categorias'); //Guardar Cat
 Route::post('/deleteC', 'catController@deleteC')->name('catdelete'); //Eliminar Cat
+Route::get('/EditarCategorias/{id}', 'catController@viewEditCat'); //Eliminar Cat
 Route::get('/getCat','catController@getCat');
+Route::post('/actualizaCategoria', 'catController@update')->name('actualizaCategoria'); //Guardar actualización
+
 
 Route::get('/consultaSub', 'subcatController@viewSub')->name('consultaSub'); //Vista Consulta SubCat
 Route::get('/altaSubcategorias', 'subcatController@altaS')->name('altaSubcategorias'); //Vista Altas SubCat
