@@ -141,7 +141,7 @@
                     <form class="form-horizontal" method="post" id="eventoSave" action="{{route('saveEvento')}}"
                             enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <input type="hidden" name="ID_eventoE" id="ID_evento" value="0">
+                        <input type="text" name="ID_eventoE" id="ID_evento" value="0">
                         <div class="row">
                             <div class="col-6 form-group">
                                 <label for="hora_inicio" class="col-sm-12 control-label">Fecha/Hora</label>
