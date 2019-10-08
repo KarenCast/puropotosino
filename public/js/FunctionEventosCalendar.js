@@ -74,10 +74,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function changeCarrusel(){
-   
-    var date = new Date($('#myCalendar').fullCalendar('getDate'));
-    var month_int = date.getMonth();
-        console.log( month_int.toISOString());
+    var moment = $('#calendar').fullCalendar('getDate');
+    var tgl=moment(moment).format('YYYY-MM-DD');
+    console.log( tgl);
        
 }
 
