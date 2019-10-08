@@ -41,15 +41,15 @@ class EventosController extends Controller
 
             $event = Evento::create($request->all());
             $event->foto = "/contenido/eventos/".$filename;
-            $evento->save();
+            $event->save();
 
             return redirect('/consultaEventos');
         } else {
 
             $edit = Evento::findOrFail($request->ID_eventoE);
             //$path = public_path()."\contenido\Eventos\\";
-            if($edit->foto !== null)
-                unlink($edit->foto);
+            if($edit->foto != null && $edit->foto != null)
+                unlink(public_path().$edit->foto);
             $path = public_path()."/contenido/eventos/";
             $file = $request->file('fotoE');
             $filename = time().'.'.$file->getClientOriginalExtension();
@@ -70,6 +70,14 @@ class EventosController extends Controller
         ]);
         */
         //dd($request->all());
+    }
+
+    public function getEventosMes(Request $request){
+      $eventos  = Evento::whereMonth('fecha_evento', '=', $request->mes)
+      ->whereYear('fecha_evento', '=', $request->anio)
+      ->get();
+      
+      return response()->json($eventos, 200);
     }
 
     public function delete(Request $request)

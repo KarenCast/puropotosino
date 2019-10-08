@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('getEventos', 'EventosController@getEventos')->name('getEventos');
 Route::post('saveEvento', 'EventosController@store')->name('saveEvento');
 Route::delete('deleteEvento', 'EventosController@delete')->name('deleteEvento');
+Route::post('getEventosMes', 'EventosController@getEventosMes')->name('getEventosMes');
 
 Route::post('registroEvento', 'EventosController@registro')->name('registroEvento');
 Route::delete('deleteReceta', 'contenidoController@deleteR')->name('recdelete');
