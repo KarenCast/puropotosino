@@ -141,13 +141,7 @@ class subcatController extends Controller
     }
 
 
-          } catch (\Exception $e) {
-            if(strpos($e->getMessage(),"Ya existe la llave"))
-            return redirect('/altaSubcategorias')->with('Error', 'Llave repetida');
-            echo $e->getMessage();
-
-          }
-      }
+      
 
 
 
