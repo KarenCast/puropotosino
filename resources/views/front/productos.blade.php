@@ -196,18 +196,6 @@ background-color: rgba(255, 255, 255, 0);
 				<!-- end: SPANEL CONFIGURATION MODAL FORM -->
 
 
-
-					<!--  Tabla de consulta -->
-					<div class="row">
-						<div class="col-sm-12" id="panel-proceso">
-							<!-- start: FORM WIZARD PANEL -->
-							<div class="panel panel-default">
-
-				<div class="panel-body proceso">
-
-
-
-
 					<div class="row" style="margin: 5%;">
             <div class="col-md-1">
 
@@ -234,11 +222,31 @@ background-color: rgba(255, 255, 255, 0);
   							</div>
             </div>
 					</div>
-				</div>
-			</div>
-			<!-- end: FORM WIZARD PANEL -->
-		</div>
-	</div>
+
+          <div class="row seccion s2">
+            <div id="alianzas" class="col-md-12" style="margin-bottom: 20px">
+              <h3>COLABORADORES</h3>
+            </div>
+            <div class="col-md-2  col-3"  id="alianza">
+              <img src="{{asset('alianzas/logocjm.png')}}" alt="" width="100%" height="auto">
+            </div>
+            <div class="col-md-2  col-3" id="alianza">
+              <img src="{{asset('alianzas/canaco.png')}}" alt="" width="100%" height="auto">
+            </div>
+            <div class="col-md-2  col-3" id="alianza">
+              <img src="{{asset('alianzas/logocomce.png')}}" alt="" width="100%" height="auto">
+            </div>
+            <div class="col-md-2  col-3" id="alianza">
+              <img src="{{asset('alianzas/ucuau.png')}}" alt="" width="100%" height="auto">
+            </div>
+            <div class="col-md-2  col-3" id="alianza">
+              <img src="{{asset('alianzas/proyecta.png')}}" alt="" width="100%" height="auto">
+            </div>
+            <div class="col-md-2  col-3" id="alianza">
+              <img src="{{asset('alianzas/enture.jpeg')}}" alt="" width="100%" height="auto">
+            </div>
+          </div>
+
 
 
 

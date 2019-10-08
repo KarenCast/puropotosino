@@ -51,7 +51,7 @@
           <div class="form-group entrar">
             <div class="row">
               <div class="col-md-3 cuadroslog">
-                <img src="{{asset('images/CUADROSLOGIN.png')}}" alt="" width="100%">
+
               </div>
               <div class="col-md-6 btnentrarlog">
                 <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Entrar</button>
@@ -70,7 +70,7 @@
           <div class="form-group">
             <div class="row">
               <div class="col-md-3 cuadroslog">
-                <img src="{{asset('images/CUADROSLOGIN.png')}}" alt="" width="100%">
+
               </div>
               <div class="col-md-6 btnentrarlog">
                 <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Enviar</button>
@@ -128,7 +128,7 @@
 
 
 
-<script src="{{asset('js/mostrar.js')}}"></script>
+<!-- <script src="{{asset('js/mostrar.js')}}"></script> -->
 <script type="text/javascript">
 function olvidepass()
 {

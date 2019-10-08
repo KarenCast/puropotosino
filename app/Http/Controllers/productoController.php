@@ -300,6 +300,74 @@ class productoController extends Controller
 
       }
 
+function updateimgP(Request $request){
+  $name= $request->idempresa;
+  $name_arch= strtotime("now");
+
+
+  $fileimg = $request->file('nuevaimagen');
+  if ($fileimg!=null) {
+    $cat = DB::table('admpuropotosino'.'.'.'TCProducto')
+    ->where('ID_producto', $request->id)
+    ->first();
+
+    // $namep= $cat->imagen;
+    // $porciones = explode(".", $namep);
+
+
+    $filenameimg = $name_arch.'_ImagenProducto'.'.'.$fileimg->getClientOriginalExtension();
+  }else{
+    $filenameimg="";
+  }
+
+  try {
+
+    $carpeta2 = public_path();
+
+    $carpeta2 = $carpeta2.'/Files//'.$name.'//Productos/';
+    if (!file_exists($carpeta2)){
+      try {
+        mkdir($carpeta2, 0777, true);
+        $res = "";
+      }catch (\Exception $e) {
+        return "no se creo";
+      }
+    }
+
+          try {
+            if ($fileimg!=null) {
+              if(strlen($fileimg->getClientOriginalName()) > 0){
+
+                  $rutaInfo = $carpeta2."/".$filenameimg;
+                  $img = Image::make($fileimg->getRealPath());
+                  $img->save($rutaInfo, 30);
+                  try {
+                      $cont = Producto::where('ID_producto', $request->id)
+                        ->update([
+                          'imagen' => $filenameimg,
+
+                        ]);
+                  } catch (\Exception $e) {
+                      return back()->with('Error', 'No se pudo guardar imagen');
+                  }
+                }else {
+                 $res = "Fallo al cargar uno o mas archivos";
+                 return back()->with('Error', $res);
+                }
+              }
+            } catch (\Exception $e) {
+              // session(['Error' => 'No se pudo guardar CV, intenta con otro archivo.']);
+              // return redirect('/TodasVacantes')->with('Error', 'No se pudo guardar CV, intenta con otro archivo.');
+              return back()->with('Error', 'No se pudo guardar');
+            }
+
+  } catch (\Exception $e) {
+    return back()->with('Error', 'No se completo la solicitud');
+  }
+  return redirect('/consultaProductospe/'.$request->idempresa);
+}
+
+
 // PRODUCTO por empresas
 
 function viewConsultaProductope($n){
@@ -319,6 +387,8 @@ function getProductope($n)
     ->get();
     return Datatables::of($cat)
     ->make(true);
+
+
 }
 
   }

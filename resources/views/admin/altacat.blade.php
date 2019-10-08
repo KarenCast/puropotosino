@@ -39,7 +39,7 @@
 
 										</a>
 										<ul class="dropdown-menu">
-										
+
 											<li class="divider"></li>
 
 											<li>
@@ -128,7 +128,7 @@
 					<!-- end: PAGE CONTENT-->
 				</div>
 			</div>
-<script src="{{asset('js/validar.js')}}">  </script>
+
 
 
 <script type="text/javascript">

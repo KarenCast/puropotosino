@@ -12,6 +12,7 @@ class contenidoController extends Controller
 {
     public function viewContenido()
     {
+        if (strcmp(session('tipoinicio'), 'admin') == 0) {
         $n;
         $foo = $_SERVER['REQUEST_URI'];
         if (strpos($foo, 'Recetas') !== false) {
@@ -21,16 +22,27 @@ class contenidoController extends Controller
         }
 
         return view('admin.altacontenido')->with('n', $n);
+      }else{
+          return redirect('Login-admin');
+        }
     }
 
     public function viewCont()
     {
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
         return view('admin.consultacontenido');
+      }else{
+          return redirect('Login-admin');
+        }
     }
 
     public function viewRecetas()
     {
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
         return view('admin.consultaRecetas');
+      }else{
+          return redirect('Login-admin');
+        }
     }
 
     public function deleteR(Request $request)
@@ -50,37 +62,47 @@ class contenidoController extends Controller
 
     public function viewRecetasFront()
     {
+
         $recetas = DB::table('admpuropotosino'.'.'.'TMContenido')
                             ->where('tipo', '0')
                             ->get();
 
         return view('front.recetas')->with('recetas', $recetas);
+    
     }
 
     public function getCont($n, $t)
     {
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
         if ($n == 1) {
             $contenido = DB::table('admpuropotosino'.'.'.'TMContenido')
-    ->where('tipo', $t)
-    ->get();
-        } else {
-            $contenido = DB::table('admpuropotosino'.'.'.'TMContenido')
-    ->where('tipo', '0')
-    ->get();
-        }
+              ->where('tipo', $t)
+              ->get();
+                  } else {
+                      $contenido = DB::table('admpuropotosino'.'.'.'TMContenido')
+              ->where('tipo', '0')
+              ->get();
+                  }
 
-        return Datatables::of($contenido)
-    ->make(true);
+                  return Datatables::of($contenido)
+              ->make(true);
+      }else{
+        return redirect('Login-admin');
+      }
     }
 
     public function getRec()
     {
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
         $contenido = DB::table('admpuropotosino'.'.'.'TMContenido')
         ->where('tipo', '0')
         ->get();
 
         return Datatables::of($contenido)
         ->make(true);
+      }else{
+        return redirect('Login-admin');
+      }
     }
 
     public function store(Request $request)
@@ -131,15 +153,19 @@ class contenidoController extends Controller
 
     public function viewActualizaCont($n)
     {
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
         $test = Contenido::where('ID_contenido', $n)->first();
 
         return view('admin.actualizacontenido')->with('test', $test);
+      }else{
+        return redirect('Login-admin');
+      }
     }
 
     public function delete(Request $request)
     {
         $cont = Contenido::where('ID_contenido', $request->Id_delete)->first();
-       
+
         $path = public_path().'\\contenido\\'.$cont->imagen;
 
         try {
@@ -151,7 +177,7 @@ class contenidoController extends Controller
         }
         //$cont->delete();
         return $cont;
-        
+
     }
 
     public function update(Request $request)

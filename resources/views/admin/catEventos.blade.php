@@ -29,7 +29,7 @@
                     </li>
 
                     <li class="active">
-                        Mis Empresas
+                        Mis Eventos
                     </li>
                     <ul class="nav navbar-right">
 
@@ -73,7 +73,7 @@
                 <!-- start: FORM WIZARD PANEL -->
                 <div class="panel panel-default">
                     <div class="panel-heading	" style="padding-bottom: 10%;">
-                        <h3>MIS Eventos<br>
+                        <h3>MIS EVENTOS<br>
                             <small>AQUI PUEDES ENCONTRAR TODOS LOS EVENTOS</small></h3>
                     </div>
                     <div class="panel-body proceso">
@@ -192,14 +192,14 @@
                                 <input type="text" class="form-control" id="requisitos" name="requisitos">
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="control-label col-sm-12" for="foto">Fotografia</label>
                             <div class="col-sm-12">
-                                <img id="blah" src="" alt="foto de evento"  style="max-width: -moz-available;" />
-                                <input type='file' class="form-control" accept="image/*" id="foto" name="fotoE" />                               
+                                <img id="blah" src="" alt="foto de evento"  style="width: 100%;" />
+                                <input type='file' class="form-control" accept="image/*" id="foto" name="fotoE" />
                             </div>
-                            
+
                         </div>
                         <div class="form-group">
                             <div class="col-12 col-sm-12">
@@ -235,6 +235,6 @@
 
 <script src="{{asset('js/FunctionsEventos.js')}}" type="text/javascript"></script>
 
-<!-- <script src="{{asset('js/validar.js')}}">  </script> 
+<!-- <script src="{{asset('js/validar.js')}}">  </script>
 <script src="{{asset('js/FunctionEmpresas.js')}}" type="text/javascript"></script> -->
 @endsection

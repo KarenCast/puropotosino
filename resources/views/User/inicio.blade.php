@@ -26,7 +26,7 @@
 								</li>
 
                 <li class="active">
-									ESTATUS
+									Seguimiento
 								</li>
 
 								<ul class="nav navbar-right">
@@ -38,7 +38,12 @@
 
 										</a>
 										<ul class="dropdown-menu">
-
+											<li>
+												<a href="{{route('verPerfil')}}">
+													<i class="fas fa-store"></i>
+													&nbsp;Perfil
+												</a>
+											</li>
 
 											<li>
 												<a href="{{url('/LogOut')}}">
@@ -299,7 +304,7 @@
 															Comprobante de programa de incubación (Archivo .pdf)
 															</label><br>
 															@if($emp->comprobante_incubacion!=null)
-															<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual</h4> </a>
+															<a href="../../link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual</h4> </a>
 															<input type="file" name="incubacion"  id="incubacion" class="form-control" accept="application/pdf"><br>
 															@else
 															<input type="file" name="incubacion" required id="incubacion" class="form-control" accept="application/pdf"><br>
@@ -451,7 +456,7 @@
 														@if($emp->codigo_barras!=null)
 														<input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 
-														<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}"> <h4>Código de barras actual</h4> </a>
+														<a href="../../link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}"> <h4>Código de barras actual</h4> </a>
 														@else
 														<input type="file" required name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 
@@ -490,7 +495,7 @@
 													@if($emp->FDA!=null)
 													<input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 
-													<a href="/puro_potosino/public/link/{{$emp->ID_empresa}}/{{$emp->FDA}}"> <h4>FDA actual</h4> </a>
+													<a href="../../link/{{$emp->ID_empresa}}/{{$emp->FDA}}"> <h4>FDA actual</h4> </a>
 													@else
 													<input type="file" required name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 

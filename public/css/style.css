@@ -225,6 +225,16 @@ figure>img{
     background-color: #f2f2f2;
 }
 
+.row.np>div#alianzas{
+  height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #f2f2f2;
+}
+
 .row.seccion.galvideos{
   background-color: #f1f1f1;
 }
@@ -251,11 +261,46 @@ h4{
   padding: 0 10% 0 10%;
 }
 
+div#calendar{
+  padding: 11em;
+}
+
 
 @media only screen and (max-width: 691px) {
   img.sidep{
     width: 90%;
   }
+
+  h2#titulo-admin{
+    font-size: 15px!important;
+  }
+
+  div#calendar{
+    padding: 0em;
+    height: auto;
+  }
+
+  .fc-right, button.fc-today-button{
+    display: none;
+  }
+
+}
+
+
+@media only screen and (max-width: 990px) {
+
+  h2#titulo-admin{
+    font-size: 20px!important;
+  }
+
+  .fc-right, button.fc-today-button{
+    display: none;
+  }
+
+  div#calendar{
+    padding: 3em;
+  }
+
 }
 
 
@@ -290,6 +335,8 @@ border-color: #f1f1f1!important;
 
 
 button#button-fixed{
+  background-color: #213153;
+  color: white;
   position: fixed!important;
   z-index: 99999!important;
   bottom: 10%!important;
@@ -301,5 +348,17 @@ button#button-fixed{
 button#button-fixed:hover{
   transform: scale(1.05)!important;
   /* border: 1px solid #fff!important; */
-  background-color: #50719f!important;
+  background-color: #456187!important;
+}
+
+
+#alianza{
+  display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+
+#programasimg{
+  text-align: center;
 }

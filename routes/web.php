@@ -17,6 +17,7 @@ Route::get('/registro', 'mainController@registro')->name('registro');
 Route::get('/productos', 'mainController@productos')->name('productos');
 Route::get('/mostrarcategoria', 'mainController@categorias')->name('mostrarcategoria');
 Route::get('/getProductosu','mainController@getProducto');
+Route::get('/programa', 'mainController@programas')->name('programas');
 
 
 // Empresa Alta Fase 0
@@ -54,6 +55,10 @@ Route::get('/getProductospe/{id}','productoController@getProductope');
 Route::get('/link/{id}/{arch}', 'adminController@link');
 Route::get('/linkprod/{id}/{arch}', 'adminController@linkprod');
 Route::get('/linkmarca/{id}/{arch}', 'adminController@linkmarca');
+Route::get('/linkword/{id}', 'adminController@linkword');
+
+//Edita imagen de propducto
+Route::post('/imagenproducto', 'productoController@updateimgP')->name('imagenproducto');
 
 
 //Categorias
@@ -106,7 +111,7 @@ Route::get('/verEmpresa/{n}/{tipo}', 'empresasController@viewE')->name('verEmpre
 Route::get('/inicioUser', 'UserController@redireccion')->name('inicioUser');
 Route::get('/LogOut', 'UserController@LogOut');
 Route::get('/consultaEtapas','UserController@viewEtapas')->name('consultaEtapas');
-
+Route::get('/verPerfil', 'empresasController@viewP')->name('verPerfil');
 
 //Marcas
 Route::get('/altaMarca','marcaController@viewAltaMarca')->name('altaMarca');

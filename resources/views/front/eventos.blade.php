@@ -7,11 +7,11 @@
     *, *::before, *::after{
     -moz-box-sizing: border-box;
          box-sizing: border-box;
-    
+
     -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
     }
-    
+
     html, body{
     margin: 0px;
     padding: 0px;
@@ -20,7 +20,7 @@
     font-weight: 300;
     height: 100%;
     }
-    
+
     .container{
     width: 1024px;
     max-width: 100%;
@@ -28,16 +28,16 @@
     display: block;
     text-align: center;
     }
-    
+
     .hero{
     width: 100%;
     height: 40%;
     background: #3498db;
     display: table;
     }
-    
-    
-    
+
+
+
     figure{
     width: 400px;
     height: 300px;
@@ -49,7 +49,7 @@
     box-shadow: 0 0 5px #ddd;
     margin: 1em;
     }
-    
+
     figcaption{
     position: absolute;
     left: 0; right: 0;
@@ -60,7 +60,7 @@
     height: 100%;
     display: table;
     }
-    
+
     figcaption div{
         padding-top: 45px;
         left: 0;
@@ -70,12 +70,12 @@
         position: absolute;
         display: table-cell;
         vertical-align: middle;
-    
+
     opacity: 0;
     color: #2c3e50;
     text-transform: uppercase;
     }
-    
+
     a#spe {
       position: absolute;
         left: 0;
@@ -83,7 +83,7 @@
         bottom: 0;
         width: 100%;
     }
-    
+
     figcaption div:after{
     position: absolute;
     content: "";
@@ -95,46 +95,46 @@
     height: 0px;
     background: #2c3e50;
     }
-    
+
     figure img{
     -webkit-transition: all 0.5s linear;
             transition: all 0.5s linear;
     -webkit-transform: scale3d(1, 1, 1);
             transform: scale3d(1, 1, 1);
     }
-    
+
     figure:hover figcaption{
     background: rgba(255, 255, 255, 0.74);
     }
-    
+
     figcaption:hover div{
     opacity: 1;
     top: 0;
     }
-    
+
     figure:hover figcaption div{
       opacity: 1;
       top: 0;
     }
-    
+
     figcaption:hover div:after{
     width: 50%;
     }
-    
+
     figure:hover img{
     -webkit-transform: scale3d(1.2, 1.2, 1);
             transform: scale3d(1.2, 1.2, 1);
     }
-    
-    
-    
+
+
+
     figure img{
       width: 100%;
       height: auto;
       max-height: 220px;
     }
-    
-    
+
+
     figure#video{
     width: 100%;
     height: auto;
@@ -146,8 +146,8 @@
     box-shadow: 0 0 5px #ddd;
     margin: 1em;
     }
-    
-    
+
+
     /*font-face*/
     @font-face {
     font-family: 'Lato';
@@ -155,7 +155,7 @@
     font-weight: 100;
     src: local('Lato Hairline'), local('Lato-Hairline'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/boeCNmOCCh-EWFLSfVffDg.woff) format('woff');
     }
-    
+
     @font-face {
     font-family: 'Lato';
     font-style: normal;
@@ -168,14 +168,14 @@
     font-weight: 400;
     src: local('Lato Regular'), local('Lato-Regular'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/9k-RPmcnxYEPm8CNFsH2gg.woff) format('woff');
     }
-    
+
     @font-face {
     font-family: 'Lato';
     font-style: normal;
     font-weight: 700;
     src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent.com/static/fonts/lato/v6/wkfQbvfT_02e2IWO3yYueQ.woff) format('woff');
     }
-    
+
     </style>
 @if(session('Error')!== null)
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -200,12 +200,12 @@
     </div>
     <div class="col-md-12">
       <div class="slide-carousel">
-  
+
        <div id="carouselEvents"></div>
-        
-  
-  
-  
+
+
+
+
       </div>
     </div>
   </div>

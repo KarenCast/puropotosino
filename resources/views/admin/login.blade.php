@@ -56,7 +56,7 @@
 										<div class="col-md-5 loginE" style="margin: auto; ">
 											<div class="row">
 												<div class="col-md-12">
-													<h2 style="text-align:center">ACCESO ADMINISTRADOR DE PUROPOTOSINO</h2>
+													<h2 style="text-align:center" id="titulo-admin">ACCESO ADMINISTRADOR DE PUROPOTOSINO</h2>
 													<br><br><br>
 												</div>
 											</div>
@@ -99,7 +99,7 @@
 
 													<a  onclick="olvidepass();">
 														Olvide mi contraseña.
-														
+
 													</a>
 												</div>
 											</div>
@@ -127,7 +127,7 @@
 			<script src="{{asset('Plugins/jquery/jquery-3.2.1.min.js')}}" type="text/javascript"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		  <script src="{{asset('Plugins/Bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-		  <script src="{{asset('js/mostrar.js')}}"></script>
+		  <!-- <script src="{{asset('js/mostrar.js')}}"></script> -->
 		  <script src="{{asset('js/custom.js')}}"></script>
         <!-- <script src="{{asset('assets/plugins/select2/select2.min.js')}}" type="text/javascript"></script> -->
       <script src="{{asset('Plugins/DataTable/js/jquery.dataTables.min.js')}}" type="text/javascript"></script>

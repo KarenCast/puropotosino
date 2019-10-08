@@ -17,32 +17,40 @@ class catController extends Controller
 {
 
   function viewCat(){
+    if (session('tipoinicio')=='admin') {
       return view('admin.consultacat');
+    }else{
+     return  redirect ('Login-admin');
+    }
   }
 
   function viewEditCat($id){
+    if (session('tipoinicio')=='admin') {
     $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
     ->where('ID_categoria', $id)->first();
     $carpeta = str_replace(" ","",$cat->nombre);
       return view('admin.editarcat')->with('cat',$cat)->with('carp',$carpeta);
+    }else{
+     return  redirect ('Login-admin');
+    }
   }
 
   function getCat( )
   {
+      if (session('tipoinicio')=='admin') {
       $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
       ->where('activo', true)
       ->get();
       return Datatables::of($cat)
       ->make(true);
+    }else{
+     return  redirect ('Login-admin');
+    }
   }
 
 
   function altaC(){
     if (strcmp(session('tipoinicio'), 'admin')==0) {
-      // $delegacion = DB::table('admcomun'.".".'TCDelegacion')->get();
-      // $civil = DB::table('admcomun'.".".'TCEstado_civil')->get();
-      // $nivel = DB::table('admcomun'.".".'TCNivelacademico')->get();
-      // $catresas = DB::table('admbolsa'.".".'TCEmpresas')->where('RFC_camara',session('RFC'))->get();
       return view('admin.altacat');
     }else{
       return redirect('/Login-admin');
@@ -168,7 +176,7 @@ class catController extends Controller
                 ]);
           }
               try {
-                  
+
                   $cont = cat::where('ID_categoria', $request->id)->first();
                   $anterior = str_replace(' ','',$cont->nombre);
                   $cont->update([
@@ -176,7 +184,7 @@ class catController extends Controller
                       'descripcion' => $request->desc,
                     ]);
                   rename($path.$anterior, $path.str_replace(' ','',$cont->nombre));
-                    
+
               } catch (\Exception $e) {
                     return back()->with('Error', 'No se pudo actualizar');
               }

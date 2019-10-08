@@ -91,13 +91,14 @@ console.log(id);
         var image_p;
         var tabla;
         var url;
-
+        var id;
 
         $("#tableproductope").on('click', '#bedv', function(e) {
             e.preventDefault();
             var currentRow = $(this).closest("tr");
             var data = $('#tableproductope').DataTable().row(currentRow).data();
 
+            id = data['ID_producto'];
             nom  = data['nombre'];
             mar  = data['nombre_marca'];
             desc = data['descripcion'];
@@ -109,7 +110,7 @@ console.log(id);
             console.log(url);
             // producto = data['imagen'];
             // titulo = data['titulo'];
-
+            $("#id").val(id);
             $("#nombre_e").val(nom);
             $("#marca_e").val(mar);
             $("#desc_e").val(desc);

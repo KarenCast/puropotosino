@@ -28,7 +28,7 @@
         <a class="nav-link " href="{{route('eventos')}}">Eventos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">Programas</a>
+        <a class="nav-link " href="{{route('programas')}}">Programas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="https://xibaria.com/">Compra en Linea</a>

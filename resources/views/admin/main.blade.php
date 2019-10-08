@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
-<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
-<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
-<!--[if !IE]><!-->
+
 <html lang="en" class="no-js">
 <!--<![endif]-->
 <!-- start: HEAD -->
@@ -11,7 +7,7 @@
     <title>SIDEP</title>
     <!-- start: META -->
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="{{asset('images/LOGOVENTANILLAUNICA.png')}}">
+      <link rel="shortcut icon" href="{{asset('images/logo.png')}}">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -145,7 +141,7 @@
     <script>
     jQuery(document).ready(function() {
         Main.init();
-        FormWizard.init();
+
         document.querySelector('#bienvenida').innerText = 'BIENVENIDO A SIDEP';
 
     });

@@ -211,6 +211,26 @@ class empresasController extends Controller
 
           }
 
+          $data_vac = array(
+             'id' => $emp->ID_empresa,
+             'tip' => session('tipo'),
+          );
+
+          try {
+
+
+                Mail::send('emails.nuevo', $data_vac, function ($message) {
+
+                  $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Nuevo registro.');
+                  $message->to('karen.castillo@sanluis.gob.mx')->subject('Se ha registrado una nueva empresa. Proceso SIDEP');
+
+                });
+
+          } catch (\Exception $e) {
+              return back()->with('Error', 'No se pudo enviar correo');
+          }
+
+
 
         return redirect('/inicioUser')->with('Exito', 'Tú registro será revisado y se te asignara una etapa de acuerdo a tú documentación.
                                           IMPORTANTE: Revisa tú correo de contacto continuamente, se te harán llegar las observaciones correspondientes.');
@@ -259,6 +279,7 @@ class empresasController extends Controller
 
     function viewE($n, $tipo){
 
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
       if ($tipo==1) {
 
         $user = Empresas::where('ID_empresa', $n)->first();
@@ -285,8 +306,44 @@ class empresasController extends Controller
         ->where('TCEmpresaPP.ID_empresa', $n)
         ->get();
       }
-
-
         return view('admin.verempresa')->with('empresa', $empresa);
     }
+  else{
+    return redirect('Login-admin');
+  }}
+
+
+
+
+  function viewP(){
+
+      $user = Empresas::where('ID_empresa', session('ID_e'))->first();
+      if ($user->RFC !=null || $user->RFC !='') {
+        $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+        ->join('admseguridad'.'.'.'TCPersonasMorales',function($join){
+          $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
+        })
+        ->join('admpuropotosino'.'.'.'TCContacto',function($join){
+          $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+        })
+        ->where('TCEmpresaPP.ID_empresa', session('ID_e'))
+        ->get();
+      }else{
+
+        $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+        ->join('admseguridad'.'.'.'TCUsuariosExternos',function($join){
+          $join->on('admseguridad'.'.'.'TCUsuariosExternos.CURP', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.CURP');
+        })
+        ->join('admpuropotosino'.'.'.'TCContacto',function($join){
+          $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+        })
+        ->where('TCEmpresaPP.ID_empresa', session('ID_e'))
+        ->get();
+      }
+      return view('User.perfil')->with('empresa', $empresa);
+  }
+
+
+
+
 }

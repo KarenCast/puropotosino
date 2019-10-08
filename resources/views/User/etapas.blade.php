@@ -26,7 +26,7 @@
 								</li>
 
                 <li class="active">
-									ESTATUS
+									Etapas
 								</li>
 
 								<ul class="nav navbar-right">
@@ -38,7 +38,12 @@
 
 										</a>
 										<ul class="dropdown-menu">
-											
+											<li>
+												<a href="{{route('verPerfil')}}">
+													<i class="fas fa-store"></i>
+													&nbsp;Perfil
+												</a>
+											</li>
 
 											<li>
 												<a href="{{url('/LogOut')}}">

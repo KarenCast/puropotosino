@@ -32,6 +32,10 @@ class mainController extends Controller
         return view('front.productos');
     }
 
+    function programas(){
+        return view('front.programas');
+    }
+
 
     function categorias(){
 

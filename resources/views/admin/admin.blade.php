@@ -7,7 +7,7 @@
     <!-- end: SPANEL CONFIGURATION MODAL FORM -->
     <div class="container">
         @if(session('Error')!== null)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -101,23 +101,7 @@
                             </div>
                         </div>
 
-                        <!-- <div class="form-group row vacactivas" id="vacactivas">
-						<div class="col-sm-6">
-							<label for="vac" id="etiqueta1"></label>
-						</div>
-						<div class="col-sm-6">
-							<ul class="list-group list-group-flush">
-								<li class="list-group-item">
-
-									 <label class="switch ">
-										 <input type="checkbox" class="primary" value="0" id="activas" name="activas" onchange="getVacantes();">
-										 <span class="slider a round"></span>
-									 </label>
-
-								</li>
-							</ul>
-						</div>
-					</div> -->
+                      
 
                         <div class="row">
                             <div class="table-responsive">

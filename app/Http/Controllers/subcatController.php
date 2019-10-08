@@ -12,17 +12,25 @@ class subcatController extends Controller
 {
     public function viewSub()
     {
+    if (strcmp(session('tipoinicio'), 'admin') == 0) {
         return view('admin.consultasub');
+      }else{
+       return  redirect ('Login-admin');
+      }
     }
 
     public function getSub()
     {
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
         $cat = DB::table('admpuropotosino'.'.'.'TCSubCategoria')
       ->where('activo', true)
       ->get();
 
         return Datatables::of($cat)
       ->make(true);
+    }else{
+     return  redirect ('Login-admin');
+    }
     }
 
     public function altaS()
@@ -40,12 +48,16 @@ class subcatController extends Controller
 
     public function actualizaView($id)
     {
+      if (strcmp(session('tipoinicio'), 'admin') == 0) {
         $subCat = DB::table('admpuropotosino'.'.'.'TCSubCategoria')
       ->where('ID_subcategoria', $id)
       ->first();
         $categorias = DB::table('admpuropotosino'.'.'.'TCCategoria')->get();
         //dd($subCat);
         return view('admin.altasub')->with('subCat', $subCat)->with('categorias', $categorias);
+      }else{
+       return  redirect ('Login-admin');
+      }
     }
 
     public function storeS(Request $request)
