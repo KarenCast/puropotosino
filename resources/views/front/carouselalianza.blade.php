@@ -46,7 +46,7 @@
       <a href="#">
         <figure>
 
-            <img src="{{asset('Empresas')}}/{{$rol->logo}}" alt="" height="150px">
+            <img src="" alt="" height="150px">
 
         </figure>
       </a>

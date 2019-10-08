@@ -227,22 +227,22 @@ background-color: rgba(255, 255, 255, 0);
             <div id="alianzas" class="col-md-12" style="margin-bottom: 20px">
               <h3>COLABORADORES</h3>
             </div>
-            <div class="col-md-2"  id="alianza">
+            <div class="col-md-2  col-3"  id="alianza">
               <img src="{{asset('alianzas/logocjm.png')}}" alt="" width="100%" height="auto">
             </div>
-            <div class="col-md-2" id="alianza">
+            <div class="col-md-2  col-3" id="alianza">
               <img src="{{asset('alianzas/canaco.png')}}" alt="" width="100%" height="auto">
             </div>
-            <div class="col-md-2" id="alianza">
+            <div class="col-md-2  col-3" id="alianza">
               <img src="{{asset('alianzas/logocomce.png')}}" alt="" width="100%" height="auto">
             </div>
-            <div class="col-md-2" id="alianza">
+            <div class="col-md-2  col-3" id="alianza">
               <img src="{{asset('alianzas/ucuau.png')}}" alt="" width="100%" height="auto">
             </div>
-            <div class="col-md-2" id="alianza">
+            <div class="col-md-2  col-3" id="alianza">
               <img src="{{asset('alianzas/proyecta.png')}}" alt="" width="100%" height="auto">
             </div>
-            <div class="col-md-2" id="alianza">
+            <div class="col-md-2  col-3" id="alianza">
               <img src="{{asset('alianzas/enture.jpeg')}}" alt="" width="100%" height="auto">
             </div>
           </div>

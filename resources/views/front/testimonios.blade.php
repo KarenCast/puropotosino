@@ -237,31 +237,6 @@ src: local('Lato Bold'), local('Lato-Bold'), url(http://themes.googleusercontent
   </div>
   @endforeach
   </div>
-  <!-- <div class="col-md-3 q1">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-3 q2">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-3 q3">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-3 q4">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-3 q1">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-3 q2">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-3 q3">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="col-md-3 q4">
-    <iframe width="82%" height="auto" src="https://www.youtube.com/embed/p_chWCfhIgw?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</div> -->
 
 <div id="mimodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

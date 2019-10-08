@@ -28,7 +28,7 @@
 								</li>
 
                 <li class="active">
-									Mis Categorias
+									Mis Productos
 								</li>
 
 								<ul class="nav navbar-right">
@@ -125,7 +125,7 @@
 
 
                  <div class="modal-header" style="background-color: #1c3150; color: #fff;">
-                   <input readonly type="text" name="nombre_e" id="nombre_e"  class="inoborder form-control" style="background-color: rgba(254, 254, 254, 0); color: #fff; font-size:22px;"/>
+                   <input readonly type="text" name="nombre_e" id="nombre_e"  class="inoborder form-control" style="width: 70%;background-color: rgba(254, 254, 254, 0); color: #fff; font-size:22px;"/>
 
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="text-white">&times;</span>
@@ -134,14 +134,26 @@
                  <div class="modal-body">
                       <div class="container">
 
-                              <form action="" method="post" id="candvac">
+                              <form action="{{ route('imagenproducto') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal"  name="form" class="row" id="candvac">
                                 @csrf
                                 {{ csrf_field() }}
-
+																<input type="text" name="idempresa" id="idempresa" value="{{$n}}" style="display:none">
+																<input type="text" name="id" id="id" value="" style="display:none">
                                 <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
                                       <div class="form-group col-md-12" style="text-align:center">
                                         <img src="" name="img_e" id="img_e" alt="" width="60%">
                                       </div>
+																			<div class="col-md-12">
+																				<p><strong>Carga imagen editada que se mostrará a los usuarios a partir de etapa 5:</strong></p>
+																			</div>
+																			<div class="form-group col-md-8">
+
+																				<input type="file" required class="form-control" name="nuevaimagen" id="nuevaimagen" value="" style="padding:5px;">
+
+																			</div>
+																			<div class="form-group col-md-4">
+																				<input type="submit" name="save" value="Guardar" class="form-control btn btn-primary">
+																			</div>
                                       <div class="form-group col-md-12">
                                             <p><strong>Descripción:</strong></p>
                                             <textarea name="desc_e" id="desc_e" rows="3" cols="80" class="form-control" readonly style="border:none"></textarea>
@@ -157,10 +169,6 @@
 	                                        	Consulta la tabla nutricional <i class="fas fa-link"></i>
 	                                        </a>
                                      </div>
-
-
-
-
 
                                   </div>
 
@@ -192,4 +200,44 @@
         </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
 <script src="{{asset('js/Functionproductope.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready( function() {
+
+
+     $(document).on('change', '.btn-file :file', function() {
+          var input = $(this),
+          label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+          input.trigger('fileselect', [label]);
+     });
+
+     $('.btn-file :file').on('fileselect', function(event, label) {
+          var input = $(this).parents('.input-group').find(':text'),
+          log = label;
+          if( input.length ) {
+               input.val(log);
+          }
+					//  else {
+          //      if( log ) alert(log);
+          // }
+     });
+
+     function readURL(input) {
+          if (input.files && input.files[0]) {
+               var reader = new FileReader();
+               reader.onload = function (e) {
+                    $('#img_e').attr('src', e.target.result);
+               }
+               reader.readAsDataURL(input.files[0]);
+          }
+     }
+
+
+
+     $("#nuevaimagen").change(function(){
+          readURL(this);
+     });
+
+
+});
+</script>
 @endsection

@@ -29,7 +29,7 @@
                     </li>
 
                     <li class="active">
-                        Mis Empresas
+                        Mis Eventos
                     </li>
                     <ul class="nav navbar-right">
 

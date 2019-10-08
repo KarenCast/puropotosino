@@ -21,14 +21,14 @@
 
     </p>
   </div>
-  <div class="col-md-4">
-    <img src="{{asset('programas/cantera.jpg')}}" alt="" width="auto" style="max-height: 300px;">
+  <div class="col-md-4"  id="programasimg">
+    <img src="{{asset('programas/cantera.jpg')}}" alt="" width="100%" style="height: auto; max-width: 250px;">
   </div>
 
 </div>
 <div class="row seccion s2 justify-content-center">
-  <div class="col-md-4">
-    <img src="{{asset('programas/sanluisartesanal.png')}}" alt="" width="auto" style="max-height: 300px;">
+  <div class="col-md-4" id="programasimg">
+    <img src="{{asset('programas/sanluisartesanal.png')}}" alt="" width="100%" style="height: auto; max-width: 250px;">
   </div>
   <div class="col-md-6">
     <h1>SAN LUIS ARTESANAL</h1>
@@ -55,14 +55,14 @@
 
     </p>
   </div>
-  <div class="col-md-4">
-    <img src="{{asset('programas/pequeñoemprendedor.jpg')}}" alt="" width="auto" style="max-height: 300px;">
+  <div class="col-md-4" id="programasimg">
+    <img src="{{asset('programas/pequeñoemprendedor.jpg')}}" alt="" width="100%" style="height: auto; max-width: 250px;">
   </div>
 
 </div>
 <div class="row seccion s2 justify-content-center">
-  <div class="col-md-4">
-    <img src="{{asset('programas/enlacesanluis.png')}}" alt="" width="auto" style="max-height: 300px;">
+  <div class="col-md-4" id="programasimg">
+    <img src="{{asset('programas/enlacesanluis.png')}}" alt="" width="100%" style="height: auto; max-width: 250px;">
   </div>
   <div class="col-md-6">
     <h1>ENLACE SAN LUIS</h1>

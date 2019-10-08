@@ -2,6 +2,14 @@
 @section('content')
 
 @include('front.menu')
+@include('front.encabezado')
+<div class="row np">
+  <div class="col-md-6">
+    <h1>EVENTOS</h1>
+  </div>
+</div>
+
+
 @if(session('Error')!== null)
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -18,7 +26,7 @@
   <strong>Exito!</strong> {{{session('Exito')}}}
 </div>
 @endif
-<div id="calendar" style="padding: 11em;"></div>
+<div id="calendar" style=""></div>
 
 
 <div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

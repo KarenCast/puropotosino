@@ -35,7 +35,7 @@ class adminController extends Controller
 
       return redirect('/consultaEmpresas');
     }else {
-      echo "error";
+      return back()->with('Error', 'Credenciales incorrectas ');
     }
 
   }
@@ -87,25 +87,16 @@ class adminController extends Controller
   }
 
   function consultae(){
-    // if (strcmp(session('tipoinicio'), 'vacante')!==0) {
-    //   return redirect('/VentanillaUnica');
-    // }else{
-    // $delegacion = DB::table('admcomun'.".".'TCDelegacion')->get();
-    // $civil = DB::table('admcomun'.".".'TCEstado_civil')->get();
-    // $nivel = DB::table('admcomun'.".".'TCNivelacademico')->get();
-    //
-    // return view('admin.misvacantes')->with('delegaciones', $delegacion)->with('niveles', $nivel)->with('edocivil', $civil);
-    // }
 
-    if (strcmp(session('tipoinicio'), 'admin')==0) {
-      // $delegacion = DB::table('admcomun'.".".'TCDelegacion')->get();
-      // $civil = DB::table('admcomun'.".".'TCEstado_civil')->get();
-      // $nivel = DB::table('admcomun'.".".'TCNivelacademico')->get();
-
-      return view('admin.admin');
-    }else{
-      return redirect('/registro');
-    }
+    if (session('tipoinicio')=='admin') {
+        if (strcmp(session('tipoinicio'), 'admin')==0) {
+          return view('admin.admin');
+        }else{
+          return redirect('/registro');
+        }
+      }else{
+       return  redirect ('Login-admin');
+      }
   }
 
   function eventos(){
@@ -126,6 +117,7 @@ class adminController extends Controller
       return $link;
   }
 
+
   function linkprod($arch,$id){
 
       $ruta = '/Files';
@@ -139,6 +131,8 @@ class adminController extends Controller
       return $link;
   }
 
+
+
   function linkmarca($arch,$id){
 
       $ruta = '/Files';
@@ -147,6 +141,19 @@ class adminController extends Controller
       // echo $path;
       $link = response()->file($path, [
         'Content-Disposition' => 'inline; filename="Comprobante.pdf"'
+      ]);
+
+      return $link;
+  }
+
+  function linkword($id){
+
+      $ruta = '/Files';
+      $path = storage_path().'/app'.$ruta.'/'.$id;
+      $docs = \File::get($path);
+      // echo $path;
+      $link = response()->file($path, [
+        'Content-Disposition' => 'inline; filename="Comprobante.docx"'
       ]);
 
       return $link;

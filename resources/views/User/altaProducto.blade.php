@@ -18,7 +18,7 @@
 								</li>
 
                 <li class="active">
-									ALTA PRODUCTO
+									Alta Producto
 								</li>
 								<!-- <li class="search-box">
 									<form class="sidebar-search">
@@ -40,13 +40,19 @@
 										</a>
 										<ul class="dropdown-menu">
 
-
+											<li>
+												<a href="{{route('verPerfil')}}">
+													<i class="fas fa-store"></i>
+													&nbsp;Perfil
+												</a>
+											</li>
 											<li>
 												<a href="{{url('/LogOut')}}">
 													<i class="clip-exit"></i>
 													&nbsp;Cerrar Sesión
 												</a>
 											</li>
+
 										</ul>
 									</li>
 
@@ -102,7 +108,7 @@
 									    <label class="">
 									      Selecciona la marca a la cuál pertenece<span class="symbol required"></span>
 									    </label>
-                      <select class="form-control" id="marca" name="marca">
+                      <select required class="form-control" id="marca" name="marca">
 												@foreach($marcas as $rol)
                           <option value="{{$rol->ID_marca}}" >{{$rol->nombre_marca}}</option>
 												@endforeach

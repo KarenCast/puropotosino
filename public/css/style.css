@@ -261,11 +261,46 @@ h4{
   padding: 0 10% 0 10%;
 }
 
+div#calendar{
+  padding: 11em;
+}
+
 
 @media only screen and (max-width: 691px) {
   img.sidep{
     width: 90%;
   }
+
+  h2#titulo-admin{
+    font-size: 15px!important;
+  }
+
+  div#calendar{
+    padding: 0em;
+    height: auto;
+  }
+
+  .fc-right, button.fc-today-button{
+    display: none;
+  }
+
+}
+
+
+@media only screen and (max-width: 990px) {
+
+  h2#titulo-admin{
+    font-size: 20px!important;
+  }
+
+  .fc-right, button.fc-today-button{
+    display: none;
+  }
+
+  div#calendar{
+    padding: 3em;
+  }
+
 }
 
 
@@ -321,4 +356,9 @@ button#button-fixed:hover{
   display: flex;
    justify-content: center;
    align-items: center;
+}
+
+
+#programasimg{
+  text-align: center;
 }

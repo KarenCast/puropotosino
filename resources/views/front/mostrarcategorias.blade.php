@@ -163,6 +163,20 @@ input[type="submit"]#todos:hover{
 	color: white!important;
 	border-color: white!important;
 }
+@media only screen and (max-width: 1000px) {
+  .nav-items, ul.nav>a#cat {
+  	width: 25%;
+  }
+}
+
+@media only screen and (max-width: 691px) {
+  .nav-items, ul.nav>a#cat {
+  	width: 50%;
+  }
+}
+
+
+
 </style>
 
 

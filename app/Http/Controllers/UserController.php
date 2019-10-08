@@ -56,6 +56,8 @@ class UserController extends Controller
 
  function redireccion(){
 
+   if (session('tipoinicio')!='admin') {
+
    if (session('RFC')!=null) {
      $uf = Empresas::where('RFC', session('RFC'))
      ->join('admpuropotosino'.'.'.'TCContacto',function($join){
@@ -86,8 +88,12 @@ class UserController extends Controller
        return view('User.etapacero')->with('categorias', $categorias)->with('sub', $sub);
      }else{
       session(['ID_e' => $uf->ID_empresa]);
+      session(['fase' => $uf->fase]);
       return view('User.inicio')->with('emp', $uf);
      }
+   }else{
+     return redirect('/Login-admin');
+   }
 
  }
 
