@@ -196,7 +196,7 @@
 
 <div class="row seccion carrusel">
     <div class="col-md-12">
-      <h3>Galeria</h3>
+      <h3>Eventos del mes</h3>
     </div>
     <div class="col-md-12">
       <div class="slide-carousel">
@@ -300,10 +300,8 @@
 
 <link href="{{asset('assets/plugins/core/main.css')}}" rel='stylesheet' />
 <link href="{{asset('assets/plugins/daygrid/main.css')}}" rel='stylesheet' />
-<link href={{asset('assets/plugins/fullcalendar/fullcalendar/fullcalendar.css')}} rel='stylesheet' />
 <script src="{{asset('assets/plugins/core/main.js')}}"></script>
 <script src="{{asset('assets/plugins/interaction/main.js')}}"> </script>
 <script src="{{asset('assets/plugins/daygrid/main.js')}}"></script>
-<script src="{{asset('assets/plugins/fullcalendar/fullcalendar/fullcalendar.js')}}"></script>
 
 @endsection

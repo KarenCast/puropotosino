@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
             left: 'prev,next, today',
             center: 'title',
             right: ''
-
-            //right: 'dayGridMonth,dayGridWeek,dayGridDay'
         },
 
         businessHours: {
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         events: 'load',
         themeSystem: 'bootstrap',
         selectable: true,
-       
+
         eventClick: function (info) {
 
             var time = new Date(info.event.start);
@@ -63,21 +61,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     calendar.render();
-    $(".fc-prev-button span").click(function () {
+    $(".fc-prev-button").click(function () {
         changeCarrusel();
-    })
-    
-    $(".fc-next-button span").click(function () {
+    });
+
+    $(".fc-next-button").click(function () {
         changeCarrusel();
-        
-    })
+    });
+
+    $(".fc-today-button").click(function () {
+        changeCarrusel();
+    });
 });
 
-function changeCarrusel(){
-    var moment = $('#calendar').fullCalendar('getDate');
-    var tgl=moment(moment).format('YYYY-MM-DD');
-    console.log( tgl);
-       
+function changeCarrusel() {
+    var moment = $('.fc-center').html().replace('<h2>', '').replace('</h2>', '');
+    var meses = new Array("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre");
+
+    loadCarrusel(meses.indexOf(moment.split(' ')[0]) + 1, moment.split(' ')[2]);
 }
 
 function meInteresa() {
@@ -86,8 +87,6 @@ function meInteresa() {
 }
 
 function loadCarrusel(mes, anio) {
-    console.log(mes);
-    console.log(anio);
     $.ajax({
         url: "./api/getEventosMes",
         async: false,
@@ -98,7 +97,6 @@ function loadCarrusel(mes, anio) {
         },
         method: 'post',
         success: function (data) {
-            console.log(data);
             var html = "";
             for (var i = 0; i < data.length; i++) {
                 html += ' <figure>  ';
@@ -126,9 +124,7 @@ function loadEvents() {
         dataType: 'json',
         method: 'get',
         success: function (data) {
-
             for (var i = 0; i < data.length; i++)
-
                 arrData[i] = {
                     id: data[i]['ID_evento'],
                     observaciones: data[i]['observaciones'],
@@ -138,15 +134,10 @@ function loadEvents() {
                     tema: data[i]['tema'],
                     title: data[i]['nombre_evento'],
                     start: data[i]['fecha_evento'],
-
-                    //end: '2019-08-18T19:00:00',
                     backgroundColor: '#84b2db'
-
                 }
-            // console.log(data);
         },
         error: function () {
-            console.error('error');
         }
     });
     return arrData;
