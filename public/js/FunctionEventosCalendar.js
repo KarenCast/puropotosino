@@ -72,6 +72,46 @@ document.addEventListener('DOMContentLoaded', function () {
     $(".fc-today-button").click(function () {
         changeCarrusel();
     });
+
+    (function ($) {
+        "use strict";
+        // Auto-scroll
+        $('#myCarousel').carousel({
+          interval: 5000
+        });
+      
+        // Control buttons
+        $('.next').click(function () {
+          $('.carousel').carousel('next');
+          return false;
+        });
+        $('.prev').click(function () {
+          $('.carousel').carousel('prev');
+          return false;
+        });
+      
+        // On carousel scroll
+        $("#myCarousel").on("slide.bs.carousel", function (e) {
+          var $e = $(e.relatedTarget);
+          var idx = $e.index();
+          var itemsPerSlide = 3;
+          var totalItems = $(".carousel-item").length;
+          if (idx >= totalItems - (itemsPerSlide - 1)) {
+            var it = itemsPerSlide -
+                (totalItems - idx);
+            for (var i = 0; i < it; i++) {
+              // append slides to end 
+              if (e.direction == "left") {
+                $(
+                  ".carousel-item").eq(i).appendTo(".carousel-inner");
+              } else {
+                $(".carousel-item").eq(0).appendTo(".carousel-inner");
+              }
+            }
+          }
+        });
+      })
+      (jQuery);
 });
 
 function changeCarrusel() {
@@ -99,14 +139,20 @@ function loadCarrusel(mes, anio) {
         success: function (data) {
             var html = "";
             for (var i = 0; i < data.length; i++) {
-                html += ' <figure>  ';
+                if (i == 0)
+                    html += '  <div class="carousel-item col-md-4 active">';
+                else
+                    html += '  <div class="carousel-item col-md-4">';
+                html += '  <div class="card-body">';
+                html += '  <div class="card">';
                 html += '<img src="' + data[i].foto + '" id="src_v" alt="" height="150px">';
-                html += '<figcaption>';
-                html += '<div>';
-                html += '<textarea style="background-color: rgba(194, 194, 194, 0); border: none; text-align: center; min-width: 100%; resize: none; overflow: hidden; ">' + data[i].nombre_evento + '</textarea>';
-                html += '</div>';
-                html += '</figcaption>';
-                html += '</figure>';
+                html += '  <p class="card-text">';
+                html += '  <small class="text-muted">' + data[i].nombre_evento + '</small>';
+                html += '  </p>';
+                html += '  </div>';
+                html += '  </div>';
+                html += '  </div>';
+
             }
             $('#carouselEvents').html(html);
         },
@@ -137,8 +183,7 @@ function loadEvents() {
                     backgroundColor: '#84b2db'
                 }
         },
-        error: function () {
-        }
+        error: function () {}
     });
     return arrData;
 }
