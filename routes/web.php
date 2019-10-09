@@ -18,6 +18,8 @@ Route::get('/productos', 'mainController@productos')->name('productos');
 Route::get('/mostrarcategoria', 'mainController@categorias')->name('mostrarcategoria');
 Route::get('/getProductosu','mainController@getProducto');
 Route::get('/programa', 'mainController@programas')->name('programas');
+Route::get('/proximamente', 'mainController@proximamente')->name('proximamente');
+Route::get('/establecimientos', 'mainController@establecimientos')->name('establecimientos');
 
 
 // Empresa Alta Fase 0

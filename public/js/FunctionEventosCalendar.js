@@ -100,7 +100,7 @@ function loadCarrusel(mes, anio) {
             var html = "";
             for (var i = 0; i < data.length; i++) {
                 html += ' <figure>  ';
-                html += '<img src="' + data[i].foto + '" id="src_v" alt="" height="150px">';
+                html += '<img src=".' + data[i].foto + '" id="src_v" alt="" height="150px">';
                 html += '<figcaption>';
                 html += '<div>';
                 html += '<textarea style="background-color: rgba(194, 194, 194, 0); border: none; text-align: center; min-width: 100%; resize: none; overflow: hidden; ">' + data[i].nombre_evento + '</textarea>';

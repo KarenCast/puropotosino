@@ -362,3 +362,15 @@ button#button-fixed:hover{
 #programasimg{
   text-align: center;
 }
+
+
+div#prox{
+  text-align: center;
+  padding-top: 3%!important;
+  padding-bottom: 3%!important;
+}
+
+#prox>img{
+  width: 100%;
+  height: auto;
+}

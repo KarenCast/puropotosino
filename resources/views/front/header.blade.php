@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link rel="stylesheet" href="{{asset('Plugins/DataTable/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('Plugins/DataTable/css/responsive.bootstrap4.min.css')}}">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
   <!-- JS -->

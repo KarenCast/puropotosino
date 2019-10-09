@@ -47,7 +47,7 @@
     </ul>
   </div>
   <div class="col-md-5 logotipo" style="text-align: center;">
-      <img src="{{asset('images/logo.png')}}" alt="">
+      <img src="{{asset('images/logo.png')}}" alt="" data-aos="fade-up-left">
   </div>
 </div>
 <div class="row seccion s3 justify-content-center">
@@ -56,7 +56,7 @@
   </div>
 
   <div class="col-md-5" style="text-align: center; padding: 5% 5%;">
-    <img src="{{asset('images/sidep.jpg')}}" alt="" width="100%">
+    <img src="{{asset('images/sidep.jpg')}}" alt="" width="100%" data-aos="fade-up-right">
   </div>
   <div class="col-md-5">
   <br><br><br>
@@ -122,5 +122,7 @@
   </button>
   </a>
 </div>
-
+<script>
+  AOS.init();
+</script>
 @endsection

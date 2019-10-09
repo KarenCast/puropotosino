@@ -32,6 +32,14 @@ class mainController extends Controller
         return view('front.productos');
     }
 
+    function proximamente(){
+        return view('front.proximamente');
+    }
+
+    function establecimientos(){
+        return view('front.establecimientos');
+    }
+
     function programas(){
         return view('front.programas');
     }

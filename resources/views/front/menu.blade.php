@@ -30,8 +30,16 @@
       <li class="nav-item">
         <a class="nav-link " href="{{route('programas')}}">Programas</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link " href="https://xibaria.com/">Compra en Linea</a>
+
+      <li class="nav-item dropdown" id="acercad">
+        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+          Compra
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="https://xibaria.com/">En línea</a>
+          <a class="dropdown-item" href="{{route('establecimientos')}}">Establecimientos</a>
+          <a class="dropdown-item" href="{{route('proximamente')}}">Próximamente</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{route('testimonios')}}">Testimonios</a>
