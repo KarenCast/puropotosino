@@ -3,6 +3,12 @@
 
 @include('front.menu')
 
+@include('front.encabezado')
+<div class="row np">
+  <div class="col-md-6">
+    <h1>EVENTOS</h1>
+  </div>
+</div>
 <style media="screen">
     *, *::before, *::after{
     -moz-box-sizing: border-box;
@@ -39,8 +45,8 @@
 
 
     figure{
-    width: 400px;
-    height: 300px;
+    width: auto;
+    max-height: 250px;
     overflow: hidden;
     position: relative;
     display: inline-block;
@@ -129,8 +135,8 @@
 
 
     figure img{
-      width: 100%;
-      height: auto;
+      width: auto;
+      height: 100%;
       max-height: 220px;
     }
 
@@ -312,7 +318,7 @@
     <h1 class="text-center my-3">Eventos del Mes</h1>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner row w-100 mx-auto" id="carouselEvents">
-       
+
       </div>
       <div class="container">
         <div class="row">
@@ -329,7 +335,7 @@
     </div>
   </div>
 
-  <div id="calendar" style="padding: 11em;"></div>
+<div id="calendar" ></div>
 
 
 <div class="modal fade right" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

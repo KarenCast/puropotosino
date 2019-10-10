@@ -137,7 +137,7 @@
 			<label class="">
 				Imagen descriptiva de categoria<span class="symbol required"></span>
 			</label>
-			
+
 			<input type="file" @if($fotoEdit == '') required @endif class="form-control" value="{{$fotoEdit}} " id="imagen" name="imagen">
 		<img  id='img-upload' src="{{$fotoEdit}}" style="height: auto; width: 200px;"/>
 
@@ -171,7 +171,7 @@
 <!-- end: PAGE CONTENT-->
 </div>
 </div>
-<script src="{{asset('js/validar.js')}}">  </script>
+
 <script>
 function valor(e) {
 	var p = document.getElementById("edad_max").value;
