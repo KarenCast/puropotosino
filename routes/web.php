@@ -18,7 +18,7 @@ Route::get('/productos', 'mainController@productos')->name('productos');
 Route::get('/mostrarcategoria', 'mainController@categorias')->name('mostrarcategoria');
 Route::get('/getProductosu','mainController@getProducto');
 Route::get('/programa', 'mainController@programas')->name('programas');
-Route::get('/proximamente', 'mainController@proximamente')->name('proximamente');
+Route::get('/prox', 'mainController@proximamente')->name('prox');
 Route::get('/establecimientos', 'mainController@establecimientos')->name('establecimientos');
 
 

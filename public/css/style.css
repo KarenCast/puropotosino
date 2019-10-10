@@ -370,7 +370,14 @@ div#prox{
   padding-bottom: 3%!important;
 }
 
-#prox>img{
-  width: 100%;
+div>#prox{
+  display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#prox>div>a>img{
+  max-height: 150px;
+  max-width: 100%;
   height: auto;
 }

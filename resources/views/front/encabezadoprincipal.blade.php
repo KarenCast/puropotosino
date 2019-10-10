@@ -1,5 +1,5 @@
-<div id="div">
-          <h1 class="q1">PURO POTOSINO</h1>
+<div id="div" >
+          <h1 class="q1" data-aos="fade-up">PURO POTOSINO</h1>
 </div>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

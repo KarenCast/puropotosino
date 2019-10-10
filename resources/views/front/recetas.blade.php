@@ -3,7 +3,7 @@
 
 @include('front.menu')
 @include('front.encabezado')
-<div class="row np">
+<div class="row np" data-aos="fade-right" data-aos-duration="800">
   <div class="col-md-6">
     <h1>RECETAS</h1>
   </div>
@@ -12,7 +12,7 @@
 
     @foreach($recetas as $item)
 
-            <div class="card row" style="margin: 10px;" data-aos="zoom-in" data-aos-duration="2000">
+            <div class="card row" style="margin: 10px;" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="2000">
                 <div class="card-body col-md-12">
 
                     <div class="row">

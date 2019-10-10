@@ -10,62 +10,25 @@
   </div>
 </div>
 
-<div class="row" id="prox">
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
+<div class="container">
+
+  <div class="row" id="prox">
+    <div class="col-md-4 col-6" data-aos="zoom-in">
+      <a href="#">
+        <img src="{{asset('proximamente/LOGOPARADORPOTOSINO.png')}}" alt="">
+      </a>
+    </div>
+    <div class="col-md-4 col-6" data-aos="zoom-in">
+      <a href="#">
+        <img src="{{asset('proximamente/LOGO.jpg')}}" alt="">
+      </a>
+    </div>
+
+
   </div>
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
-  </div>
+
 
 </div>
-
-<div class="row" id="prox"  >
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#"></a>
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-  </div>
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
-  </div>
-
-</div>
-
-<div class="row" id="prox"  >
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
-  </div>
-  <div class="col-md-4 col-6" data-aos="zoom-in">
-    <a href="#">
-      <img src="{{asset('images/sidep.jpg')}}" alt="">
-    </a>
-  </div>
-
-</div>
-
 
 <script>
   AOS.init();

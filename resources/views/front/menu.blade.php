@@ -37,8 +37,8 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="https://xibaria.com/">En línea</a>
-          <a class="dropdown-item" href="{{route('establecimientos')}}">Establecimientos</a>
-          <a class="dropdown-item" href="{{route('proximamente')}}">Próximamente</a>
+          <a class="dropdown-item" href="{{route('establecimientos')}}">Establecidos</a>
+          <a class="dropdown-item" href="{{route('prox')}}">Próximamente</a>
         </div>
       </li>
       <li class="nav-item">
