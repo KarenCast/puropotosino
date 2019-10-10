@@ -141,7 +141,7 @@
                     <form class="form-horizontal" method="post" id="eventoSave" action="{{route('saveEvento')}}"
                             enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <input type="text" name="ID_eventoE" id="ID_evento" value="0">
+                        <input type="text" name="ID_eventoE" id="ID_evento" value="0" style="display:none;">
                         <div class="row">
                             <div class="col-6 form-group">
                                 <label for="hora_inicio" class="col-sm-12 control-label">Fecha/Hora</label>
@@ -196,8 +196,8 @@
                         <div class="form-group">
                             <label class="control-label col-sm-12" for="foto">Fotografia</label>
                             <div class="col-sm-12">
-                                <img id="blah" src="" alt="foto de evento"  style="width: 100%;" />
-                                <input type='file' class="form-control" accept="image/*" id="foto" name="fotoE" />
+                                <img id="blah" style="width: 100%;" />
+                                <input type='file' class="form-control" accept="image/*" id="foto" name="fotoE"  />
                             </div>
 
                         </div>
@@ -234,7 +234,4 @@
 </div>
 
 <script src="{{asset('js/FunctionsEventos.js')}}" type="text/javascript"></script>
-
-<!-- <script src="{{asset('js/validar.js')}}">  </script>
-<script src="{{asset('js/FunctionEmpresas.js')}}" type="text/javascript"></script> -->
 @endsection

@@ -11,8 +11,10 @@ $(document).ready(function () {
     });
 
     $('#btnNuevo').on('click', function (e) {
+        document.getElementById('blah').style.display = "none";
         $('#AgregarNuevo').html('Nuevo Evento');
-        $('#blah').attr('src', "");
+
+
     });
 
     $('#confirm-delete').on('click', '.btn-ok', function (e) {
@@ -68,8 +70,9 @@ $(document).ready(function () {
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
-
+        document.getElementById('blah').style.display = "block";
         reader.onload = function (e) {
+
             $('#blah').attr('src', e.target.result);
         }
 
