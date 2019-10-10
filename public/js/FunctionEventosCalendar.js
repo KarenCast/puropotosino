@@ -145,7 +145,7 @@ function loadCarrusel(mes, anio) {
                     html += '  <div class="carousel-item col-md-4">';
                 html += '  <div class="card-body">';
                 html += '  <div class="card">';
-                html += '<img src="' + data[i].foto + '" id="src_v" alt="" height="150px">';
+                html += '<img src=".' + data[i].foto + '" id="src_v" alt="" height="150px">';
                 html += '  <p class="card-text">';
                 html += '  <small class="text-muted">' + data[i].nombre_evento + '</small>';
                 html += '  </p>';
