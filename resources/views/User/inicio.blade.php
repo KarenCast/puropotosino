@@ -326,7 +326,7 @@
 															<label class="">
 																En caso de seleccionar otro, especifique<span class="symbol required"></span>
 															</label>
-															<input type="text" required class="form-control" id="tipoincu_o" name="tipoincu_o" placeholder="" style="display: none">
+															<input type="text" class="form-control" id="tipoincu_o" name="tipoincu_o" placeholder="" style="display: none">
 
 														</div>
 
