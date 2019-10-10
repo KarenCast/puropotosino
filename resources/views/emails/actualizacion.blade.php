@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html >
+<html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>H. Ayuntamiento S.L.P</title>
@@ -53,13 +53,7 @@
                               </div>
                             </td>
                           </tr>
-                          <tr height="70">
-                            <td>
-                              <div>
-                                Revisa aquí su información: <a href="http://100.100.3.45/puro_potosino/public/verEmpresa/{!!$id!!}/{!!$tip!!}">Información</a>
-                              </div>
-                            </td>
-                          </tr>
+                          
 
                           <tr>
                             <td>

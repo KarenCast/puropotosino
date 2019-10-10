@@ -15,7 +15,7 @@
     <h4 style="text-align:center;">
       Para tener acceso a SIDEP debes registrarte previamente
     </h4>
-    <a href="http://sitio.sanluis.gob.mx/VentanillaSLP/public/Registro" target="_blank" >
+    <a href="https://sitio.sanluis.gob.mx/VentanillaSLP/public/Registro" target="_blank" >
       <button type="button" class="btn btn-primary regis" name="button" id="">
         <h5 style="text-align:center;">
           Registro <i class="far fa-hand-point-left"></i>
@@ -83,7 +83,7 @@
         <div class="row">
           <div class="col-2"></div>
           <div class="col-4">
-            <a href="http://sitio.sanluis.gob.mx:8060/Registro" target="_blank">  <img  src="{{asset('images/ICONOREGISTRO.png')}}" alt=""></a>
+            <a href="https://sitio.sanluis.gob.mx/VentanillaSLP/public/Registro" target="_blank">  <img  src="{{asset('images/ICONOREGISTRO.png')}}" alt=""></a>
           </div>
           <div class="col-4">
             <!-- href="{{url('/nuevaContrasena')}}"  -->

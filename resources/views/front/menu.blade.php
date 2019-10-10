@@ -48,14 +48,7 @@
           <a class="nav-link" id="iniciarsesion" href="{{route('registro')}}">Iniciar Sesión</a>
       </li>
 
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="/registro" id="navbardrop" data-toggle="dropdown">
-          <a class="dropdown-item" href="/puro_potosino/public/registro">Iniciar Sesión</a>
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="http://sitio.sanluis.gob.mx:8060/Registro">Registrate</a>
-        </div>
-      </li> -->
+    
     </ul>
   </div>
 </nav>

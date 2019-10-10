@@ -386,7 +386,7 @@
 												<div class="form-group col-sm-12">
 													<label class="">
 														RFC<span class="symbol required"></span><br>
-														<i>El RFC que des de alta, debe estar registrado previamente <a href="http://sitio.sanluis.gob.mx/VentanillaSLP/public/Registro" target="_blank"><strong style="font-size: 20px"> aquí</strong></a> como persona Moral</i>
+														<i>El RFC que des de alta, debe estar registrado previamente <a href="https://sitio.sanluis.gob.mx/VentanillaSLP/public/Registro" target="_blank"><strong style="font-size: 20px"> aquí</strong></a> como persona Moral</i>
 													</label>
 													@if($emp->RFC!=null)
 													<input type="text"  required class="form-control" id="rfc" name="rfc" placeholder="" value="{{$emp->RFC}}">
