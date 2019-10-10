@@ -8,7 +8,7 @@
     <h1>RECETAS</h1>
   </div>
 </div>
-<div class="main-content " style="padding: 5em;">
+<div class="main-content ">
 
     @foreach($recetas as $item)
 

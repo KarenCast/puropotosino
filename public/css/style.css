@@ -269,12 +269,18 @@ div#calendar{
   padding: 6em;
 }
 
+.main-content {
+  padding: 4em;
+}
 
 @media only screen and (max-width: 691px) {
   img.sidep{
     width: 90%;
   }
 
+  button#button-fixed{
+    font-size: 12px;
+  }
   h2#titulo-admin{
     font-size: 15px!important;
   }
@@ -286,6 +292,10 @@ div#calendar{
 
   .fc-right, button.fc-today-button{
     display: none;
+  }
+
+  .main-content {
+    padding: 0;
   }
 
 }
