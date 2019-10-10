@@ -158,7 +158,7 @@
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">
-									        Dirección<span class="symbol required"></span>
+									        Dirección (Domicilio)<span class="symbol required"></span>
 									    </label>
 									    <input type="text" required class="form-control" id="direccion_c" name="direccion_c" placeholder="">
 									  </div>
@@ -282,7 +282,7 @@
 											</select>
 									 </div>
 
-									  <h4>Documentación Inicial Obligatoria</h4>
+									  <!-- <h4>Documentación Inicial Obligatoria</h4> -->
 									  <hr width="100%" color="black"/>
 									  <!-- <div class="form-group col-sm-6">
 									    <label class="">

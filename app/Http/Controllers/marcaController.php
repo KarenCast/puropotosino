@@ -77,7 +77,7 @@ class marcaController extends Controller
           }
         }
 
-          return redirect('inicioUser');
+          return redirect('consultaMarcas');
       } catch (\Exception $e) {
         return $e->getMessage();
       }

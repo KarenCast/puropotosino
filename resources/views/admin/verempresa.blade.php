@@ -363,7 +363,7 @@
 											</label>
 											<select class="form-control" name="fase" id="fase">
 												@if($rol->fase>=10)
-													@for ($i = $rol->fase; $i < 17; $i++)
+													@for ($i = 10; $i < 17; $i++)
 														{{$j = $i-10}}
 														@if($rol->fase== $i )
 
@@ -373,7 +373,7 @@
 														@endif
 													@endfor
 												@elseif($rol->fase<=10)
-													@for ($i = $rol->fase; $i < 7; $i++)
+													@for ($i = 0; $i < 7; $i++)
 														@if($rol->fase== $i )
 															<option value="{{ $i }}" selected>{{ $i }}</option>
 														@else
