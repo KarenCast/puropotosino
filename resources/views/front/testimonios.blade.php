@@ -185,7 +185,7 @@ src: local('Lato Bold'), local('Lato-Bold'), url(https://themes.googleuserconten
   </div>
 </div>
 
-<div class="row seccion carrusel">
+<div class="row seccion carrusel" style="display:none;">
   <div class="col-md-12">
     <h3>Galeria</h3>
   </div>

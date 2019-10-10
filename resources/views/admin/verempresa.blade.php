@@ -386,7 +386,7 @@
 										</div>
 										<div class="form-group col-sm-6">
 											<br>
-											<input type="submit" name="enviar" class="btn" value="Guardar Fase y enviar comentarios">
+											<input type="submit" name="enviar" class="btn btn-primary" value="Guardar Fase y enviar comentarios">
 										</div>
 									</form>
               		@endforeach

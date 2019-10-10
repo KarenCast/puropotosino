@@ -178,7 +178,12 @@
 									    <label class="">
 									      ¿Bajo que regimen?<span class="symbol required"></span>
 									    </label>
-									    <input type="text"  class="form-control" id="regimen" name="regimen" placeholder="">
+											<select class="form-control" name="regimen" id="regimen" >
+												<option value="RIF (Regimen de incorporación fiscal)">RIF (Regimen de incorporación fiscal)</option>
+												<option value="SAS (Sociedad de acciones simplificadas)">SAS (Sociedad de acciones simplificadas)</option>
+												<option value="Persona física con actividad empresarial">Persona física con actividad empresarial</option>
+												<option value="S.A. de C.V.">S.A. de C.V.</option>
+											</select>
 									  </div>
 									  <!-- <div class="form-group col-sm-4">
 									    <label class="">
@@ -197,7 +202,10 @@
 									    <label class="">
 									      ¿Cuál?<span class="symbol required"></span>
 									    </label>
-									    <input type="text"  class="form-control" id="tipoincu" name="tipoincu" placeholder="">
+											<select class="form-control" name="tipoincu" id="tipoincu" onchange="myValidate2();">
+ 											 <option value="Curso de innovación y emprendimiento">Curso de innovación y emprendimiento</option>
+ 											 <option value="Academia SIFIDE">Academia SIFIDE</option>
+ 										 </select>
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">

@@ -441,13 +441,13 @@ function etapatres(Request $request){
 
 
     $uf = Empresas::where('ID_empresa', session('ID_e'))->first();
-
+    if ($request->regimen!='Otro') {
+      $reg = $request->regimen;
+    }else{
+      $reg = $request->regimen_o;
+    }
     if ($uf->comprobante_shcp!=null || $uf->comprobante_shcp!='') {
-      if ($request->regimen!='Otro') {
-        $reg = $request->regimen;
-      }else{
-        $reg = $request->regimen_o;
-      }
+
       try {
         $vac = Empresas::where('ID_empresa', session('ID_e'))
         ->update([
@@ -455,7 +455,7 @@ function etapatres(Request $request){
           'RFC' => $request->rfc,
           'regimen' => $reg]);
       } catch (\Exception $e) {
-          return back()->with('Error', 'No se pudo actualizar fase');
+          return back()->with('Error', 'No se pudo actualizar fase 1');
       }
     }else{
     try {
@@ -467,7 +467,7 @@ function etapatres(Request $request){
         'regimen' => $reg]);
     } catch (\Exception $e) {
       //return $e->getMessage();
-        return back()->with('Error', 'No se pudo actualizar fase ');
+        return back()->with('Error', $e->getMessage());
     }
   }
     $mensaje="moral";
