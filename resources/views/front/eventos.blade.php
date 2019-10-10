@@ -28,7 +28,7 @@
     }
 
     .container{
-    width: 1024px;
+    /* width: 1024px; */
     max-width: 100%;
     margin: auto;
     display: block;
@@ -314,13 +314,13 @@
 </div>
 @endif
 
-<div class="container-fluid">
-    <h1 class="text-center my-3">Eventos del Mes</h1>
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div class="">
+    <!-- <h1 class="text-center my-3">Eventos del Mes</h1> -->
+    <div id="myCarousel" class="container carousel slide" data-ride="carousel">
       <div class="carousel-inner row w-100 mx-auto" id="carouselEvents">
 
       </div>
-      <div class="container">
+
         <div class="row">
           <div class="col-12 text-center mt-4">
             <a class="btn btn-outline-secondary mx-1 prev" href="javascript:void(0)" title="Previous">
@@ -331,7 +331,7 @@
             </a>
           </div>
         </div>
-      </div>
+
     </div>
   </div>
 
@@ -376,6 +376,8 @@
         </div>
     </div>
 </div>
+
+
 
 <div id="loginModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
