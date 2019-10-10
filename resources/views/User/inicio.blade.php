@@ -379,7 +379,7 @@
 													<label class="">
 														En caso de seleccionar otro:<span class="symbol required"></span><br>
 													</label>
-													<input type="text" required class="form-control" id="regimen_o" name="regimen_o" placeholder="" value="{{$emp->regimen}}" style="display: none">
+													<input type="text" class="form-control" id="regimen_o" name="regimen_o" placeholder="" value="{{$emp->regimen}}" style="display: none">
 
 												</div>
 												@if(session('tipo')=='fisica')
