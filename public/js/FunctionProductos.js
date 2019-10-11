@@ -111,7 +111,7 @@ function getProd() {
 
           nom  = data['nombre'];
           mar  = data['nombre_marca'];
-          desc = data['descripcion'];
+          desc = data['descripcionp'];
           imagen = data['disenio_imagen'];
           id_emp = data['ID_empresa'];
           rs= data['razonsocial'];

@@ -83,7 +83,7 @@ class mainController extends Controller
           $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
         });
       })
-
+      ->select(["TCProducto.descripcion AS descripcionp", "TCEmpresaPP.descripcion AS descripcione","TCProducto.*","TCEmpresaPP.*","TMRegistroMarca.*", "TCPersonasMorales.*"])
       ->where('fase','>=', '3')
       ->where('fase','<=', '7')
       ->Orwhere('fase','>=', '13')

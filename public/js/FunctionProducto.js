@@ -61,7 +61,7 @@ var empresa;
                         {
                             data: 'ID_producto',
 
-                            sWidth: '7%',
+                            sWidth: '100px',
                             orderable: false,
                             "render": function(data) {
                                   return '<a href="./actualizarProducto/'+data+'">Editar</a>';
