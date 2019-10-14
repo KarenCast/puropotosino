@@ -43,9 +43,6 @@
 
           <div class="row admin" style="margin-top: 50px;">
 
-  						<div class="row justify-content-left">
-              	<img src="{{asset('images/ADMINBT.png')}}" alt="" id="img_admin">
-              </div>
 
 					</div>
 					<div class="row">
@@ -126,15 +123,9 @@
 
 			<script src="{{asset('Plugins/jquery/jquery-3.2.1.min.js')}}" type="text/javascript"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		  <script src="{{asset('Plugins/Bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
-		  <!-- <script src="{{asset('js/mostrar.js')}}"></script> -->
-		  <script src="{{asset('js/custom.js')}}"></script>
-        <!-- <script src="{{asset('assets/plugins/select2/select2.min.js')}}" type="text/javascript"></script> -->
       <script src="{{asset('Plugins/DataTable/js/jquery.dataTables.min.js')}}" type="text/javascript"></script>
       <script src="{{asset('Plugins/DataTable/js/dataTables.responsive.min.js')}}">  </script>
-			<script src="{{asset('js/FunctionVacantesF.js')}}">  </script>
-        <!--  <script src="{{asset('Plugins/DataTable/js/dataTables.bootstrap4.min.js')}}">  </script>
-        <script src="{{asset('Plugins/DataTable/js/responsive.bootstrap4.min.js')}}">  </script> -->
+
 
 				<script type="text/javascript">
 					function olvidepass()

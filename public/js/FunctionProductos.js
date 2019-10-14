@@ -48,6 +48,7 @@ function getProd() {
                             name: 'razonsocial'
                         },
                         {
+                          sWidth: '0%',
                             data: 'ID_empresa',
                             "render": function(data) {
                               empresa=data;
@@ -55,6 +56,7 @@ function getProd() {
                             }
                         },
                         {
+                          sWidth: '18%',
                             data: 'imagen',
                           "render": function(data) {
                             var n=data.slice(0,-4);
@@ -62,7 +64,7 @@ function getProd() {
                           }
                         },
                         {
-                            sWidth: '7%',
+                            sWidth: '11%',
                             orderable: false,
                             "render": function(data) {
                                 return '<button type="button" id="bedv" onclick="VerProducto(' + data + ');" class="btn btn-info" style="width: 100%;"><i class="fas fa-eye" style="color:white;"></i></button>';
