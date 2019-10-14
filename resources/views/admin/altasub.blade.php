@@ -95,7 +95,7 @@
 			<div class="panel-heading	" style="padding-bottom: 10%;">
 
 				@if(isset($subCat))
-					<h3>Editar SUB-CATEGORIAS<br>
+					<h3>EDITAR SUB-CATEGORIAS<br>
 				@else
 					<h3>AGREGAR SUB-CATEGORIAS<br>
 				@endif
@@ -139,7 +139,7 @@
 			</label>
 
 			<input type="file" @if($fotoEdit == '') required @endif class="form-control" value="{{$fotoEdit}} " id="imagen" name="imagen">
-		<img  id='img-upload' src="{{$fotoEdit}}" style="height: auto; width: 200px;"/>
+		<img  id='img-upload' src="../{{$fotoEdit}}" style="height: auto; width: 200px;"/>
 
 		</div>
 		<div class="form-group col-sm-6">
