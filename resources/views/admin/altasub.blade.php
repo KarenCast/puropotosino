@@ -115,55 +115,55 @@
 
 	</div> -->
 </div>
-<div class="panel-body proceso">
-	<form action="{{ route('subcategorias') }}" method="POST" enctype="multipart/form-data" role="form" class="smart-wizard form-horizontal" id="form">
-		{!! csrf_field() !!}
-		@if(isset($subCat))
-			<input type="hidden" name="idSubCat" value="{{$idSubEdit}}">
-		@endif
-		<div class="form-group col-sm-12">
-			<label class="">
-				Nombre<span class="symbol required"></span>
-			</label><br>
-		<input type="text" name="nombre" id="nombre" value="{{$nombreEdit}}" class="form-control">
-		</div>
-		<div class="form-group col-sm-12">
-			<label class="">
-				Descripción<span class="symbol required"></span>
-			</label><br>
-		<textarea name="desc" id="desc" rows="8" cols="80" class="form-control">{{$descEdit}}</textarea>
-		</div>
-		<div class="form-group col-sm-6">
-			<label class="">
-				Imagen descriptiva de categoria<span class="symbol required"></span>
-			</label>
+	<div class="panel-body proceso">
+		<form action="{{ route('subcategorias') }}" method="POST" enctype="multipart/form-data" role="form" class="smart-wizard form-horizontal" id="form">
+			{!! csrf_field() !!}
+			@if(isset($subCat))
+				<input type="hidden" name="idSubCat" value="{{$idSubEdit}}">
+			@endif
+			<div class="form-group col-sm-12">
+				<label class="">
+					Nombre<span class="symbol required"></span>
+				</label><br>
+			<input type="text" name="nombre" id="nombre" value="{{$nombreEdit}}" class="form-control">
+			</div>
+			<div class="form-group col-sm-12">
+				<label class="">
+					Descripción<span class="symbol required"></span>
+				</label><br>
+			<textarea name="desc" id="desc" rows="8" cols="80" class="form-control">{{$descEdit}}</textarea>
+			</div>
+			<div class="form-group col-sm-6">
+				<label class="">
+					Imagen descriptiva de categoria<span class="symbol required"></span>
+				</label>
 
-			<input type="file" @if($fotoEdit == '') required @endif class="form-control" value="{{$fotoEdit}} " id="imagen" name="imagen">
-		<img  id='img-upload' src="../{{$fotoEdit}}" style="height: auto; width: 200px;"/>
+				<input type="file" @if($fotoEdit == '') required @endif class="form-control" value="{{$fotoEdit}} " id="imagen" name="imagen">
+			<img  id='img-upload' src="../{{$fotoEdit}}" style="height: auto; width: 200px;"/>
 
-		</div>
-		<div class="form-group col-sm-6">
-			<label class="">
-				Categoría Padre<span class="symbol required"></span>
-			</label>
-			<select class="form-control" id="id_p" name="id_p">
-				@foreach($categorias as $rol)
-					@if($rol->ID_categoria == $catEdit)
-						<option selected value="{{$rol->ID_categoria}}" >{{$rol->nombre}}</option>
-					@else
-						<option value="{{$rol->ID_categoria}}" >{{$rol->nombre}}</option>
-					@endif
-				@endforeach
-			</select>
+			</div>
+			<div class="form-group col-sm-6">
+				<label class="">
+					Categoría Padre<span class="symbol required"></span>
+				</label>
+				<select class="form-control" id="id_p" name="id_p">
+					@foreach($categorias as $rol)
+						@if($rol->ID_categoria == $catEdit)
+							<option selected value="{{$rol->ID_categoria}}" >{{$rol->nombre}}</option>
+						@else
+							<option value="{{$rol->ID_categoria}}" >{{$rol->nombre}}</option>
+						@endif
+					@endforeach
+				</select>
 
-		</div>
-		<div class="form-group col-sm-12">
-			<input type="submit" name="" value="Guardar" class="btn" style="float: right">
-		</div>
+			</div>
+			<div class="form-group col-sm-12">
+				<input type="submit" name="" value="Guardar" class="btn" style="float: right">
+			</div>
 
 
-	</form>
-</div>
+		</form>
+	</div>
 </div>
 <!-- end: FORM WIZARD PANEL -->
 </div>

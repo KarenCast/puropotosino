@@ -237,9 +237,17 @@ input[type="submit"]#todos:hover{
             <p style="display: none">{{$j++}}</p>
 
             <p style="display: none">{{$k = 0}}</p>
+
+
             @foreach ($subcat as $rol2)
 
-                @if($rol2->ID_categoria == $rol->ID_categoria)
+              @if($rol2->ID_categoria == $rol->ID_categoria)
+                <p style="display:none">{{$i = 0}}</p>
+                @if($i == 0)
+                <div class='col-md-12' id='title'>
+                     <h3>Sub-Categorías</h3>
+                </div>
+                @endif
   										<figure class="col-md-4 p-2">
   											<a href="">
   												<img class="img-fluid img-effect sub" src="{{asset('subcategorias')}}/{{$nombres[$k]}}/{{$rol2->imagen}}" alt="">
@@ -247,8 +255,10 @@ input[type="submit"]#todos:hover{
   											<figcaption><h1 style="color: white;">{{$rol2->nombre}}</h1><br>
     										</figcaption>
   										</figure>
+                      <p style="display:none">{{$i++}}</p>
+
   							@endif
-            <p style="display: none">{{$k++}}</p>
+                <p style="display: none">{{$k++}}</p>
             @endforeach
             </div>
 	@endforeach
