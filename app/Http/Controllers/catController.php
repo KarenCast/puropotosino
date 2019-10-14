@@ -155,7 +155,8 @@ class catController extends Controller
         $n= str_replace(" ","",$name);
         $path = public_path()."\categorias\\";
         $carpeta = $path.'/'.$n;
-
+        $ruta="";
+        $ruta2=""; 
           if ($request->imagen != null || $request->imagen != '') {
               $fileimg = $request->file('imagen');
               $filenamei = $n.'.'.$fileimg->getClientOriginalExtension();
