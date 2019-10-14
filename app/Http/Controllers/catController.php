@@ -155,8 +155,7 @@ class catController extends Controller
         $n= str_replace(" ","",$name);
         $path = public_path()."\categorias\\";
         $carpeta = $path.'/'.$n;
-        $ruta="";
-        $ruta2=""; 
+
           if ($request->imagen != null || $request->imagen != '') {
               $fileimg = $request->file('imagen');
               $filenamei = $n.'.'.$fileimg->getClientOriginalExtension();
@@ -165,16 +164,33 @@ class catController extends Controller
                 ->update([
                   'imagen' => $filenamei,
                 ]);
+
+                try {
+                  $img = Image::make($fileimg->getRealPath());
+                  $img->save($ruta, 30);
+                } catch (\Exception $e) {
+                  return back()->with('Error', 'No se pudo actualizar imagen');
+                }
+
           }
 
           if ($request->titulo != null || $request->titulo != '') {
               $fileimg2= $request->file('titulo');
-              $filenamei2 = $n.'title.'.$fileimg->getClientOriginalExtension();
+              $filenamei2 = $n.'title.'.$fileimg2->getClientOriginalExtension();
               $ruta2 = $carpeta.'/'.$filenamei2;
               $cont = cat::where('ID_categoria', $request->id)
                 ->update([
                   'titulo' => $filenamei2,
                 ]);
+
+                try {
+                  $img2 = Image::make($fileimg2->getRealPath());
+                  $img2->save($ruta2, 30);
+                  
+                } catch (\Exception $e) {
+                  return back()->with('Error', 'No se pudo actualizar titulo');
+                }
+
           }
               try {
 
@@ -190,14 +206,6 @@ class catController extends Controller
                     return back()->with('Error', 'No se pudo actualizar');
               }
 
-          if ($request->imagen != null || $request->imagen != '') {
-              $img = Image::make($fileimg->getRealPath());
-              $img->save($ruta, 30);
-          }
-          if ($request->titulo != null || $request->titulo != '') {
-              $img2 = Image::make($fileimg2->getRealPath());
-              $img->save($ruta2, 30);
-          }
 
 
           return redirect('/consultaCat');

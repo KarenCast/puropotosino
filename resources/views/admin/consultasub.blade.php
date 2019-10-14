@@ -127,8 +127,8 @@
 
 											<th>Editar</th>
 
-                      <th>Eliminar</th>
-											<th>Ver</th>
+                      <th>Ver</th>
+											<th>Eliminar</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -270,17 +270,10 @@
                                          </div>
 																			 </div>
 																			 <div class="row " style="border-top: 1px solid #ddd; padding:2em;">
-
-
-																				 <div class="form-group col-md-6">
-                                              <p><strong>Imagen:</strong></p>
-                                              <input readonly required  class="alumno inoborder" type="text" name="imagen_e" id="imagen_e" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/>
-
-                                         </div>
 																				 <div class="form-group col-md-3">
                                               <!-- <p><strong>Logotipo:</strong></p>
                                               <input required readonly class="alumno inoborder" type="text" name="logo_e" id="logo_e" data-rule="required"  placeholder="" data-msg="Verifica que este campo no esté vacio y contenga informción correcta"/> -->
-																							<img src="" alt="" name="logo_e" id="logo_e" width="100%" height="auto">
+																							<img src="" alt="" name="imagen_e" id="imagen_e" width="100%" height="auto">
                                          </div>
                                     </div>
 
