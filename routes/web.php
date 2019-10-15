@@ -135,3 +135,8 @@ Route::post('/uproducto', 'productoController@uproducto')->name('uproducto');
 
 //Usuario por evento
 Route::post('/RegistroEvento', 'EventosController@LogIn')->name('RegistroEvento');
+
+
+
+Route::get('/verproductos','productoController@verproductos');
+Route::get('/getProductosTodos','productoController@getProductoEjemplo');

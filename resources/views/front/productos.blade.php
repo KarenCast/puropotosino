@@ -228,32 +228,32 @@ background-color: rgba(255, 255, 255, 0);
               <h3>COLABORADORES</h3>
             </div>
             <div class="col-md-2  col-3"  id="alianza">
-              <a href="https://beta.slp.gob.mx/CJM/Paginas/CJM.aspx">
+              <a href="https://beta.slp.gob.mx/CJM/Paginas/CJM.aspx" target="_blank">
                 <img src="{{asset('alianzas/logocjm.png')}}" alt="" width="100%" height="auto">
               </a>
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.canacosanluis.com/">
+              <a href="https://www.canacosanluis.com/" target="_blank">
                 <img src="{{asset('alianzas/canaco.png')}}" alt="" width="100%" height="auto">
               </a>
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.comce.org.mx/?page_id=1573">
+              <a href="https://www.comce.org.mx/?page_id=1573" target="_blank">
                 <img src="{{asset('alianzas/logocomce.png')}}" alt="" width="100%" height="auto">
               </a>
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.ucslp.edu.mx/">
+              <a href="https://www.ucslp.edu.mx/" target="_blank">
                 <img src="{{asset('alianzas/ucuau.png')}}" alt="" width="100%" height="auto">
               </a>
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.proyectatufuturo.com/">
+              <a href="https://www.proyectatufuturo.com/" target="_blank">
                 <img src="{{asset('alianzas/proyecta.png')}}" alt="" width="100%" height="auto">
               </a>
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.enture.vc/aceleradora/">
+              <a href="https://www.enture.vc/aceleradora/" target="_blank">
                 <img src="{{asset('alianzas/enture.jpeg')}}" alt="" width="100%" height="auto">
               </a>
             </div>

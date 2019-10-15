@@ -9,6 +9,7 @@ use App\UsuariosMorales;
 use App\Empresas;
 use App\Producto;
 use App\Roles;
+use App\cat;
 use Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -28,6 +29,29 @@ class productoController extends Controller
     function viewConsultaProducto(){
 
          return view('User.consultaProducto');
+
+    }
+
+    function verproductos(){
+      $prod= DB::table('admpuropotosino'.'.'.'TCProducto')
+      ->join('admpuropotosino'.'.'.'TMRegistroMarca',function($join){
+        $join->on('admpuropotosino'.'.'.'TMRegistroMarca.ID_marca', '=', 'admpuropotosino'.'.'.'TCProducto.ID_marca');
+      })
+      ->join('admpuropotosino'.'.'.'TCEmpresaPP',function($join){
+        $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+      })
+      ->get();
+
+
+      $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
+      ->get();
+
+      foreach ($cat as $key) {
+        $number[$key->ID_categoria] = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+        ->where('ID_categoria', $key->ID_categoria)
+        ->count();
+      }
+      return view('front.productexample')->with('cat', $cat)->with('number', $number);
 
     }
 
@@ -169,6 +193,7 @@ class productoController extends Controller
           return Datatables::of($cat)
           ->make(true);
       }
+
 
 
       function viewActualizaProducto($n){
