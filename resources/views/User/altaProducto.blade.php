@@ -116,9 +116,10 @@
 									  </div>
                     <div class="form-group col-sm-9">
 									    <label class="">
-									      Descripción<span class="symbol required"></span>
+									      Descripción (140 caracteres)<span class="symbol required"></span>
 									    </label>
-									    <textarea class="form-control" name="descripcion" id="descripcion" rows="6" cols="80"></textarea>
+									    <textarea class="form-control" name="descripcion" id="descripcion" rows="3" cols="80" onkeyup="countChars(this);" maxlength="140"></textarea>
+											<p id="charNum">0 caracteres</p>
 									  </div>
                     <div class="form-group col-sm-3">
 									    <label class="">
@@ -131,7 +132,7 @@
 
 
 									  <div class="form-group col-sm-6">
-									    <input type="submit" name="enviar" value="Registrar">
+									    <input type="submit" name="enviar" value="Registrar" class="btn btn-primary">
 									  </div>
 									</form>
 
@@ -184,6 +185,18 @@ $(document).ready( function() {
 
 });
 </script>
+<script type="text/javascript">
+function countChars(obj){
+	var maxLength = 140;
+	var strLength = obj.value.length;
+	var charRemain = (maxLength - strLength);
 
+	if(charRemain < 0){
+			document.getElementById("charNum").innerHTML = '<span style="color: red;">Has excedido la longitud de '+maxLength+' caracteres</span>';
+	}else{
+			document.getElementById("charNum").innerHTML = charRemain+' caracteres restantes';
+	}
+}
+</script>
 
 @endsection

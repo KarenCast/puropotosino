@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Empresas;
 use App\Producto;
+use App\Roles;
+use App\cat;
 use Image;
 use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
@@ -25,8 +27,32 @@ class productoController extends Controller
         return view('User.consultaProducto');
     }
 
-    public function storeP(Request $request)
-    {
+    function verproductos(){
+      $prod= DB::table('admpuropotosino'.'.'.'TCProducto')
+      ->join('admpuropotosino'.'.'.'TMRegistroMarca',function($join){
+        $join->on('admpuropotosino'.'.'.'TMRegistroMarca.ID_marca', '=', 'admpuropotosino'.'.'.'TCProducto.ID_marca');
+      })
+      ->join('admpuropotosino'.'.'.'TCEmpresaPP',function($join){
+        $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+      })
+      ->get();
+
+
+      $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
+      ->get();
+
+      foreach ($cat as $key) {
+        $number[$key->ID_categoria] = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+        ->where('ID_categoria', $key->ID_categoria)
+        ->count();
+      }
+      return view('front.productexample')->with('cat', $cat)->with('number', $number);
+
+    }
+
+
+    function storeP(Request $request){
+
         set_time_limit(0);
         if (session('ID_e') != null) {
             $cat = DB::table('admpuropotosino'.'.'.'TCProducto')
@@ -264,7 +290,7 @@ class productoController extends Controller
     }
 
     public function getProductosFilter(Request $request)
-    { 
+    {
       $productos = Producto::select('TCProducto.*')
                             ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
                             $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
@@ -273,8 +299,8 @@ class productoController extends Controller
                             ->where('TCEmpresaPP.ID_categoria', $request->ID_categoria)
                             ->where('TCEmpresaPP.ID_subcategoria', $request->ID_subcategoria)
                             ->where('ID_marca', $request->ID_marca)
-                ->get();  
-        
+                ->get();
+
       return Datatables::of($productos)
       ->make(true);
     }

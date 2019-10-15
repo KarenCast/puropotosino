@@ -207,6 +207,7 @@ function VerEmpresa(seleccion) {
         nom = data['nombre'];
         desc = data['descripcion'];
         imagen = data['imagen'];
+
         padre = data['ID_categoria'];
 
 
@@ -217,10 +218,12 @@ function VerEmpresa(seleccion) {
         $("#imagen_e").val(imagen);
         $("#padre_e").val(padre);
 
-        // var res = nom.replace(" ", "");
-        //
-        // document.getElementById("imagen_e").src = "categorias/"+res+"/"+imagen;
-        // document.getElementById("titulo_e").src = "categorias/"+res+"/"+titulo;
+        var res = nom.replace(" ", "");
+        var res = res.replace(" ", "");
+        var res = res.replace(" ", "");
+
+        document.getElementById("imagen_e").src = "subcategorias/"+res+"/"+imagen;
+
 
 
         console.log(desc);

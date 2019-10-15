@@ -304,8 +304,9 @@
 															Comprobante de programa de incubación (Archivo .pdf)
 															</label><br>
 															@if($emp->comprobante_incubacion!=null)
-															<a href="../../link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual</h4> </a>
+															<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}" target="_blank"> <h4>Comprobante de incubación actual (Máximo 2MB, archivo .pdf)</h4> </a>
 															<input type="file" name="incubacion"  id="incubacion" class="form-control" accept="application/pdf"><br>
+
 															@else
 															<input type="file" name="incubacion" required id="incubacion" class="form-control" accept="application/pdf"><br>
 
@@ -360,7 +361,7 @@
 
 														@if($emp->comprobante_shcp!=null || $emp->comprobante_shcp!='')
 														<input type="file"  name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
-														<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_shcp}}"> <h4>Comprobante de hacienda actual</h4> </a>
+														<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_shcp}}" target="_blank"> <h4>Comprobante de hacienda actual (Máximo 2MB, archivo .pdf)</h4> </a>
 														@else
 														<input type="file" required name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
 														@endif
@@ -434,7 +435,7 @@
 												 {!! csrf_field() !!}
 												<div class="form-group col-sm-6">
 											    <label class="">
-														Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
+														Diseño de imagen corporativa (Logotipo en formato .png o .jpg, Máximo 2MB)<br>
 													</label>
 
 														@if($emp->disenio_imagen!=null)
@@ -451,12 +452,12 @@
 											  <div class="form-group col-sm-6" id="tipo_incu">
 
 											    <label class="">
-											      Código de barras (Archivo .pdf)<span class="symbol required"></span>
+											      Código de barras (Máximo 2MB, archivo .pdf)<span class="symbol required"></span>
 											    </label>
 														@if($emp->codigo_barras!=null)
 														<input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 
-														<a href="../../link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}"> <h4>Código de barras actual</h4> </a>
+														<a href="./link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}" target="_blank"> <h4>Código de barras actual</h4> </a>
 														@else
 														<input type="file" required name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 
@@ -490,12 +491,12 @@
 												 {!! csrf_field() !!}
 												<div class="form-group col-sm-12">
 													<label class="">
-														Carga archivo FDA (Solo para empresas de categoría Gastronomía o alimentos)<br>
+														Carga archivo FDA (Solo para empresas de las categorías: Gastronomía, Salud y Bienestar y Agro-productos. Máximo 2MB, archivo .pdf)<br>
 													</label>
 													@if($emp->FDA!=null)
 													<input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 
-													<a href="../../link/{{$emp->ID_empresa}}/{{$emp->FDA}}"> <h4>FDA actual</h4> </a>
+													<a href="./link/{{$emp->ID_empresa}}/{{$emp->FDA}}" target="_blank"> <h4>FDA actual</h4> </a>
 													@else
 													<input type="file" required name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 
