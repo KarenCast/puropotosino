@@ -5,7 +5,7 @@
 @include('front.encabezado')
 <div class="row np">
   <div class="col-md-6">
-    <h1>ESTABLECIDOS</h1>
+    <h1>ESTABLECIMIENTOS</h1>
   </div>
 </div>
 <div class="container">
