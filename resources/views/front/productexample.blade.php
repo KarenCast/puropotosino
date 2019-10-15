@@ -27,6 +27,8 @@
     .navbar-light .navbar-nav .nav-link{
       color: white!important;
     }
+
+
   </style>
     <div class="row np">
       <div class="col-md-6">
@@ -68,38 +70,36 @@
               <div class="products-wrap border-top-0">
   <div class="container-fluid">
     <div class="row no-gutters products">
+
+      @foreach($prod as $r)
       <div class="col-6 col-md-4 col-lg-4 border-top">
         <div class="single-product">
                     <div class="product-img item">
                       <img
                         class="card-img img-fluid"
-                        src="{{asset('product/images/product_2.jpg')}}"
+                        src="{{asset('Files')}}/{{$r->ID_empresa}}/Productos/{{$r->imagen}}"
                         alt=""
                       />
                       <div class="p_icon">
                         <a href="#">
-                          <i class="ti-eye"></i>
+                          <i class="far fa-eye"></i>
                         </a>
-                        <a href="#">
-                          <i class="ti-heart"></i>
-                        </a>
-                        <a href="#">
-                          <i class="ti-shopping-cart"></i>
-                        </a>
+
                       </div>
                     </div>
                     <div class="product-btm">
                       <a href="#" class="d-block">
-                        <h4>Latest men’s sneaker</h4>
+                        <h4>{{$r->nombre}}</h4>
                       </a>
                       <div class="mt-3">
-                        <span class="mr-4">$25.00</span>
+                        <span class="mr-4">{{$r->nombre_marca}}</span>
                         <del>$35.00</del>
                       </div>
                     </div>
                   </div>
       </div>
-      <div class="col-6 col-md-4 col-lg-4 border-top">
+      @endforeach
+      <!-- <div class="col-6 col-md-4 col-lg-4 border-top">
         <div class="single-product">
                     <div class="product-img item">
                       <img
@@ -254,7 +254,7 @@
                       </div>
                     </div>
                   </div>
-      </div>
+      </div> -->
 
     </div>
   </div>

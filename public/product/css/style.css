@@ -575,9 +575,9 @@ a {
       z-index: 1;
       position: relative; }
     .products .item:hover img, .product .item:hover img {
-      -webkit-transform: scale(0.8);
-      -ms-transform: scale(0.8);
-      transform: scale(0.8); }
+      -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      transform: scale(1.2); }
     .products .item .item-info, .product .item .item-info {
       position: absolute;
       bottom: 0;
@@ -1088,3 +1088,7 @@ a {
 
 .border {
   border: 1px solid #eee !important; }
+
+  .product-img.item{
+    max-height: 195px!important;
+  }

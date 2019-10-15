@@ -51,7 +51,7 @@ class productoController extends Controller
         ->where('ID_categoria', $key->ID_categoria)
         ->count();
       }
-      return view('front.productexample')->with('cat', $cat)->with('number', $number);
+      return view('front.productexample')->with('cat', $cat)->with('number', $number)->with('prod',$prod);
 
     }
 
