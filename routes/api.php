@@ -25,3 +25,5 @@ Route::post('getEventosMes', 'EventosController@getEventosMes')->name('getEvento
 Route::post('registroEvento', 'EventosController@registro')->name('registroEvento');
 Route::delete('deleteReceta', 'contenidoController@deleteR')->name('recdelete');
 Route::delete('deleteContenido', 'contenidoController@delete')->name('deleteContenido');
+
+Route::post('getProductosFilter', 'productoController@getProductosFilter')->name('getProductosFilter');
