@@ -496,7 +496,7 @@
 													@if($emp->FDA!=null)
 													<input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 
-													<a href="./link/{{$rol->ID_empresa}}/{{$rol->FDA}}"> <h4>FDA actual</h4> </a>
+													<a href="./link/{{$emp->ID_empresa}}/{{$emp->FDA}}"> <h4>FDA actual</h4> </a>
 													@else
 													<input type="file" required name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 
