@@ -304,7 +304,7 @@
 															Comprobante de programa de incubación (Archivo .pdf)
 															</label><br>
 															@if($emp->comprobante_incubacion!=null)
-															<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}"> <h4>Comprobante de incubación actual (Máximo 2MB, archivo .pdf)</h4> </a>
+															<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_incubacion}}" target="_blank"> <h4>Comprobante de incubación actual (Máximo 2MB, archivo .pdf)</h4> </a>
 															<input type="file" name="incubacion"  id="incubacion" class="form-control" accept="application/pdf"><br>
 
 															@else
@@ -361,7 +361,7 @@
 
 														@if($emp->comprobante_shcp!=null || $emp->comprobante_shcp!='')
 														<input type="file"  name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
-														<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_shcp}}"> <h4>Comprobante de hacienda actual (Máximo 2MB, archivo .pdf)</h4> </a>
+														<a href="./link/{{$emp->ID_empresa}}/{{$emp->comprobante_shcp}}" target="_blank"> <h4>Comprobante de hacienda actual (Máximo 2MB, archivo .pdf)</h4> </a>
 														@else
 														<input type="file" required name="hacienda" id="hacienda" class="form-control" accept="application/pdf"><br>
 														@endif
@@ -457,7 +457,7 @@
 														@if($emp->codigo_barras!=null)
 														<input type="file" name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 
-														<a href="./link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}"> <h4>Código de barras actual</h4> </a>
+														<a href="./link/{{$emp->ID_empresa}}/{{$emp->codigo_barras}}" target="_blank"> <h4>Código de barras actual</h4> </a>
 														@else
 														<input type="file" required name="codigobarras" id="codigobarras" class="form-control" accept="application/pdf"><br>
 
@@ -496,7 +496,7 @@
 													@if($emp->FDA!=null)
 													<input type="file" name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 
-													<a href="./link/{{$emp->ID_empresa}}/{{$emp->FDA}}"> <h4>FDA actual</h4> </a>
+													<a href="./link/{{$emp->ID_empresa}}/{{$emp->FDA}}" target="_blank"> <h4>FDA actual</h4> </a>
 													@else
 													<input type="file" required name="fda" id="fda" class="form-control" accept="application/pdf"><br>
 
