@@ -291,14 +291,25 @@ class productoController extends Controller
 
     public function getProductosFilter(Request $request)
     {
-      $productos = Producto::select('TCProducto.*')
+      $productos = Producto::select('TCProducto.*',
+                                    'TCEmpresaPP.ID_categoria',
+                                    'TCEmpresaPP.descripcion AS descripcionEmpresa',
+                                    'TCPersonasMorales.razonsocial',
+                                    'TMRegistroMarca.nombre_marca')
                             ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
-                            $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+                                $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
                             })
-                            ->where('TCEmpresaPP.ID_empresa', $request->ID_empresa)
+                            ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
+                                $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC',  'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
+                            })
+                            ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
+                                $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_empresa');
+                            })
+                            ->where('TCEmpresaPP.fase','5')
+                            //->where('TCEmpresaPP.ID_empresa', $request->ID_empresa)
                             ->where('TCEmpresaPP.ID_categoria', $request->ID_categoria)
-                            ->where('TCEmpresaPP.ID_subcategoria', $request->ID_subcategoria)
-                            ->where('ID_marca', $request->ID_marca)
+                            //->orwhere('TCEmpresaPP.ID_subcategoria', $request->ID_subcategoria)
+                            //->orwhere('ID_marca', $request->ID_marca)
                 ->get();
 
       return Datatables::of($productos)
