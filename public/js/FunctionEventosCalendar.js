@@ -153,7 +153,6 @@ function loadCarrusel(mes, anio) {
                 html += '  </div>';
                 html += '  </div>';
                 html += '  </div>';
-
             }
             $('#carouselEvents').html(html);
         },
