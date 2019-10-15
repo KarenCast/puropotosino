@@ -6,7 +6,7 @@
 
 <div class="row np">
   <div class="col-md-6">
-    <h1>PRÓXIMAMENTE EN ...</h1>
+    <h1>PRÓXIMAMENTE</h1>
   </div>
 </div>
 

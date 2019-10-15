@@ -228,34 +228,22 @@ background-color: rgba(255, 255, 255, 0);
               <h3>COLABORADORES</h3>
             </div>
             <div class="col-md-2  col-3"  id="alianza">
-              <a href="https://beta.slp.gob.mx/CJM/Paginas/CJM.aspx">
-                <img src="{{asset('alianzas/logocjm.png')}}" alt="" width="100%" height="auto">
-              </a>
+              <img src="{{asset('alianzas/logocjm.png')}}" alt="" width="100%" height="auto">
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.canacosanluis.com/">
-                <img src="{{asset('alianzas/canaco.png')}}" alt="" width="100%" height="auto">
-              </a>
+              <img src="{{asset('alianzas/canaco.png')}}" alt="" width="100%" height="auto">
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.comce.org.mx/?page_id=1573">
-                <img src="{{asset('alianzas/logocomce.png')}}" alt="" width="100%" height="auto">
-              </a>
+              <img src="{{asset('alianzas/logocomce.png')}}" alt="" width="100%" height="auto">
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.ucslp.edu.mx/">
-                <img src="{{asset('alianzas/ucuau.png')}}" alt="" width="100%" height="auto">
-              </a>
+              <img src="{{asset('alianzas/ucuau.png')}}" alt="" width="100%" height="auto">
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.proyectatufuturo.com/">
-                <img src="{{asset('alianzas/proyecta.png')}}" alt="" width="100%" height="auto">
-              </a>
+              <img src="{{asset('alianzas/proyecta.png')}}" alt="" width="100%" height="auto">
             </div>
             <div class="col-md-2  col-3" id="alianza">
-              <a href="https://www.enture.vc/aceleradora/">
-                <img src="{{asset('alianzas/enture.jpeg')}}" alt="" width="100%" height="auto">
-              </a>
+              <img src="{{asset('alianzas/enture.jpeg')}}" alt="" width="100%" height="auto">
             </div>
           </div>
 
@@ -292,7 +280,7 @@ background-color: rgba(255, 255, 255, 0);
                                             <textarea name="desc_e" id="desc_e" rows="3" cols="80" class="form-control" readonly style="border:none"></textarea>
                                       </div>
                                      <div class="form-group col-md-5">
-                                           <p><strong>Marca registrada:</strong></p>
+                                           <p><strong>Nombre de marca:</strong></p>
                                            <input readonly type="text" name="marca_e" id="marca_e"  class="inoborder form-control"/>
 
                                      </div>
