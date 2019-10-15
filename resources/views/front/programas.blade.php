@@ -6,7 +6,7 @@
 
 <div class="row np">
   <div class="col-md-6">
-    <h1>OTROS PROGRAMAS</h1>
+    <h1>PROGRAMAS</h1>
   </div>
 </div>
 <div class="row seccion s1 justify-content-center">
@@ -18,7 +18,7 @@
     </p>
     <p>
       <strong>Responsable:</strong><br>
-      sidep@sanluis.gob.mx  tel. 8345486 ext. 3003
+      Abdias Araus Alonso  tel. 8345486 ext. 3003
 
     </p>
   </div>
@@ -40,7 +40,7 @@
     </p>
     <p>
       <strong>Responsable:</strong>
-      <br>sidep@sanluis.gob.mx  tel. 8345486 ext. 3003
+      <br>Abdias Araus Alonso  tel. 8345486 ext. 3003
     </p>
   </div>
 
@@ -54,7 +54,7 @@
     </p>
     <p>
       <strong>Responsable:</strong><br>
-      sidep@sanluis.gob.mx  tel. 8345486
+      Gabriela Betancourt Dibildox  tel. 8345486
     </p>
   </div>
   <div class="col-md-4" id="programasimg" data-aos="fade-left">
@@ -75,7 +75,7 @@
     </p>
     <p>
       <strong>Responsable:</strong><br>
-      sidep@sanluis.gob.mx  tel. 8345486 ext. 3003
+      Roxana Olvera Rosillo  tel. 8345486 ext. 3003
 
     </p>
   </div>

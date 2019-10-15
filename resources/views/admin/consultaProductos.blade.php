@@ -159,7 +159,7 @@
                                             <textarea name="desc_e" id="desc_e" rows="3" cols="80" class="form-control" readonly style="border:none"></textarea>
                                       </div>
                                      <div class="form-group col-md-6">
-                                           <p><strong>Marca registrada:</strong></p>
+                                           <p><strong>Nombre de marca:</strong></p>
                                            <input readonly type="text" name="marca_e" id="marca_e"  class="inoborder form-control"/>
 
                                      </div>
