@@ -58,7 +58,7 @@
             <div class="products-wrap border-top-0">
               <div class="container-fluid">
                 <div class="row no-gutters products" id="contentPrd">
-                 
+
                 </div>
               </div>
             </div>
@@ -118,11 +118,11 @@
 function loadProducts(CategoriaId){
   //console.log(CategoriaId);
   var htmlPrd = "";
-  
+
   $('#selectEmpresa').empty();
   $('#selectMarca').empty();
-  $('#selectEmpresa').append( new Option( 'Todas', '-1' )); 
-  $('#selectMarca').append( new Option(  'Todas', '-1')); 
+  $('#selectEmpresa').append( new Option( 'Todas', '-1' ));
+  $('#selectMarca').append( new Option(  'Todas', '-1'));
 
   $.ajax({
     url: "./api/getProductosFilter",
@@ -138,13 +138,13 @@ function loadProducts(CategoriaId){
         for (let index = 0; index < data.data.length; index++) {
           const element = data.data[index];
           //console.log(element);
-          //$('#selectEmpresa').append('<option value="' + element['ID_empresa'] + '">' + element['razonsocial'] + '</option>'); 
-        
+          //$('#selectEmpresa').append('<option value="' + element['ID_empresa'] + '">' + element['razonsocial'] + '</option>');
+
           if ( $("#selectEmpresa option[value=" + element['ID_empresa'] + "]").length == 0 ){
-            $('#selectEmpresa').append( new Option(element['razonsocial'],  element['ID_empresa'])); 
+            $('#selectEmpresa').append( new Option(element['razonsocial'],  element['ID_empresa']));
           }
           if ( $("#selectMarca option[value=" + element['ID_marca'] + "]").length == 0 ){
-            $('#selectMarca').append( new Option(element['nombre_marca'],  element['ID_marca'])); 
+            $('#selectMarca').append( new Option(element['nombre_marca'],  element['ID_marca']));
           }
 
           htmlPrd += ' <div class="col-6 col-md-4 col-lg-4 E' + element['ID_empresa'] + ' M' +element['ID_marca'] + ' border-top </div>">'
@@ -153,11 +153,11 @@ function loadProducts(CategoriaId){
                   + ' <img'
                   + ' class="card-img img-fluid"'
                   + ' src="./Files/' + element['ID_empresa'] + '/Productos/' + element['imagen'] + '"'
-                  + ' alt="" />'                
+                  + ' alt="" />'
                   + ' <div class="p_icon">'
                   + ' <a href="#"> <i class="far fa-eye"></i></a></div></div><div class="product-btm"><a href="#" class="d-block">'
                   + ' <h4>' + element['nombre'] + '</h4>'
-                  + ' </a><div class="mt-3"><span class="mr-4">' + element['nombre_marca'] + '</span>' 
+                  + ' </a><div class="mt-3"><span class="mr-4">' + element['nombre_marca'] + '</span>'
                   + '<del>$35.00</del></div></div></div></div>';
           }
         $('#contentPrd').html(htmlPrd);
