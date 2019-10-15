@@ -17,7 +17,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="{{route('mostrarcategoria')}}">Categorias</a>
-          <a class="dropdown-item" href="{{route('productos')}}">Productos</a>
+          <a class="dropdown-item" href="{{route('productos')}}">Todos los productos</a>
         </div>
       </li>
       <li class="nav-item">
@@ -28,7 +28,7 @@
         <a class="nav-link " href="{{route('eventos')}}">Eventos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="{{route('programas')}}">Programas</a>
+        <a class="nav-link " href="{{route('programas')}}">Otros Programas</a>
       </li>
 
       <li class="nav-item dropdown" id="acercad">
@@ -37,7 +37,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="https://xibaria.com/">En línea</a>
-          <a class="dropdown-item" href="{{route('establecimientos')}}">Establecidos</a>
+          <a class="dropdown-item" href="{{route('establecimientos')}}">Establecimientos</a>
           <a class="dropdown-item" href="{{route('prox')}}">Próximamente</a>
         </div>
       </li>
@@ -48,7 +48,7 @@
           <a class="nav-link" id="iniciarsesion" href="{{route('registro')}}">Iniciar Sesión</a>
       </li>
 
-    
+
     </ul>
   </div>
 </nav>
