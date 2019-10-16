@@ -83,12 +83,15 @@
           <div class="border p-4 mb-4">
             <h3 class="mb-3 h6 text-uppercase text-black d-block">Categorias</h3>
             <ul class="list-unstyled mb-0">
-              @foreach($cat as $rol)
-              <li class="mb-1"><a href="javascript:void(0);"  onclick="loadProducts({{$rol->ID_categoria}})" class="d-flex">
-                <span>{{$rol->nombre}}</span>
-                <span class="text-black ml-auto">{{$number[$rol->ID_categoria]}}</span></a>
-              </li>
-              @endforeach
+                <li class="mb-1"><a href="javascript:void(0);"  onclick="loadProducts(-1)" class="d-flex">
+                    <span>Todas</span></a>
+                </li>
+                @foreach($cat as $rol)
+                  <li class="mb-1"><a href="javascript:void(0);"  onclick="loadProducts({{$rol->ID_categoria}})" class="d-flex">
+                    <span>{{$rol->nombre}}</span>
+                    <span class="text-black ml-auto">{{$number[$rol->ID_categoria]}}</span></a>
+                  </li>
+                @endforeach
             </ul>
           </div>
           <div class="border p-4 mb-4">
@@ -113,68 +116,10 @@
 <div class="" id="resultado"></div>
 
 
-<script>
-
-function loadProducts(CategoriaId){
-  //console.log(CategoriaId);
-  var htmlPrd = "";
-
-  $('#selectEmpresa').empty();
-  $('#selectMarca').empty();
-  $('#selectEmpresa').append( new Option( 'Todas', '-1' ));
-  $('#selectMarca').append( new Option(  'Todas', '-1'));
-
-  $.ajax({
-    url: "./api/getProductosFilter",
-    dataType: 'json',
-    method: 'post',
-    data:{
-      ID_categoria: CategoriaId
-    },
-    success: function (data) {
-      if(data.data.length == 0)
-        htmlPrd = '<h1>Categoria Sin Productos</h1>';
-      else
-        for (let index = 0; index < data.data.length; index++) {
-          const element = data.data[index];
-          //console.log(element);
-          //$('#selectEmpresa').append('<option value="' + element['ID_empresa'] + '">' + element['razonsocial'] + '</option>');
-
-          if ( $("#selectEmpresa option[value=" + element['ID_empresa'] + "]").length == 0 ){
-            $('#selectEmpresa').append( new Option(element['razonsocial'],  element['ID_empresa']));
-          }
-          if ( $("#selectMarca option[value=" + element['ID_marca'] + "]").length == 0 ){
-            $('#selectMarca').append( new Option(element['nombre_marca'],  element['ID_marca']));
-          }
-
-          htmlPrd += ' <div class="col-6 col-md-4 col-lg-4 E' + element['ID_empresa'] + ' M' +element['ID_marca'] + ' border-top </div>">'
-                  + ' <div class="single-product">'
-                  + ' <div class="product-img item">'
-                  + ' <img'
-                  + ' class="card-img img-fluid"'
-                  + ' src="./Files/' + element['ID_empresa'] + '/Productos/' + element['imagen'] + '"'
-                  + ' alt="" />'
-                  + ' <div class="p_icon">'
-                  + ' <a href="#"> <i class="far fa-eye"></i></a></div></div><div class="product-btm"><a href="#" class="d-block">'
-                  + ' <h4>' + element['nombre'] + '</h4>'
-                  + ' </a><div class="mt-3"><span class="mr-4">' + element['nombre_marca'] + '</span>'
-                  + '<del>$35.00</del></div></div></div></div>';
-          }
-        $('#contentPrd').html(htmlPrd);
-    },
-    error: function () {
-      console.error('error');
-    }
-  });
-}
-
-</script>
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <!--<![endif]-->
-
+<script src="{{asset('js/FunctionsProductosEC.js')}}"></script>
 <script src="{{asset('assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')}}"></script>

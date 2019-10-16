@@ -303,13 +303,12 @@ class productoController extends Controller
                                 $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC',  'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
                             })
                             ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
-                                $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_empresa');
+                                $join->on('admpuropotosino'.'.'.'TCProducto.ID_marca',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_marca');
                             })
                             ->where('TCEmpresaPP.fase','5')
-                            //->where('TCEmpresaPP.ID_empresa', $request->ID_empresa)
-                            ->where('TCEmpresaPP.ID_categoria', $request->ID_categoria)
-                            //->orwhere('TCEmpresaPP.ID_subcategoria', $request->ID_subcategoria)
-                            //->orwhere('ID_marca', $request->ID_marca)
+                            ->when($request->ID_categoria >= 0, function ($q) use ($request) {
+                                return $q->where('TCEmpresaPP.ID_categoria', $request->ID_categoria);
+                            })
                 ->get();
 
       return Datatables::of($productos)
