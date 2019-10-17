@@ -55,6 +55,9 @@ class mainController extends Controller
       ->where('activo',true)
       ->get();
 
+      $n[0]="hola";
+      $m[0]="adios";
+
       $i=0; $n;
       foreach ($cat as $key) {
         $n[$i]= str_replace(" ","",$key->nombre);
@@ -65,7 +68,11 @@ class mainController extends Controller
         $m[$j]= str_replace(" ","",$k->nombre);
         $j++;
       }
+
+
         return view('front.mostrarcategorias')->with('categoria',$cat)->with('nombre', $n)->with('subcat',$sub)->with('nombres', $m);
+
+
     }
 
     function registro(){

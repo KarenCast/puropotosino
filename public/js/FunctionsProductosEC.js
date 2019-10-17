@@ -37,6 +37,7 @@ $(document).ready(function () {
             }
         }
     });
+
 });
 
 
@@ -58,9 +59,9 @@ function loadProducts(CategoriaId) {
 
         },
         success: function (data) {
-            if (data.data.length == 0)
+            if (data.data.length == 0){
                 htmlPrd = '<h1>Categoria Sin Productos</h1>';
-            else
+            }else{
                 for (let index = 0; index < data.data.length; index++) {
                     const element = data.data[index];
                     //$('#selectEmpresa').append('<option value="' + element['ID_empresa'] + '">' + element['razonsocial'] + '</option>');
@@ -72,8 +73,8 @@ function loadProducts(CategoriaId) {
                         $('#selectMarca').append(new Option(element['nombre_marca'], element['ID_marca']));
                     }
 
-                    htmlPrd += ' <div class="col-6 col-md-4 col-lg-4 E' + element['ID_empresa'] + ' M' + element['ID_marca'] + ' border-top </div>">' +
-                        ' <div class="single-product">' +
+                    htmlPrd += ' <div class="col-6 col-md-4 col-lg-4 E' + element['ID_empresa'] + ' M' + element['ID_marca'] + ' border-top " data-aos="fade-up">' +
+                        ' <div class="single-product" onclick="mostrarProducto('+element['ID_producto']+')">' +
                         ' <div class="product-img item">' +
                         ' <img' +
                         ' class="card-img img-fluid"' +
@@ -83,12 +84,43 @@ function loadProducts(CategoriaId) {
                         ' <a href="#"> <i class="far fa-eye"></i></a></div></div><div class="product-btm"><a href="#" class="d-block">' +
                         ' <h4>' + element['nombre'] + '</h4>' +
                         ' </a><div class="mt-3"><span class="mr-4">' + element['nombre_marca'] + '</span>' +
-                        '<del>$35.00</del></div></div></div></div>';
+                        '<br>'+element['razonsocial']+'</div></div></div></div>'+
+                        '<input style="display:none" type="text" id="descripcion'+element['ID_producto']+'" value="'+element['descripcionproducto']+'">'+
+                        '<input style="display:none" type="text" id="imagen'+element['ID_producto']+'" value="'+element['imagen']+'">'+
+                        '<input style="display:none" type="text" id="log'+element['ID_producto']+'" value="'+element['disenio_imagen']+'">'+
+                        '<input style="display:none" type="text" id="nombre'+element['ID_producto']+'" value="'+element['nombre']+'">'+
+
+                        '<input style="display:none" type="text" id="in'+element['ID_producto']+'" value="'+element['instagram']+'">'+
+                        '<input style="display:none" type="text" id="fb'+element['ID_producto']+'" value="'+element['facebook']+'">'+
+                        '<input style="display:none" type="text" id="tw'+element['ID_producto']+'" value="'+element['twitter']+'">'+
+                        '<input style="display:none" type="text" id="sw'+element['ID_producto']+'" value="'+element['stio_web']+'">'+
+
+                        '<input style="display:none" type="text" id="id_emp'+element['ID_producto']+'" value="'+element['ID_empresa']+'">'+
+                        '<input style="display:none" type="text" id="logo'+element['ID_producto']+'" value"'+element['disenio_imagen']+'">';
+
                 }
+              }
             $('#contentPrd').html(htmlPrd);
         },
         error: function () {
             console.error('error');
         }
     });
+}
+
+
+function mostrarProducto(element){
+
+
+  var nombre = $("#nombre"+element).val();
+  var desc = $("#descripcion"+element).val();
+  var imagen_p = $("#imagen"+element).val();
+  var imagen = $("#log"+element).val();
+  var id_emp = $("#id_emp"+element).val();
+
+  $("#nombre_e").val(nombre);
+  $("#desc_e").val(desc);
+  document.getElementById("logo_e").src = "Logos/"+id_emp+"/"+imagen;
+  document.getElementById("img_e").src = "Files/"+id_emp+"/Productos/"+imagen_p;
+  $("#modalverproducto").modal('show');
 }
