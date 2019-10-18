@@ -41,14 +41,19 @@ class productoController extends Controller
       $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
       ->get();
 
-      foreach ($cat as $key) {
-        $number[$key->ID_categoria] = DB::table('admpuropotosino'.'.'.'TCProducto')
-        ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
-            $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
-        })
-        ->where('ID_categoria', $key->ID_categoria)
-        ->count();
-      }
+
+      $number[0]=0;
+      
+        foreach ($cat as $key) {
+          $number[$key->ID_categoria] = DB::table('admpuropotosino'.'.'.'TCProducto')
+          ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+              $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+          })
+          ->where('ID_categoria', $key->ID_categoria)
+          ->count();
+        }
+
+
 
       $total = DB::table('admpuropotosino'.'.'.'TCProducto')->count();
       return view('front.productexample')->with('cat', $cat)->with('number', $number)->with('prod',$prod)->with('total',$total);
