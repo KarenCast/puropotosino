@@ -96,7 +96,7 @@
 									    <label class="">
 									      Nombre de Producto<span class="symbol required"></span>
 									    </label>
-									    <input required type="text" required class="form-control" id="nombre" name="nombre" placeholder="">
+									    <input required type="text" required class="form-control" id="nombre" name="nombre" placeholder="" onkeyup="mayus(this);">
 									  </div>
 									  <div class="form-group col-sm-6">
 									    <label class="">

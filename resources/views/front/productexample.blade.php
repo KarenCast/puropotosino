@@ -215,6 +215,8 @@ img.card-img{
 }
 
 
+
+
 </style>
 <div class="row np">
   <div class="col-md-6">
@@ -227,17 +229,44 @@ img.card-img{
       <div class="row mb-5">
         <div class="col-lg-9 order-2 order-lg-1">
           <div class="row align">
-            <div class="col-md-12 mb-5">
-              <div class="d-flex">
+            <div class="col-md-9">
+              <div class="container-fluid">
+                <div class="row no-gutters ">
+                  <div class="col-md-9">
+                    <input class="form-control" type="text" name="busqueda" id="busqueda" value="" onkeyup="mayus(this);">
+
+                  </div>
+                  <div class="col-md-3">
+                    <button type="button" class="btn" onclick="loadProducts(-1, 3)">
+                      Buscar
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-3 mb-5">
+              <div class="container-fluid">
+                <div class="row no-gutters ">
+                  <div class="col-md-12">
                 <div class="dropdown mr-1 ml-md-auto">
-                  <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ÚLTIMOS
+
+                  <button type="button" class="btn btn-white btn-sm dropdown" style="width: 100%">
+
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="width: 100%; color: rgb(92, 92, 92);">
+                        Nombre
+                      </a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" onclick="loadProducts(-1, 1)">Ascendente</a>
+                        <a class="dropdown-item" href="#" onclick="loadProducts(-1, 2)">Descendente</a>
+
+                      </div>
+
                   </button>
                 </div>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuReference" data-toggle="dropdown">
-                    Nombre
-                  </button>
+
+
+                  </div>
                 </div>
               </div>
             </div>
@@ -256,8 +285,8 @@ img.card-img{
               <div class="site-block-27">
                 <ul>
                   <li><a href="#">&lt;</a></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#">2</a></li>
+                  <li class="active" value="1" onclick="showperpage(page1);" id="page1"><span>1</span></li>
+                  <li value="2" onclick="showperpage(page2);" id="page2"><span>2</span></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
                   <li><a href="#">5</a></li>
@@ -271,11 +300,11 @@ img.card-img{
           <div class="border mb-4">
             <h3 class="mt-2  p-3  h6 text-uppercase d-block">Categorias</h3>
             <ul class="list-unstyled mb-0">
-                <li class="mb-1 lines "><a href="javascript:void(0);"  onclick="loadProducts(-1)" class="d-flex">
+                <li class="mb-1 lines "><a href="javascript:void(0);"  onclick="loadProducts(-1, 0)" class="d-flex">
                     <span>Todas</span><span class="text-black ml-auto">({{$total}})</span></a>
                 </li>
                 @foreach($cat as $rol)
-                  <li class="mb-1 lines"><a href="javascript:void(0);"  onclick="loadProducts({{$rol->ID_categoria}})" class="d-flex">
+                  <li class="mb-1 lines"><a href="javascript:void(0);"  onclick="loadProducts({{$rol->ID_categoria}}, 0)" class="d-flex">
                     <span>{{$rol->nombre}}</span>
                     <span class="text-black ml-auto">({{$number[$rol->ID_categoria]}})</span></a>
                   </li>
@@ -404,26 +433,20 @@ img.card-img{
        </div>
   </div>
 
-  <script>
-    AOS.init();
-  </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 <!--<![endif]-->
+
+<script type="text/javascript">
+function mayus(e) {
+  e.value = e.value.toUpperCase();
+}
+</script>
 <script src="{{asset('js/FunctionsProductosEC.js')}}"></script>
-<script src="{{asset('assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')}}"></script>
-<script src="{{asset('assets/plugins/blockUI/jquery.blockUI.js')}}"></script>
-<script src="{{asset('assets/plugins/iCheck/jquery.icheck.min.js')}}"></script>
-<script src="{{asset('assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js')}}"></script>
-<script src="{{asset('assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js')}}"></script>
-<script src="{{asset('assets/plugins/less/less-1.5.0.min.js')}}"></script>
-<script src="{{asset('assets/plugins/jquery-cookie/jquery.cookie.js')}}"></script>
+
 
 
 <script src="{{asset('product/js/popper.min.js')}}"></script>
-<script src="{{asset('product/js/bootstrap.min.js')}}"></script>
+
 <script src="{{asset('product/js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('product/js/jquery.magnific-popup.min.js')}}"></script>
 <script src="{{asset('product/js/aos.js')}}"></script>

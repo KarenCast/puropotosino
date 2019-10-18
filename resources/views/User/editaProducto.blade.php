@@ -79,7 +79,7 @@
 									    <label class="">
 									      Nombre de Producto<span class="symbol required"></span>
 									    </label>
-									    <input required type="text" required class="form-control" id="nombre" name="nombre" placeholder="" value="{{$producto->nombre}}">
+									    <input required type="text" required class="form-control" id="nombre" name="nombre" placeholder="" value="{{$producto->nombre}}" onkeyup="mayus(this);">
 									  </div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
@@ -138,6 +138,7 @@
 				</div>
 			</div>
 <script src="{{asset('js/validar.js')}}">  </script>
+
 <script type="text/javascript">
 $(document).ready( function() {
 

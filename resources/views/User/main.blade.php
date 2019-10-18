@@ -95,10 +95,15 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <![endif]-->
 <!--[if gte IE 9]><!-->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <!--<![endif]-->
-
+<script type="text/javascript">
+function mayus(e) {
+  e.value = e.value.toUpperCase();
+}
+</script>
 <script src="{{asset('assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js')}}"></script>
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')}}"></script>
@@ -139,6 +144,7 @@
 
   });
 </script>
+
 </body>
 <!-- end: BODY -->
 </html>
