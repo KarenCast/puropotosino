@@ -38,6 +38,8 @@ class productoController extends Controller
       ->get();
 
       $tot=DB::table('admpuropotosino'.'.'.'TCProducto')->count();
+      $totales = $tot / 24;
+      $totales = ceil($totales);
 
 
       $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
@@ -58,7 +60,7 @@ class productoController extends Controller
 
 
       $total = DB::table('admpuropotosino'.'.'.'TCProducto')->count();
-      return view('front.productexample')->with('cat', $cat)->with('number', $number)->with('prod',$prod)->with('total',$total);
+      return view('front.productexample')->with('cat', $cat)->with('number', $number)->with('prod',$prod)->with('total',$total)->with('totales',$totales);
 
     }
 

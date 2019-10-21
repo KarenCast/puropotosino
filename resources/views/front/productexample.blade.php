@@ -229,7 +229,7 @@ img.card-img{
       <div class="row mb-5">
         <div class="col-lg-9 order-2 order-lg-1">
           <div class="row align">
-            <div class="col-md-9">
+            <div class="col-md-6">
               <div class="container-fluid">
                 <div class="row no-gutters ">
                   <div class="col-md-9">
@@ -242,14 +242,13 @@ img.card-img{
                     </button>
                   </div>
                 </div>
+                <input type="text" name="totalpa" id="totalpa" value="{{$totales}}" style="display: none">
               </div>
 
             </div>
             <div class="col-md-3 mb-5">
-              <div class="container-fluid">
-                <div class="row no-gutters ">
-                  <div class="col-md-12">
-                <div class="dropdown mr-1 ml-md-auto">
+
+                <div class="dropdown mr-1 ml-md-auto" style="width: 100%;">
 
                   <button type="button" class="btn btn-white btn-sm dropdown" style="width: 100%">
 
@@ -264,11 +263,26 @@ img.card-img{
 
                   </button>
                 </div>
+            </div>
+            <div class="col-md-3 mb-5">
 
+                <div class="dropdown mr-1 ml-md-auto" style="width: 100%;">
 
-                  </div>
+                  <button type="button" class="btn btn-white btn-sm dropdown" style="width: 100%">
+
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="width: 100%; color: rgb(92, 92, 92);">
+                        Mostrar
+                      </a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" onclick="todos();">Todos</a>
+                        <a class="dropdown-item" href="#" onclick="showperpage(1);">Por página</a>
+
+                      </div>
+
+                  </button>
                 </div>
-              </div>
+
+
             </div>
           </div>
           <div class="row mb-5">
@@ -282,14 +296,20 @@ img.card-img{
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
-              <div class="site-block-27">
+              <div class="site-block-27"  id="numeros" style="display: none;">
                 <ul>
                   <li><a href="#">&lt;</a></li>
-                  <li class="active" value="1" onclick="showperpage(page1);" id="page1"><span>1</span></li>
+                  @for ($i = 1; $i <= $totales; $i++)
+                    <li class="" value="{{$i}}" onclick="showperpage({{$i}});" id="page{{$i}}"><span>{{$i}}</span></li>
+                  @endfor
+
+
+                  <!-- <li class="active" value="1" onclick="showperpage(page1);" id="page1"><span>1</span></li>
                   <li value="2" onclick="showperpage(page2);" id="page2"><span>2</span></li>
                   <li><a href="#">3</a></li>
                   <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
+                  <li><a href="#">5</a></li> -->
+
                   <li><a href="#">&gt;</a></li>
                 </ul>
               </div>

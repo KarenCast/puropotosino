@@ -1,5 +1,7 @@
 $(document).ready(function () {
+
     loadProducts(-1);
+
 
     $('#selectEmpresa').on('change', function () {
         var empresa = this.value;
@@ -34,28 +36,46 @@ $(document).ready(function () {
                     $(".M" + element).css("display", "none");
                 else
                     $(".M" + element).css("display", "block");
+
             }
         }
     });
 
 
-
-
 });
 
 function showperpage(page){
-    var totalp = $("#totalpages").val();
+  $("#numeros").css("display", "block");
+  var totalp = $("#totalpa").val();
   for (let index = 1; index <= totalp; index++) {
 
-
-          if (page.value != index)
+console.log(index);
+          if (page!= index){
               $(".page" + index).css("display", "none");
-          else
+              $("#page" + index).removeClass('active');
+          }else{
               $(".page" + index).css("display", "block");
+              $("#page" + index).addClass('active');
+            }
 
   }
-  console.log(page.value);
+  console.log(page);
 }
+
+
+function todos(){
+    $("#numeros").css("display", "none");
+    var totalp = $("#totalpa").val();
+    for (let index = 1; index <= totalp; index++) {
+
+  console.log(index);
+
+                $(".page" + index).css("display", "block");
+
+
+    }
+}
+
 
 function loadProducts(CategoriaId, tipo) {
     //console.log(CategoriaId);
@@ -139,6 +159,9 @@ function loadProducts(CategoriaId, tipo) {
             console.error('error');
         }
     });
+
+
+
 }
 
 

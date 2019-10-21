@@ -138,5 +138,5 @@ Route::post('/RegistroEvento', 'EventosController@LogIn')->name('RegistroEvento'
 
 
 
-Route::get('/verproductos','productoController@verproductos');
+Route::get('/verproductos','productoController@verproductos')->name('verproductos');
 Route::get('/getProductosTodos','productoController@getProductoEjemplo');

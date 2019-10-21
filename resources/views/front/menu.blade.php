@@ -17,7 +17,7 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="{{route('mostrarcategoria')}}">Categorias</a>
-          <a class="dropdown-item" href="{{route('productos')}}">Todos los productos</a>
+          <a class="dropdown-item" href="{{route('verproductos')}}">Todos los productos</a>
         </div>
       </li>
       <li class="nav-item">
