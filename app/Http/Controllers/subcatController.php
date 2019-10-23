@@ -98,8 +98,6 @@ class subcatController extends Controller
           } catch (\Exception $e) {
             return 'no se creó';
           }
-        } else {
-          return redirect('/altaSubcategorias')->with('Error', 'Ya existe una Sub-categoria con el mismo nombre');
         }
 
         $total = DB::table('admpuropotosino'.'.'.'TCSubCategoria')->where('ID_categoria', $request->id_p)->count();
@@ -123,7 +121,7 @@ class subcatController extends Controller
           // $img->resize(null, 100);
           $img->save($ruta, 30);
         } else {
-          return redirect('/altaSubcategorias')->with('Error', 'Llave repetida');
+          return redirect('/consultaSub')->with('Error', 'Llave repetida');
         }
 
         return redirect('/consultaSub');
@@ -133,7 +131,7 @@ class subcatController extends Controller
         // }
       } catch (\Exception $e) {
         if (strpos($e->getMessage(), 'Ya existe la llave')) {
-          return redirect('/altaSubcategorias')->with('Error', 'Llave repetida');
+          return redirect('/consultaSub')->with('Error', 'Llave repetida');
         }
         echo $e->getMessage();
       }
