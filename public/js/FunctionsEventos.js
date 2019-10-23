@@ -169,6 +169,6 @@ function setData(dataDT) {
     $('#tema').val(dataDT['tema']);
     $('#observaciones').val(dataDT['observaciones']);
     $('#requisitos').val(dataDT['requisitos']);
-
+    $('#lugar').val(dataDT['lugar']);
     $('#blah').attr('src', im);
 }

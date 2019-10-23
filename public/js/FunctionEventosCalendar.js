@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $('#observaciones').html(info.event.extendedProps.observaciones);
             $('#requisitos').html(info.event.extendedProps.requisitos);
             $('#tema').html(info.event.extendedProps.tema);
+            $('#lugar').html(info.event.extendedProps.lugar);
             $('#costo').html("$" + info.event.extendedProps.costo);
             $('#myModal').modal('toggle');
             $('#foto').attr('src', '.' + info.event.extendedProps.foto);
@@ -176,6 +177,7 @@ function loadEvents() {
                     observaciones: data[i]['observaciones'],
                     costo: data[i]['costo'],
                     foto: data[i]['foto'],
+                    lugar: data[i]['lugar'],
                     requisitos: data[i]['requisitos'],
                     tema: data[i]['tema'],
                     title: data[i]['nombre_evento'],

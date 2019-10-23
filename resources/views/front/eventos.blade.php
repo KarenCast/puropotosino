@@ -359,10 +359,12 @@
                         <h2 class="text-center"><strong id="nombre_evento"></strong></h2>
                         <hr>
                         <p class="text-center">Fecha/Hora: <strong id="fecha_evento"></strong></p>
+                        <p class="text-center">Lugar: <strong id="lugar"></strong></p>
                         <p class="text-center">Observaciones: <strong id="observaciones"></strong></p>
                         <p class="text-center">Requisitos: <strong id="requisitos"></strong></p>
                         <p class="text-center">Tema: <strong id="tema"></strong></p>
                         <p class="text-center">Costo: <strong id="costo"></strong></p>
+
                     </div>
                 </div>
 

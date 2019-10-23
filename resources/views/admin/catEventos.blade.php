@@ -167,6 +167,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-12" for="lugar">Lugar</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="lugar" name="lugar">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-sm-12" for="costo">Costo</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="costo"
