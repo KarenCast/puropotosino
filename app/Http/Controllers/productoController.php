@@ -37,16 +37,30 @@ class productoController extends Controller
       })
       ->get();
 
+      $tot=DB::table('admpuropotosino'.'.'.'TCProducto')->count();
+      $totales = $tot / 24;
+      $totales = ceil($totales);
+
 
       $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
       ->get();
 
-      foreach ($cat as $key) {
-        $number[$key->ID_categoria] = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
-        ->where('ID_categoria', $key->ID_categoria)
-        ->count();
-      }
-      return view('front.productexample')->with('cat', $cat)->with('number', $number)->with('prod',$prod);
+
+      $number[0]=0;
+
+        foreach ($cat as $key) {
+          $number[$key->ID_categoria] = DB::table('admpuropotosino'.'.'.'TCProducto')
+          ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+              $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+          })
+          ->where('ID_categoria', $key->ID_categoria)
+          ->count();
+        }
+
+
+
+      $total = DB::table('admpuropotosino'.'.'.'TCProducto')->count();
+      return view('front.productexample')->with('cat', $cat)->with('number', $number)->with('prod',$prod)->with('total',$total)->with('totales',$totales);
 
     }
 
@@ -291,25 +305,92 @@ class productoController extends Controller
 
     public function getProductosFilter(Request $request)
     {
-      $productos = Producto::select('TCProducto.*',
-                                    'TCEmpresaPP.ID_categoria',
-                                    'TCEmpresaPP.descripcion AS descripcionEmpresa',
-                                    'TCPersonasMorales.razonsocial',
-                                    'TMRegistroMarca.nombre_marca')
-                            ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
-                                $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
-                            })
-                            ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
-                                $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC',  'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
-                            })
-                            ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
-                                $join->on('admpuropotosino'.'.'.'TCProducto.ID_marca',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_marca');
-                            })
-                            ->where('TCEmpresaPP.fase','5')
-                            ->when($request->ID_categoria >= 0, function ($q) use ($request) {
-                                return $q->where('TCEmpresaPP.ID_categoria', $request->ID_categoria);
-                            })
-                ->get();
+
+      if ($request->Tipo==0) {
+        $productos = Producto::select('TCProducto.*','TCEmpresaPP.*','TCProducto.descripcion AS descripcionproducto',
+                                      'TCEmpresaPP.descripcion AS descripcionEmpresa',
+                                      'TCPersonasMorales.razonsocial',
+                                      'TMRegistroMarca.nombre_marca')
+                              ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+                              })
+                              ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
+                                  $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC',  'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
+                              })
+                              ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCProducto.ID_marca',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_marca');
+                              })
+                              ->where('TCEmpresaPP.fase','>=','5')
+                              ->when($request->ID_categoria >= 0, function ($q) use ($request) {
+                                  return $q->where('TCEmpresaPP.ID_categoria', $request->ID_categoria);
+                              })
+                  ->get();
+      }else if($request->Tipo==1){
+        $productos = Producto::select('TCProducto.*','TCEmpresaPP.*','TCProducto.descripcion AS descripcionproducto',
+                                      'TCEmpresaPP.descripcion AS descripcionEmpresa',
+                                      'TCPersonasMorales.razonsocial',
+                                      'TMRegistroMarca.nombre_marca')
+                              ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+                              })
+                              ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
+                                  $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC',  'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
+                              })
+                              ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCProducto.ID_marca',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_marca');
+                              })
+                              ->where('TCEmpresaPP.fase','>=','5')
+                              ->when($request->ID_categoria >= 0, function ($q) use ($request) {
+                                  return $q->where('TCEmpresaPP.ID_categoria', $request->ID_categoria);
+                              })
+                              ->orderBy('TCProducto.nombre', 'asc')
+                  ->get();
+      }else if($request->Tipo==2){
+        $productos = Producto::select('TCProducto.*','TCEmpresaPP.*','TCProducto.descripcion AS descripcionproducto',
+                                      'TCEmpresaPP.descripcion AS descripcionEmpresa',
+                                      'TCPersonasMorales.razonsocial',
+                                      'TMRegistroMarca.nombre_marca')
+                              ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+                              })
+                              ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
+                                  $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC',  'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
+                              })
+                              ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCProducto.ID_marca',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_marca');
+                              })
+                              ->where('TCEmpresaPP.fase','>=','5')
+                              ->when($request->ID_categoria >= 0, function ($q) use ($request) {
+                                  return $q->where('TCEmpresaPP.ID_categoria', $request->ID_categoria);
+                              })
+                              ->orderBy('TCProducto.nombre', 'desc')
+                  ->get();
+      }else if($request->Tipo==3){
+        $productos = Producto::select('TCProducto.*','TCEmpresaPP.*','TCProducto.descripcion AS descripcionproducto',
+                                      'TCEmpresaPP.descripcion AS descripcionEmpresa',
+                                      'TCPersonasMorales.razonsocial',
+                                      'TMRegistroMarca.nombre_marca')
+                              ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa',  'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+                              })
+                              ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
+                                  $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC',  'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
+                              })
+                              ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
+                                  $join->on('admpuropotosino'.'.'.'TCProducto.ID_marca',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_marca');
+                              })
+                              ->where('TCEmpresaPP.fase','>=','5')
+                              ->where('TCProducto.nombre', 'like', '%'.$request->Buscar.'%')
+                              ->Orwhere('TMRegistroMarca.nombre_marca', 'like', '%'.$request->Buscar.'%')
+                              ->Orwhere('TCPersonasMorales.razonsocial', 'like', '%'.$request->Buscar.'%')
+                              ->when($request->ID_categoria >= 0, function ($q) use ($request) {
+                                  return $q->where('TCEmpresaPP.ID_categoria', $request->ID_categoria);
+                              })
+
+
+                  ->get();
+      }
+
 
       return Datatables::of($productos)
       ->make(true);
