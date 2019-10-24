@@ -203,7 +203,7 @@
                             <label class="control-label col-sm-12" for="foto">Fotografia</label>
                             <div class="col-sm-12">
                                 <img id="blah" style="width: 100%;" />
-                                <input type='file' class="form-control" accept="image/*" id="foto" name="fotoE"  />
+                                <input required type='file' class="form-control" accept="image/*" id="foto" name="fotoE"  />
                             </div>
 
                         </div>
