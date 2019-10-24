@@ -49,6 +49,14 @@ function getFisicas(){
           method: 'Get',
           success: function(r) {
               oTable = $('#tableemp').DataTable({
+                scrollY:        "auto",
+                scrollX:        true,
+                scrollCollapse: true,
+                paging:         false,
+                columnDefs: [
+                    { width: 70, targets: 0 }
+                ],
+                fixedColumns: true,
               "language": {
      				   "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
               },

@@ -39,6 +39,14 @@ function getCat() {
         method: 'Get',
         success: function(r) {
             oTable = $('#tablecat').DataTable({
+              scrollY:        "auto",
+              scrollX:        true,
+              scrollCollapse: true,
+              paging:         false,
+              columnDefs: [
+                  { width: 70, targets: 0 }
+              ],
+              fixedColumns: true,
             "language": {
    				   "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             },
@@ -61,7 +69,10 @@ function getCat() {
                         },
                         {
                             data: 'descripcion',
-                            name: 'descripcion'
+                            "render": function(data) {
+                              var n=data.substr(0,10);
+                              return n+'...';
+                            }
                         },
                         {
                             data: 'nombre',
@@ -74,7 +85,7 @@ function getCat() {
                             data: 'imagen',
                           "render": function(data) {
                             var n=cat.replace(/ /g, "");;
-                            return '<img src="categorias/'+n+"/" + data + '" width="100%;">';
+                            return '<img src="categorias/'+n+"/" + data + '" width="70%;" style="margin: 5%;">';
                           }
                         },
                         {

@@ -13,6 +13,7 @@ $(document).ready(function () {
 
 function getSubcat() {
     // var acti = $("#activas").val();
+    var cat;
     var n = $("#tipoini").val();
     var rfc;
     // if (document.getElementById("activas").checked == false) {
@@ -40,6 +41,14 @@ function getSubcat() {
         success: function (r) {
             console.log(r);
             oTable = $('#tablesub').DataTable({
+              scrollY:        "auto",
+              scrollX:        true,
+              scrollCollapse: true,
+              paging:         false,
+              columnDefs: [
+                  { width: 70, targets: 0 }
+              ],
+              fixedColumns: true,
                 "language": {
                     "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 },
@@ -58,7 +67,11 @@ function getSubcat() {
                     },
                     {
                         data: 'nombre',
-                        name: 'nombre'
+                      
+                        "render": function(data) {
+                          cat=data;
+                          return data;
+                        }
                     },
                     {
                         data: 'descripcion',
@@ -66,7 +79,13 @@ function getSubcat() {
                     },
                     {
                         data: 'imagen',
-                        name: 'imagen'
+                        "render": function (data) {
+
+                          var n=cat.replace(/ /g, "");;
+                          return '<img src="subcategorias/'+n+"/" + data + '" width="70%;" style="margin: 5%;">';
+
+
+                        }
                     },
 
 

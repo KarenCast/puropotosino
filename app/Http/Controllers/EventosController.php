@@ -58,8 +58,8 @@ class EventosController extends Controller
                 $edit->foto = '/contenido/eventos/'.$filename;
             }
 
-           
-            
+
+
             $edit->save();
 
             return redirect('/consultaEventos');
@@ -159,7 +159,7 @@ class EventosController extends Controller
                 return back()->with('Error', 'No se pudo enviar correo');
             }
         } else {
-            return back()->with('Error', 'Correo o contraseña incorrectos');
+            return redirect('registro')->with('Error', 'Correo o contraseña incorrectos');
         }
 
         return back()->with('Exito', 'Te has registrado, espera tu correo de confirmación (Llegará a tu correo de contacto) si existe disponibilidad. Debes presentar el comprobante el día del evento');

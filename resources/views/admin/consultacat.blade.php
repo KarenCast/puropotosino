@@ -125,8 +125,7 @@
                             <div class="table-responsive">
                                 <input type="text" name="tipoini" id="tipoini" style="display:none;"
                                     value="{{{session('tipoinicio')}}}">
-                                <table id="tablecat" name="tablecat" class="table-striped dt-responsive nowrap"
-                                    style="width: 100%; ">
+                                <table id="tablecat" name="tablecat" class="table-striped dt-responsive nowrap">
                                     <thead class="thead-light">
                                         <tr>
                                             <th>ID</th>

@@ -389,6 +389,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
+              <h5>Solamente pueden registrarse a los eventos las empresas y personas dadas de alta en SIDEP, si no estas registrado, registrate <strong><a href="{{route('registro')}}">aquí</a></strong></h5>
+
                 <form class="form" action="{{route('RegistroEvento')}}" role="form" autocomplete="off" id="formLogin"
                     method="POST">
                     @csrf
