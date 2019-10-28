@@ -62,6 +62,7 @@
         </form>
         <form action="{{route('RecuperaC')}}" method="post" id="recuperar" style="display: none;">
           {!! csrf_field() !!}
+          @csrf
           <button type="button" class="close" onclick="login();" aria-hidden="true">&times;</button>
           <div class="form-group">
             <input type="email" class="form-control" name="email" placeholder="Correo" required="required">
