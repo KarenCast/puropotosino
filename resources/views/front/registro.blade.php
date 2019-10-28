@@ -82,15 +82,15 @@
           </div>
         </form>
         <div class="row">
-          <div class="col-2"></div>
-          <div class="col-4">
+          <div class="col-4"></div>
+          <!-- <div class="col-4">
             <a href="https://sitio.sanluis.gob.mx/VentanillaSLP/Registro" target="_blank">  <img  src="{{asset('images/ICONOREGISTRO.png')}}" alt=""></a>
-          </div>
-          <div class="col-4">
+          </div> -->
+          <div class="col-4" style="text-align:center;">
             <!-- href="{{url('/nuevaContrasena')}}"  -->
-            <a  onclick="olvidepass();"><img  src="{{asset('images/ICONOCONTRA.png')}}" alt=""></a>
+            <a  onclick="olvidepass();" style="text-align:center;"><img  src="{{asset('images/ICONOCONTRA.png')}}" alt=""></a>
           </div>
-          <div class="col-2"></div>
+          <div class="col-4"></div>
         </div>
 
 
