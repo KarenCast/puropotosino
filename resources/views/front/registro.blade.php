@@ -83,7 +83,7 @@
         <div class="row">
           <div class="col-2"></div>
           <div class="col-4">
-            <a href="https://sitio.sanluis.gob.mx/VentanillaSLP/public/Registro" target="_blank">  <img  src="{{asset('images/ICONOREGISTRO.png')}}" alt=""></a>
+            <a href="https://sitio.sanluis.gob.mx/VentanillaSLP/Registro" target="_blank">  <img  src="{{asset('images/ICONOREGISTRO.png')}}" alt=""></a>
           </div>
           <div class="col-4">
             <!-- href="{{url('/nuevaContrasena')}}"  -->

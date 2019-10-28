@@ -238,7 +238,7 @@ $contacto = Contacto::where('ID_empresa', $request->id)->first();
         //  return $emp->correo_contacto;
           Mail::send('emails.actualizacion', $data_vac, function ($message) use($contacto) {
             $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
-            $message->to('karen.castillo@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+            $message->to('sidep@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
           });
         } catch (\Exception $e) {
       // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
@@ -286,7 +286,7 @@ set_time_limit(0);
           Mail::send('emails.actualizacion', $data_vac, function ($message) {
 
             $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
-            $message->to('karen.castillo@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+            $message->to('sidep@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
 
           });
         } catch (\Exception $e) {
@@ -388,7 +388,7 @@ function etapados(Request $request){
           Mail::send('emails.actualizacion', $data_vac, function ($message) {
 
             $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
-            $message->to('karen.castillo@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+            $message->to('sidep@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
 
           });
         } catch (\Exception $e) {
@@ -500,7 +500,7 @@ function etapatres(Request $request){
           Mail::send('emails.actualizacion', $data_vac, function ($message) {
 
             $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
-            $message->to('karen.castillo@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+            $message->to('sidep@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
 
           });
         } catch (\Exception $e) {
@@ -659,7 +659,7 @@ try {
           Mail::send('emails.actualizacion', $data_vac, function ($message) {
 
             $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
-            $message->to('karen.castillo@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+            $message->to('sidep@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
 
           });
         } catch (\Exception $e) {
@@ -751,7 +751,7 @@ function etapacinco(Request $request){
           Mail::send('emails.actualizacion', $data_vac, function ($message) {
 
             $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
-            $message->to('karen.castillo@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+            $message->to('sidep@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
 
           });
         } catch (\Exception $e) {

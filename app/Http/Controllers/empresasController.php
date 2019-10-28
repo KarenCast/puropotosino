@@ -222,7 +222,7 @@ class empresasController extends Controller
                 Mail::send('emails.nuevo', $data_vac, function ($message) {
 
                   $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Nuevo registro.');
-                  $message->to('karen.castillo@sanluis.gob.mx')->subject('Se ha registrado una nueva empresa. Proceso SIDEP');
+                  $message->to('sidep@sanluis.gob.mx')->subject('Se ha registrado una nueva empresa. Proceso SIDEP');
 
                 });
 
