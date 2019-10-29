@@ -41,7 +41,18 @@ class empresasController extends Controller
         //   $name=session('CURP');
         // }
 
+        if ($request->regimen == 'otro') {
+                $reg=$request->tipo_regimen22;
+        }else {
+            $reg=$request->regimen;
 
+        }
+
+        if ( $request->tipoincu == 'otro') {
+          $inc =$request->tipoincu2;
+        }else{
+          $inc =$request->tipoincu;
+        }
 
         // $name = $request->nombre_empresa;
         // $path =  public_path()."\Empresas\\";
@@ -57,9 +68,9 @@ class empresasController extends Controller
           $emp-> operacion = $request->ope;
           $emp-> tiempo_operacion = $request->operacion;
           $emp-> alta_shcp = $request->altahacienda;
-          $emp-> regimen = $request->regimen;
+          $emp-> regimen = $reg;
 
-          $emp-> tipo_incubacion = $request->tipoincu;
+          $emp-> tipo_incubacion =$inc;
 
 
 

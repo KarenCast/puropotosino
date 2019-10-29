@@ -178,12 +178,15 @@
 									    <label class="">
 									      ¿Bajo que regimen?<span class="symbol required"></span>
 									    </label>
-											<select class="form-control" name="regimen" id="regimen" >
+											<select class="form-control" name="regimen" id="regimen" onchange="regimen2();">
 												<option value="RIF (Regimen de incorporación fiscal)">RIF (Regimen de incorporación fiscal)</option>
 												<option value="SAS (Sociedad de acciones simplificadas)">SAS (Sociedad de acciones simplificadas)</option>
 												<option value="Persona física con actividad empresarial">Persona física con actividad empresarial</option>
 												<option value="S.A. de C.V.">S.A. de C.V.</option>
+												<option value="otro">Otro</option>
 											</select>
+											<label for="" id="esp" style="display: none">Especifica el regimen</label>
+											<input class="form-control" type="text" name="tipo_regimen22" id="tipo_regimen22" value="" style="display: none;">
 									  </div>
 									  <!-- <div class="form-group col-sm-4">
 									    <label class="">
@@ -202,10 +205,13 @@
 									    <label class="">
 									      ¿Cuál?<span class="symbol required"></span>
 									    </label>
-											<select class="form-control" name="tipoincu" id="tipoincu" onchange="myValidate2();">
+											<select class="form-control" name="tipoincu" id="tipoincu" onchange="incubacion2();">
  											 <option value="Curso de innovación y emprendimiento">Curso de innovación y emprendimiento</option>
  											 <option value="Academia SIFIDE">Academia SIFIDE</option>
+											 <option value="otro">Otro</option>
  										 </select>
+										 <label for="" id="esp2" style="display:none">Especifica</label>
+										 <input class="form-control" type="text" name="tipoincu2" id="tipoincu2" value="" style="display:none">
 									  </div>
 									  <div class="form-group col-sm-12">
 									    <label class="">

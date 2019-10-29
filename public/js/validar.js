@@ -42,10 +42,39 @@ for (var i = 0; i < rad.length; i++) {
 }
 
 
+
+
 function versub() {
     $('option[name=subs]').css("display", "none");
     document.getElementById("subcat").value="";
     var x = document.getElementById("categoria").value;
     console.log(x);
     $("#"+x).css("display", "block");
+}
+
+
+function regimen2(){
+  var tipor = $("#regimen").val();
+
+  if ($("#regimen").val().trim()=='otro') {
+    $("#tipo_regimen22").css("display", "block");
+      $("#esp").css("display", "block");
+  }else{
+
+    $("#tipo_regimen22").css("display", "none");
+    $("#esp").css("display", "none");
+  }
+}
+
+function incubacion2(){
+
+
+  if ($("#tipoincu").val().trim()=='otro') {
+    $("#tipoincu2").css("display", "block");
+      $("#esp2").css("display", "block");
+  }else{
+
+    $("#tipoincu2").css("display", "none");
+    $("#esp2").css("display", "none");
+  }
 }
