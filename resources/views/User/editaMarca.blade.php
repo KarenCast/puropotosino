@@ -99,7 +99,7 @@
 									  </div>
 									  <div class="form-group col-sm-6">
 									    <label class="">
-									      Comprobante de registro de marca<span class="symbol required"></span>
+									      Comprobante de registro de marca (Máximo 2MB, archivo .PDF)<span class="symbol required"></span>
 												<a href="#">Comprobante actual</a>
 									    </label>
 									    <input type="file" class="form-control" accept="application/pdf" id="registro_marca" name="registro_marca" placeholder="">
@@ -120,6 +120,23 @@
 				</div>
 			</div>
 <script src="{{asset('js/validar.js')}}">  </script>
+<script type="text/javascript">
 
+$(document).on('change','input[type="file"]',function(){
+	// this.files[0].size recupera el tamaño del archivo
+	// alert(this.files[0].size);
+
+
+	var fileSize = this.files[0].size;
+
+	if(fileSize > 2000000){
+		alert('El archivo no debe superar los 2MB');
+		this.value = '';
+		this.files[0].name = '';
+	}
+});
+
+
+</script>
 
 @endsection
