@@ -24,7 +24,6 @@
                         <tbody>
                           <tr>
                             <td height="70" bgcolor="#cbc9ca" style="padding:0 20px 20px 0;">
-
                                 <img src="https://sanluis.gob.mx/wp-content/uploads/2019/10/sidep.jpg" alt="" width="100%" height="auto">
                             </td>
                           </tr>
@@ -53,7 +52,13 @@
                               </div>
                             </td>
                           </tr>
-
+                          <tr height="70">
+                            <td>
+                              <div>
+                                <a href="https://sitio.sanluis.gob.mx/puropotosino/Login-admin"> Inicia Sesión para revisar la nueva empresa</a>
+                              </div>
+                            </td>
+                          </tr>
                           <tr>
                             <td>
                               &nbsp;

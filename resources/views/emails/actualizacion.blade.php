@@ -53,7 +53,13 @@
                               </div>
                             </td>
                           </tr>
-                          
+                          <tr height="70">
+                            <td>
+                              <div>
+                                <a href="https://sitio.sanluis.gob.mx/puropotosino/Login-admin"> Inicia Sesión para revisar la información</a>
+                              </div>
+                            </td>
+                          </tr>
 
                           <tr>
                             <td>

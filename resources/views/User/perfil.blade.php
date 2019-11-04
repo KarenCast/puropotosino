@@ -214,7 +214,7 @@
 												@endif
 
 												@if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
-													<a href="./link/{{$rol->ID_empresa}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda</h4> </a>
+													<a href="./link/{{$rol->ID_empresa}}/{{$rol->comprobante_shcp}}"> <h4>Comprobante de hacienda (Constancia de situación fiscal)</h4> </a>
 												@endif
 
 
@@ -231,6 +231,10 @@
 
 											@if($rol->FDA!=null || $rol->FDA!='')
 												<a href="./link/{{$rol->ID_empresa}}/{{$rol->FDA}}"> <h4>Archivo FDA</h4> </a>
+											@endif
+
+											@if($rol->comprobante_exportacion!=null || $rol->comprobante_exportacion!='')
+												<a href="./link/{{$rol->ID_empresa}}/{{$rol->comprobante_exportacion}}"> <h4>Comprobante Exportación</h4> </a>
 											@endif
 									  </div>
 

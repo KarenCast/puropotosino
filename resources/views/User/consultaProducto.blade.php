@@ -32,7 +32,7 @@
 								</li>
 
 								<ul class="nav navbar-right">
-
+									<input type="text" name="faseactual" id="faseactual" value="{{session('fase')}}" style="display: none;">
 									<li class="dropdown current-user">
 										<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
 											<img src="{{asset('assets/images/User_Circle.png')}}" class="circle-img" alt="" width="42px">
@@ -102,7 +102,11 @@
                       <th>Marca</th>
 											<th></th>
 											<th>Imagen</th>
-											<th>Editar</th>
+											<th>
+											@if (session('fase')<4)
+											Editar
+											@endif
+											</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -233,5 +237,5 @@
 			           </div>
 			      </div>
 <!-- <script src="{{asset('js/validar.js')}}">  </script> -->
-<script src="{{asset('js/Functionproducto.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/FunctionProducto.js')}}" type="text/javascript"></script>
 @endsection

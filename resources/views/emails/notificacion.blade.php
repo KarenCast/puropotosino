@@ -53,6 +53,13 @@
                               </div>
                             </td>
                           </tr>
+                          <tr height="70">
+                            <td>
+                              <div>
+                                <a href="https://sitio.sanluis.gob.mx/puropotosino/registro"> Inicia Sesión para continuar avanzando en el proceso</a>
+                              </div>
+                            </td>
+                          </tr>
                           <tr>
                             <td>
                               &nbsp;

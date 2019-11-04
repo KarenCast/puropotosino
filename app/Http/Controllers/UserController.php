@@ -25,7 +25,7 @@ class UserController extends Controller
   if($user != null)
   {
     session(['mail' => $request->username]);
-
+    session(['RFC' => $user->rfc]);
     session(['idUsuario' => $user->ID_usuario]);
     session(['CURP' => $user->CURP]);
     session(['nameUser' => $user->nombre]);
@@ -43,7 +43,7 @@ class UserController extends Controller
         session(['RFC' => $user->RFC]);
         session(['nameUser' => $user->razonsocial]);
         session(['tipo' => 'moral']);
-
+        session(['CURP' => $user->curp_representante]);
         session(['log' => true]);
 
           return redirect('/inicioUser');
@@ -215,6 +215,7 @@ $contacto = Contacto::where('ID_empresa', $request->id)->first();
         'instagram' => $request->instagram,
         'twitter' => $request->twitter,
         'stio_web' => $request->sitio,
+        'descripcion' => $request->ideanegocio
         ]);
     } catch (\Exception $e) {
         return back()->with('Error', 'No se pudo actualizar info de redes sociales');
@@ -250,7 +251,7 @@ $contacto = Contacto::where('ID_empresa', $request->id)->first();
   }
 }
 
-function etapauno(Request $request){
+function etapauno_old(Request $request){
 
 set_time_limit(0);
 
@@ -261,7 +262,7 @@ set_time_limit(0);
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
         'fase' => 11,
-        'descripcion' => $request->ideanegocio]);
+        ]);
     } catch (\Exception $e) {
     //  return $e->getMessage();
       return back()->with('Error', 'No se pudo actualizar registro');
@@ -304,7 +305,7 @@ set_time_limit(0);
 
 
 
-function etapados(Request $request){
+function etapauno(Request $request){
 
   set_time_limit(0);
   $name= session('ID_e');
@@ -346,7 +347,7 @@ function etapados(Request $request){
     try {
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
-        'fase' => 12,
+        'fase' => 11,
 
         'tipo_incubacion' => $co]);
     } catch (\Exception $e) {
@@ -379,7 +380,7 @@ function etapados(Request $request){
 
       $data_vac = array(
          'id' => session('ID_e'),
-         'fase' => '2',
+         'fase' => '1',
          'tip' => $t,
          'mensaje' => $mensaje,
       );
@@ -405,13 +406,13 @@ function etapados(Request $request){
 }
 
 
-function etapatres(Request $request){
+function etapados(Request $request){
 
   set_time_limit(0);
 
-  $user = UsuariosMorales::where('correo_electronico', $request->correo)->where('contrasena', sha1($request->contra))->where('RFC', $request->rfc)->first();
-
-  if ($user!=null) {
+  // $user = UsuariosMorales::where('correo_electronico', $request->correo)->where('contrasena', sha1($request->contra))->where('RFC', $request->rfc)->first();
+  //
+  // if ($user!=null) {
   session(['RFC' => $request->rfc]);
 
   $name= session('ID_e');
@@ -451,7 +452,7 @@ function etapatres(Request $request){
       try {
         $vac = Empresas::where('ID_empresa', session('ID_e'))
         ->update([
-          'fase' => 13,
+          'fase' => 12,
           'RFC' => $request->rfc,
           'regimen' => $reg]);
       } catch (\Exception $e) {
@@ -461,7 +462,7 @@ function etapatres(Request $request){
     try {
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
-        'fase' => 13,
+        'fase' => 12,
         'comprobante_shcp' => $filenameh,
         'RFC' => $request->rfc,
         'regimen' => $reg]);
@@ -490,7 +491,7 @@ function etapatres(Request $request){
 
       $data_vac = array(
          'id' => session('ID_e'),
-         'fase' => '3',
+         'fase' => '2',
          'tip' => $t,
          'mensaje' => $mensaje,
       );
@@ -515,15 +516,15 @@ function etapatres(Request $request){
     //return $e->getMessage();
       return back()->with('Error', 'No se pudo Actualizar');
   }
+//
+// }else{
+//
+//   return back()->with('Error', 'RFC: '.$request->rfc.' no existe.' );
+// }
 
-}else{
-
-  return back()->with('Error', 'RFC: '.$request->rfc.' no existe.' );
 }
 
-}
-
-function etapacuatro(Request $request){
+function etapatres(Request $request){
 
   if ((Marca::where('ID_empresa', session('ID_e'))->count())>0) {
     if ((Producto::where('ID_empresa', session('ID_e'))->count())>0) {
@@ -604,7 +605,7 @@ try {
     try {
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
-        'fase' => 14,
+        'fase' => 13,
         ]);
     } catch (\Exception $e) {
         return back()->with('Error', 'No se pudo actualizar fase');
@@ -650,7 +651,7 @@ try {
 
       $data_vac = array(
          'id' => session('ID_e'),
-         'fase' => '4',
+         'fase' => '3',
          'tip' => $t,
          'mensaje' => $mensaje,
       );
@@ -683,7 +684,7 @@ try {
 }
 }
 
-function etapacinco(Request $request){
+function etapacuatro(Request $request){
 
   set_time_limit(0);
 
@@ -715,8 +716,94 @@ function etapacinco(Request $request){
     try {
       $vac = Empresas::where('ID_empresa', session('ID_e'))
       ->update([
-        'fase' => 15,
+        'fase' => 14,
         'FDA' => $filenamecb,
+
+        ]);
+    } catch (\Exception $e) {
+        return back()->with('Error', 'No se pudo actualizar fase');
+    }
+
+
+
+
+    if ($filecb!=null) {
+      try {
+        $rutacb = $ruta.$filenamecb;
+        \Storage::disk('local')->put($rutacb,  \File::get($filecb));
+      } catch (\Exception $e) {
+        //return $e->getMessage();
+          return back()->with('Error', 'No se pudo cargar archivo FDA');
+      }
+    }
+
+      $t=0;
+      $mensaje = "moral";
+
+
+      $data_vac = array(
+         'id' => session('ID_e'),
+         'fase' => '4',
+         'tip' => $t,
+         'mensaje' => $mensaje,
+      );
+        try {
+        //  return $emp->correo_contacto;
+          Mail::send('emails.actualizacion', $data_vac, function ($message) {
+
+            $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Actualización.');
+            $message->to('sidep@sanluis.gob.mx')->subject('Usuario actualizó su información. Proceso SIDEP');
+
+          });
+        } catch (\Exception $e) {
+      // return redirect('/TodasVacantes')->with('Error', 'Imposible cargar CV, intenta de nuevo más tarde');
+          return back()->with('Error', 'No se pudo enviar correo');
+        }
+
+
+
+      return redirect('inicioUser');
+  } catch (\Exception $e) {
+      return back()->with('Error', 'No se pudo Actualizar');
+  }
+
+}
+
+
+function etapacinco(Request $request){
+
+  set_time_limit(0);
+
+  $name= session('ID_e');
+
+  $carpeta = storage_path();
+
+  $carpeta = $carpeta.'/app/Files/'.$name;
+
+  $ruta = '/Files//'.$name.'/';
+  if (!file_exists($carpeta)){
+    try {
+      mkdir($carpeta, 0777, true);
+      $res = "";
+    }catch (\Exception $e) {
+      return "no se creo";
+    }
+  }
+
+  $filecb = $request->file('compexp');
+  if ($filecb!=null) {
+    $filenamecb = $name.'_ComprobanteExportación'.'.'.$filecb->getClientOriginalExtension();
+  }else{
+    $filenamecb="";
+  }
+
+  try {
+
+    try {
+      $vac = Empresas::where('ID_empresa', session('ID_e'))
+      ->update([
+        'fase' => 15,
+        'comprobante_exportacion' => $filenamecb,
 
         ]);
     } catch (\Exception $e) {

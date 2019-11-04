@@ -84,12 +84,14 @@
 								<div class="panel-heading	" style="padding-bottom: 10%;">
 
 									<h3>ALTA DE PRODUCTOS<br>
-	                 <small>Registra los productos que ofreces</small></h3>
+	                 <small>Registra los productos que ofreces<br>
+									 </small></h3>
 								</div>
 								<div class="panel-body proceso">
 									<form action="{{ route('producto') }}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
 									  {!! csrf_field() !!}
-									  <h4>Información general de marca</h4>
+									  <h4>Información general de producto</h4>
+										<h5 style="text-align: center"><strong>IMPORTANTE: </strong>Imagenes para su posterior edición por parte del equipo de SIDEP</h5>
 									  <hr width="100%" color="black"/>
 
 									  <div class="form-group col-sm-12">

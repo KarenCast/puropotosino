@@ -267,6 +267,7 @@ class empresasController extends Controller
           $join->on('admseguridad'.'.'.'TCUsuariosExternos.CURP', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.CURP');
         })
         ->where('RFC',null)
+        ->orWhere('RFC','')
         ->get();
         return Datatables::of($empresa)
         ->make(true);

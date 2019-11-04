@@ -286,7 +286,7 @@ img.card-img{
             </div>
           </div>
           <div class="row mb-5">
-            <div class="products-wrap border-top-0">
+            <div class="products-wrap border-top-0" style="width: 100%;">
               <div class="container-fluid">
                 <div class="row no-gutters products" id="contentPrd">
 

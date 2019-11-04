@@ -7,15 +7,15 @@
 		<title>SIDEP</title>
 		<!-- start: META -->
 		<meta charset="utf-8" />
-		  <link rel="shortcut icon" href="{{asset('images/logo.png')}}">
+		<link rel="shortcut icon" href="{{asset('images/logo.png')}}">
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta content="" name="description" />
 		<meta content="" name="author" />
-
 		<!-- end: META -->
+
 		<!-- start: MAIN CSS -->
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   	<script src="{{asset('Plugins/jquery/jquery-3.2.1.min.js')}}" type="text/javascript"></script>
@@ -29,12 +29,9 @@
 		<link rel="stylesheet" href="{{asset('assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css')}}">
 		<link rel="stylesheet" href="{{asset('assets/css/theme_light.css')}}"  type="text/css" id="skin_color">
 		<link rel="stylesheet" href="{{asset('assets/css/print.css')}}" type="text/css" media="print">
-		<!-- <link rel="stylesheet" href="{{asset('Plugins/DataTable/css/jquery.dataTables.min.css')}}"> -->
 		<link rel="stylesheet" href="{{asset('Plugins/DataTable/css/dataTables.bootstrap4.min.css')}}">
 		<link rel="stylesheet" href="{{asset('Plugins/DataTable/css/responsive.bootstrap4.min.css')}}">
-		<!--[if IE 7]>
-		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
-		<![endif]-->
+
 		<!-- end: MAIN CSS -->
 		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -81,7 +78,7 @@
 		</div>
 		<div class="footer justify-content-center" style="text-align: center">
 		  <div class="row justify-content-center" style="text-align: center">
-		    <p style="align: center">2019 &copy; H. Ayuntamiento de San Luis Potosí. <a href="/avisosprivacidad">Avisos de privacidad</a></p>
+		    <p style="align: center">2019 &copy; H. Ayuntamiento de San Luis Potosí. </p>
 		  </div>
 		  <div class="footer-items">
 		    <span class="go-top" id="up-button"><i class="clip-chevron-up"></i></span>

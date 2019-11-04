@@ -13,6 +13,9 @@ $(document).ready(function() {
 
 function getProd() {
 var empresa;
+
+var fase = $('#faseactual').val();
+console.log(fase);
     $('#tableproducto').dataTable().fnDestroy();
     $.ajax({
         url: "./getProductos",
@@ -64,7 +67,12 @@ var empresa;
                             sWidth: '100px',
                             orderable: false,
                             "render": function(data) {
-                                  return '<a href="./actualizarProducto/'+data+'">Editar</a>';
+                              if ((fase >=0 && fase<4)||(fase >=10 && fase<14)) {
+                                return '<a href="./actualizarProducto/'+data+'">Editar</a>';
+                              }else {
+                                return '';
+                              }
+
                             }
                         },
 

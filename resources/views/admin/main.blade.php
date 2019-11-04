@@ -35,8 +35,7 @@
     <link rel="stylesheet" href="{{asset('Plugins/DataTable/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('Plugins/DataTable/css/responsive.bootstrap4.min.css')}}">
 
-    <script src="{{asset('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')}}"
-        type="text/javascript"></script>
+    <script src="{{asset('assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js')}}" type="text/javascript"></script>
     <link href="{{asset('assets/plugins/bootstrap-datetimepicker/css/datetimepicker.css')}}" rel='stylesheet' />
     <!--[if IE 7]>
 		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
@@ -52,9 +51,9 @@
 <body>
     <!-- start: HEADER -->
     @if(!session('log'))
-    <script>
-    window.location = "/";
-    </script>
+      <script>
+        window.location = "/";
+      </script>
     @endif
     <div class="navbar navbar-inverse navbar-fixed-top">
         <!-- start: TOP NAVIGATION CONTAINER -->
@@ -67,8 +66,8 @@
                 <!-- end: RESPONSIVE MENU TOGGLER -->
                 <!-- start: LOGO -->
                 <!-- <a class="navbar-brand" href="index.html">
-						<img src="{{asset('assets/images/vud2.png')}}" alt="" id="icono">
-					</a> -->
+      						<img src="{{asset('assets/images/vud2.png')}}" alt="" id="icono">
+      					</a> -->
                 <div class="title" style="margin-top: 2em;">
                     <h1 id="bienvenida"></h1>
                 </div>
@@ -81,14 +80,12 @@
     </div>
     <div class="main-container">
         @include('admin.sidebar')
-
         @yield('content')
 
     </div>
     <div class="footer justify-content-center" style="text-align: center">
         <div class="row justify-content-center" style="text-align: center">
-            <p style="align: center">2019 &copy; H. Ayuntamiento de San Luis Potosí. <a href="/avisosprivacidad">Avisos
-                    de privacidad</a></p>
+            <p style="align: center">2019 &copy; H. Ayuntamiento de San Luis Potosí. </p>
         </div>
         <div class="footer-items">
             <span class="go-top" id="up-button"><i class="clip-chevron-up"></i></span>
@@ -97,10 +94,10 @@
     <!-- end: FOOTER -->
     <!-- start: MAIN JAVASCRIPTS -->
     <!--[if lt IE 9]>
-<script src="assets/plugins/respond.min.js"></script>
-<script src="assets/plugins/excanvas.min.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<![endif]-->
+    <script src="assets/plugins/respond.min.js"></script>
+    <script src="assets/plugins/excanvas.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <![endif]-->
     <!--[if gte IE 9]><!-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -117,7 +114,6 @@
     <script src="{{asset('assets/plugins/jquery-cookie/jquery.cookie.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
-
 
 
     <script src="{{asset('Plugins/DataTable/js/jquery.dataTables.min.js')}}"></script>

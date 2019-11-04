@@ -49,7 +49,18 @@
   <footer>
     <footer>
     <div class="row justify-content-center piec1">
-      <img src="{{asset('images/LOGOADMINBLANCO.png')}}" alt="" id="logofoot">
+      <div class="col-md-6" style="text-align: right; border-right: 3px solid #fff;padding: 0px 100px 0px 0px;">
+        <img src="{{asset('images/LOGOADMINBLANCO.png')}}" alt="" id="logofoot">
+      </div>
+      <div class="col-md-6 mt-4" style="padding: 0px 0px 0px 100px;">
+        <h4 style="color: white;">CONTACTO</h4>
+        <p style="color: white;">
+        DIRECCIÓN DE DESARROLLO ECONÓMICO<br>
+        TEL. 01 (444) 8.34.54.86<br>
+        desarrollo.economico@sanluis.gob.mx<br>
+        <a href="https://sitio.sanluis.gob.mx/puropotosino/Login-admin" style="font-size: 12px; color: white;">Administra SIDEP</a>
+        </p>
+      </div>
     </div>
     <div class="row justify-content-center piec2">
       <p>

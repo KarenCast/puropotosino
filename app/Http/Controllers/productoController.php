@@ -37,7 +37,12 @@ class productoController extends Controller
       })
       ->get();
 
-      $tot=DB::table('admpuropotosino'.'.'.'TCProducto')->count();
+      $tot=DB::table('admpuropotosino'.'.'.'TCProducto')
+      ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+          $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+      })
+      ->where('fase','>=','4')
+      ->count();
       $totales = $tot / 24;
       $totales = ceil($totales);
 
@@ -53,13 +58,19 @@ class productoController extends Controller
           ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
               $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
           })
+          ->where('fase','>=','4')
           ->where('ID_categoria', $key->ID_categoria)
           ->count();
         }
 
 
 
-      $total = DB::table('admpuropotosino'.'.'.'TCProducto')->count();
+      $total = DB::table('admpuropotosino'.'.'.'TCProducto')
+      ->join('admpuropotosino'.'.'.'TCEmpresaPP', function ($join) {
+          $join->on('admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa', '=', 'admpuropotosino'.'.'.'TCProducto.ID_empresa');
+      })
+      ->where('fase','>=','4')
+      ->count();
       return view('front.productexample')->with('cat', $cat)->with('number', $number)->with('prod',$prod)->with('total',$total)->with('totales',$totales);
 
     }
@@ -320,7 +331,7 @@ class productoController extends Controller
                               ->join('admpuropotosino'.'.'.'TMRegistroMarca', function ($join) {
                                   $join->on('admpuropotosino'.'.'.'TCProducto.ID_marca',  'admpuropotosino'.'.'.'TMRegistroMarca.ID_marca');
                               })
-                              ->where('TCEmpresaPP.fase','>=','5')
+                              ->where('TCEmpresaPP.fase','>=','4')
                               ->when($request->ID_categoria >= 0, function ($q) use ($request) {
                                   return $q->where('TCEmpresaPP.ID_categoria', $request->ID_categoria);
                               })
