@@ -163,8 +163,6 @@ function getMorales(){
 
 function IrLink(seleccion){
   var id;
-
-
   $("#tableemp").on('click', '#link', function(e) {
       e.preventDefault();
       var currentRow = $(this).closest("tr");
