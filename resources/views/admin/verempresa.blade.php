@@ -89,7 +89,7 @@
 											<label class="">
 											 TIPO DE PERSONA<span class="symbol required"></span>
 											</label><br>
-											 @if( ($rol->CURP!=null || $rol->CURP!='') &&  ($rol->RFC!=null || $rol->RFC!=''))
+											 @if( ($rol->CURP!=null || $rol->CURP!='') &&  ($rol->RFC!=null || $rol->RFC!='') && $rol->fisica === 'false')
 											 	<h4>PERSONA FÍSICA QUE PASO A MORAL</h4>
 											</div>
 											<div class="form-group col-sm-4">
