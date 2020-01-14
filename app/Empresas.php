@@ -13,7 +13,7 @@ class Empresas extends Model
     'comprobante_incubacion', 'comprobante_shcp','disenio_imagen',
     'codigo_barras', 'FDA', 'facebook', 'twitter', 'instagram',
     'stio_web', 'ID_categoria', 'ID_subcategoria', 'fecha_inscripcion',
-    'fase', 'comprobante_domicilio', 'ine', 'RFC', 'CURP', 'activo', 'comprobante_exportacion');
+    'fase', 'comprobante_domicilio', 'ine', 'RFC', 'CURP', 'activo', 'comprobante_exportacion', 'fisica');
   protected $table = 'admpuropotosino.TCEmpresaPP';
 
 }
