@@ -27,3 +27,5 @@ Route::delete('deleteReceta', 'contenidoController@deleteR')->name('recdelete');
 Route::delete('deleteContenido', 'contenidoController@delete')->name('deleteContenido');
 
 Route::post('getProductosFilter', 'productoController@getProductosFilter')->name('getProductosFilter');
+
+Route::middleware('auth:api')->get('/user', 'UserController@AuthRouteAPI');

@@ -855,6 +855,9 @@ function etapacinco(Request $request){
 
 }
 
+public function AuthRouteAPI(Request $request){
+  return $request->user();
+}
 
 
 }
