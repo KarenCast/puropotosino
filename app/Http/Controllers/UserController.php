@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function LogIn(Request $request)
-    {
-        $user = UsuariosExternos::where('correo_electronico', $request->username)->where('contrasena', sha1($request->password))->first();
+    {   $user = UsuariosExternos::where('correo_electronico', $request->username)->where('contrasena', sha1($request->password))->first();
 
         if ($user != null) {
             session(['mail' => $request->username]);
@@ -47,33 +46,26 @@ class UserController extends Controller
 
     public function redireccion()
     {
-        if (session('tipoinicio') != 'admin') {
+        if (session('tipoinicio') !== 'admin') {
             if (session('RFC') != null) {
                 $uf = Empresas::where('RFC', session('RFC'))
-        ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
-            $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
-        })
-        ->first();
+                ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
+                    $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+                })->first();
             } else {
                 $uf = Empresas::where('CURP', session('CURP'))
-        ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
-            $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
-        })
-        ->first();
-
+                    ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
+                        $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
+                    })->first();
                 if ($uf != null) {
                     if ($uf->RFC != null || $uf->RFC != '') {
                         session(['RFC' => $uf->RFC]);
                     }
                 }
             }
-
             if ($uf == null) {
-                $categorias = DB::table('admpuropotosino'.'.'.'TCCategoria')
-        ->get();
-                $sub = DB::table('admpuropotosino'.'.'.'TCSubCategoria')
-        ->get();
-
+                $categorias = DB::table('admpuropotosino'.'.'.'TCCategoria')->get();
+                $sub = DB::table('admpuropotosino'.'.'.'TCSubCategoria')->get();
                 return view('User.etapacero')->with('categorias', $categorias)->with('sub', $sub);
             } else {
                 session(['ID_e' => $uf->ID_empresa]);
