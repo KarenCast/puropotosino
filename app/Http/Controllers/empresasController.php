@@ -206,8 +206,8 @@ class empresasController extends Controller
             try {
                 Mail::send('emails.nuevo', $data_vac, function ($message) {
                     $message->from('ventanillaunicadigital@sanluis.gob.mx', 'SIDEP. Nuevo registro.');
-                    $message->to('anthony.robledo@sanluis.gob.mx')->subject('Se ha registrado una nueva empresa. Proceso SIDEP');
-                    //$message->to('sidep@sanluis.gob.mx')->subject('Se ha registrado una nueva empresa. Proceso SIDEP');
+                    //$message->to('anthony.robledo@sanluis.gob.mx')->subject('Se ha registrado una nueva empresa. Proceso SIDEP');
+                    $message->to('sidep@sanluis.gob.mx')->subject('Se ha registrado una nueva empresa. Proceso SIDEP');
                 });
             } catch (\Exception $e) {
                 return back()->with('Error', 'No se pudo enviar correo');
