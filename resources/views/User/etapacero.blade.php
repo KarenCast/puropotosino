@@ -124,14 +124,24 @@
                                 <label class="">
                                     Teléfono<span class="symbol required"></span>
                                 </label>
-                                <input type="text" required class="form-control" id="tel_c" name="tel_c" placeholder="">
+                                <input type="text" required class="form-control" id="tel_c" placeholder="telefono 10 digitos" name="tel_c" placeholder="">
+                                <script>
+                                jQuery(function($) {
+                                    $('#tel_c').mask("(999) 999-99-99");
+                                });
+                                </script>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="">
                                     Celular<span class="symbol required"></span>
                                 </label>
-                                <input type="text" required class="form-control" id="celular_c" name="celular_c"
+                                <input type="text" required class="form-control" placeholder="telefono 10 digitos" id="celular_c" name="celular_c"
                                     placeholder="">
+                                <script>
+                                jQuery(function($) {
+                                    $('#celular_c').mask("(999) 999-99-99");
+                                });
+                                </script>
                             </div>
                             <div class="form-group col-sm-12">
                                 <label class="">
