@@ -31,7 +31,10 @@
 		<link rel="stylesheet" href="{{asset('assets/css/print.css')}}" type="text/css" media="print">
 		<link rel="stylesheet" href="{{asset('Plugins/DataTable/css/dataTables.bootstrap4.min.css')}}">
 		<link rel="stylesheet" href="{{asset('Plugins/DataTable/css/responsive.bootstrap4.min.css')}}">
+		
+		<script src="{{asset('assets/plugins/jquery/dist/jquery.min.js')}}"></script>
 
+		<script src="{{asset('assets/plugins/jquery.maskedinput/src/jquery.mask.js')}}"></script>
 		<!-- end: MAIN CSS -->
 		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -91,9 +94,11 @@
 <script src="assets/plugins/excanvas.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <![endif]-->
-<!--[if gte IE 9]><!-->
+<!--[if gte IE 9]><!
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+-->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <!--<![endif]-->
 <script type="text/javascript">
@@ -116,7 +121,6 @@ function mayus(e) {
 
 
 <script src="{{asset('Plugins/DataTable/js/jquery.dataTables.min.js')}}"></script>
-
 
 
 <!-- end: MAIN JAVASCRIPTS -->
