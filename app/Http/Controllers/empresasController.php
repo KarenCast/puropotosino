@@ -15,7 +15,7 @@ class empresasController extends Controller
     public function storeE(Request $request)
     {
         //dd($request->all());
-
+        
         // Inicializar variables
         $filename = '';
         $filenamec = '';
@@ -99,8 +99,13 @@ class empresasController extends Controller
                 }
 
                 $path = public_path()."\Logos\\";
+                $filenamei = "";
+                $filenameh = "";
+                $filenamecb = "";
+                $filenamef = "";
+                $filenameimg = "";
 
-                $filei = $request->file('incubacion');
+                $filei = $request->file('incubacion');             
                 if ($filei != null) {
                     $filenamei = $name.'_Incubacion'.'.'.$filei->getClientOriginalExtension();
                 }
@@ -182,8 +187,8 @@ class empresasController extends Controller
                 }
 
                 try {
+                    
                     $con = new Contacto();
-
                     $con->nombre = $request->nombre_c;
                     $con->APaterno = $request->ap_c;
                     $con->AMaterno = $request->am_c;
@@ -193,6 +198,7 @@ class empresasController extends Controller
                     $con->telefono = $request->tel_c;
                     $con->ID_empresa = $emp->ID_empresa;
                     $con->save();
+                   
                 } catch (\Exception $e) {
                     return back()->with('Error', 'No se pudo Guardar tu información en SIDEP');
                 }
@@ -223,6 +229,7 @@ class empresasController extends Controller
             //return redirect('/consultaVacantes')->with('Error', 'Error al cargar la vacante');
             echo $e->getMessage();
         }
+        
     }
 
     public function getEmpresas()
