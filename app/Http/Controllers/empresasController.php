@@ -286,7 +286,7 @@ class empresasController extends Controller
         ->where('TCEmpresaPP.ID_empresa', $n)
         ->get();
             }
-
+            //dd($empresa);
             return view('admin.verempresa')->with('empresa', $empresa);
         } else {
             return redirect('Login-admin');
