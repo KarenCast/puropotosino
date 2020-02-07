@@ -140,3 +140,9 @@ Route::post('/RegistroEvento', 'EventosController@LogIn')->name('RegistroEvento'
 
 Route::get('/verproductos','productoController@verproductos')->name('verproductos');
 Route::get('/getProductosTodos','productoController@getProductoEjemplo');
+
+Route::get('/PDF/QR_CALLEJON7BARRIOS', 'descargasController@PDF_7barrios');
+Route::get('/PDF/QR_GUSTOCULPOSO', 'descargasController@PDF_gustoCulposo');
+Route::get('/PDF/QR_IMPERIAL', 'descargasController@PDF_imperial');
+Route::get('/PDF/QR_LAULTIMADELDESIERTO', 'descargasController@PDF_laUltimaDelDesierto');
+Route::get('/PDF/QR_LEGENDARIA', 'descargasController@PDF_legendaria');
