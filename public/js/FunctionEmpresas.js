@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 
     setTimeout("getEmpresas();", 2000);
@@ -14,52 +14,53 @@ $(document).ready(function() {
 function getEmpresas() {
     // var acti = $("#activas").val();
 
-    var url="./getEmpresas";
+    var url = "./getEmpresas";
     if (document.getElementById("activas").checked == false) {
-      document.querySelector('#etiqueta1').innerText = 'FISICAS';
-      document.getElementById("vacactivas").style.backgroundColor = "#c1f0c8";
-      document.querySelector('#curp_rfc').innerText = 'CURP';
-      document.querySelector('#nombre_rs').innerText = 'Nombre';
-      console.log("activa");
-      n=1;
-      s='>=';
-      dis="show";
-      mos="none"
-      getFisicas();
-    }else {
-      document.querySelector('#etiqueta1').innerText = 'MORALES';
-      document.getElementById("vacactivas").style.backgroundColor = "#bdd5f0";
-      document.querySelector('#curp_rfc').innerText = 'RFC';
-      document.querySelector('#nombre_rs').innerText = 'Razon Social';
-      n=0;
-      s='<';
-      dis="none";
-      mos="show";
-      getMorales();
+        document.querySelector('#etiqueta1').innerText = 'FISICAS';
+        document.getElementById("vacactivas").style.backgroundColor = "#c1f0c8";
+        document.querySelector('#curp_rfc').innerText = 'CURP';
+        document.querySelector('#nombre_rs').innerText = 'Nombre';
+        //console.log("activa");
+        n = 1;
+        s = '>=';
+        dis = "show";
+        mos = "none";
+        getFisicas();
+    } else {
+        document.querySelector('#etiqueta1').innerText = 'MORALES';
+        document.getElementById("vacactivas").style.backgroundColor = "#bdd5f0";
+        document.querySelector('#curp_rfc').innerText = 'RFC';
+        document.querySelector('#nombre_rs').innerText = 'Razon Social';
+        n = 0;
+        s = '<';
+        dis = "none";
+        mos = "show";
+        getMorales();
     }
 
-  }
+}
 
-function getFisicas(){
+function getFisicas() {
 
-      $('#tableemp').dataTable().fnDestroy();
-      $.ajax({
-          url: "./getEmpresas",
-          dataType: 'json',
-          method: 'Get',
-          success: function(r) {
-              oTable = $('#tableemp').DataTable({
-                scrollY:        "auto",
-                scrollX:        true,
+    $('#tableemp').dataTable().fnDestroy();
+    $.ajax({
+        url: "./getEmpresas",
+        dataType: 'json',
+        method: 'Get',
+        success: function (r) {
+            oTable = $('#tableemp').DataTable({
+                scrollY: "auto",
+                scrollX: true,
                 scrollCollapse: true,
-                paging:         false,
-                columnDefs: [
-                    { width: 70, targets: 0 }
-                ],
+                paging: false,
+                columnDefs: [{
+                    width: 70,
+                    targets: 0
+                }],
                 fixedColumns: true,
-              "language": {
-     				   "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-              },
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
                 // dom: 'Bfrtip',
                 // lengthMenu: [
                 //   [ 10, 25, 50, -1 ],
@@ -68,54 +69,58 @@ function getFisicas(){
                 // buttons: [
                 //   'pageLength', 'excel', 'pdf', 'print'
                 // ],
-                  "data": r.data,
-                  "columns": [{
-                              data: 'ID_empresa',
-                              name: 'ID_empresa',
-                          },
-                          {
-                              data: 'CURP',
-                              name: 'CURP'
-                          },
-                          {
-                              data: 'nombre',
-                              name: 'nombre'
-                          },
+                "data": r.data,
+                "columns": [{
+                        data: 'ID_empresa',
+                        name: 'ID_empresa',
+                    },
+                    {
+                        data: 'CURP',
+                        name: 'CURP'
+                    },
+                    {
+                        data: 'nombre',
+                        name: 'nombre'
+                    },
+                    {
+                        data: 'razon_social',
+                        name: 'Nombre Comercial'
+                    },
 
-                          {
-                              data: 'ID_empresa',
+                    {
+                        data: 'ID_empresa',
 
-                              sWidth: '7%',
-                              orderable: false,
-                              "render": function(data) {
+                        sWidth: '7%',
+                        orderable: false,
+                        "render": function (data) {
 
-                                    return '<a href="./verEmpresa/'+data+'/1">Ver Empresa</a>';
-                              }
-                          },
+                            return '<a href="./verEmpresa/' + data + '/1">Ver Empresa</a>';
+                        }
+                    },
 
 
-                      ],
-              });
-          },
-          error: function() {
+                ],
+            });
+        },
+        error: function () {
 
-          }
-      });
+        }
+    });
 }
 
 
-function getMorales(){
+function getMorales() {
 
-      $('#tableemp').dataTable().fnDestroy();
-      $.ajax({
-          url: "./getEmpresasM",
-          dataType: 'json',
-          method: 'Get',
-          success: function(r) {
-              oTable = $('#tableemp').DataTable({
-              "language": {
-     				   "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-              },
+    $('#tableemp').dataTable().fnDestroy();
+    $.ajax({
+        url: "./getEmpresasM",
+        dataType: 'json',
+        method: 'Get',
+        success: function (r) {
+            oTable = $('#tableemp').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
                 // dom: 'Bfrtip',
                 // lengthMenu: [
                 //   [ 10, 25, 50, -1 ],
@@ -124,107 +129,111 @@ function getMorales(){
                 // buttons: [
                 //   'pageLength', 'excel', 'pdf', 'print'
                 // ],
-                  "data": r.data,
-                  "columns": [{
-                              data: 'ID_empresa',
-                              name: 'ID_empresa',
-                          },
-                          {
-                              data: 'RFC',
-                              name: 'RFC'
-                          },
-                          {
-                              data: 'razonsocial',
-                              name: 'razonsocial'
-                          },
-                          {
-                              data: 'ID_empresa',
+                "data": r.data,
+                "columns": [{
+                        data: 'ID_empresa',
+                        name: 'ID_empresa',
+                    },
+                    {
+                        data: 'RFC',
+                        name: 'RFC'
+                    },
+                    {
+                        data: 'razonsocial',
+                        name: 'razonsocial'
+                    },
+                    {
+                        data: 'razon_social',
+                        name: 'Nombre Comercial'
+                    },
+                    {
+                        data: 'ID_empresa',
 
-                              sWidth: '7%',
-                              orderable: false,
-                              "render": function(data) {
+                        sWidth: '7%',
+                        orderable: false,
+                        "render": function (data) {
 
-                                    return '<a href="./verEmpresa/'+data+'/0">Ver Empresa</a>';
+                            return '<a href="./verEmpresa/' + data + '/0">Ver Empresa</a>';
 
-                              }
-                          },
+                        }
+                    },
 
 
-                      ],
-              });
-          },
-          error: function() {
+                ],
+            });
+        },
+        error: function () {
 
-          }
-      });
+        }
+    });
 }
 
 
 
-function IrLink(seleccion){
-  var id;
-  $("#tableemp").on('click', '#link', function(e) {
-      e.preventDefault();
-      var currentRow = $(this).closest("tr");
-      var data = $('#tableemp').DataTable().row(currentRow).data();
+function IrLink(seleccion) {
+    var id;
+    $("#tableemp").on('click', '#link', function (e) {
+        e.preventDefault();
+        var currentRow = $(this).closest("tr");
+        var data = $('#tableemp').DataTable().row(currentRow).data();
 
-      id = data['url_bolsa'];
+        id = data['url_bolsa'];
 
-      window.location = id;
+        window.location = id;
 
-  });
+    });
 }
 
-  function EditEmpresa(seleccion) {
+function EditEmpresa(seleccion) {
 
-      var id;
-
-
-      $("#tableemp").on('click', '#bed', function(e) {
-          e.preventDefault();
-          var currentRow = $(this).closest("tr");
-          var data = $('#tableemp').DataTable().row(currentRow).data();
-
-          id = data['ID_empresa'];
-
-          window.location = '/ActualizarEmpresas/' + id;
-
-      });
-
-  }
+    var id;
 
 
+    $("#tableemp").on('click', '#bed', function (e) {
+        e.preventDefault();
+        var currentRow = $(this).closest("tr");
+        var data = $('#tableemp').DataTable().row(currentRow).data();
+
+        id = data['ID_empresa'];
+
+        window.location = '/ActualizarEmpresas/' + id;
+
+    });
+
+}
 
 
 
 
-  function EliminaEmpresa(seleccion) {
-
-      var id;
-      var nombre;
-
-      $("#tableemp").on('click', '#bed2', function(e) {
-          e.preventDefault();
-          var currentRow = $(this).closest("tr");
-          var data = $('#tableemp').DataTable().row(currentRow).data();
-
-          id = data['ID_empresa'];
-          nombre = data['nombre_empresa'];
-
-          $("#id_emp").val(id);
-          $("#desc_e").val(nombre);
-
-          $("#modaleliminarvac").modal('show');
-
-      });
 
 
+function EliminaEmpresa(seleccion) {
 
-  }
+    var id;
+    var nombre;
+
+    $("#tableemp").on('click', '#bed2', function (e) {
+        e.preventDefault();
+        var currentRow = $(this).closest("tr");
+        var data = $('#tableemp').DataTable().row(currentRow).data();
+
+        id = data['ID_empresa'];
+        nombre = data['nombre_empresa'];
+
+        $("#id_emp").val(id);
+        $("#desc_e").val(nombre);
+
+        $("#modaleliminarvac").modal('show');
+
+    });
 
 
 
-  function VerEmpresa(seleccion) {
+}
+
+
+
+function VerEmpresa(seleccion) {
 
     var id;
     var desc;
@@ -233,7 +242,7 @@ function IrLink(seleccion){
     var ffin;
     var sal;
 
-    $("#tableemp").on('click', '#bedv', function(e) {
+    $("#tableemp").on('click', '#bedv', function (e) {
         e.preventDefault();
         var currentRow = $(this).closest("tr");
         var data = $('#tableemp').DataTable().row(currentRow).data();
@@ -253,7 +262,7 @@ function IrLink(seleccion){
         $("#correo_e").val(fini);
         $("#nombre_e").val(ffin);
         // $("#logo_e").val(sal);
-        document.getElementById("logo_e").src = "Empresas/"+sal;
+        document.getElementById("logo_e").src = "Empresas/" + sal;
 
 
 

@@ -297,16 +297,7 @@
 
                                 </select>
                             </div>
-
-
-
-
-
-
                         </form>
-
-
-
                         @endforeach
                     </div>
                 </div>

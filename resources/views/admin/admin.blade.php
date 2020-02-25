@@ -89,34 +89,28 @@
                             <div class="col-sm-6">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-
                                         <label class="switch ">
                                             <input type="checkbox" class="primary" value="0" id="activas" name="activas"
                                                 onchange="getEmpresas();">
                                             <span class="slider a round"></span>
                                         </label>
-
                                     </li>
                                 </ul>
                             </div>
                         </div>
-
-
-
                         <div class="row">
                             <div class="table-responsive">
                                 <input type="text" name="tipoini" id="tipoini" style="display:none;"
                                     value="{{{session('tipoinicio')}}}">
-                                <table id="tableemp" name="tableemp" class="table-striped dt-responsive nowrap"
+                                <table id="tableemp" name="tableemp" class="table table-striped  dt-responsive nowrap"
                                     style="width: 100%; ">
                                     <thead class="thead-light">
                                         <tr>
                                             <th>ID</th>
                                             <th id="curp_rfc">CURP</th>
                                             <th id="nombre_rs">Nombre</th>
+                                            <th>Nombre Comercial</th>
                                             <th id="nombre_rs">Ver</th>
-
-
                                             <!-- "ID_empresa", "RFC_camara", url_bolsa, correo_contacto, nombre_empresa,  -->
                                         </tr>
                                     </thead>

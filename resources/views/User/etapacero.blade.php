@@ -70,6 +70,13 @@
                             <hr width="100%" color="black" />
                             <div class="form-group col-sm-12">
                                 <label class="">
+                                    Nombre Comercial<span class="symbol required"></span>
+                                </label><br>
+                                <input type="text" required class="form-control" id="razon_social" name="razon_social"
+                                    placeholder="">
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="">
                                     Describe aquí tu idea de negocio<span class="symbol required"></span>
                                 </label><br>
                                 <textarea class="form-control" name="descripcion" id="descripcion" rows="3"

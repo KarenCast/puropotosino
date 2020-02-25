@@ -15,7 +15,7 @@ class empresasController extends Controller
     public function storeE(Request $request)
     {
         //dd($request->all());
-        
+
         // Inicializar variables
         $filename = '';
         $filenamec = '';
@@ -65,7 +65,7 @@ class empresasController extends Controller
             $emp->tiempo_operacion = $request->operacion;
             $emp->alta_shcp = $request->altahacienda;
             $emp->regimen = $reg;
-
+            $emp->razon_social = $request->razon_social;
             $emp->tipo_incubacion = $inc;
 
             $emp->facebook = $request->facebook;
@@ -81,8 +81,8 @@ class empresasController extends Controller
 
             $emp->RFC = session('RFC');
             $emp->CURP = session('CURP');
-            $emp->fisica = (session('tipo') == 'fisica')? ('true'):('false');
-            
+            $emp->fisica = (session('tipo') == 'fisica') ? ('true') : ('false');
+
             if ($emp->save()) {
                 $name = $emp->ID_empresa;
                 $carpeta = storage_path();
@@ -99,13 +99,13 @@ class empresasController extends Controller
                 }
 
                 $path = public_path()."\Logos\\";
-                $filenamei = "";
-                $filenameh = "";
-                $filenamecb = "";
-                $filenamef = "";
-                $filenameimg = "";
+                $filenamei = '';
+                $filenameh = '';
+                $filenamecb = '';
+                $filenamef = '';
+                $filenameimg = '';
 
-                $filei = $request->file('incubacion');             
+                $filei = $request->file('incubacion');
                 if ($filei != null) {
                     $filenamei = $name.'_Incubacion'.'.'.$filei->getClientOriginalExtension();
                 }
@@ -187,7 +187,6 @@ class empresasController extends Controller
                 }
 
                 try {
-                    
                     $con = new Contacto();
                     $con->nombre = $request->nombre_c;
                     $con->APaterno = $request->ap_c;
@@ -198,7 +197,6 @@ class empresasController extends Controller
                     $con->telefono = $request->tel_c;
                     $con->ID_empresa = $emp->ID_empresa;
                     $con->save();
-                   
                 } catch (\Exception $e) {
                     return back()->with('Error', 'No se pudo Guardar tu información en SIDEP');
                 }
@@ -229,7 +227,6 @@ class empresasController extends Controller
             //return redirect('/consultaVacantes')->with('Error', 'Error al cargar la vacante');
             echo $e->getMessage();
         }
-        
     }
 
     public function getEmpresas()
@@ -316,7 +313,7 @@ class empresasController extends Controller
             })
             ->where('TCEmpresaPP.ID_empresa', session('ID_e'))
             ->get();
-        } 
+        }
         //dd($empresa);
         return view('User.perfil')->with('empresa', $empresa);
     }
