@@ -92,7 +92,6 @@ function loadProducts(CategoriaId, tipo) {
             Buscar: busqueda,
         },
         success: function (data) {
-            //console.log(data);
             if (data.data.length == 0) {
                 htmlPrd = '<h1>Categoria Sin Productos</h1>';
             } else {
@@ -144,15 +143,10 @@ function loadProducts(CategoriaId, tipo) {
             console.error('error');
         }
     });
-
-
-
 }
 
 
 function mostrarProducto(element) {
-
-
     var nombre = $("#nombre" + element).val();
     var desc = $("#descripcion" + element).val();
 
@@ -167,8 +161,13 @@ function mostrarProducto(element) {
     $("#marca_e").val(marca);
     $("#empresa_e").val(razon);
 
+    $('#facebook').attr("href", $("#fb" + element).val());
+    $('#twitter').attr("href", $("#tw" + element).val());
+    $('#instagram').attr("href", $("#in" + element).val());
+    $('#sitio').attr("href", $("#sw" + element).val());
+
     document.getElementById("logo_e").src = "Logos/" + imagen;
     document.getElementById("img_e").src = "Files/" + id_emp + "/Productos/" + imagen_p;
-    
+
     $("#modalverproducto").modal('show');
 }
