@@ -160,11 +160,12 @@ function mostrarProducto(element) {
     $("#desc_e").val(desc);
     $("#marca_e").val(marca);
     $("#empresa_e").val(razon);
+    console.log($("#fb" + element).val());
 
-    $('#facebook').attr("href", $("#fb" + element).val());
-    $('#twitter').attr("href", $("#tw" + element).val());
-    $('#instagram').attr("href", $("#in" + element).val());
-    $('#sitio').attr("href", $("#sw" + element).val());
+    $('#facebook').attr("href", ($("#fb" + element).val() == null) ? ('#') : ($("#fb" + element).val()));
+    $('#twitter').attr("href", ($("#tw" + element).val() == null) ? ('#') : ($("#tw" + element).val()));
+    $('#instagram').attr("href", ($("#in" + element).val() == null) ? ('#') : ($("#in" + element).val()));
+    $('#sitio').attr("href", ($("#sw" + element).val() == null) ? ('#') : ($("#sw" + element).val()));
 
     document.getElementById("logo_e").src = "Logos/" + imagen;
     document.getElementById("img_e").src = "Files/" + id_emp + "/Productos/" + imagen_p;
