@@ -99,7 +99,7 @@
 
 
                             <h4>Información de contacto</h4>
-                            <i>Deben ser los datos de la persona con quien se mantenda contacto durante el proceso.</i>
+                            <i>Deben ser los datos de la persona con quien se mantendra contacto durante el proceso.</i>
                             <hr width="100%" color="black" />
                             <div class="form-group col-sm-4">
                                 <label class="">
