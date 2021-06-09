@@ -189,3 +189,111 @@ function loadEvents() {
     });
     return arrData;
 }
+
+/*FUNCIONES PARA EL BOTON DE CAPACITACION */
+
+function validarFormCapacitacion(){
+    
+    $("#msjExito").removeClass("mostar").addClass("ocultar");
+    nombre= $("#nombre").val();
+    correo= $("#correo").val();
+    comentario= $("#comentario").val();
+
+    if((nombre.trim()).length>0){
+        $("#msjError").removeClass("mostrar").addClass("ocultar");
+        if(validarEmail(correo)){
+            $("#msjError").removeClass("mostrar").addClass("ocultar");
+            if((comentario.trim()).length>0){
+                $("#msjError").removeClass("mostrar").addClass("ocultar");
+                bloquearForm();
+                enviarComentarios();
+                
+            }else{
+                $("#msjError").text("Debes ingresar tu comentario");
+                $("#msjError").removeClass("ocultar").addClass("mostrar");
+            }
+            
+        }else{
+            $("#msjError").text("Debes ingresar un correo valido");
+            $("#msjError").removeClass("ocultar").addClass("mostrar");
+        }        
+    }else{
+        $("#msjError").text("Debes ingresar tu Nombre completo");
+        $("#msjError").removeClass("ocultar").addClass("mostrar");
+    }
+}
+
+ //Funcion para validar correo electronico 
+ function validarEmail(valor) {var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;return regex.test(valor) ? true : false;}
+
+ function bloquearForm(){
+    document.getElementById("nombre").readOnly = true;
+    document.getElementById("correo").readOnly = true;
+    document.getElementById("telefono").readOnly = true;
+    document.getElementById("comentario").readOnly = true;
+    $("#btnCancelarModal").prop("disabled", true);
+    $("#btnEnviarModal").prop("disabled", true);
+    $("#msjEspera").removeClass("ocultar").addClass("mostrar");
+ }
+
+ function habilitarForm(){
+    document.getElementById("nombre").readOnly = false;
+    document.getElementById("correo").readOnly = false;
+    document.getElementById("telefono").readOnly = false;
+    document.getElementById("comentario").readOnly = false;
+    $("#btnCancelarModal").prop("disabled", false);
+    $("#btnEnviarModal").prop("disabled", false);
+    $("#msjEspera").removeClass("mostrar").addClass("ocultar");
+ }
+
+ function enviarComentarios(){ //Funcion para enviar al controlador la info para guardar el comentario
+    var formData = new FormData($('#formMsjCapacitacion')[0]);
+
+    $.ajax({
+        type:'POST',
+        url:"./api/insertComentarioCapacitacion",        
+        processData: false,
+        contentType: false, 
+        data:formData,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (response) {                           
+                console.log(response)
+                if(response.success){
+                    $("#msjError").removeClass("mostrar").addClass("ocultar");
+                    habilitarForm();   
+                    document.forms['formMsjCapacitacion'].reset();
+                    $("#msjExito").removeClass("ocultar").addClass("mostrar");
+                }else{
+                    $("#msjEspera").removeClass("mostrar").addClass("ocultar");
+                    $("#msjError").text("Ocurrió algo inesperado, inténtalo de nuevo");
+                    $("#msjError").removeClass("ocultar").addClass("mostrar");
+                    habilitarForm();
+                }
+        },
+        statusCode: {
+        404: function() {
+            console.log("400");
+            $("#msjEspera").removeClass("mostrar").addClass("ocultar");
+            $("#msjError").text("Ocurrió algo inesperado, inténtalo de nuevo");
+            $("#msjError").removeClass("ocultar").addClass("mostrar");
+            habilitarForm();
+               
+        },
+        500: function(){
+            console.log("500");
+            $("#msjEspera").removeClass("mostrar").addClass("ocultar");
+            $("#msjError").text("Ocurrió algo inesperado, inténtalo de nuevo");
+            $("#msjError").removeClass("ocultar").addClass("mostrar");
+            habilitarForm();
+        }
+
+        },
+        error:function(x,xs,xt){
+            //nos dara el error si es que hay alguno
+        // window.open(JSON.stringify(x));                    
+           console.log('error: ' + JSON.stringify(x) +"\n error string: "+ xs + "\n error throwed: " + xt);
+        }
+    });
+ }

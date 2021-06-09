@@ -17,8 +17,12 @@
         </a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="{{route('mostrarcategoria')}}">Categorias</a>
-          <a class="dropdown-item" href="{{route('verproductos')}}">Todos los productos</a>
+          <a class="dropdown-item"  href="javascript:{}" onclick="document.getElementById('verProductosForm').submit();">Todos los productos</a>
         </div>
+        <form  id="verProductosForm" class="" method="POST" action="{{ route('verproductos') }}" style="display:none">
+            {!! csrf_field() !!}
+            <input  name="idCategoria" value="-1" readonly/>
+        </form>
       </li>
       <li class="nav-item">
           <a class="nav-link" href="{{route('recetas')}}">Cocina con Puro Potosino</a>
@@ -33,12 +37,13 @@
 
       <li class="nav-item dropdown" id="acercad">
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-          Compra
+          Compras
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="https://xibaria.com/">En línea</a>
+      
+          <a class="dropdown-item" href="https://xibaria.com/">En línea (xibaria)</a>
+          <a class="dropdown-item" href="https://comal.club/">En línea (comal)</a>
           <a class="dropdown-item" href="{{route('establecimientos')}}">Establecimientos</a>
-          <a class="dropdown-item" href="{{route('prox')}}">Próximamente</a>
         </div>
       </li>
       <li class="nav-item">

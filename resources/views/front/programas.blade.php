@@ -9,6 +9,7 @@
     <h1>OTROS PROGRAMAS</h1>
   </div>
 </div>
+<!--
 <div class="row seccion s1 justify-content-center">
   <div class="col-md-6">
     <h1>INSTITUTO DE LA CANTERA</h1>
@@ -27,6 +28,7 @@
   </div>
 
 </div>
+-->
 <div class="row seccion s2 justify-content-center">
   <div class="col-md-4" id="programasimg" data-aos="fade-right">
     <img src="{{asset('programas/sanluisartesanal.png')}}" alt="" width="100%" style="height: auto; max-width: 250px;">

@@ -3,7 +3,19 @@
 
 @include('front.menu')
 @include('front.encabezadoprincipal')
+<style >
+  .visitas{
+    border-bottom: 3px solid #0D4C80; 
+    border-radius: 15px;
+    font-weight:700;
+  }
+</style>
 
+<div class="row  s2 justify-content-end">
+  <div class="col-6 col-md-2  mt-2 text-center">
+    <h3 class="visitas">Visitas {{$contador}}</h3>
+  </div>
+</div>
 <div class="row seccion s2 justify-content-center">
   <div class="col-md-7 line">
     <h1>¿QUE ES PURO POTOSINO?</h1>
@@ -41,7 +53,7 @@
         <h4>Impulsa al progreso</h4>
         <p>
             Promover  el desarrollo de las empresas así como llevar al empresario
-            a un crecimiento sostenido que lo vuelva mas competitivo.
+            a un crecimiento sostenido que lo vuelva más competitivo.
         </p>
       </li>
     </ul>
@@ -110,7 +122,7 @@
         <h5>Apoyo en la comercialización</h5>
       </li>
       <li>
-        <h5>Registro + usuario y contraseña</h5>
+        <h5>Registro y acceso al portal</h5>
       </li>
     </ul>
   </div>

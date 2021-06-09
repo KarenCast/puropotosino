@@ -31,3 +31,5 @@ Route::delete('deleteContenido', 'contenidoController@delete')->name('deleteCont
 Route::post('getProductosFilter', 'productoController@getProductosFilter')->name('getProductosFilter');
 
 Route::middleware('auth:api')->get('/user', 'UserController@AuthRouteAPI');
+
+Route::post('insertComentarioCapacitacion', 'TMCapacitacionController@insertComentarioCapa');

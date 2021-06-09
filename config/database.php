@@ -65,15 +65,29 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '100.100.200.60'),
+            'host' => env('DB_HOST', '100.100.200.11'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'haslpd'),
+            'database' => env('DB_DATABASE', 'ehaslp'),
             'username' => env('DB_USERNAME', 'UsrPuroP'),
             'password' => env('DB_PASSWORD', 'Pwd2708'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'admseguridad','admpuropotosino',
+            'sslmode' => 'prefer',
+        ],
+
+        'pgsqlContador' => [
+            'driver' => 'pgsql',
+            'host' => env('DB_HOSTCONTADOR', '100.100.200.11'),
+            'port' => env('DB_PORTCONTADOR', '5432'),
+            'database' => env('DB_DATABASECONTADOR', 'haslp_web'),
+            'username' => env('DB_USERNAMECONTADOR', 'UsrContador'),
+            'password' => env('DB_PASSWORDCONTADOR', 'Pwd1501'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
             'sslmode' => 'prefer',
         ],
 

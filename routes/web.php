@@ -138,7 +138,7 @@ Route::post('/RegistroEvento', 'EventosController@LogIn')->name('RegistroEvento'
 
 
 
-Route::get('/verproductos','productoController@verproductos')->name('verproductos');
+Route::post('/verproductos','productoController@verproductos')->name('verproductos');
 Route::get('/getProductosTodos','productoController@getProductoEjemplo');
 
 Route::get('/PDF/QR_CALLEJON7BARRIOS', 'descargasController@PDF_7barrios');

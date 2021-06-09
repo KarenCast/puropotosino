@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Yajra\Datatables\Datatables;
+use App\cat;
+use App\subcat;
+use App\Http\Controllers\ContadorVisitasController;
 
 use Illuminate\Http\Request;
 
@@ -12,7 +15,11 @@ use Illuminate\Http\Request;
 class mainController extends Controller
 {
     function inicio(){
-        return view('front/inicio');
+      
+      session();
+
+      $contador = ContadorVisitasController::contadorVisitas();
+      return view('front/inicio')->with('contador', $contador);
       //  return redirect('https://municipiodeslp.gob.mx/ventanilla/');
     }
 
@@ -47,6 +54,10 @@ class mainController extends Controller
 
     function categorias(){
 
+      $categoriasAll= cat::where('activo',true)->get();
+      $subcategoriasAll= subcat::where('activo',true)->get();
+
+
       $cat = DB::table('admpuropotosino'.'.'.'TCCategoria')
       ->where('activo',true)
       ->get();
@@ -70,7 +81,13 @@ class mainController extends Controller
       }
 
 
-        return view('front.mostrarcategorias')->with('categoria',$cat)->with('nombre', $n)->with('subcat',$sub)->with('nombres', $m);
+        return view('front.mostrarcategorias')
+        ->with('categoria',$cat)
+        ->with('nombre', $n)
+        ->with('subcat',$sub)
+        ->with('nombres', $m)        
+        ->with('categoriasAll', $categoriasAll)
+        ->with('subcategoriasAll', $subcategoriasAll);
 
 
     }

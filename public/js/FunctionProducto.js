@@ -70,7 +70,7 @@ console.log(fase);
                               if ((fase >=0 && fase<4)||(fase >=10 && fase<14)) {
                                 return '<a href="./actualizarProducto/'+data+'">Editar</a>';
                               }else {
-                                return '';
+                                return '<a href="./actualizarProducto/'+data+'">Editar</a>';
                               }
 
                             }

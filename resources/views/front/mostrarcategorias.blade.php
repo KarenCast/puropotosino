@@ -150,7 +150,7 @@ figure:hover figcaption {
 	height: 300px;
 }
 
-#title{
+.title{
 	padding: 1%;
 	background-color: #f1f1f1;
 }
@@ -176,13 +176,50 @@ input[type="submit"]#todos:hover{
 }
 
 
+.link{cursor:pointer}
+.notLink{cursor:none;}
+.mostrar{display:block}
+.ocultar{display:none}
+
 
 </style>
 
 
+<div class="row">
+  <div class="col-md-12">
+    <ul class="nav nav-tabs nav-center justify-content-center" role="tablist">
+    @foreach($categoriasAll as $itemcategoria)
+        <li class="nav-items" id="{{$itemcategoria->ID_categoria}}">
+            <a data-toggle="tab" id="cat" href="#" onclick="showSubCategoria('{{$itemcategoria->ID_categoria}}')">
+              <img src="{{asset('categorias')}}/{{str_replace(' ', '', $itemcategoria->nombre)}}/{{$itemcategoria->titulo}}" width="150px"/>
+			       </a>
+          </li>
+    @endforeach
+    </ul>
+  </div>
+</div>
+
+<form  id="verProductosFormCateg"  method="POST" action="{{ route('verproductos') }}" style="display:none">
+  {!! csrf_field() !!}
+  <input id="idCategoria" name="idCategoria" value="-1" readonly/>
+</form>
+
+
+
+<div class="tab-content col-md-12" id="tabContentCategoria">
+
+
+</div>
+
+<div class="row justify-content-center" width="100%"> 
+  <div class=" col-md-11 col-12 text-center" >
+    <div class="row justify-content-center" id="rowSubcategorias">
+    </div>
+  </div>
+</div>
 
 <!-- <div class="container"> -->
-
+<!-- 
   <div class="col-md-12">
     <ul class="nav nav-tabs nav-center" role="tablist">
 
@@ -206,10 +243,10 @@ input[type="submit"]#todos:hover{
 
       @endforeach
     </ul>
-</div>
+</div>-->
 
 
-  <!-- Tab panes -->
+  <!-- Tab panes 
   <div class="tab-content col-md-12">
     <p style="display: none">{{$j = 0}}</p>
 		@foreach($categoria as $rol)
@@ -229,7 +266,7 @@ input[type="submit"]#todos:hover{
 											<img class="img-fluid img-effect" src="{{asset('categorias')}}/{{$nombre[$j]}}/{{$rol->imagen}}" alt="">
 							      </a>
 							      <figcaption>
-                      {{$rol->descripcion}}
+                      <span class="h5">{{$rol->descripcion}}</span>
 
 				            </figcaption>
 							    </figure>
@@ -264,7 +301,7 @@ input[type="submit"]#todos:hover{
 	@endforeach
 
 
-  </div>
+  </div>-->
 
 
 
@@ -273,12 +310,81 @@ input[type="submit"]#todos:hover{
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+    const categoriasAll = {!! json_encode($categoriasAll) !!};
+    const subcategoriasAll = {!! json_encode($subcategoriasAll) !!};
+    
+
 		function agregar(n){
       element2.classList.add("inactive");
 			var element2 = document.getElementById(n);
 	  	element2.classList.add("active");
 
 
-		}
+    }
+    
+    $(document).ready(function(){
+      categoriasAll.map(function(item,x) {
+        
+        if(x==0){
+          showSubCategoria(item.ID_categoria);
+        }
+      });
+      
+    });
+
+    function showSubCategoria(idCategoria){
+      $("#tabContentCategoria").empty();
+      $("#rowSubcategorias").empty();
+      $("#idCategoria").val(idCategoria);
+
+      categoriasAll.map(function(item) {
+        if(item.ID_categoria==idCategoria){
+          nombreImg=item.nombre.replace(/ /g,'');
+          srcImagen=nombreImg+"/"+item.imagen;
+          $("#tabContentCategoria").append('<div id="linkverProductosFormCateg" class="tab-pane fade in active show link" style="padding-left: 5%; padding-right: 5%">'+
+              '<div class="col-md-12 title" >'+
+								'<h1>'+item.nombre+'</h1>'+
+						  '</div>'+
+							'<figure class="col-md-12 col-md-3 m-0">'+
+							    '<a href="#">'+
+										'<img class="img-fluid img-effect" src="./categorias/'+srcImagen+'" alt="">'+
+							    '</a>'+
+							    '<figcaption>'+
+                    '<span class="h5">'+item.descripcion+'</span>'+
+				          '</figcaption>'+
+							'</figure>'+
+          '</div>');
+          enviarVerProductos();
+        }
+
+      });
+
+      $("#rowSubcategorias").append('<div class="col-md-12 title ocultar" id="titleSubcategorias"><h3>Sub-Categorías</h3></div>');
+      subcategoriasAll.map(function(item) {
+        if(item.ID_categoria==idCategoria){
+          $("#titleSubcategorias").removeClass("ocultar").addClass("mostrar");
+          srcImagen=item.nombre.replace(" ","")+"/"+item.imagen;
+          $("#rowSubcategorias").append('<div class=" col-12 col-md-4 my-2 ">'+
+            '<figure class="">'+
+  							'<a href="#"class="notLink" >'+
+  									'<img class="img-fluid img-effect sub" src="./subcategorias/'+srcImagen+'" alt="">'+
+  							'</a>'+
+                '<figcaption>'+
+                  '<h1 style="color: white;">'+item.nombre+'</h1><br>'+
+    						'</figcaption>'+
+            '</figure>'+
+            '</div>');
+        }
+
+      });
+    }
+
+    function enviarVerProductos(){
+      var form = document.getElementById("verProductosFormCateg");
+
+      document.getElementById("linkverProductosFormCateg").addEventListener("click", function () {
+        form.submit();
+      });
+    }
 	</script>
 @endsection

@@ -1,7 +1,9 @@
 $(document).ready(function () {
+    loadProducts(idCategoriaSelect);
 
-    loadProducts(-1);
-
+    setTimeout(function () {
+        showperpage(1);
+    }, 1000);
 
     $('#selectEmpresa').on('change', function () {
         var empresa = this.value;
@@ -41,15 +43,39 @@ $(document).ready(function () {
         }
     });
 
-
+    //
 });
 
+function backPage() {
+    event.preventDefault();
+
+    let elementos = document.getElementsByClassName('itemPagination active');
+    var page = elementos[0].value;
+    if (page > 1) {
+        var back = page - 1;
+        this.showperpage(back);
+    }
+}
+
+function nextPage() {
+    event.preventDefault();
+
+    let elementos = document.getElementsByClassName('itemPagination active');
+    let elementostotal = document.getElementsByClassName('itemPagination');
+    let total = elementostotal.length;
+    var page = elementos[0].value;
+
+    if (page < total) {
+        var next = page + 1;
+        this.showperpage(next);
+    }
+}
+
 function showperpage(page) {
+
     $("#numeros").css("display", "block");
     var totalp = $("#totalpa").val();
     for (let index = 1; index <= totalp; index++) {
-
-        console.log(index);
         if (page != index) {
             $(".page" + index).css("display", "none");
             $("#page" + index).removeClass('active');
@@ -59,7 +85,6 @@ function showperpage(page) {
         }
 
     }
-    console.log(page);
 }
 
 
@@ -96,7 +121,7 @@ function loadProducts(CategoriaId, tipo) {
                 htmlPrd = '<h1>Categoria Sin Productos</h1>';
             } else {
                 for (let index = 0; index < data.data.length; index++) {
-                    if ((index / 24) >= i) {
+                    if ((index / 18) >= i) {
                         i++;
                     }
                     const element = data.data[index];
@@ -138,6 +163,7 @@ function loadProducts(CategoriaId, tipo) {
                 htmlPrd += '<input type="text" name="totalpages" id="totalpages" value="' + i + '" style="display: none;"></input>';
             }
             $('#contentPrd').html(htmlPrd);
+            showperpage(1);
         },
         error: function () {
             console.error('error');
@@ -160,15 +186,16 @@ function mostrarProducto(element) {
     $("#desc_e").val(desc);
     $("#marca_e").val(marca);
     $("#empresa_e").val(razon);
-    console.log($("#fb" + element).val());
 
-    $('#facebook').attr("href", ($("#fb" + element).val() == null) ? ('#') : ($("#fb" + element).val()));
-    $('#twitter').attr("href", ($("#tw" + element).val() == null) ? ('#') : ($("#tw" + element).val()));
-    $('#instagram').attr("href", ($("#in" + element).val() == null) ? ('#') : ($("#in" + element).val()));
-    $('#sitio').attr("href", ($("#sw" + element).val() == null) ? ('#') : ($("#sw" + element).val()));
+    $('#facebook').attr("href", ($("#fb" + element).val() == 'null') ? ('#') : ($("#fb" + element).val()));
+    $('#twitter').attr("href", ($("#tw" + element).val() == 'null') ? ('#') : ($("#tw" + element).val()));
+    $('#instagram').attr("href", ($("#in" + element).val() == 'null') ? ('#') : ($("#in" + element).val()));
+    $('#sitio').attr("href", ($("#sw" + element).val() == 'null') ? ('#') : ($("#sw" + element).val()));
 
     document.getElementById("logo_e").src = "Logos/" + imagen;
     document.getElementById("img_e").src = "Files/" + id_emp + "/Productos/" + imagen_p;
 
     $("#modalverproducto").modal('show');
 }
+
+

@@ -316,6 +316,49 @@ figure#video {
         visibility: visible;
     }
 }
+
+/*Boton de CAPACITACION */
+.btnCapacitacion{
+  background-color: #2C3E50;
+  color: #FFF;  
+  font-weight: 700;
+  border-radius: 15px;
+  border: 2px solid #2C3E50;
+}
+
+.btnCapacitacion:hover{
+  background-color: #FFF;
+  color: #2C3E50;
+  font-weight: 700;
+  border-radius: 15px;
+  border: 2px solid #2C3E50;
+}
+
+.mostrar{display:block}
+.ocultar{display:none}
+.colorRed{color:#963030}
+.colorAzul{color:#2C3E50}
+.colorVerde{color:green}
+.ancho700{font-weight: 700;}
+.sizeSmall{font-size:medium}
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+} 
+.spinner-border{
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: text-bottom;
+    border: .25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+}
+.spinner-border-sm{
+    height: 1rem;
+    border-width: .2em;
+}
 </style>
 
 @if(session('Error')!== null)
@@ -354,6 +397,60 @@ figure#video {
         </div>
 
     </div>
+</div>
+
+<!-- Boton para Formulario de Capacitacion -->
+<div class="row justify-content-center my-5 mx-4">
+    <div class="col-12 col-md-3">
+        <button type="button" class="btn btnCapacitacion btn-block" data-toggle="modal" data-target="#modalMsjCapacitacion" >¿Te gustaría otro tipo de capacitación?<br>Dejanos tus comentarios</button>
+    </div>
+</div>
+
+<!-- Modal para Formulario de Capacitacion -->
+<div class="modal fade" id="modalMsjCapacitacion" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Dejanos tus comentarios</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center"><label id="msjError" class="colorRed sizeSmall ancho700  ocultar" >MsjError</label></div>          
+        <form id="formMsjCapacitacion">
+          <div class="form-group">
+            <label for="recipient" class="col-form-label">Nombre Completo:</label>
+            <input type="text" class="form-control form-control-sm" id="nombre" name="nombre">
+          </div>
+          <div class="form-group">
+            <label for="correo" class="col-form-label">Correo Electrónico:</label>
+            <input type="text" class="form-control form-control-sm" id="correo" name="correo">
+          </div>
+          <div class="form-group">
+            <label for="telefono" class="col-form-label">Teléfono (Opcional):</label>
+            <input type="text" class="form-control form-control-sm" id="telefono" name="telefono" maxlength="10">
+          </div>
+          <div class="form-group">
+            <label for="comentarios" class="col-form-label">Comentarios:</label>
+            <textarea class="form-control form-control-sm" id="comentario" name="comentario" rows="3"></textarea>
+          </div>
+        </form>
+        <div class="text-center ocultar" id="msjEspera">
+            <div class="spinner-border" role="status" aria-hidden="true">
+                <span class="sr-only ">Loading...</span>
+            </div><br>
+            <label  class="colorAzul sizeSmall ancho700  " >
+            Enviando comentarios</label>
+        </div>
+        <div class="text-center"><label id="msjExito" class="colorVerde sizeSmall ancho700 ocultar " >Tu comentario fue enviado con éxito</label></div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCancelarModal">Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="validarFormCapacitacion()" id="btnEnviarModal">Enviar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="calendar"></div>
