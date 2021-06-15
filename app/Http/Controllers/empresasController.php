@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categorias;
 use App\Empresas;
 use App\Contacto;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class empresasController extends Controller
         $d = $todayh['mday'];
         $m = $todayh['mon'];
         $y = $todayh['year'];
-        $fecha = $y.'-'.$m.'-'.$d;
+        $fecha = $y . '-' . $m . '-' . $d;
         try {
             // if (session('RFC')!=null || session('RFC')!='') {
             //   $name=session('RFC');
@@ -86,8 +87,8 @@ class empresasController extends Controller
             if ($emp->save()) {
                 $name = $emp->ID_empresa;
                 $carpeta = storage_path();
-                $carpeta = $carpeta.'/app/Files/'.$name;
-                $ruta = '/Files//'.$name.'/';
+                $carpeta = $carpeta . '/app/Files/' . $name;
+                $ruta = '/Files//' . $name . '/';
 
                 if (!file_exists($carpeta)) {
                     try {
@@ -98,7 +99,7 @@ class empresasController extends Controller
                     }
                 }
 
-                $path = public_path()."\Logos\\";
+                $path = public_path() . "\Logos\\";
                 $filenamei = '';
                 $filenameh = '';
                 $filenamecb = '';
@@ -107,42 +108,42 @@ class empresasController extends Controller
 
                 $filei = $request->file('incubacion');
                 if ($filei != null) {
-                    $filenamei = $name.'_Incubacion'.'.'.$filei->getClientOriginalExtension();
+                    $filenamei = $name . '_Incubacion' . '.' . $filei->getClientOriginalExtension();
                 }
                 $fileh = $request->file('hacienda');
                 if ($fileh != null) {
-                    $filenameh = $name.'_Hacienda'.'.'.$fileh->getClientOriginalExtension();
+                    $filenameh = $name . '_Hacienda' . '.' . $fileh->getClientOriginalExtension();
                 }
                 $filecb = $request->file('codigobarras');
                 if ($filecb != null) {
-                    $filenamecb = $name.'_CodigoBarras'.'.'.$filecb->getClientOriginalExtension();
+                    $filenamecb = $name . '_CodigoBarras' . '.' . $filecb->getClientOriginalExtension();
                 }
                 $filef = $request->file('fda');
                 if ($filef != null) {
-                    $filenamef = $name.'_FDA'.'.'.$filef->getClientOriginalExtension();
+                    $filenamef = $name . '_FDA' . '.' . $filef->getClientOriginalExtension();
                 }
 
                 $fileimg = $request->file('logo');
                 if ($fileimg != null) {
-                    $filenameimg = $name.'_Logo'.'.'.$fileimg->getClientOriginalExtension();
+                    $filenameimg = $name . '_Logo' . '.' . $fileimg->getClientOriginalExtension();
                 }
 
                 try {
                     $vac = Empresas::where('ID_empresa', $emp->ID_empresa)
-              ->update([
-                'comprobante_incubacion' => $filenamei,
-                'comprobante_shcp' => $filenameh,
-                'disenio_imagen' => $filenameimg,
-                'codigo_barras' => $filenamecb,
-                'FDA' => $filenamef,
-              ]);
+                        ->update([
+                            'comprobante_incubacion' => $filenamei,
+                            'comprobante_shcp' => $filenameh,
+                            'disenio_imagen' => $filenameimg,
+                            'codigo_barras' => $filenamecb,
+                            'FDA' => $filenamef,
+                        ]);
                 } catch (\Exception $e) {
                     return back()->with('Error', 'No se pudieron cargar archivos');
                 }
 
                 if ($filei != null) {
                     try {
-                        $rutai = $ruta.$filenamei;
+                        $rutai = $ruta . $filenamei;
                         \Storage::disk('local')->put($rutai, \File::get($filei));
                     } catch (\Exception $e) {
                         return back()->with('Error', 'No se pudo guardar comprobante_incubacion');
@@ -151,7 +152,7 @@ class empresasController extends Controller
 
                 if ($fileh != null) {
                     try {
-                        $rutah = $ruta.$filenameh;
+                        $rutah = $ruta . $filenameh;
                         \Storage::disk('local')->put($rutah, \File::get($fileh));
                     } catch (\Exception $e) {
                         return back()->with('Error', 'No se pudo guardar comprobante_shcp');
@@ -160,7 +161,7 @@ class empresasController extends Controller
 
                 if ($filecb != null) {
                     try {
-                        $rutacb = $ruta.$filenamecb;
+                        $rutacb = $ruta . $filenamecb;
                         \Storage::disk('local')->put($rutacb, \File::get($filecb));
                     } catch (\Exception $e) {
                         return back()->with('Error', 'No se pudo guardar codigo de barras');
@@ -169,7 +170,7 @@ class empresasController extends Controller
 
                 if ($filef != null) {
                     try {
-                        $rutaf = $ruta.$filenamef;
+                        $rutaf = $ruta . $filenamef;
                         \Storage::disk('local')->put($rutaf, \File::get($filef));
                     } catch (\Exception $e) {
                         return back()->with('Error', 'No se pudo guardar FDA');
@@ -178,7 +179,7 @@ class empresasController extends Controller
 
                 if ($fileimg != null) {
                     try {
-                        $rutaimg = $path.$filenameimg;
+                        $rutaimg = $path . $filenameimg;
                         $img = Image::make($fileimg->getRealPath());
                         $img->save($rutaimg, 30);
                     } catch (\Exception $e) {
@@ -203,9 +204,9 @@ class empresasController extends Controller
             }
 
             $data_vac = array(
-             'id' => $emp->ID_empresa,
-             'tip' => session('tipo'),
-          );
+                'id' => $emp->ID_empresa,
+                'tip' => session('tipo'),
+            );
 
             try {
                 Mail::send('emails.nuevo', $data_vac, function ($message) {
@@ -231,28 +232,28 @@ class empresasController extends Controller
 
     public function getEmpresas()
     {
-        $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
-        ->join('admseguridad'.'.'.'TCUsuariosExternos', function ($join) {
-            $join->on('admseguridad'.'.'.'TCUsuariosExternos.CURP', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.CURP');
-        })
-        ->where('fisica', 'true')
-        //->orWhere('RFC', '')
-        ->get();
+        $empresa = DB::table('admpuropotosino' . '.' . 'TCEmpresaPP')
+            ->join('admseguridad' . '.' . 'TCUsuariosExternos', function ($join) {
+                $join->on('admseguridad' . '.' . 'TCUsuariosExternos.CURP', '=', 'admpuropotosino' . '.' . 'TCEmpresaPP.CURP');
+            })
+            ->where('fisica', 'true')
+            //->orWhere('RFC', '')
+            ->get();
 
         return Datatables::of($empresa)
-        ->make(true);
+            ->make(true);
     }
 
     public function getEmpresasM()
     {
-        $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
-          ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
-              $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
-          })
-          ->get();
+        $empresa = DB::table('admpuropotosino' . '.' . 'TCEmpresaPP')
+            ->join('admseguridad' . '.' . 'TCPersonasMorales', function ($join) {
+                $join->on('admseguridad' . '.' . 'TCPersonasMorales.RFC', '=', 'admpuropotosino' . '.' . 'TCEmpresaPP.RFC');
+            })
+            ->get();
 
         return Datatables::of($empresa)
-          ->make(true);
+            ->make(true);
     }
 
     public function viewE($n, $tipo)
@@ -261,27 +262,27 @@ class empresasController extends Controller
             if ($tipo == 1) {
                 $user = Empresas::where('ID_empresa', $n)->first();
 
-                $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
+                $empresa = DB::table('admpuropotosino' . '.' . 'TCEmpresaPP')
 
-        ->join('admseguridad'.'.'.'TCUsuariosExternos', function ($join) {
-            $join->on('admseguridad'.'.'.'TCUsuariosExternos.CURP', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.CURP');
-        })
-        ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
-            $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
-        })
+                    ->join('admseguridad' . '.' . 'TCUsuariosExternos', function ($join) {
+                        $join->on('admseguridad' . '.' . 'TCUsuariosExternos.CURP', '=', 'admpuropotosino' . '.' . 'TCEmpresaPP.CURP');
+                    })
+                    ->join('admpuropotosino' . '.' . 'TCContacto', function ($join) {
+                        $join->on('admpuropotosino' . '.' . 'TCContacto.ID_empresa', '=', 'admpuropotosino' . '.' . 'TCEmpresaPP.ID_empresa');
+                    })
 
-        ->where('TCEmpresaPP.ID_empresa', $n)
-        ->get();
+                    ->where('TCEmpresaPP.ID_empresa', $n)
+                    ->get();
             } else {
-                $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
-        ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
-            $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
-        })
-        ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
-            $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
-        })
-        ->where('TCEmpresaPP.ID_empresa', $n)
-        ->get();
+                $empresa = DB::table('admpuropotosino' . '.' . 'TCEmpresaPP')
+                    ->join('admseguridad' . '.' . 'TCPersonasMorales', function ($join) {
+                        $join->on('admseguridad' . '.' . 'TCPersonasMorales.RFC', '=', 'admpuropotosino' . '.' . 'TCEmpresaPP.RFC');
+                    })
+                    ->join('admpuropotosino' . '.' . 'TCContacto', function ($join) {
+                        $join->on('admpuropotosino' . '.' . 'TCContacto.ID_empresa', '=', 'admpuropotosino' . '.' . 'TCEmpresaPP.ID_empresa');
+                    })
+                    ->where('TCEmpresaPP.ID_empresa', $n)
+                    ->get();
             }
             //dd($empresa);
             return view('admin.verempresa')->with('empresa', $empresa);
@@ -292,29 +293,154 @@ class empresasController extends Controller
 
     public function viewP()
     {
-        $user = Empresas::where('ID_empresa', session('ID_e'))->first();
-        if ($user->fisica === false) {
-            $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
-            ->join('admseguridad'.'.'.'TCPersonasMorales', function ($join) {
-                $join->on('admseguridad'.'.'.'TCPersonasMorales.RFC', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.RFC');
-            })
-            ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
-                $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
-            })
-            ->where('TCEmpresaPP.ID_empresa', session('ID_e'))
-            ->get();
-        } else {
-            $empresa = DB::table('admpuropotosino'.'.'.'TCEmpresaPP')
-            ->join('admseguridad'.'.'.'TCUsuariosExternos', function ($join) {
-                $join->on('admseguridad'.'.'.'TCUsuariosExternos.CURP', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.CURP');
-            })
-            ->join('admpuropotosino'.'.'.'TCContacto', function ($join) {
-                $join->on('admpuropotosino'.'.'.'TCContacto.ID_empresa', '=', 'admpuropotosino'.'.'.'TCEmpresaPP.ID_empresa');
-            })
-            ->where('TCEmpresaPP.ID_empresa', session('ID_e'))
-            ->get();
+        $user = Empresas::where('ID_empresa', session('ID_e'))
+            ->with('contacto')
+            ->with('usrMoral')
+            ->with('usrFisica')
+            ->first();
+        $categoria  = Categorias::with('subCategorias')->get();
+
+        return view('User.perfil')->with('empresa', $user)->with('categorias', $categoria);
+    }
+
+    public function updatePerfil(Request $request)
+    {
+        //empresa
+        $emp = Empresas::with('contacto')->find(session('ID_e'));
+        $con = $emp->contacto;
+
+        $emp->descripcion = $request->descripcion;
+        $emp->tiempo_operacion = $request->operacion;
+        $emp->regimen = ($request->regimen == 'otro') ? $request->tipo_regimen22 :  $request->regimen;
+        $emp->razon_social = $request->razon_social;
+        $emp->tipo_incubacion = $request->tipoincu == 'otro' ? $request->tipoincu2 : $request->tipoincu;
+        $emp->facebook = $request->facebook;
+        $emp->instagram = $request->instagram;
+        $emp->twitter = $request->twitter;
+        $emp->stio_web = $request->sitio;
+
+        $emp->ID_categoria = $request->categoria;
+        $emp->ID_subcategoria = isset($request->subcat)?$request->subcat:null;
+
+        $con->nombre = $request->nombre_c;
+        $con->APaterno = $request->APaterno;
+        $con->AMaterno = $request->AMaterno;
+        $con->celular = $request->celular;
+        $con->telefono = $request->telefono;
+        $con->correo_electronico = $request->correo_electronico;
+        $con->direccion = $request->direccion;
+
+        if ($emp->save() && $con->save()) {
+
+            $name = $emp->ID_empresa;
+            $carpeta = storage_path();
+            $carpeta = $carpeta . '/app/Files/' . $name;
+            $ruta = '/Files//' . $name . '/';
+
+            if (!file_exists($carpeta)) {
+                try {
+                    mkdir($carpeta, 0777, true);
+                    $res = '';
+                } catch (\Exception $e) {
+                    return 'no se creo';
+                }
+            }
+
+            $path = public_path() . "\Logos\\";
+            $filenamei = '';
+            $filenameh = '';
+            $filenamecb = '';
+            $filenamef = '';
+            $filenameimg = '';
+
+            $filei = $request->file('comprobante_incubacion');
+            if ($filei != null) {
+                $filenamei = $name . '_Incubacion' . '.' . $filei->getClientOriginalExtension();
+            }
+            $fileh = $request->file('comprobante_shcp');
+            if ($fileh != null) {
+                $filenameh = $name . '_Hacienda' . '.' . $fileh->getClientOriginalExtension();
+            }
+            $filecb = $request->file('codigo_barras');
+            if ($filecb != null) {
+                $filenamecb = $name . '_CodigoBarras' . '.' . $filecb->getClientOriginalExtension();
+            }
+            $filef = $request->file('FDA');
+            if ($filef != null) {
+                $filenamef = $name . '_FDA' . '.' . $filef->getClientOriginalExtension();
+            }
+
+            $fileimg = $request->file('disenio_imagen');
+            if ($fileimg != null) {
+                $filenameimg = $name . '_Logo' . '.' . $fileimg->getClientOriginalExtension();
+            }
+
+            try {
+                $vac = Empresas::where('ID_empresa', $emp->ID_empresa)
+                    ->update([
+                        'comprobante_incubacion' => $filenamei,
+                        'comprobante_shcp' => $filenameh,
+                        'disenio_imagen' => $filenameimg,
+                        'codigo_barras' => $filenamecb,
+                        'FDA' => $filenamef,
+                    ]);
+            } catch (\Exception $e) {
+                return back()->with('Error', 'No se pudieron cargar archivos');
+            }
+
+            if ($filei != null) {
+                try {
+                    $rutai = $ruta . $filenamei;
+                    \Storage::disk('local')->put($rutai, \File::get($filei));
+                } catch (\Exception $e) {
+                    return back()->with('Error', 'No se pudo guardar comprobante_incubacion');
+                }
+            }
+
+            if ($fileh != null) {
+                try {
+                    $rutah = $ruta . $filenameh;
+                    \Storage::disk('local')->put($rutah, \File::get($fileh));
+                } catch (\Exception $e) {
+                    return back()->with('Error', 'No se pudo guardar comprobante_shcp');
+                }
+            }
+
+            if ($filecb != null) {
+                try {
+                    $rutacb = $ruta . $filenamecb;
+                    \Storage::disk('local')->put($rutacb, \File::get($filecb));
+                } catch (\Exception $e) {
+                    return back()->with('Error', 'No se pudo guardar codigo de barras');
+                }
+            }
+
+            if ($filef != null) {
+                try {
+                    $rutaf = $ruta . $filenamef;
+                    \Storage::disk('local')->put($rutaf, \File::get($filef));
+                } catch (\Exception $e) {
+                    return back()->with('Error', 'No se pudo guardar FDA');
+                }
+            }
+
+            if ($fileimg != null) {
+                try {
+                    $rutaimg = $path . $filenameimg;
+                    $img = Image::make($fileimg->getRealPath());
+                    $img->save($rutaimg, 30);
+                } catch (\Exception $e) {
+                    return back()->with('Error', 'No se pudo guardar LOGO');
+                }
+            }
+
         }
-        //dd($empresa);
-        return view('User.perfil')->with('empresa', $empresa);
+
+        /*
+        dump($request->all());
+        dump($contacto);
+        dump($emp);
+        */
+        return redirect('verPerfil');
     }
 }

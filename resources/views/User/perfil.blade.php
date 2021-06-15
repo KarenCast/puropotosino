@@ -6,7 +6,6 @@
         <!-- start: PAGE HEADER -->
         <div class="row">
             <div class="col-sm-12" id="panel-head">
-
                 <!-- start: PAGE TITLE & BREADCRUMB -->
                 <ol class="breadcrumb">
                     <li>
@@ -21,12 +20,9 @@
                     </li>
                     <ul class="nav navbar-right">
                         <li class="dropdown current-user">
-                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle"
-                                data-close-others="true" href="#">
-                                <img src="{{asset('assets/images/User_Circle.png')}}" class="circle-img" alt=""
-                                    width="42px">
-                                <button class="username">{{session('nameUser')}}<i
-                                        class="clip-chevron-down"></i></button>
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                                <img src="{{asset('assets/images/User_Circle.png')}}" class="circle-img" alt="" width="42px">
+                                <button class="username">{{session('nameUser')}}<i class="clip-chevron-down"></i></button>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -46,17 +42,14 @@
 
                     </ul>
                 </ol>
-                <div class="page-header">
-
-                </div>
 
                 <!-- end: PAGE TITLE & BREADCRUMB -->
             </div>
         </div>
         <!-- end: PAGE HEADER -->
         <!-- start: PAGE CONTENT -->
-        <div class="row">
-            <div class="col-sm-12" id="panel-proceso">
+        <div class="row" style="margin-top: 1rem">
+            <div class="col-sm-12">
 
                 <!-- start: FORM WIZARD PANEL -->
                 <div class="panel panel-default">
@@ -65,17 +58,13 @@
                             <small></small></h3>
                     </div>
                     <div class="panel-body proceso">
-                        @foreach($empresa as $rol)
-
-                        <form action="{{ route('empresa') }}" method="POST" enctype="multipart/form-data" role="form"
-                            class="row smart-wizard form-horizontal" id="form" name="form" class="row">
+                        <form action="{{route('updatePerfil')}}" method="POST" enctype="multipart/form-data" role="form" class="row smart-wizard form-horizontal" id="form" name="form" class="row">
                             {!! csrf_field() !!}
-
-                            <div class="form-group col-sm-4">
+                            <div class="form-group col-sm-5">
                                 <label class="">
                                     TIPO DE PERSONA<span class="symbol required"></span>
                                 </label><br>
-                                @if( $rol->fisica == false)
+                                @if( $empresa->fisica == false)
                                 <h4>PERSONA MORAL</h4>
                             </div>
                             <div class="form-group col-sm-4">
@@ -84,18 +73,17 @@
                                 <label class="">
                                     RAZÓN SOCIAL<span class="symbol required"></span>
                                 </label><br>
-                                <h4> {{$rol->razonsocial}}</h4>
-
+                                <h4> {{$empresa->usrMoral->razonsocial}}</h4>
                                 @else
                                 <h4>PERSONA FÍSICA</h4>
                             </div>
-                            <div class="form-group col-sm-4">
+                            <div class="form-group col-sm-3">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="">
                                     NOMBRE<span class="symbol required"></span>
                                 </label><br>
-                                <h4> {{$rol->nombre}} {{$rol->apellido_paterno}} {{$rol->apellido_materno}} </h4>
+                                <h4> {{$empresa->usrFisica->nombre}} {{$empresa->usrFisica->apellido_paterno}} {{$empresa->usrFisica->apellido_materno}} </h4>
 
                                 @endif
                             </div>
@@ -103,23 +91,25 @@
                             <h4>Información general de negocio</h4>
                             <hr width="100%" color="black" />
 
+                            <div class="form-group col-sm-12" id="fechaope">
+                                <label class="">
+                                    <p>Razon Social<span class="symbol required"></span></p>
+                                </label><br>
+                                <input type="text" required class="form-control" id="razon_social" name="razon_social" placeholder="" value="{{$empresa->razon_social}}">
+                            </div>
                             <div class="form-group col-sm-12">
                                 <label class="">
                                     Idea de negocio<span class="symbol required"></span>
                                 </label><br>
-                                <textarea class="form-control" disabled name="descripcion" id="descripcion" rows="3"
-                                    cols="100%">{{$rol->descripcion}}</textarea>
+                                <textarea class="form-control" name="descripcion" id="descripcion" rows="3" cols="100%">{{$empresa->descripcion}}</textarea>
                             </div>
 
-                            @if($rol->tiempo_operacion!=null)
+                            @if($empresa->tiempo_operacion!=null)
                             <div class="form-group col-sm-12" id="fechaope">
                                 <label class="">
-                                    <p>Fecha en que comenzó a estar en operación<span class="symbol required"></span>
-                                    </p>
-
+                                    <p>Fecha en que comenzó a estar en operación<span class="symbol required"></span></p>
                                 </label><br>
-                                <input type="date" disabled required class="form-control" id="operacion"
-                                    name="operacion" placeholder="" value="{{$rol->tiempo_operacion}}">
+                                <input type="date" required class="form-control" id="operacion" name="operacion" placeholder="" value="{{$empresa->tiempo_operacion}}">
                             </div>
                             @endif
 
@@ -129,53 +119,56 @@
                                 <label class="">
                                     Nombre<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled value="{{$rol->nombre}}" required class="form-control"
-                                    id="razonsocial" name="razonsocial" placeholder="">
+                                <input type="text" value="{{$empresa->contacto->nombre}}" required class="form-control" id="nombre" name="nombre" placeholder="">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="">
                                     Apellido paterno<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled value="{{$rol->APaterno}}" required class="form-control"
-                                    id="razonsocial" name="razonsocial" placeholder="">
+                                <input type="text" value="{{$empresa->contacto->APaterno}}" required class="form-control" id="APaterno" name="APaterno" placeholder="">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="">
                                     Apellido materno<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled value="{{$rol->AMaterno}}" required class="form-control"
-                                    id="razonsocial" name="razonsocial" placeholder="">
+                                <input type="text" value="{{$empresa->contacto->AMaterno}}" required class="form-control" id="AMaterno" name="AMaterno" placeholder="">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="">
                                     Correo Electrónico<span class="symbol required"></span>
                                 </label>
-                                <input type="email" disabled value="{{$rol->correo_electronico}}" required
-                                    class="form-control" id="razonsocial" name="razonsocial" placeholder="">
+                                <input type="email" value="{{$empresa->contacto->correo_electronico}}" required class="form-control" id="correo_electronico" name="correo_electronico" placeholder="">
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="">
                                     Teléfono<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled value="{{$rol->telefono}}" required class="form-control"
-                                    id="razonsocial" name="razonsocial" placeholder="">
+                                <input type="text" value="{{$empresa->contacto->telefono}}" required class="form-control" id="telefono" name="telefono" placeholder="">
+                                <script>
+                                    jQuery(function($) {
+                                        $('#telefono').mask("(999) 999-99-99");
+                                    });
+
+                                </script>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label class="">
                                     Celular<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled value="{{$rol->celular}}" required class="form-control"
-                                    id="razonsocial" name="razonsocial" placeholder="">
+                                <input type="text" value="{{$empresa->contacto->celular}}" required class="form-control" id="celular" name="celular" placeholder="">
+                                <script>
+                                    jQuery(function($) {
+                                        $('#celular').mask("(999) 999-99-99");
+                                    });
+
+                                </script>
                             </div>
                             <div class="form-group col-sm-12">
                                 <label class="">
                                     Dirección<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled value="{{$rol->direccion}}" required class="form-control"
-                                    id="razonsocial" name="razonsocial" placeholder="">
+                                <input type="text" value="{{$empresa->contacto->direccion}}" required class="form-control" id="direccion" name="direccion" placeholder="">
                             </div>
-
-
 
                             <h4>Información SIDEP</h4>
                             <hr width="100%" color="black" />
@@ -184,121 +177,186 @@
                                 <label class="">
                                     Regimen de alta en DHCP<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled required class="form-control" id="regimen" name="regimen"
-                                    placeholder="" value="{{$rol->regimen}}">
-                            </div>
+                                <select class="form-control" name="regimen" id="regimen" onchange="regimen2();">
+                                    <option {{$empresa->regimen == 'RIF (Regimen de incorporación fiscal)'? 'selected':'' }} value="RIF (Regimen de incorporación fiscal)">RIF (Regimen de incorporación fiscal)</option>
+                                    <option {{$empresa->regimen == 'SAS (Sociedad de acciones simplificadas)' ? 'selected':''}} value="SAS (Sociedad de acciones simplificadas)">SAS (Sociedad de acciones simplificadas)</option>
+                                    <option {{$empresa->regimen == 'Persona física con actividad empresarial' ? 'selected':''}} value="Persona física con actividad empresarial">Persona física con actividad empresarial</option>
+                                    <option {{$empresa->regimen == 'S.A. de C.V.' ? 'selected':''}} value="S.A. de C.V.">S.A. de C.V.</option>
+                                    <option {{$empresa->regimen == 'otro' ? 'selected':''}} value="otro">Otro</option>
+                                </select>
 
+                                <label for="" id="esp" style="display: none">Especifica el regimen</label>
+                                <input class="form-control" type="text" name="tipo_regimen22" id="tipo_regimen22" value="" style="display: none;">
+                            </div>
 
                             <div class="form-group col-sm-6" id="tipo_incu" style="">
                                 <label class="">
                                     Tipo de incubación<span class="symbol required"></span>
                                 </label>
-                                <input type="text" disabled required class="form-control" id="tipoincu" name="tipoincu"
-                                    placeholder="{{$rol->tipo_incubacion}}">
+                                <select class="form-control" name="tipoincu" id="tipoincu" onchange="incubacion2();">
+                                    <option {{$empresa->tipo_incubacion == 'Curso de innovación y emprendimiento'? 'selected':'' }} value="Curso de innovación y emprendimiento">Curso de innovación y emprendimiento</option>
+                                    <option {{$empresa->tipo_incubacion == 'Academia SIFIDE'? 'selected':'' }} value="Academia SIFIDE">Academia SIFIDE</option>
+                                    <option {{$empresa->tipo_incubacion == 'otro'? 'selected':'' }} value="otro">Otro</option>
+                                </select>
+                                <label for="" id="esp2" style="display:none">Especifica</label>
+                                <input class="form-control" type="text" name="tipoincu2" id="tipoincu2" value="" style="display:none">
                             </div>
                             <div class="form-group col-sm-12">
                                 <label class="">
                                     <h4>Documentación con la que cuenta <span class="symbol required"></span></h4> <br>
-                                </label><br>
-
-
-                                @if($rol->comprobante_incubacion!=null)
-                                <a href="./link/{{$rol->ID_empresa}}/{{$rol->comprobante_incubacion}}">
-                                    <h4>Comprobante de incubación</h4>
-                                </a>
-                                @endif
-
-                                @if($rol->comprobante_shcp!=null || $rol->comprobante_shcp!='')
-                                <a href="./link/{{$rol->ID_empresa}}/{{$rol->comprobante_shcp}}">
-                                    <h4>Comprobante de hacienda (Constancia de situación fiscal)</h4>
-                                </a>
-                                @endif
-
-
-                                @if($rol->disenio_imagen!=null || $rol->disenio_imagen!='')
-                                Diseño de imagen corporativa (logotipo en formato .png o .jpg)<br>
-                                <img src="{{asset('Logos')}}/{{$rol->ID_empresa}}/{{$rol->disenio_imagen}}" alt=""
-                                    width="30%" height="auto"><br>
-                                @endif
-
-
-                                @if($rol->codigo_barras!=null || $rol->codigo_barras!='')
-                                <a href="./link/{{$rol->ID_empresa}}/{{$rol->codigo_barras}}">
-                                    <h4>Código de barras</h4>
-                                </a>
-                                @endif
-
-
-                                @if($rol->FDA!=null || $rol->FDA!='')
-                                <a href="./link/{{$rol->ID_empresa}}/{{$rol->FDA}}">
-                                    <h4>Archivo FDA</h4>
-                                </a>
-                                @endif
-
-                                @if($rol->comprobante_exportacion!=null || $rol->comprobante_exportacion!='')
-                                <a href="./link/{{$rol->ID_empresa}}/{{$rol->comprobante_exportacion}}">
-                                    <h4>Comprobante Exportación</h4>
-                                </a>
-                                @endif
-                            </div>
-
-                            <h4>Redes sociales</h4>
-                            <hr width="100%" color="black" />
-                            <div class="form-group col-sm-6">
-                                <label class="">
-                                    Instagram (URL)
-                                </label>
-                                <input type="text" class="form-control" id="instagram" name="instagram" placeholder=""
-                                    value="{{$rol->instagram}}" disabled>
-
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="">
-                                    Facebook (URL)
-                                </label>
-                                <input type="text" class="form-control" id="facebook" name="facebook" placeholder=""
-                                    value="{{$rol->facebook}}" disabled>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="">
-                                    Twitter (Usuario)
-                                </label>
-                                <input type="text" class="form-control" id="twitter" name="twitter" placeholder=""
-                                    value="{{$rol->twitter}}" disabled>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="">
-                                    Sitio Web (URL)
-                                </label>
-                                <input type="text" class="form-control" id="sitio" name="sitio" placeholder=""
-                                    value="{{$rol->stio_web}}" disabled>
-                            </div>
-                            <h4>Clasificación</h4>
-                            <hr width="100%" color="black" />
-                            <div class="form-group col-sm-6">
-                                <label class="">
-                                    Catagoría a la que pertenece tú empresa<span class="symbol required"></span>
                                 </label>
 
-                                <select class="form-control" id="categoria" name="categoria" onchange="versub();"
-                                    disabled>
-                                    <option value="{{$rol->ID_categoria}}" selected disabled hidden>
-                                        {{$rol->ID_categoria}}</option>
+                                <div class=" form-group">
+                                    <label for="bases" class="col-sm-12 control-label">Comprobante de incubación<span style="color: red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="file" class="form-control" accept=".pdf" value="" name="comprobante_incubacion" id="comprobante_incubacion" aria-describedby="vercomprobante_incubacion">
+                                        @if($empresa->comprobante_incubacion!=null)
+                                        <small id="vercomprobante_incubacion" class="form-text text-muted">
+                                            <a target="_blank" href="{{asset('storage/Files/'.$empresa->ID_empresa.'/'.$empresa->comprobante_incubacion)}}">Ver Documento actual</a>
+                                        </small>
+                                        @endif
 
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-6">
-                                <label class="">
-                                    Sub-categoría<span class="symbol required"></span>
-                                </label>
-                                <select class="form-control" id="subcat" name="subcat" disabled>
-                                    <option value="{{$rol->ID_subcategoria}}" selected hidden>{{$rol->ID_subcategoria}}
-                                    </option>
+                                    </div>
+                                </div>
 
-                                </select>
+                                <div class=" form-group">
+                                    <label for="bases" class="col-sm-12 control-label">Comprobante de hacienda (Constancia de situación fiscal)<span style="color: red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="file" class="form-control" accept=".pdf" value="" name="comprobante_shcp" id="comprobante_shcp" aria-describedby="verBases">
+                                        @if($empresa->comprobante_shcp!=null || $empresa->comprobante_shcp!='')
+                                        <small id="verBases" class="form-text text-muted">
+                                            <a target="_blank" href="{{asset('storage/Files/'.$empresa->ID_empresa.'/'.$empresa->comprobante_shcp)}}">Ver Documento actual</a>
+                                        </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+
+                                <div class=" form-group">
+                                    <label for="bases" class="col-sm-12 control-label">Diseño de imagen corporativa (logotipo en formato .png o .jpg)<span style="color: red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg" value="" name="disenio_imagen" id="disenio_imagen" aria-describedby="verBases">
+                                        @if($empresa->disenio_imagen!=null || $empresa->disenio_imagen!='')
+                                        <small id="verBases" class="form-text text-muted">
+                                            <a target="_blank" href="{{asset('Logos').'/'. $empresa->disenio_imagen}}">Ver Documento actual</a>
+                                        </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+
+                                <div class=" form-group">
+                                    <label for="bases" class="col-sm-12 control-label">Código de barras<span style="color: red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg" value="" name="codigo_barras" id="codigo_barras" aria-describedby="verBases">
+                                        @if($empresa->codigo_barras!=null || $empresa->codigo_barras!='')
+                                        <small id="verBases" class="form-text text-muted">
+                                            <a target="_blank" href="{{asset('storage/Files/'.$empresa->ID_empresa.'/'.$empresa->codigo_barras)}}">Ver Documento actual</a>
+                                        </small>
+                                        @endif
+
+                                    </div>
+                                </div>
+
+                                <div class=" form-group">
+                                    <label for="bases" class="col-sm-12 control-label">Archivo FDA<span style="color: red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg" value="" name="FDA" id="FDA" aria-describedby="verBases">
+                                        @if($empresa->FDA!=null || $empresa->FDA!='')
+                                        <small id="verBases" class="form-text text-muted">
+                                            <a target="_blank" href="{{asset('storage/Files/'.$empresa->ID_empresa.'/'.$empresa->FDA)}}">Ver Documento actual</a>
+                                        </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class=" form-group">
+                                    <label for="bases" class="col-sm-12 control-label">Comprobante Exportación<span style="color: red">*</span></label>
+                                    <div class="col-sm-12">
+                                        <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg" value="" name="comprobante_exportacion" id="comprobante_exportacion" aria-describedby="verBases">
+                                        @if($empresa->comprobante_exportacion!=null || $empresa->comprobante_exportacion!='')
+                                        <small id="verBases" class="form-text text-muted">
+                                            <a target="_blank" href="{{asset('storage/Files/'.$empresa->ID_empresa.'/'.$empresa->comprobante_exportacion)}}">Ver Documento actual</a>
+                                        </small>
+                                        @endif
+
+                                    </div>
+                                </div>
+
                             </div>
+
+                            <div class="form-group col-sm-12">
+                                <center>
+                                    <h4>Redes sociales</h4>
+                                </center>
+                                <hr width="100%" color="black" />
+                                <div class="form-group col-sm-6">
+                                    <label class="">
+                                        Instagram (URL)
+                                    </label>
+                                    <input type="url" class="form-control" id="instagram" name="instagram" placeholder="" value="{{$empresa->instagram}}">
+
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="">
+                                        Facebook (URL)
+                                    </label>
+                                    <input type="url" class="form-control" id="facebook" name="facebook" placeholder="" value="{{$empresa->facebook}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="">
+                                        Twitter (Usuario)
+                                    </label>
+                                    <input type="text" class="form-control" id="twitter" name="twitter" placeholder="" value="{{$empresa->twitter}}">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="">
+                                        Sitio Web (URL)
+                                    </label>
+                                    <input type="url" class="form-control" id="sitio" name="sitio" placeholder="" value="{{$empresa->stio_web}}">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <center>
+                                    <h4>Clasificación</h4>
+                                </center>
+                                <hr width="100%" color="black" />
+                                <div class="form-group col-sm-6">
+                                    <label class="">
+                                        Catagoría a la que pertenece tú empresa<span class="symbol required"></span>
+                                    </label>
+
+                                    <select class="form-control" id="categoria" name="categoria" onchange="cambiaSubCategorias({{$categorias}})">
+                                        @foreach ($categorias as $itemCategoria)
+                                        <option value="{{$itemCategoria->ID_categoria}}" {{$empresa->ID_categoria == $itemCategoria->ID_categoria? 'selected':'' }}>{{$itemCategoria->nombre}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="">
+                                        Sub-categoría<span class="symbol required"></span>
+                                    </label>
+                                    <select class="form-control" id="subcat" name="subcat">
+                                        @foreach ($categorias as $itemCategoria)
+                                        @if ($itemCategoria->ID_categoria == $empresa->ID_categoria))
+                                        @foreach ($itemCategoria->subCategorias as $subCatItem)
+                                        <option value="{{$subCatItem->ID_subcategoria}}" {{$empresa->ID_subcategoria == $subCatItem->ID_subcategoria? 'selected':'' }}>{{$subCatItem->ID_subcategoria}}
+                                        </option>
+                                        @endforeach
+                                        @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <br>
+                            <center>
+                                <div class="form-group col-sm-12">
+                                    <button type="submit" class="btn btn-primary ">Actualizar </button>
+                                </div>
+                            </center>
                         </form>
-                        @endforeach
                     </div>
                 </div>
                 <!-- end: FORM WIZARD PANEL -->
@@ -307,4 +365,7 @@
         <!-- end: PAGE CONTENT-->
     </div>
 </div>
+
+<script src="{{asset('js/validar.js')}}"></script>
+
 @endsection

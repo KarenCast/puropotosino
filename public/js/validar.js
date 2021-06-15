@@ -3,12 +3,12 @@
 var rad = document.form.ope;
 var prev = null;
 for (var i = 0; i < rad.length; i++) {
-    rad[i].addEventListener('change', function() {
+    rad[i].addEventListener('change', function () {
 
-        if(this.value=='t'){
-          $("#fechaope").css("visibility", "hidden");
-        }else {
-              $("#fechaope").css("visibility", "visible");
+        if (this.value == 't') {
+            $("#fechaope").css("visibility", "hidden");
+        } else {
+            $("#fechaope").css("visibility", "visible");
         }
     });
 }
@@ -17,12 +17,12 @@ for (var i = 0; i < rad.length; i++) {
 var rad1 = document.form.incu;
 var prev1 = null;
 for (var i = 0; i < rad.length; i++) {
-    rad1[i].addEventListener('change', function() {
+    rad1[i].addEventListener('change', function () {
 
-        if(this.value=='t'){
-          $("#tipo_incu").css("visibility", "visible");
-        }else {
-              $("#tipo_incu").css("visibility", "hidden");
+        if (this.value == 't') {
+            $("#tipo_incu").css("visibility", "visible");
+        } else {
+            $("#tipo_incu").css("visibility", "hidden");
         }
     });
 }
@@ -31,12 +31,12 @@ for (var i = 0; i < rad.length; i++) {
 var rad2 = document.form.altahacienda;
 var prev2 = null;
 for (var i = 0; i < rad.length; i++) {
-    rad2[i].addEventListener('change', function() {
+    rad2[i].addEventListener('change', function () {
 
-        if(this.value=='t'){
-          $("#tipo_regimen").css("visibility", "visible");
-        }else {
-              $("#tipo_regimen").css("visibility", "hidden");
+        if (this.value == 't') {
+            $("#tipo_regimen").css("visibility", "visible");
+        } else {
+            $("#tipo_regimen").css("visibility", "hidden");
         }
     });
 }
@@ -46,35 +46,45 @@ for (var i = 0; i < rad.length; i++) {
 
 function versub() {
     $('option[name=subs]').css("display", "none");
-    document.getElementById("subcat").value="";
+    document.getElementById("subcat").value = "";
     var x = document.getElementById("categoria").value;
-    console.log(x);
-    $("#"+x).css("display", "block");
+    //console.log(x);
+    $("#" + x).css("display", "block");
 }
 
 
-function regimen2(){
-  var tipor = $("#regimen").val();
+function regimen2() {
+    var tipor = $("#regimen").val();
 
-  if ($("#regimen").val().trim()=='otro') {
-    $("#tipo_regimen22").css("display", "block");
-      $("#esp").css("display", "block");
-  }else{
+    if ($("#regimen").val().trim() == 'otro') {
+        $("#tipo_regimen22").css("display", "block");
+        $("#esp").css("display", "block");
+    } else {
 
-    $("#tipo_regimen22").css("display", "none");
-    $("#esp").css("display", "none");
-  }
+        $("#tipo_regimen22").css("display", "none");
+        $("#esp").css("display", "none");
+    }
 }
 
-function incubacion2(){
+function incubacion2() {
+    if ($("#tipoincu").val().trim() == 'otro') {
+        $("#tipoincu2").css("display", "block");
+        $("#esp2").css("display", "block");
+    } else {
 
+        $("#tipoincu2").css("display", "none");
+        $("#esp2").css("display", "none");
+    }
+}
 
-  if ($("#tipoincu").val().trim()=='otro') {
-    $("#tipoincu2").css("display", "block");
-      $("#esp2").css("display", "block");
-  }else{
+function cambiaSubCategorias(items) {
+    let itemSelect = document.getElementById("categoria").value;
+    let item = items.filter(record => record.ID_categoria == itemSelect);
 
-    $("#tipoincu2").css("display", "none");
-    $("#esp2").css("display", "none");
-  }
+    if (item.length > 0) {
+        $("#subcat").empty()
+        item[0].sub_categorias.forEach(element => {
+            $("#subcat").append(new Option(element.nombre, element.ID_subcategoria));
+        });
+    }
 }

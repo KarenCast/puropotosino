@@ -114,6 +114,7 @@ Route::get('/inicioUser', 'UserController@redireccion')->name('inicioUser');
 Route::get('/LogOut', 'UserController@LogOut');
 Route::get('/consultaEtapas','UserController@viewEtapas')->name('consultaEtapas');
 Route::get('/verPerfil', 'empresasController@viewP')->name('verPerfil');
+Route::post('/updatePerfil', 'empresasController@updatePerfil')->name('updatePerfil');
 
 //Marcas
 Route::get('/altaMarca','marcaController@viewAltaMarca')->name('altaMarca');
